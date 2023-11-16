@@ -1,9 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GamePanel extends JPanel implements Runnable {
+
+public class GamePanel extends JPanel {
+    public static final int FPS = 60;
     private BgPanel bg;
-    Thread gameThread;
+    Timer gameTimer;
 
     public GamePanel() {
         super();
@@ -12,6 +16,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
 
         bg = new BgPanel();
+
+        gameTimer = new Timer(1000/FPS, e -> { // GAME LOOP
+            update();
+            repaint(); // calls paintComponent()
+        });
     }
 
     public void update() {
@@ -25,15 +34,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     // starts the game loop
     public void startGame() {
-        gameThread = new Thread(this);
-        gameThread.start();
-    }
-
-    // GAME LOOP
-    public void run() {
-        while(gameThread != null) {
-            update();
-            repaint(); // calls paintComponent
-        }
+        gameTimer.start();
     }
 }
