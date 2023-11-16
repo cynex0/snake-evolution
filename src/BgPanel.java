@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class BgPanel extends JPanel {
     public static final int BORDER_SIZE = 5;
-    public static final int MARGIN_DIST = 40; // distance from screen edge to inner margin point
+    public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
     public static final int MARGIN_W = MARGIN_DIST - BORDER_SIZE; // margin width excluding border thickness
 
     public BgPanel() {

@@ -1,4 +1,4 @@
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -14,11 +14,6 @@ public class GamePanel extends JPanel implements Runnable {
         bg = new BgPanel();
     }
 
-    public void startGame() {
-        gameThread = new Thread(this);
-        gameThread.start();
-    }
-
     public void update() {
         // update positions, etc
     }
@@ -26,6 +21,12 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         bg.paintComponent(g);
+    }
+
+    // starts the game loop
+    public void startGame() {
+        gameThread = new Thread(this);
+        gameThread.start();
     }
 
     // GAME LOOP
