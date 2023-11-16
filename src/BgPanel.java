@@ -6,6 +6,8 @@ public class BgPanel extends JPanel {
     public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
     public static final int MARGIN_W = MARGIN_DIST - BORDER_SIZE; // margin width excluding border thickness
 
+
+
     public BgPanel() {
         super();
         this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));

@@ -9,11 +9,21 @@ public class GamePanel extends JPanel {
     private BgPanel bg;
     Timer gameTimer;
 
+    KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
+
+    //set snake's default position
+    int snakeX = 100;
+    int snakeY = 100;
+    int snakeSpeed = 4;
+
     public GamePanel() {
         super();
         this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+
+        this.addKeyListener(keyH); //To make the gamePanel recognize the key input
+        this.setFocusable(true);
 
         bg = new BgPanel();
 
@@ -25,6 +35,18 @@ public class GamePanel extends JPanel {
 
     public void update() {
         // update positions, etc
+        if (keyH.upPressed) {
+            snakeY = snakeY - snakeSpeed;
+        }
+        else if (keyH.downPressed) {
+            snakeY = snakeY + snakeSpeed;
+        }
+        else if (keyH.rightPressed) {
+            snakeX = snakeX + snakeSpeed;
+        }
+        else if (keyH.leftPressed) {
+            snakeX = snakeX - snakeSpeed;
+        }
     }
 
     public void paintComponent(Graphics g) {
