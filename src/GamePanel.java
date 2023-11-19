@@ -10,6 +10,7 @@ public class GamePanel extends JPanel {
     Timer gameTimer;
 
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
+    public CollisionControl collisionControl = new CollisionControl(this);
 
     //set snake's default position
     int snakeX = 100;
