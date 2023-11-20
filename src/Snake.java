@@ -11,9 +11,9 @@ public class Snake {
         super();
         body = new ArrayList<>();
         direction = Direction.RIGHT;
-        body.add(new CellPosition(20, 20, GamePanel.CELL_COUNT, GamePanel.CELL_COUNT));
-        body.add(new CellPosition(19, 20, GamePanel.CELL_COUNT, GamePanel.CELL_COUNT));
-        body.add(new CellPosition(18, 20, GamePanel.CELL_COUNT, GamePanel.CELL_COUNT));
+        body.add(new CellPosition(20, 20));
+        body.add(new CellPosition(19, 20));
+        body.add(new CellPosition(18, 20));
     }
 
     public ArrayList<CellPosition> getBody() {
@@ -21,7 +21,7 @@ public class Snake {
     }
 
     public void increaseBodyLength() {
-        Point tailCellPos = body.get(body.size() - 1).getCell();
+        Point tailCellPos = body.get(body.size() - 1).getCellPoint();
         CellPosition newPos = new CellPosition();
 
         switch (direction) {
@@ -36,7 +36,7 @@ public class Snake {
 
     public void move() {
         CellPosition newHeadPos = new CellPosition();
-        Point currHeadPos = body.get(0).getCell();
+        Point currHeadPos = body.get(0).getCellPoint();
 
         switch (direction) {
             case UP -> newHeadPos = new CellPosition(currHeadPos.x, currHeadPos.y - 1);

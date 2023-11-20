@@ -50,6 +50,8 @@ public class GamePanel extends JPanel {
         else if (keyH.leftPressed) {
             snakeX = snakeX - snakeSpeed;
         }
+
+        snake.move();
     }
 
     @Override
@@ -62,7 +64,8 @@ public class GamePanel extends JPanel {
         // draw snake
         frame.setColor(new Color(0x2b331a));
         for (CellPosition pos : snake.getBody()) {
-            frame.fillRect(pos.x, pos.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
+            Point p = pos.getCoordinates();
+            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
         }
         frame.dispose();
     }
