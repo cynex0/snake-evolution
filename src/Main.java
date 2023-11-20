@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class Main {
     public static final Point WINDOW_SIZE = new Point(800, 800);
-    public static final int CELL_SIZE = 20;
 
     public static void main(String[] args) {
         JFrame window = new JFrame();
