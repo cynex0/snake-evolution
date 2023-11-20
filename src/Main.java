@@ -57,14 +57,31 @@ public class Main {
                 }
             }
         }
-
+        FileWriter writer;
+        try {
+            writer = new FileWriter("Leaderboard1.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         for (LeaderBoard player : players){
             list.addElement(player.getNameAndScore());
+
+            try {
+                writer.append(player.getNameAndScore() + "\n");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
 
 
-        JFrame window = new JFrame();
+            JFrame window = new JFrame();
         window.setSize(800, 800);
         window.setTitle("LEADER BOARD");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
