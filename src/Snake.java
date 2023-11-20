@@ -4,16 +4,22 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Snake {
+    private final int ANIM_STEP = 3; // updates every Nth frame
+
+    private int frameCount;
     private ArrayList<CellPosition> body;
     private Direction direction;
 
     public Snake() {
         super();
+
         body = new ArrayList<>();
         direction = Direction.RIGHT;
         body.add(new CellPosition(20, 20));
         body.add(new CellPosition(19, 20));
         body.add(new CellPosition(18, 20));
+
+        frameCount = 0;
     }
 
     public ArrayList<CellPosition> getBody() {
@@ -35,6 +41,8 @@ public class Snake {
     }
 
     public void move() {
+        if (frameCount++ < ANIM_STEP) return;
+
         CellPosition newHeadPos = new CellPosition();
         Point currHeadPos = body.get(0).getCellPoint();
 
@@ -47,6 +55,8 @@ public class Snake {
 
         body.add(0, newHeadPos);
         body.remove(body.size() - 1);
+
+        frameCount = 0;
     }
 
     public void setDirection(Direction newDir) {
