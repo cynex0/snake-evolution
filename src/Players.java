@@ -26,8 +26,10 @@ public class Players {
     }
 
     public String getNamesAndScores(){
-        String message = String.format("%-20s", this.name) + String.format("%20s", this.score) + "\n";
-        return message;
+        char ch = '-';
+       // String message = String.format("%-20s", this.name) + String.format("%20s", this.score) + "\n";
+        return String.format("%1$" + "S", "") + this.name + String.format("%1$" + 20 + "s", " ").replace(' ', ch) + this.score + "\n";
+        //return message;
     }
 
 }

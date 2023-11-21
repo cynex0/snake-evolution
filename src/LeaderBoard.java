@@ -15,7 +15,7 @@ public class LeaderBoard extends JPanel {
     public LeaderBoard(){
         super();
         this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
-        this.setBackground(Color.BLACK);
+        this.setBackground(new Color(0xA9E000));
         this.setDoubleBuffered(true);
 
     }
@@ -30,7 +30,7 @@ public class LeaderBoard extends JPanel {
         frame.fillRect(MARGIN_DIST, MARGIN_DIST, Main.WINDOW_SIZE.x - 2*MARGIN_DIST, Main.WINDOW_SIZE.y - 2*MARGIN_DIST);
 
         // draw borders
-        frame.setColor(Color.WHITE);
+        frame.setColor(Color.BLACK);
 
         frame.fillRect(MARGIN_W, MARGIN_W, BORDER_SIZE, Main.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
         frame.fillRect(Main.WINDOW_SIZE.x - MARGIN_DIST, MARGIN_W, BORDER_SIZE, Main.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
@@ -96,12 +96,12 @@ public class LeaderBoard extends JPanel {
         }
         for (Players players : playersList) {
             frame.setColor(Color.BLACK);
-            frame.setFont(new Font("Ariel", Font.BOLD, 20));
-            frame.drawString("Leader Board", 80, 70);
+            frame.setFont(new Font("Serif", Font.BOLD, 30));
+            frame.drawString("Leader Board", 320, 30);
             // Using the condition to highlight the top scorer
             if (getIndexOfPlayersList == 0){
-                frame.setFont(new Font("Times New Roman", Font.BOLD, 18));
-                frame.drawString(players.getNamesAndScores(), 80, yAxes);
+                frame.setFont(new Font("Times New Roman", Font.BOLD, 22));
+                frame.drawString(players.getNamesAndScores(), 300, yAxes);
                 try {
                     writer.append(players.getNamesAndScores());
                 } catch (IOException e) {
@@ -110,13 +110,13 @@ public class LeaderBoard extends JPanel {
                 getIndexOfPlayersList++;
             }
             else {
-                frame.setFont(new Font("Times New Roman", Font.ITALIC, 18));
+                frame.setFont(new Font("Times New Roman", Font.ITALIC, 22));
                 try {
                     writer.append(players.getNamesAndScores());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                frame.drawString(players.getNamesAndScores(), 80, yAxes);
+                frame.drawString(players.getNamesAndScores(), 300, yAxes);
             }
             yAxes+=20;
         }
