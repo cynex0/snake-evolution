@@ -50,7 +50,6 @@ public class GamePanel extends JPanel {
         }
         else if (keyH.leftPressed) {
             snakeX = snakeX - snakeSpeed;
-            snake.increaseBodyLength();
         }
 
         snake.move();
