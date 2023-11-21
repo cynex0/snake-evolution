@@ -1,6 +1,4 @@
-import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Snake {
@@ -27,7 +25,7 @@ public class Snake {
     }
 
     public void increaseBodyLength() {
-        Point tailCellPos = body.get(body.size() - 1).getCellPoint();
+        Point tailCellPos = body.get(body.size() - 1).getCell();
         CellPosition newPos = new CellPosition();
 
         switch (direction) {
@@ -44,7 +42,7 @@ public class Snake {
         if (frameCount++ < ANIM_STEP) return;
 
         CellPosition newHeadPos = new CellPosition();
-        Point currHeadPos = body.get(0).getCellPoint();
+        Point currHeadPos = body.get(0).getCell();
 
         switch (direction) {
             case UP -> newHeadPos = new CellPosition(currHeadPos.x, currHeadPos.y - 1);
@@ -61,5 +59,13 @@ public class Snake {
 
     public void setDirection(Direction newDir) {
         direction = newDir;
+    }
+
+    public void draw(Graphics2D frame) {
+        frame.setColor(new Color(0x2b331a));
+        for (CellPosition pos : body) {
+            Point p = pos.getCoordinates();
+            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
+        }
     }
 }

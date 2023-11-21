@@ -69,13 +69,7 @@ public class GamePanel extends JPanel {
         //lb.paintComponent(g);
 
         Graphics2D frame = (Graphics2D) g;
-
-        // draw snake
-        frame.setColor(new Color(0x2b331a));
-        for (CellPosition pos : snake.getBody()) {
-            Point p = pos.getCoordinates();
-            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
-        }
+        snake.draw(frame);
         frame.dispose();
     }
 
