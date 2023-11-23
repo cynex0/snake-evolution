@@ -10,6 +10,7 @@ public class GamePanel extends JPanel {
     private final BgPanel bg;
     private Snake snake;
     private final Timer gameLoop;
+    private MainMenu menu;
 
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
     public CollisionControl collisionControl = new CollisionControl(this);
@@ -30,6 +31,7 @@ public class GamePanel extends JPanel {
 
         bg = new BgPanel();
         snake = new Snake();
+        menu = new MainMenu();
 
         gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
             update();
@@ -59,6 +61,7 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         bg.paintComponent(g);
+        menu.paintComponent(g);
 
         Graphics2D frame = (Graphics2D) g;
 
