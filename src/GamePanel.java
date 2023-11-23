@@ -32,11 +32,13 @@ public class GamePanel extends JPanel {
         bg = new BgPanel();
         snake = new Snake();
         menu = new MainMenu();
+        this.add(menu);
+
 
         gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
             update();
             repaint(); // calls paintComponent()
-        });
+       });
     }
 
     public void update() {
@@ -63,6 +65,7 @@ public class GamePanel extends JPanel {
         bg.paintComponent(g);
         menu.paintComponent(g);
 
+
         Graphics2D frame = (Graphics2D) g;
 
         // draw snake
@@ -74,8 +77,9 @@ public class GamePanel extends JPanel {
         frame.dispose();
     }
 
-    // starts the game loop
-    public void startGame() {
+     // starts the game loop
+     public void startGame() {
         gameLoop.start();
     }
 }
+
