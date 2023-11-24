@@ -38,16 +38,16 @@ public class GamePanel extends JPanel {
         // update positions, etc
 
 
-        if (keyH.upPressed) {
+        if (keyH.upPressed && snake.getDirection() != Direction.DOWN) {
             snake.setDirection(Direction.UP);
         }
-        else if (keyH.downPressed) {
+        else if (keyH.downPressed && snake.getDirection() != Direction.UP) {
             snake.setDirection(Direction.DOWN);
         }
-        else if (keyH.rightPressed) {
+        else if (keyH.rightPressed && snake.getDirection() != Direction.LEFT) {
             snake.setDirection(Direction.RIGHT);
         }
-        else if (keyH.leftPressed) {
+        else if (keyH.leftPressed && snake.getDirection() != Direction.RIGHT) {
             snake.setDirection(Direction.LEFT);
         }
 
