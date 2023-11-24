@@ -1,7 +1,8 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Snake {
+public class
+Snake {
     private final int ANIM_STEP = 3; // updates every Nth frame
 
     private int frameCount;

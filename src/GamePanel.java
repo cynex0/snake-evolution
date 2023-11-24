@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 
 public class GamePanel extends JPanel {
@@ -14,10 +15,6 @@ public class GamePanel extends JPanel {
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
     public CollisionControl collisionControl = new CollisionControl(this);
 
-    //set snake's default position
-    int snakeX = 100;
-    int snakeY = 100;
-    int snakeSpeed = 4;
 
     public GamePanel() {
         super();
@@ -39,17 +36,19 @@ public class GamePanel extends JPanel {
 
     public void update() {
         // update positions, etc
+
+
         if (keyH.upPressed) {
-            snakeY = snakeY - snakeSpeed;
+            snake.setDirection(Direction.UP);
         }
         else if (keyH.downPressed) {
-            snakeY = snakeY + snakeSpeed;
+            snake.setDirection(Direction.DOWN);
         }
         else if (keyH.rightPressed) {
-            snakeX = snakeX + snakeSpeed;
+            snake.setDirection(Direction.RIGHT);
         }
         else if (keyH.leftPressed) {
-            snakeX = snakeX - snakeSpeed;
+            snake.setDirection(Direction.LEFT);
         }
 
         snake.move();
