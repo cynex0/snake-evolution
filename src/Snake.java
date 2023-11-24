@@ -56,6 +56,7 @@ Snake {
         body.remove(body.size() - 1);
 
         frameCount = 0;
+
     }
 
     public void setDirection(Direction newDir) {
@@ -68,5 +69,15 @@ Snake {
             Point p = pos.getCoordinates();
             frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
         }
+    }
+
+    public boolean isDead () {
+        if (body.get(0).x >= Main.WINDOW_SIZE.x + 100 || body.get(0).x < 0) {
+            return true;
+        }
+        if (body.get(0).y >= Main.WINDOW_SIZE.y + 100 || body.get(0).y < 0) {
+            return true;
+        }
+        return false;
     }
 }

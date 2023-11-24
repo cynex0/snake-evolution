@@ -17,6 +17,12 @@ public class CellPosition extends Point {
     }
 
     public Point getCell() { return new Point(x, y); }
+    public void setCellX (int newX) {
+        this.x = newX;
+    }
+    public void setCellY (int newY) {
+        this.y = newY;
+    }
 
     @Override
     public boolean equals(Object object) {

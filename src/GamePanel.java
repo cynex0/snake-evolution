@@ -14,6 +14,8 @@ public class GamePanel extends JPanel {
 
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
     public CollisionControl collisionControl = new CollisionControl(this);
+    private boolean restrictLeftRight = false;
+    private boolean restrictUpDown = false;
 
 
     public GamePanel() {
@@ -52,6 +54,9 @@ public class GamePanel extends JPanel {
         }
 
         snake.move();
+
+        collisionControl.checkTile(snake);
+
     }
 
     @Override
