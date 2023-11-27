@@ -1,7 +1,8 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Snake {
+public class
+Snake {
     private final int ANIM_STEP = 3; // updates every Nth frame
 
     private int frameCount;
@@ -59,6 +60,10 @@ public class Snake {
 
     public void setDirection(Direction newDir) {
         direction = newDir;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 
     public void draw(Graphics2D frame) {
