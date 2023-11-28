@@ -9,7 +9,7 @@ public class GamePanel extends JPanel {
     public static final int FPS = 60;
     private final BgPanel bg;
     private Snake snake;
-    private final Timer gameLoop;
+   // private final Timer gameLoop;
     private MainMenu menu;
 
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
@@ -30,56 +30,31 @@ public class GamePanel extends JPanel {
         this.setFocusable(true);
 
         bg = new BgPanel();
-        snake = new Snake();
+      //  snake = new Snake();
         menu = new MainMenu();
         this.add(menu);
 
 
-        gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
-            update();
-            repaint(); // calls paintComponent()
-       });
+      //  gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
+      //      update();
+      //      repaint(); // calls paintComponent()
+    //   });
     }
 
-    public void update() {
-        // update positions, etc
-        if (keyH.upPressed) {
-            snakeY = snakeY - snakeSpeed;
-        }
-        else if (keyH.downPressed) {
-            snakeY = snakeY + snakeSpeed;
-        }
-        else if (keyH.rightPressed) {
-            snakeX = snakeX + snakeSpeed;
-        }
-        else if (keyH.leftPressed) {
-            snakeX = snakeX - snakeSpeed;
-        }
-
-        snake.move();
-    }
+   // public void update() {
+    //    menu.update();
+  //  }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         bg.paintComponent(g);
-        menu.paintComponent(g);
 
-
-        Graphics2D frame = (Graphics2D) g;
-
-        // draw snake
-        frame.setColor(new Color(0x2b331a));
-        for (CellPosition pos : snake.getBody()) {
-            Point p = pos.getCoordinates();
-            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
-        }
-        frame.dispose();
     }
 
      // starts the game loop
-     public void startGame() {
-        gameLoop.start();
+ //    public void startGame() {
+    //    gameLoop.start();
     }
-}
+//}
 
