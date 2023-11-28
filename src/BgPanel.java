@@ -24,7 +24,7 @@ public class BgPanel extends JPanel {
         frame.fillRect(MARGIN_DIST, MARGIN_DIST, Main.WINDOW_SIZE.x - 2*MARGIN_DIST, Main.WINDOW_SIZE.y - 2*MARGIN_DIST);
 
         // draw borders
-        frame.setColor(Color.WHITE);
+        frame.setColor(Color.BLACK);
 
         frame.fillRect(MARGIN_W, MARGIN_W, BORDER_SIZE, Main.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
         frame.fillRect(Main.WINDOW_SIZE.x - MARGIN_DIST, MARGIN_W, BORDER_SIZE, Main.WINDOW_SIZE.y - 2 * MARGIN_W); // left border

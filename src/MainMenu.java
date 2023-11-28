@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 public class MainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel
 
-
+    private GameState GameState;
     private Button start; // Declaring Button references
     private Button leaderboard;
     private Button exit;
-
 
     private ArrayList<Button> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
@@ -21,9 +20,6 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
-
-
-
         JLabel titleLabel = new JLabel("Snake Evolution", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.
         titleLabel.setForeground(Color.BLACK); //colors it black.
         titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25)); //changes font and size.
@@ -32,16 +28,9 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         this.add(titleLabel); // adds title to panel.
 
 
-
-
-
-
         start = new Button("Start"); //assigning buttons.
         leaderboard = new Button("Leaderboard");
         exit = new Button("Exit");
-
-
-
 
         buttons = new ArrayList<>();// initializing the Button ArrayList.
         buttons.add(start);// adding the existing Button objects to the list.
@@ -49,15 +38,10 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         buttons.add(exit);
 
 
-
-
         for (Button button : buttons) { // for each-loop to add the buttons to the JPanel.
             this.add(button);
             button.setFocusable(true);
         }
-
-
-
 
         start.setActionCommand("start");
         start.addActionListener(this);
@@ -77,19 +61,17 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         super.paintComponent(graphics);
 
 
-
-
     }
-    public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
+    public void actionPerformed(ActionEvent event) {
+        String actionCommand = event.getActionCommand();
 
 
-        if ("start".equals(command)) {
-            System.out.println("Start button");
-        } else if ("leaderboard".equals(command)) {
-            System.out.println("leaderboard button");
-        } else if ("exit".equals(command)) {
-            System.out.println("exit button");
+        if ("start".equals(actionCommand)) {
+            GameState = GameState.GAME;
+        } else if ("leaderboard".equals(actionCommand)) {
+            GameState = GameState.LEADERBOARD;
+        } else if ("exit".equals(actionCommand)) {
+            System.exit(0);
         }
     }
 
