@@ -17,6 +17,9 @@ Snake {
         body.add(new CellPosition(20, 20));
         body.add(new CellPosition(19, 20));
         body.add(new CellPosition(18, 20));
+        body.add(new CellPosition(17, 20));
+        body.add(new CellPosition(16, 20));
+        body.add(new CellPosition(15, 20));
 
         frameCount = 0;
     }
@@ -53,16 +56,17 @@ Snake {
         return nextPos;
     }
     
-    private boolean doSelfCollision() {
-        return true; // TODO: Self Collision
+    private boolean doSelfCollision(CellPosition nextPos) {
+        return body.contains(nextPos); // TODO: Self Collision
     }
 
-    private boolean doBorderCollision() {
-        return true; // TODO: Border Collision
+    private boolean doBorderCollision(CellPosition nextPos) {
+        return false; // TODO: Border Collision
     }
 
     public boolean doCollisions() {
-        return doSelfCollision() && doBorderCollision();
+        CellPosition nextPos = calculateNextPos();
+        return doSelfCollision(nextPos) || doBorderCollision(nextPos);
     }
 
     public void move() {
