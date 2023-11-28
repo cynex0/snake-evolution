@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-public class MainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel
+public class MainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel & implements ActionListener interface.
 
     private GameState GameState;
     private Button start; // Declaring Button references
@@ -57,21 +57,21 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
 
     @Override
-    protected void paintComponent(Graphics graphics) { //overriding paintComponent for mainMenu.
+    protected void paintComponent(Graphics graphics) { //TODO: Implement drawing frames?
         super.paintComponent(graphics);
 
 
     }
-    public void actionPerformed(ActionEvent event) {
+    public void actionPerformed(ActionEvent event) { // logic for when buttons are clicked.
         String actionCommand = event.getActionCommand();
 
 
         if ("start".equals(actionCommand)) {
-            GameState = GameState.GAME;
+            GameState = GameState.GAME; // switches to state GAME.
         } else if ("leaderboard".equals(actionCommand)) {
-            GameState = GameState.LEADERBOARD;
+            GameState = GameState.LEADERBOARD; // switches to state LEADERBOARD.
         } else if ("exit".equals(actionCommand)) {
-            System.exit(0);
+            System.exit(0); // terminates the program.
         }
     }
 
