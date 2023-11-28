@@ -8,6 +8,7 @@ Snake {
     private int frameCount;
     private ArrayList<CellPosition> body;
     private Direction direction;
+    private boolean foodEaten;
 
     public Snake() {
         super();
@@ -22,24 +23,15 @@ Snake {
         body.add(new CellPosition(15, 20));
 
         frameCount = 0;
+        foodEaten = false;
     }
 
     public ArrayList<CellPosition> getBody() {
         return body;
     }
 
-    public void increaseBodyLength() {
-        Point tailCellPos = body.get(body.size() - 1).getCell();
-        CellPosition newPos = new CellPosition();
-
-        switch (direction) {
-            case UP -> newPos = new CellPosition(tailCellPos.x, tailCellPos.y + 1);
-            case DOWN -> newPos = new CellPosition(tailCellPos.x, tailCellPos.y - 1);
-            case RIGHT -> newPos = new CellPosition(tailCellPos.x - 1, tailCellPos.y);
-            case LEFT -> newPos = new CellPosition(tailCellPos.x + 1, tailCellPos.y);
-        }
-
-        body.add(newPos);
+    public void increaseLength() {
+        foodEaten = true;
     }
     
     private CellPosition calculateNextPos() {
@@ -74,7 +66,10 @@ Snake {
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
-        body.remove(body.size() - 1);
+        if (!foodEaten)
+            body.remove(body.size() - 1);
+        else
+            foodEaten = false;
 
         frameCount = 0;
     }
