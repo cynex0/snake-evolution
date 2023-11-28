@@ -38,20 +38,37 @@ Snake {
 
         body.add(newPos);
     }
+    
+    private CellPosition calculateNextPos() {
+        Point currHeadPos = body.get(0).getCell();
+        CellPosition nextPos = null;
+        
+        switch (direction) {
+            case UP -> nextPos = new CellPosition(currHeadPos.x, currHeadPos.y - 1);
+            case DOWN -> nextPos = new CellPosition(currHeadPos.x, currHeadPos.y + 1);
+            case RIGHT -> nextPos = new CellPosition(currHeadPos.x + 1, currHeadPos.y);
+            case LEFT -> nextPos = new CellPosition(currHeadPos.x - 1, currHeadPos.y);
+        }
+        
+        return nextPos;
+    }
+    
+    private boolean doSelfCollision() {
+        return true; // TODO: Self Collision
+    }
+
+    private boolean doBorderCollision() {
+        return true; // TODO: Border Collision
+    }
+
+    public boolean doCollisions() {
+        return doSelfCollision() && doBorderCollision();
+    }
 
     public void move() {
         if (frameCount++ < ANIM_STEP) return;
 
-        CellPosition newHeadPos = new CellPosition();
-        Point currHeadPos = body.get(0).getCell();
-
-        switch (direction) {
-            case UP -> newHeadPos = new CellPosition(currHeadPos.x, currHeadPos.y - 1);
-            case DOWN -> newHeadPos = new CellPosition(currHeadPos.x, currHeadPos.y + 1);
-            case RIGHT -> newHeadPos = new CellPosition(currHeadPos.x + 1, currHeadPos.y);
-            case LEFT -> newHeadPos = new CellPosition(currHeadPos.x - 1, currHeadPos.y);
-        }
-
+        CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
         body.remove(body.size() - 1);
 

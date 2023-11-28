@@ -58,6 +58,11 @@ public class GamePanel extends JPanel {
                     snake.setDirection(Direction.LEFT);
                 }
 
+                if (snake.doCollisions()) {
+                    System.out.println("COLLIDED"); // DEBUG
+                    state = GameState.GAME_OVER;
+                }
+
                 snake.move();
             }
             case GAME_OVER -> {
