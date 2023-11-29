@@ -20,5 +20,8 @@ public class Main {
         window.setVisible(true);
 
         gamePanel.startGame();
+
+        new GameOver();
+
     }
 }

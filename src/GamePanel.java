@@ -13,6 +13,7 @@ public class GamePanel extends JPanel {
     private final Timer gameLoop;
 
     private GameState state;
+    private GameOver gameOver;
 
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
     public CollisionControl collisionControl = new CollisionControl(this);
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel {
 
         bg = new BgPanel();
         snake = new Snake();
+        gameOver = new GameOver();
 
         state = GameState.GAME; // initial state TODO: change to MENU
 
