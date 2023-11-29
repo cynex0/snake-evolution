@@ -63,6 +63,10 @@ Snake {
         direction = newDir;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     public void draw(Graphics2D frame) {
         frame.setColor(new Color(0x2b331a));
         for (CellPosition pos : body) {
