@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GameFrame extends JFrame {
+public class GameFrame extends JFrame implements StateChangeListener {
     public static final Point WINDOW_SIZE = new Point(800, 800);
     private static JPanel currentPanel;
+    private StateChangeListener stateChangeListener;
 
     public GameFrame() {
         super();
-        currentPanel = new MainMenu();
+
+        currentPanel = new MainMenu(this);
         this.add(currentPanel);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,14 +22,17 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
     }
 
+    @Override
     public void changeState(GameState newState) {
-        this.remove(currentPanel);
+        getContentPane().removeAll();
         switch (newState) {
             case MENU -> {
-                currentPanel = new MainMenu();
+                currentPanel = new MainMenu(this);
             }
             case GAME -> {
-                currentPanel = new GamePanel();
+                GamePanel gamePanel = new GamePanel(this);
+                currentPanel = gamePanel;
+                gamePanel.startGame();
             }
             case GAME_OVER -> {
 
@@ -38,5 +43,6 @@ public class GameFrame extends JFrame {
             }
         }
         this.add(currentPanel);
+        this.pack();
     }
 }
