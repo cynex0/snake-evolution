@@ -5,13 +5,12 @@ import java.awt.event.KeyEvent;
 
 public class GamePanel extends JPanel {
     public static final int CELL_COUNT = 50;
-    public static final int CELL_SIZE = (Main.WINDOW_SIZE.x - 2 * (BgPanel.MARGIN_DIST)) / CELL_COUNT;
+    public static final int CELL_SIZE = (Main.WINDOW_SIZE.x - 2*(BgPanel.MARGIN_DIST)) / CELL_COUNT;
 
     public static final int FPS = 60;
     private final BgPanel bg;
     private Snake snake;
-    // private final Timer gameLoop;
-    private MainMenu menu;
+    private final Timer gameLoop;
 
     private GameState state;
 
@@ -29,15 +28,84 @@ public class GamePanel extends JPanel {
         this.setFocusable(true);
 
         bg = new BgPanel();
-        //  snake = new Snake();
-        menu = new MainMenu();
-        this.add(menu);
+        snake = new Snake();
 
+        state = GameState.GAME; // initial state TODO: change to MENU
 
-     //   public void paintComponent(Graphics g){
-     //       super.paintComponent(g);
-     //       bg.paintComponent(g); // always draw background first
-
-        }
-
+        gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
+            update();
+            repaint(); // calls paintComponent()
+        });
     }
+
+    public void update() {
+        // update positions, etc
+        switch (state) {
+            case MENU -> {
+                // read user input, update selected button, switch state if button pressed
+            }
+            case GAME -> {
+                if (keyH.upPressed && snake.getDirection() != Direction.DOWN) {
+                    snake.setDirection(Direction.UP);
+                }
+                else if (keyH.downPressed && snake.getDirection() != Direction.UP) {
+                    snake.setDirection(Direction.DOWN);
+                }
+                else if (keyH.rightPressed && snake.getDirection() != Direction.LEFT) {
+                    snake.setDirection(Direction.RIGHT);
+                }
+                else if (keyH.leftPressed && snake.getDirection() != Direction.RIGHT) {
+                    snake.setDirection(Direction.LEFT);
+                }
+
+                if (snake.doCollisions()) {
+                    System.out.println("COLLIDED"); // DEBUG
+                    state = GameState.GAME_OVER;
+                }
+
+                snake.move();
+            }
+            case GAME_OVER -> {
+                // read user input, update selected button, switch state if button pressed
+            }
+            case GAME_OVER_ENTERNAME -> {
+                // read user input, update selected button, switch state if button pressed
+            }
+            case LEADERBOARD -> {
+                // read user input, update selected button, switch state if button pressed
+            }
+        }
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        bg.paintComponent(g); // always draw background first
+
+        Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
+
+        switch (state) {
+            case MENU -> {
+                // draw menu elements
+            }
+            case GAME -> {
+                snake.draw(frame);
+            }
+            case GAME_OVER -> {
+                // draw "game over" elements
+            }
+            case GAME_OVER_ENTERNAME -> {
+                // draw "game over" elements + name prompt
+            }
+            case LEADERBOARD -> {
+                // draw leaderboard elements
+            }
+        }
+        frame.dispose();
+    }
+
+    // starts the game loop
+    public void startGame() {
+        gameLoop.start();
+    }
+}
