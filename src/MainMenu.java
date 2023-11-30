@@ -65,7 +65,6 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
         if ("start".equals(actionCommand)) {
             stateChanger.changeState(GameState.GAME); // switches to state GAME.
-            System.out.println("Switching");
         } else if ("leaderboard".equals(actionCommand)) {
             stateChanger.changeState(GameState.LEADERBOARD); // switches to state LEADERBOARD.
         } else if ("exit".equals(actionCommand)) {
