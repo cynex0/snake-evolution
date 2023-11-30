@@ -76,10 +76,10 @@ Snake {
     }
 
     public boolean isDead () {
-        if (body.get(0).x >= Main.WINDOW_SIZE.x + 100 || body.get(0).x < 0) {
+        if (body.get(0).x >= Main.WINDOW_SIZE.x - (9 * BgPanel.BORDER_SIZE + 14 * BgPanel.MARGIN_DIST) || body.get(0).x < BgPanel.BORDER_SIZE / 2) {
             return true;
         }
-        if (body.get(0).y >= Main.WINDOW_SIZE.y + 100 || body.get(0).y < 0) {
+        if (body.get(0).y >= Main.WINDOW_SIZE.y - (9 * BgPanel.BORDER_SIZE + 14 * BgPanel.MARGIN_DIST) || body.get(0).y < BgPanel.BORDER_SIZE / 2) {
             return true;
         }
         return false;
