@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class GamePanel extends JPanel {
@@ -13,7 +17,8 @@ public class GamePanel extends JPanel {
     private final Timer gameLoop;
 
     private GameState state;
-    private GameOver gameOver;
+    private final GameOver gameOver;
+   // private LeaderBoard lb;
 
     KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
     public CollisionControl collisionControl = new CollisionControl(this);
@@ -30,14 +35,15 @@ public class GamePanel extends JPanel {
 
         bg = new BgPanel();
         snake = new Snake();
-        gameOver = new GameOver();
+       gameOver = new GameOver();
 
         state = GameState.GAME; // initial state TODO: change to MENU
+       // lb = new LeaderBoard();
 
-        gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
-            update();
+      gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
+           update();
             repaint(); // calls paintComponent()
-        });
+       });
     }
 
     public void update() {
@@ -60,6 +66,11 @@ public class GamePanel extends JPanel {
                     snake.setDirection(Direction.LEFT);
                 }
 
+                if (snake.doCollisions()) {
+                    System.out.println("COLLIDED"); // DEBUG
+                    state = GameState.GAME_OVER;
+                }
+
                 snake.move();
             }
             case GAME_OVER -> {
@@ -78,6 +89,8 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         bg.paintComponent(g); // always draw background first
+        bg.paintComponent(g);
+        //lb.paintComponent(g);
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
@@ -105,4 +118,7 @@ public class GamePanel extends JPanel {
     public void startGame() {
         gameLoop.start();
     }
+
+
 }
+

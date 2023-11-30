@@ -3,9 +3,13 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$/PokemonGame" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Re-exam-Assignment3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/TestLeaderBoread" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pokemon2" vcs="Git" />
+=======
+    <mapping directory="$PROJECT_DIR$/TestLeaderBoread" vcs="Git" />
+>>>>>>> 52d81d42477888b52c135bdecad9623b516885d1
   </component>
 </project>
