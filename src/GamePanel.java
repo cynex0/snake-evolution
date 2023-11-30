@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
     public static final int CELL_COUNT = 40;
-    public static final int CELL_SIZE = Game.WINDOW_SIZE.x / CELL_COUNT;
+    public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
 
     public static final int FPS = 60;
     private final BgPanel bg;
@@ -19,7 +19,7 @@ public class GamePanel extends JPanel {
 
     public GamePanel() {
         super();
-        this.setPreferredSize(new Dimension(Game.WINDOW_SIZE.x, Game.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
@@ -35,6 +35,8 @@ public class GamePanel extends JPanel {
             update();
             repaint(); // calls paintComponent()
         });
+
+        gameLoop.start();
     }
 
     public void update() {
