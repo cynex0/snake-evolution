@@ -38,7 +38,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 gamePanel.startGame();
             }
             case GAME_OVER -> {
-
+                currentPanel = new GameOver(this);
             }
             case GAME_OVER_ENTERNAME -> {
             }
