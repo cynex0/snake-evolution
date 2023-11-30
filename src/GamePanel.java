@@ -40,7 +40,6 @@ public class GamePanel extends JPanel implements KeyListener {
     public void update() {
         // update positions, etc
         if (snake.doCollisions()) {
-            System.out.println("COLLIDED"); // DEBUG
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
         }
@@ -50,9 +49,8 @@ public class GamePanel extends JPanel implements KeyListener {
 
     @Override
     public void paintComponent(Graphics g) {
-        System.out.println("drawing");
         super.paintComponent(g);
-        bg.paintComponent(g); // always draw background first
+        bg.paintComponent(g); // draw background first
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
@@ -62,7 +60,6 @@ public class GamePanel extends JPanel implements KeyListener {
 
     // starts the game loop
     public void startGame() {
-        System.out.println("Started");
         gameLoop.start();
     }
 
