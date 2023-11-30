@@ -1,10 +1,8 @@
 import java.awt.*;
-import java.io.*;
 import javax.swing.*;
-import java.awt.*;
 
 
-public class Main {
+public class Game {
     public static final Point WINDOW_SIZE = new Point(800, 800);
 
     public static void main(String[] args) {

@@ -17,7 +17,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
     public MainMenu() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(Game.WINDOW_SIZE.x, Game.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
         JLabel titleLabel = new JLabel("Snake Evolution", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.

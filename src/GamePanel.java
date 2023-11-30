@@ -1,11 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 
 public class GamePanel extends JPanel {
     public static final int CELL_COUNT = 40;
-    public static final int CELL_SIZE = Main.WINDOW_SIZE.x / CELL_COUNT;
+    public static final int CELL_SIZE = Game.WINDOW_SIZE.x / CELL_COUNT;
 
     public static final int FPS = 60;
     private final BgPanel bg;
@@ -20,7 +19,7 @@ public class GamePanel extends JPanel {
 
     public GamePanel() {
         super();
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(Game.WINDOW_SIZE.x, Game.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
