@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class GameOver extends JPanel implements KeyListener, ActionListener {
+public class GameOver extends JPanel implements ActionListener {
 
     public static final int BORDER_SIZE = 5;
     public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
@@ -20,7 +20,9 @@ public class GameOver extends JPanel implements KeyListener, ActionListener {
 
     private final ArrayList<Button> buttons;
 
-    public GameOver() {
+    private StateChangeListener stateChanger;
+
+    public GameOver(StateChangeListener listener) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
@@ -31,7 +33,6 @@ public class GameOver extends JPanel implements KeyListener, ActionListener {
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0, 3)));
         this.add(titleLabel);
-
 
         retry = new Button("Retry");
         exit = new Button("Exit");
@@ -46,57 +47,22 @@ public class GameOver extends JPanel implements KeyListener, ActionListener {
             button.setFocusable(true);
         }
 
-        retry.setActionCommand("start");
+        retry.setActionCommand("retry");
         retry.addActionListener(this);
 
         exit.setActionCommand("exit");
         exit.addActionListener( this);
+
+        stateChanger = listener;
     }
 
-
-    @Override
-    protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
-
-        Graphics2D frame = (Graphics2D) graphics;
-
-        // fill inner background
-        frame.setColor(new Color(0xA9E000));
-        frame.fillRect(MARGIN_DIST, MARGIN_DIST, GameFrame.WINDOW_SIZE.x - 2*MARGIN_DIST, GameFrame.WINDOW_SIZE.y - 2*MARGIN_DIST);
-
-        // draw borders
-        frame.setColor(Color.BLACK);
-
-        frame.fillRect(MARGIN_W, MARGIN_W, BORDER_SIZE, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
-        frame.fillRect(GameFrame.WINDOW_SIZE.x - MARGIN_DIST, MARGIN_W, BORDER_SIZE, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
-        frame.fillRect(MARGIN_W, MARGIN_W, GameFrame.WINDOW_SIZE.x - 2 * MARGIN_W, BORDER_SIZE); // top border
-        frame.fillRect(MARGIN_W, GameFrame.WINDOW_SIZE.y - MARGIN_DIST, GameFrame.WINDOW_SIZE.x - 2 * MARGIN_W, BORDER_SIZE); // bottom border
-
-
-    }
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
 
-
         if ("retry".equals(actionCommand)) {
-            GameState = GameState.GAME;
+            stateChanger.changeState(GameState.GAME);
         } else if ("exit".equals(actionCommand)) {
             System.exit(0);
         }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
     }
 }
