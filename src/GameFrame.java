@@ -20,6 +20,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.setFocusable(true);
     }
 
     @Override
@@ -31,6 +32,8 @@ public class GameFrame extends JFrame implements StateChangeListener {
             }
             case GAME -> {
                 GamePanel gamePanel = new GamePanel(this);
+                this.addKeyListener(gamePanel);
+                gamePanel.requestFocusInWindow();
                 currentPanel = gamePanel;
                 gamePanel.startGame();
             }
