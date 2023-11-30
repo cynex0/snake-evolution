@@ -2,14 +2,14 @@ import javax.swing.JPanel;
 import java.awt.*;
 
 public class BgPanel extends JPanel {
-    public static final int BORDER_SIZE = 5;
-    public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
-    public static final int MARGIN_W = MARGIN_DIST - BORDER_SIZE; // margin width excluding border thickness
+    public static final int BORDER_THC = 5; // border thickness
+    public static final int MARGIN_INNER = GamePanel.CELL_SIZE * 3; // distance from screen edge to inner margin point, 3 cells away
+    public static final int MARGIN_OUTER = MARGIN_INNER - BORDER_THC; // distance from screen edge to outer margin point (closer to the screen)
 
     public BgPanel() {
         super();
         this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
-        this.setBackground(Color.BLACK);
+        this.setBackground(new Color(0xA9E000));
         this.setDoubleBuffered(true);
     }
 
@@ -19,16 +19,16 @@ public class BgPanel extends JPanel {
 
         Graphics2D frame = (Graphics2D) g;
 
-        // fill inner background
+        // fill background
         frame.setColor(new Color(0xA9E000));
-        frame.fillRect(MARGIN_DIST, MARGIN_DIST, Main.WINDOW_SIZE.x - 2*MARGIN_DIST, Main.WINDOW_SIZE.y - 2*MARGIN_DIST);
+        frame.fillRect(0, 0, Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y);
 
         // draw borders
-        frame.setColor(Color.WHITE);
+        frame.setColor(Color.BLACK);
 
-        frame.fillRect(MARGIN_W, MARGIN_W, BORDER_SIZE, Main.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
-        frame.fillRect(Main.WINDOW_SIZE.x - MARGIN_DIST, MARGIN_W, BORDER_SIZE, Main.WINDOW_SIZE.y - 2 * MARGIN_W); // left border
-        frame.fillRect(MARGIN_W, MARGIN_W, Main.WINDOW_SIZE.x - 2 * MARGIN_W, BORDER_SIZE); // top border
-        frame.fillRect(MARGIN_W, Main.WINDOW_SIZE.y - MARGIN_DIST, Main.WINDOW_SIZE.x - 2 * MARGIN_W, BORDER_SIZE); // bottom border
+        frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, Main.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // top border
+        frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, BORDER_THC, Main.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // left border
+        frame.fillRect(Main.WINDOW_SIZE.x - MARGIN_OUTER - BORDER_THC, MARGIN_OUTER, BORDER_THC, Main.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // right border
+        frame.fillRect(MARGIN_OUTER, Main.WINDOW_SIZE.y - MARGIN_OUTER - BORDER_THC, Main.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // bottom border
     }
 }

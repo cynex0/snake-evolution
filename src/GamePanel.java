@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 
 
 public class GamePanel extends JPanel {
-    public static final int CELL_COUNT = 50;
-    public static final int CELL_SIZE = (Main.WINDOW_SIZE.x - 2*(BgPanel.MARGIN_DIST)) / CELL_COUNT;
+    public static final int CELL_COUNT = 40;
+    public static final int CELL_SIZE = Main.WINDOW_SIZE.x / CELL_COUNT;
 
     public static final int FPS = 60;
     private final BgPanel bg;
