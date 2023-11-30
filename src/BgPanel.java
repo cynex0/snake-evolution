@@ -8,7 +8,7 @@ public class BgPanel extends JPanel {
 
     public BgPanel() {
         super();
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(new Color(0xA9E000));
         this.setDoubleBuffered(true);
     }
@@ -21,14 +21,14 @@ public class BgPanel extends JPanel {
 
         // fill background
         frame.setColor(new Color(0xA9E000));
-        frame.fillRect(0, 0, Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y);
+        frame.fillRect(0, 0, GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y);
 
         // draw borders
         frame.setColor(Color.BLACK);
 
-        frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, Main.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // top border
-        frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, BORDER_THC, Main.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // left border
-        frame.fillRect(Main.WINDOW_SIZE.x - MARGIN_OUTER - BORDER_THC, MARGIN_OUTER, BORDER_THC, Main.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // right border
-        frame.fillRect(MARGIN_OUTER, Main.WINDOW_SIZE.y - MARGIN_OUTER - BORDER_THC, Main.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // bottom border
+        frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, GameFrame.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // top border
+        frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, BORDER_THC, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // left border
+        frame.fillRect(GameFrame.WINDOW_SIZE.x - MARGIN_OUTER - BORDER_THC, MARGIN_OUTER, BORDER_THC, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // right border
+        frame.fillRect(MARGIN_OUTER, GameFrame.WINDOW_SIZE.y - MARGIN_OUTER - BORDER_THC, GameFrame.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // bottom border
     }
 }

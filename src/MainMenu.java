@@ -14,10 +14,11 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
     private ArrayList<Button> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
+    private StateChangeListener stateChanger;
 
-    public MainMenu() {
+    public MainMenu(StateChangeListener listener) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
         JLabel titleLabel = new JLabel("Snake Evolution", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.
@@ -26,7 +27,6 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
         this.add(Box.createRigidArea(new Dimension(0, 3))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
-
 
         start = new Button("Start"); //assigning buttons.
         leaderboard = new Button("Leaderboard");
@@ -37,7 +37,6 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         buttons.add(leaderboard);
         buttons.add(exit);
 
-
         for (Button button : buttons) { // for each-loop to add the buttons to the JPanel.
             this.add(button);
             button.setFocusable(true);
@@ -46,15 +45,14 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         start.setActionCommand("start");
         start.addActionListener(this);
 
-
         leaderboard.setActionCommand("leaderboard");
         leaderboard.addActionListener(this);
 
-
         exit.setActionCommand("exit");
         exit.addActionListener(this);
-    }
 
+        stateChanger = listener;
+    }
 
     @Override
     protected void paintComponent(Graphics graphics) { //TODO: Implement drawing frames?
@@ -65,19 +63,14 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
     public void actionPerformed(ActionEvent event) { // logic for when buttons are clicked.
         String actionCommand = event.getActionCommand();
 
-
         if ("start".equals(actionCommand)) {
-            GameState = GameState.GAME; // switches to state GAME.
+            stateChanger.changeState(GameState.GAME); // switches to state GAME.
         } else if ("leaderboard".equals(actionCommand)) {
-            GameState = GameState.LEADERBOARD; // switches to state LEADERBOARD.
+            stateChanger.changeState(GameState.LEADERBOARD); // switches to state LEADERBOARD.
         } else if ("exit".equals(actionCommand)) {
             System.exit(0); // terminates the program.
         }
     }
-
-
-
-
 }
 
 
