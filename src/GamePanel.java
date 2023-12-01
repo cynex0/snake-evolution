@@ -57,13 +57,18 @@ public class GamePanel extends JPanel {
 
         snake.move();
 
+        if (snake.foodEaten(food)) {
+            snake.increaseBodyLength();
+            produceFood();
+        }
+
         collisionControl.checkTile(snake);
 
     }
 
     private void produceFood () {
-        int locX = generateRandomLoc(Main.WINDOW_SIZE.x / 20 - CELL_SIZE, 10);
-        int locY = generateRandomLoc( Main.WINDOW_SIZE.x / 20 - CELL_SIZE, 10);
+        int locX = generateRandomLoc(Main.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
+        int locY = generateRandomLoc( Main.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
 
         food.setFoodLocation(locX,locY);
     }

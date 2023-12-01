@@ -84,4 +84,12 @@ Snake {
         }
         return false;
     }
+
+    public boolean foodEaten(Food f) {
+        if (body.get(0).x == f.getFoodLocation().x) {
+            if (body.get(0).y == f.getFoodLocation().y)
+                return true;
+        }
+        return false;
+    }
 }
