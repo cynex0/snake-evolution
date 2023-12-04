@@ -11,12 +11,10 @@ public class GamePanel extends JPanel implements KeyListener {
     public static final int FPS = 60;
     private final BgPanel bg;
     private Snake snake;
+    private Food food;
     private final Timer gameLoop;
 
     private StateChangeListener stateChanger;
-
-    public CollisionControl collisionControl = new CollisionControl(this);
-
 
     public GamePanel(StateChangeListener listener) {
         super();
@@ -29,22 +27,39 @@ public class GamePanel extends JPanel implements KeyListener {
         bg = new BgPanel();
         snake = new Snake();
         stateChanger = listener;
+        food = new Food(0, 0);
 
-        gameLoop = new Timer(1000 / FPS, e -> { // GAME LOOP, runs every 1/60th of a second
+        gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
             update();
             repaint(); // calls paintComponent()
         });
-
     }
 
     public void update() {
         // update positions, etc
+        snake.move();
+
         if (snake.doCollisions()) {
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
         }
 
-        snake.move();
+        if (snake.foodEaten(food)) {
+            snake.increaseLength();
+            produceFood();
+        }
+    }
+
+    private void produceFood () {
+        int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
+        int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
+
+        food.setFoodLocation(locX,locY);
+    }
+
+    private int generateRandomLoc (int high, int low) {
+        int randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
+        return randomLoc;
     }
 
     @Override
@@ -54,6 +69,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
+        food.draw(g);
         snake.draw(frame);
         frame.dispose();
     }
@@ -61,6 +77,7 @@ public class GamePanel extends JPanel implements KeyListener {
     // starts the game loop
     public void startGame() {
         gameLoop.start();
+        produceFood();
     }
 
     @Override

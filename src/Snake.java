@@ -35,7 +35,7 @@ Snake {
     }
     
     private CellPosition calculateNextPos() {
-        Point currHeadPos = body.get(0).getCell();
+        CellPosition currHeadPos = body.get(0);
         CellPosition nextPos = null;
         
         switch (direction) {
@@ -48,17 +48,25 @@ Snake {
         return nextPos;
     }
     
-    private boolean doSelfCollision(CellPosition nextPos) {
-        return body.contains(nextPos); // TODO: Self Collision
+    private boolean doSelfCollision(CellPosition pos) {
+        return body.subList(1, body.size())
+                   .contains(pos);
     }
 
-    private boolean doBorderCollision(CellPosition nextPos) {
-        return false; // TODO: Border Collision
+    private boolean doBorderCollision(CellPosition pos) {
+        Point nextCoords = pos.getCoordinates();
+        if ((nextCoords.x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (nextCoords.x < BgPanel.MARGIN_INNER)) {
+            return true;
+        }
+        if ((nextCoords.y >= GameFrame.WINDOW_SIZE.y - BgPanel.MARGIN_INNER) || (nextCoords.y < BgPanel.MARGIN_INNER)) {
+            return true;
+        }
+        return false;
     }
 
     public boolean doCollisions() {
-        CellPosition nextPos = calculateNextPos();
-        return doSelfCollision(nextPos) || doBorderCollision(nextPos);
+        CellPosition headPos = body.get(0);
+        return doSelfCollision(headPos) || doBorderCollision(headPos);
     }
 
     public void move() {
@@ -66,6 +74,7 @@ Snake {
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
+
         if (!foodEaten)
             body.remove(body.size() - 1);
         else
@@ -88,5 +97,14 @@ Snake {
             Point p = pos.getCoordinates();
             frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
         }
+    }
+
+    public boolean foodEaten(Food f) {
+        Point headCoords = body.get(0).getCoordinates();
+        if (headCoords.x == f.getFoodLocation().x) {
+            if (headCoords.y == f.getFoodLocation().y)
+                return true;
+        }
+        return false;
     }
 }
