@@ -16,10 +16,6 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private StateChangeListener stateChanger;
 
-    private boolean restrictLeftRight = false;
-    private boolean restrictUpDown = false;
-
-
     public GamePanel(StateChangeListener listener) {
         super();
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
@@ -60,32 +56,11 @@ public class GamePanel extends JPanel implements KeyListener {
 
         food.setFoodLocation(locX,locY);
     }
-    //Main.WINDOW_SIZE.x / 20 - 5
-    //Main.WINDOW_SIZE.x / CELL_COUNT - CELL_SIZE
-    //low: BgPanel.MARGIN_DIST + BgPanel.MARGIN_DIST
 
     private int generateRandomLoc (int high, int low) {
         int randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
-        /*
-        while (randomLoc >= Main.WINDOW_SIZE.x - (9 * BgPanel.BORDER_SIZE + 14 * BgPanel.MARGIN_DIST) || randomLoc < BgPanel.BORDER_SIZE / 2) {
-
-            randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
-        }
-         */
         return randomLoc;
     }
-
-
-
-    /*
-    private int generateRandomLoc () {
-
-        int randomLoc = (int) Math.random();
-
-        return  randomLoc;
-    }
-     */
-
 
     @Override
     public void paintComponent(Graphics g) {
@@ -97,7 +72,6 @@ public class GamePanel extends JPanel implements KeyListener {
         food.draw(g);
         snake.draw(frame);
         frame.dispose();
-
     }
 
     // starts the game loop

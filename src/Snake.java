@@ -35,7 +35,7 @@ Snake {
     }
     
     private CellPosition calculateNextPos() {
-        Point currHeadPos = body.get(0).getCell();
+        CellPosition currHeadPos = body.get(0);
         CellPosition nextPos = null;
         
         switch (direction) {
@@ -48,13 +48,13 @@ Snake {
         return nextPos;
     }
     
-    private boolean doSelfCollision(CellPosition nextPos) {
+    private boolean doSelfCollision(CellPosition pos) {
         return body.subList(1, body.size())
-                   .contains(nextPos);
+                   .contains(pos);
     }
 
-    private boolean doBorderCollision(CellPosition nextPos) {
-        Point nextCoords = nextPos.getCoordinates();
+    private boolean doBorderCollision(CellPosition pos) {
+        Point nextCoords = pos.getCoordinates();
         if ((nextCoords.x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (nextCoords.x < BgPanel.MARGIN_INNER)) {
             return true;
         }
@@ -65,9 +65,7 @@ Snake {
     }
 
     public boolean doCollisions() {
-//        CellPosition nextPos = calculateNextPos();
         CellPosition headPos = body.get(0);
-//        return doSelfCollision(nextPos) || doBorderCollision(nextPos);
         return doSelfCollision(headPos) || doBorderCollision(headPos);
     }
 
@@ -76,13 +74,13 @@ Snake {
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
+
         if (!foodEaten)
             body.remove(body.size() - 1);
         else
             foodEaten = false;
 
         frameCount = 0;
-
     }
 
     public void setDirection(Direction newDir) {
@@ -102,8 +100,9 @@ Snake {
     }
 
     public boolean foodEaten(Food f) {
-        if (body.get(0).getCoordinates().x == f.getFoodLocation().x) {
-            if (body.get(0).getCoordinates().y == f.getFoodLocation().y)
+        Point headCoords = body.get(0).getCoordinates();
+        if (headCoords.x == f.getFoodLocation().x) {
+            if (headCoords.y == f.getFoodLocation().y)
                 return true;
         }
         return false;
