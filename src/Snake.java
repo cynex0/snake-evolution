@@ -65,7 +65,7 @@ Snake {
     }
 
     public boolean doCollisions() {
-        CellPosition nextPos = calculateNextPos();
+//        CellPosition nextPos = calculateNextPos();
         CellPosition headPos = body.get(0);
 //        return doSelfCollision(nextPos) || doBorderCollision(nextPos);
         return doSelfCollision(headPos) || doBorderCollision(headPos);
@@ -102,8 +102,8 @@ Snake {
     }
 
     public boolean foodEaten(Food f) {
-        if (body.get(0).x == f.getFoodLocation().x) {
-            if (body.get(0).y == f.getFoodLocation().y)
+        if (body.get(0).getCoordinates().x == f.getFoodLocation().x) {
+            if (body.get(0).getCoordinates().y == f.getFoodLocation().y)
                 return true;
         }
         return false;
