@@ -16,7 +16,6 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private StateChangeListener stateChanger;
 
-    public CollisionControl collisionControl = new CollisionControl(this);
     private boolean restrictLeftRight = false;
     private boolean restrictUpDown = false;
 
@@ -42,20 +41,17 @@ public class GamePanel extends JPanel implements KeyListener {
 
     public void update() {
         // update positions, etc
+        snake.move();
+
         if (snake.doCollisions()) {
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
         }
 
-        snake.move();
-            
         if (snake.foodEaten(food)) {
             snake.increaseLength();
             produceFood();
         }
-
-        collisionControl.checkTile(snake);
-
     }
 
     private void produceFood () {

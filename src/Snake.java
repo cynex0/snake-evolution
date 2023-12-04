@@ -49,16 +49,26 @@ Snake {
     }
     
     private boolean doSelfCollision(CellPosition nextPos) {
-        return body.contains(nextPos); // TODO: Self Collision
+        return body.subList(1, body.size())
+                   .contains(nextPos);
     }
 
     private boolean doBorderCollision(CellPosition nextPos) {
-        return false; // TODO: Border Collision
+        Point nextCoords = nextPos.getCoordinates();
+        if ((nextCoords.x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (nextCoords.x < BgPanel.MARGIN_INNER)) {
+            return true;
+        }
+        if ((nextCoords.y >= GameFrame.WINDOW_SIZE.y - BgPanel.MARGIN_INNER) || (nextCoords.y < BgPanel.MARGIN_INNER)) {
+            return true;
+        }
+        return false;
     }
 
     public boolean doCollisions() {
         CellPosition nextPos = calculateNextPos();
-        return doSelfCollision(nextPos) || doBorderCollision(nextPos);
+        CellPosition headPos = body.get(0);
+//        return doSelfCollision(nextPos) || doBorderCollision(nextPos);
+        return doSelfCollision(headPos) || doBorderCollision(headPos);
     }
 
     public void move() {
@@ -89,16 +99,6 @@ Snake {
             Point p = pos.getCoordinates();
             frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
         }
-    }
-
-    public boolean isDead () {
-        if ((body.get(0).x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (body.get(0).x < BgPanel.MARGIN_INNER)) {
-            return true;
-        }
-        if ((body.get(0).y >= GameFrame.WINDOW_SIZE.y - BgPanel.MARGIN_INNER) || (body.get(0).y < BgPanel.MARGIN_INNER)) {
-            return true;
-        }
-        return false;
     }
 
     public boolean foodEaten(Food f) {
