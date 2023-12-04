@@ -31,13 +31,17 @@ public class GamePanel extends JPanel implements KeyListener {
 
         bg = new BgPanel();
         snake = new Snake();
+<<<<<<< HEAD
         stateChanger = listener;
+=======
         food = new Food(0, 0);
+>>>>>>> dev-snake
 
-        gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
+        gameLoop = new Timer(1000 / FPS, e -> { // GAME LOOP, runs every 1/60th of a second
             update();
             repaint(); // calls paintComponent()
         });
+
     }
 
     public void update() {
@@ -48,9 +52,9 @@ public class GamePanel extends JPanel implements KeyListener {
         }
 
         snake.move();
-            
+
         if (snake.foodEaten(food)) {
-            snake.increaseLength();
+            snake.increaseBodyLength();
             produceFood();
         }
 
@@ -59,8 +63,8 @@ public class GamePanel extends JPanel implements KeyListener {
     }
 
     private void produceFood () {
-        int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
-        int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
+        int locX = generateRandomLoc(Main.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
+        int locY = generateRandomLoc( Main.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
 
         food.setFoodLocation(locX,locY);
     }
@@ -98,7 +102,12 @@ public class GamePanel extends JPanel implements KeyListener {
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
+<<<<<<< HEAD
+=======
         food.draw(g);
+
+        Graphics2D frame = (Graphics2D) g;
+>>>>>>> dev-snake
         snake.draw(frame);
         frame.dispose();
 

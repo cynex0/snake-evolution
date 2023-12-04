@@ -72,6 +72,7 @@ Snake {
             foodEaten = false;
 
         frameCount = 0;
+
     }
 
     public void setDirection(Direction newDir) {
@@ -88,5 +89,23 @@ Snake {
             Point p = pos.getCoordinates();
             frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
         }
+    }
+
+    public boolean isDead () {
+        if ((body.get(0).x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (body.get(0).x < BgPanel.MARGIN_INNER)) {
+            return true;
+        }
+        if ((body.get(0).y >= GameFrame.WINDOW_SIZE.y - BgPanel.MARGIN_INNER) || (body.get(0).y < BgPanel.MARGIN_INNER)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean foodEaten(Food f) {
+        if (body.get(0).x == f.getFoodLocation().x) {
+            if (body.get(0).y == f.getFoodLocation().y)
+                return true;
+        }
+        return false;
     }
 }
