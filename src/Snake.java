@@ -3,9 +3,8 @@ import java.util.ArrayList;
 
 public class
 Snake {
-    private final int ANIM_STEP = 3; // updates every Nth frame
+    public static final double SPEED = 0.15; // FPS multiplier
 
-    private int frameCount;
     private ArrayList<CellPosition> body;
     private Direction direction;
     private boolean foodEaten;
@@ -22,7 +21,6 @@ Snake {
         body.add(new CellPosition(16, 20));
         body.add(new CellPosition(15, 20));
 
-        frameCount = 0;
         foodEaten = false;
     }
 
@@ -70,8 +68,6 @@ Snake {
     }
 
     public void move() {
-        if (frameCount++ < ANIM_STEP) return;
-
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
 
@@ -79,8 +75,6 @@ Snake {
             body.remove(body.size() - 1);
         else
             foodEaten = false;
-
-        frameCount = 0;
     }
 
     public void setDirection(Direction newDir) {

@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements KeyListener {
         stateChanger = listener;
         food = new Food(0, 0);
 
-        gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
+        gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
             update();
             repaint(); // calls paintComponent()
         });
