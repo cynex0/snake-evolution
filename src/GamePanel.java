@@ -88,25 +88,16 @@ public class GamePanel extends JPanel implements KeyListener {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_UP) {
-            if (snake.getDirection() != Direction.DOWN) {
-                snake.setDirection(Direction.UP);
-            }
+            snake.updateDirection(Direction.UP);
         }
         if (code == KeyEvent.VK_DOWN) {
-            if (snake.getDirection() != Direction.UP) {
-                snake.setDirection(Direction.DOWN);
-            }
+            snake.updateDirection(Direction.DOWN);
         }
         if (code == KeyEvent.VK_LEFT) {
-            if (snake.getDirection() != Direction.RIGHT) {
-                snake.setDirection(Direction.LEFT);
-            }
+            snake.updateDirection(Direction.LEFT);
         }
-
         if (code == KeyEvent.VK_RIGHT) {
-            if (snake.getDirection() != Direction.LEFT) {
-                snake.setDirection(Direction.RIGHT);
-            }
+            snake.updateDirection(Direction.RIGHT);
         }
     }
 
