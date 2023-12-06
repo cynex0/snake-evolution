@@ -55,7 +55,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
     }
 
     @Override
-    protected void paintComponent(Graphics graphics) { //TODO: Implement drawing frames?
+    protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
 
