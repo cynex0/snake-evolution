@@ -6,6 +6,7 @@ public class BgPanel extends JPanel {
     public static final int MARGIN_INNER = GamePanel.CELL_SIZE * 3; // distance from screen edge to inner margin point, 3 cells away
     public static final int MARGIN_OUTER = MARGIN_INNER - BORDER_THC; // distance from screen edge to outer margin point (closer to the screen)
 
+
     public BgPanel() {
         super();
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
@@ -31,5 +32,14 @@ public class BgPanel extends JPanel {
         frame.fillRect(GameFrame.WINDOW_SIZE.x - MARGIN_OUTER - BORDER_THC, MARGIN_OUTER, BORDER_THC, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // right border
         frame.fillRect(MARGIN_OUTER, GameFrame.WINDOW_SIZE.y - MARGIN_OUTER - BORDER_THC, GameFrame.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // bottom border
 
+        // draw outer border frame
+        frame.fillRect(0, 0, GameFrame.WINDOW_SIZE.x, BORDER_THC); // top border
+        frame.fillRect(0, 0, BORDER_THC, GameFrame.WINDOW_SIZE.y); //left border
+        frame.fillRect(GameFrame.WINDOW_SIZE.x - BORDER_THC, 0, BORDER_THC, GameFrame.WINDOW_SIZE.y); // right border
+        frame.fillRect(0, GameFrame.WINDOW_SIZE.y - BORDER_THC, GameFrame.WINDOW_SIZE.x, BORDER_THC); // bottom border
+
     }
-}
+
+
+    }
+
