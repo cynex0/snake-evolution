@@ -1,20 +1,20 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class
-Snake {
-    private final int ANIM_STEP = 3; // updates every Nth frame
+public class Snake {
+    public static final double SPEED = 0.18; // FPS multiplier
 
-    private int frameCount;
     private ArrayList<CellPosition> body;
-    private Direction direction;
+    private Direction currentDirection;
+    private LinkedList<Direction> inputQueue;
     private boolean foodEaten;
 
     public Snake() {
-        super();
-
         body = new ArrayList<>();
-        direction = Direction.RIGHT;
+        currentDirection = Direction.RIGHT;
+        inputQueue = new LinkedList<>();
+
         body.add(new CellPosition(20, 20));
         body.add(new CellPosition(19, 20));
         body.add(new CellPosition(18, 20));
@@ -22,7 +22,6 @@ Snake {
         body.add(new CellPosition(16, 20));
         body.add(new CellPosition(15, 20));
 
-        frameCount = 0;
         foodEaten = false;
     }
 
@@ -38,7 +37,7 @@ Snake {
         CellPosition currHeadPos = body.get(0);
         CellPosition nextPos = null;
         
-        switch (direction) {
+        switch (currentDirection) {
             case UP -> nextPos = new CellPosition(currHeadPos.x, currHeadPos.y - 1);
             case DOWN -> nextPos = new CellPosition(currHeadPos.x, currHeadPos.y + 1);
             case RIGHT -> nextPos = new CellPosition(currHeadPos.x + 1, currHeadPos.y);
@@ -70,7 +69,8 @@ Snake {
     }
 
     public void move() {
-        if (frameCount++ < ANIM_STEP) return;
+        if (!inputQueue.isEmpty())
+            currentDirection = inputQueue.poll();
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
@@ -79,16 +79,27 @@ Snake {
             body.remove(body.size() - 1);
         else
             foodEaten = false;
-
-        frameCount = 0;
     }
 
-    public void setDirection(Direction newDir) {
-        direction = newDir;
+    public void updateDirection(Direction newDir) {
+        // adds new input to the queue,
+        // if less than 2 inputs are queued and if is not opposite to the previously queued input
+        if (inputQueue.size() < 2 && !isOppositeDir(inputQueue.peekLast(), newDir))
+            inputQueue.add(newDir);
+
+        if (!inputQueue.isEmpty() && isOppositeDir(inputQueue.peek(), currentDirection))
+            inputQueue.removeFirst(); // drops the next direction in queue if it is opposite to the current direction
     }
 
-    public Direction getDirection() {
-        return direction;
+    public Direction getCurrentDirection() {
+        return currentDirection;
+    }
+
+    private boolean isOppositeDir(Direction dir1, Direction dir2) {
+        return (dir1 == Direction.DOWN && dir2 == Direction.UP) ||
+               (dir1 == Direction.UP && dir2 == Direction.DOWN) ||
+               (dir1 == Direction.LEFT && dir2 == Direction.RIGHT) ||
+               (dir1 == Direction.RIGHT && dir2 == Direction.LEFT);
     }
 
     public void draw(Graphics2D frame) {
