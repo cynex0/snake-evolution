@@ -16,9 +16,9 @@ public class Main {
         window.setSize(WINDOW_SIZE.x, WINDOW_SIZE.y);
 
         GamePanel gamePanel = new GamePanel();
-        //LeaderBoard lb = new LeaderBoard();
+        LeaderBoard lb = new LeaderBoard();
         window.add(gamePanel);
-        //window.add(lb);
+        window.add(lb);
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);

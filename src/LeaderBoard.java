@@ -1,16 +1,23 @@
+import org.json.JSONObject;
+//import org.json.simple.JSONObject;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-//import org.json.simple.JSONObject;
+
 
 public class LeaderBoard extends JPanel {
     public static final int BORDER_SIZE = 5;
     public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
     public static final int MARGIN_W = MARGIN_DIST - BORDER_SIZE; // margin width excluding border thickness
     ArrayList<Players> playersList = new ArrayList<Players>();
+
+    Font myFont = null;
+
     //JSONObject jsonObject = new JSONObject();
     public LeaderBoard(){
         super();
@@ -18,17 +25,28 @@ public class LeaderBoard extends JPanel {
         this.setBackground(new Color(0xA9E000));
         this.setDoubleBuffered(true);
 
+        // Setting the custom font for leaderboard
+        try {
+            myFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\halah\\Downloads\\Public_Pixel_Font_1_1\\PublicPixel.ttf")).deriveFont(32f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(myFont);
+        } catch (IOException | FontFormatException e) {
+
+        }
+
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         Graphics2D frame = (Graphics2D) g;
         FileWriter writer;
-
+        //JSONObject jsonObj = new JSONObject();
+        org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
+        org.json.simple.JSONObject jsonObj1 = new org.json.simple.JSONObject();
         // fill inner background
         frame.setColor(new Color(0xA9E000));
         frame.fillRect(MARGIN_DIST, MARGIN_DIST, Main.WINDOW_SIZE.x - 2*MARGIN_DIST, Main.WINDOW_SIZE.y - 2*MARGIN_DIST);
-
+        frame.setFont(myFont);
         // draw borders
         frame.setColor(Color.BLACK);
 
@@ -73,54 +91,59 @@ public class LeaderBoard extends JPanel {
         playersList.add(player10);
 
         // Sorting players by high to low scores
+        
         for (int i=0; i < playersList.size(); i++){
             for (int j = i+1; j < playersList.size(); j++){
                 if (playersList.get(i).getScore() < playersList.get(j).getScore()){
                     Collections.swap(playersList, i , j);
                 }
             }
+
         }
-        
+
         frame.setColor(new Color(0xA9E000));
         frame.fillRect(60,80,300,600);
 
 
-        int yAxes = 100; // 
+        int yAxes = 100;
         int getIndexOfPlayersList = 0;
+        int playerIndex = 1;
         
         // Filling the frame with sorted results (from high to low)
         try {
-            writer = new FileWriter("TopScores.txt");
+            writer = new FileWriter("Leaderboard.json");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        frame.setColor(Color.BLACK);
+
+        frame.drawString("LEADERBOARD", 240, 40);
+        frame.drawString(" EXIT", 300, 700);
+        frame.setFont(myFont.deriveFont(Font.BOLD,18f));
+
         for (Players players : playersList) {
-            frame.setColor(Color.BLACK);
-            frame.setFont(new Font("Serif", Font.BOLD, 30));
-            frame.drawString("Leader Board", 320, 30);
-            // Using the condition to highlight the top scorer
-            if (getIndexOfPlayersList == 0){
-                frame.setFont(new Font("Times New Roman", Font.BOLD, 22));
-                frame.drawString(players.getNamesAndScores(), 300, yAxes);
-                try {
-                    writer.append(players.getNamesAndScores());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+            if (playerIndex <= 10){
+                // Using the condition to highlight the top scorer
+                if (getIndexOfPlayersList == 0){
+                    frame.drawString(playerIndex + ". " + players.getNamesAndScores(), 100, yAxes);
+
+                    getIndexOfPlayersList++;
                 }
-                getIndexOfPlayersList++;
-            }
-            else {
-                frame.setFont(new Font("Times New Roman", Font.ITALIC, 22));
-                try {
-                    writer.append(players.getNamesAndScores());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                else {
+
+                    frame.setFont(myFont.deriveFont(Font.PLAIN,18f));
+                    playerIndex++;
+                    frame.drawString(playerIndex +". " + players.getNamesAndScores(), 100, yAxes);
                 }
-                frame.drawString(players.getNamesAndScores(), 300, yAxes);
+                jsonObj.put(players.getName(), players.getScore());
+
+                yAxes+=50;
             }
-            yAxes+=20;
+
         }
         try {
+            writer.write(jsonObj.toJSONString());
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
