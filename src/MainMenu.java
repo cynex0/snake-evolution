@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 
@@ -29,6 +31,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
         this.add(Box.createRigidArea(new Dimension(0, 15))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
+        this.add(Box.createRigidArea(new Dimension(0, 200))); //creates a blank area above title for visual spacing.
 
         start = new Button("Start"); //assigning buttons.
         leaderboard = new Button("Leaderboard");
@@ -42,7 +45,19 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         for (Button button : buttons) { // for each-loop to add the buttons to the JPanel.
             this.add(button);
             button.setFocusable(true);
+            button.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    button.hovering = true;
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    button.hovering = false;
+                }
+            });
         }
+
 
         start.setActionCommand("start");
         start.addActionListener(this);
