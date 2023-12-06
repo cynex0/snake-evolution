@@ -30,5 +30,6 @@ public class BgPanel extends JPanel {
         frame.fillRect(MARGIN_OUTER, MARGIN_OUTER, BORDER_THC, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // left border
         frame.fillRect(GameFrame.WINDOW_SIZE.x - MARGIN_OUTER - BORDER_THC, MARGIN_OUTER, BORDER_THC, GameFrame.WINDOW_SIZE.y - 2 * MARGIN_OUTER); // right border
         frame.fillRect(MARGIN_OUTER, GameFrame.WINDOW_SIZE.y - MARGIN_OUTER - BORDER_THC, GameFrame.WINDOW_SIZE.x - 2 * MARGIN_OUTER, BORDER_THC); // bottom border
+
     }
 }
