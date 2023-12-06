@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Snake {
-    public static final double SPEED = 0.1; // FPS multiplier
+    public static final double SPEED = 0.18; // FPS multiplier
 
     private ArrayList<CellPosition> body;
     private Direction currentDirection;
@@ -82,10 +82,13 @@ public class Snake {
     }
 
     public void updateDirection(Direction newDir) {
-        if (inputQueue.isEmpty() || !isOppositeDir(inputQueue.peek(), newDir))
+        // adds new input to the queue,
+        // if less than 2 inputs are queued and if is not opposite to the previously queued input
+        if (inputQueue.size() < 2 && !isOppositeDir(inputQueue.peekLast(), newDir))
             inputQueue.add(newDir);
-        if (isOppositeDir(inputQueue.peek(), currentDirection))
-            inputQueue.removeFirst();
+
+        if (!inputQueue.isEmpty() && isOppositeDir(inputQueue.peek(), currentDirection))
+            inputQueue.removeFirst(); // drops the next direction in queue if it is opposite to the current direction
     }
 
     public Direction getCurrentDirection() {
