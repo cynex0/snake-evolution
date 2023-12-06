@@ -27,7 +27,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         titleLabel.setForeground(Color.BLACK); //colors it black.
         titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25)); //changes font and size.
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
-        this.add(Box.createRigidArea(new Dimension(0, 3))); //creates a blank area above title for visual spacing.
+        this.add(Box.createRigidArea(new Dimension(0, 15))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
 
         start = new Button("Start"); //assigning buttons.
