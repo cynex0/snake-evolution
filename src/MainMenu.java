@@ -49,16 +49,15 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
             button.addMouseListener(new MouseAdapter() { //adds mouselistener to hover over buttons
                 @Override
                 public void mouseEntered(MouseEvent e) { // actions when hovering over button
-                    button.hoverAction(true);
+                    button.onHover(true);
 
                 }
                 @Override
                 public void mouseExited(MouseEvent e) { //actions for when not hovering over button
-                    button.hoverAction(false);
+                    button.onHover(false);
                 }
             });
         }
-
 
         start.setActionCommand("start"); //sets action command for the button
         start.addActionListener(this); //adds listener to register button interaction

@@ -23,9 +23,9 @@ public class Button extends JButton {
         button.setMaximumSize(new Dimension(700, 200));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
-    public void hoverAction(boolean hovering) {
+    public void onHover(boolean hovering) {
         if (hovering) {
-            this.setText("◆" + standardText );
+            this.setText("<" + standardText + ">" );
         } else {
             this.setText(standardText);
         }
