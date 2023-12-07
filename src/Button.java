@@ -1,28 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Button extends JButton {
-    public boolean hovering = false;
-    public Button(String text) {
-        super(text);
+    private final String standardText;
+
+    public Button(String standardText) {
+        super(standardText);
+        this.standardText = standardText;
         editButton(this);
     }
-
-    public void drawShape(Graphics g){
-        int shapeSize = 20;
-        int[] xDimensions = {2, shapeSize, 2, -shapeSize};
-        int[] yDimensions = {-shapeSize, 2, shapeSize, 2};
-        g.setColor(Color.BLACK);
-        g.fillPolygon(xDimensions, yDimensions, 4);
-    }
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        if(hovering){
-            drawShape(g);
-        }
-    }
-
     public void editButton(Button button) {
         Font buttonFont = new Font("Public Pixel", Font.BOLD, 50);
         button.setFont(buttonFont);
@@ -31,9 +19,16 @@ public class Button extends JButton {
         button.setForeground(Color.BLACK);
         button.setContentAreaFilled(false);
         button.setBorder(BorderFactory.createEmptyBorder());
-        button.setPreferredSize(new Dimension(700, 100));
-        button.setMaximumSize(new Dimension(700, 100));
+        button.setPreferredSize(new Dimension(700, 200));
+        button.setMaximumSize(new Dimension(700, 200));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+    public void hoverAction(boolean hovering) {
+        if (hovering) {
+            this.setText("◆" + standardText );
+        } else {
+            this.setText(standardText);
+        }
     }
 
 

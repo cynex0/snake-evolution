@@ -13,7 +13,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
     private Button start; // Declaring Button references
     private Button leaderboard;
     private Button exit;
-    public BgPanel panel;
+    public BgPanel panel; // BgPanel reference for instantiation
 
     private ArrayList<Button> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
@@ -31,7 +31,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
         this.add(Box.createRigidArea(new Dimension(0, 15))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
-        this.add(Box.createRigidArea(new Dimension(0, 200))); //creates a blank area above title for visual spacing.
+        this.add(Box.createRigidArea(new Dimension(0, 50)));
 
         start = new Button("Start"); //assigning buttons.
         leaderboard = new Button("Leaderboard");
@@ -42,25 +42,26 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         buttons.add(leaderboard);
         buttons.add(exit);
 
-        for (Button button : buttons) { // for each-loop to add the buttons to the JPanel.
-            this.add(button);
-            button.setFocusable(true);
-            button.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    button.hovering = true;
-                }
 
+        for (Button button : buttons) {
+            this.add(button); // add the buttons to the panel
+            button.setFocusable(true);
+            button.addMouseListener(new MouseAdapter() { //adds mouselistener to hover over buttons
                 @Override
-                public void mouseExited(MouseEvent e) {
-                    button.hovering = false;
+                public void mouseEntered(MouseEvent e) { // actions when hovering over button
+                    button.hoverAction(true);
+
+                }
+                @Override
+                public void mouseExited(MouseEvent e) { //actions for when not hovering over button
+                    button.hoverAction(false);
                 }
             });
         }
 
 
-        start.setActionCommand("start");
-        start.addActionListener(this);
+        start.setActionCommand("start"); //sets action command for the button
+        start.addActionListener(this); //adds listener to register button interaction
 
         leaderboard.setActionCommand("leaderboard");
         leaderboard.addActionListener(this);
@@ -70,7 +71,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
         stateChanger = listener;
     }
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { //calling the BgPanel paintcomponent method to draw the border rectangles
         super.paintComponent(g);
         panel.paintComponent(g);
     }
