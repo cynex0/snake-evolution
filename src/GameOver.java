@@ -5,17 +5,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameOver extends JPanel implements ActionListener {
-
-    private GameState GameState;
     private final Button MainMenu;
     private final Button exit;
     public BgPanel panel;
 
     private final ArrayList<Button> buttons;
 
-    public GameOver() {
+    private StateChangeListener stateChanger;
+
+    public GameOver(StateChangeListener listener) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
 
         JLabel titleLabel = new JLabel("Game Over!", SwingConstants.CENTER);
@@ -25,6 +25,7 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 3)));
         this.add(titleLabel);
 
+        panel = new BgPanel();
 
         MainMenu = new Button("Main Menu");
         exit = new Button("Exit");
@@ -39,11 +40,13 @@ public class GameOver extends JPanel implements ActionListener {
             button.setFocusable(true);
         }
 
-        MainMenu.setActionCommand("Main Menu");
+        MainMenu.setActionCommand("menu");
         MainMenu.addActionListener(this);
 
         exit.setActionCommand("exit");
         exit.addActionListener( this);
+
+        stateChanger = listener;
     }
 
 
@@ -57,13 +60,10 @@ public class GameOver extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
 
-        if ("Main Menu".equals(actionCommand)) {
-            GameState = GameState.MENU;
+        if ("menu".equals(actionCommand)) {
+            stateChanger.changeState(GameState.MENU);
         } else if ("exit".equals(actionCommand)) {
             System.exit(0);
         }
     }
-
-
-
 }

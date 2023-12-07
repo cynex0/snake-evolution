@@ -1,124 +1,107 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.awt.event.KeyListener;
 
 
-public class GamePanel extends JPanel {
-    public static final int CELL_COUNT = 50;
-    public static final int CELL_SIZE = (Main.WINDOW_SIZE.x - 2*(BgPanel.MARGIN_DIST)) / CELL_COUNT;
+public class GamePanel extends JPanel implements KeyListener {
+    public static final int CELL_COUNT = 40;
+    public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
 
     public static final int FPS = 60;
     private final BgPanel bg;
     private Snake snake;
+    private Food food;
     private final Timer gameLoop;
 
-    private GameState state;
-    private final GameOver gameOver;
-   // private LeaderBoard lb;
+    private StateChangeListener stateChanger;
 
-    KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
-    public CollisionControl collisionControl = new CollisionControl(this);
-
-
-    public GamePanel() {
+    public GamePanel(StateChangeListener listener) {
         super();
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
-        this.addKeyListener(keyH); //To make the gamePanel recognize the key input
         this.setFocusable(true);
 
         bg = new BgPanel();
         snake = new Snake();
-       gameOver = new GameOver();
+        stateChanger = listener;
+        food = new Food(0, 0);
 
-        state = GameState.GAME; // initial state TODO: change to MENU
-       // lb = new LeaderBoard();
-
-      gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
-           update();
+        gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
+            update();
             repaint(); // calls paintComponent()
-       });
+        });
     }
 
     public void update() {
         // update positions, etc
-        switch (state) {
-            case MENU -> {
-                // read user input, update selected button, switch state if button pressed
-            }
-            case GAME -> {
-                if (keyH.upPressed && snake.getDirection() != Direction.DOWN) {
-                    snake.setDirection(Direction.UP);
-                }
-                else if (keyH.downPressed && snake.getDirection() != Direction.UP) {
-                    snake.setDirection(Direction.DOWN);
-                }
-                else if (keyH.rightPressed && snake.getDirection() != Direction.LEFT) {
-                    snake.setDirection(Direction.RIGHT);
-                }
-                else if (keyH.leftPressed && snake.getDirection() != Direction.RIGHT) {
-                    snake.setDirection(Direction.LEFT);
-                }
+        snake.move();
 
-                if (snake.doCollisions()) {
-                    System.out.println("COLLIDED"); // DEBUG
-                    state = GameState.GAME_OVER;
-                }
-
-                snake.move();
-            }
-            case GAME_OVER -> {
-                // read user input, update selected button, switch state if button pressed
-            }
-            case GAME_OVER_ENTERNAME -> {
-                // read user input, update selected button, switch state if button pressed
-            }
-            case LEADERBOARD -> {
-                // read user input, update selected button, switch state if button pressed
-            }
+        if (snake.doCollisions()) {
+            stateChanger.changeState(GameState.GAME_OVER);
+            gameLoop.stop();
         }
+
+        if (snake.foodEaten(food)) {
+            snake.increaseLength();
+            produceFood();
+        }
+    }
+
+    private void produceFood () {
+        int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
+        int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
+
+        food.setFoodLocation(locX,locY);
+    }
+
+    private int generateRandomLoc (int high, int low) {
+        int randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
+        return randomLoc;
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        bg.paintComponent(g); // always draw background first
-        bg.paintComponent(g);
-        //lb.paintComponent(g);
+        bg.paintComponent(g); // draw background first
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
-        switch (state) {
-            case MENU -> {
-                // draw menu elements
-            }
-            case GAME -> {
-                snake.draw(frame);
-            }
-            case GAME_OVER -> {
-                // draw "game over" elements
-            }
-            case GAME_OVER_ENTERNAME -> {
-                // draw "game over" elements + name prompt
-            }
-            case LEADERBOARD -> {
-                // draw leaderboard elements
-            }
-        }
+        food.draw(g);
+        snake.draw(frame);
         frame.dispose();
     }
 
     // starts the game loop
     public void startGame() {
         gameLoop.start();
+        produceFood();
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {}
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+
+        if (code == KeyEvent.VK_UP) {
+            snake.updateDirection(Direction.UP);
+        }
+        if (code == KeyEvent.VK_DOWN) {
+            snake.updateDirection(Direction.DOWN);
+        }
+        if (code == KeyEvent.VK_LEFT) {
+            snake.updateDirection(Direction.LEFT);
+        }
+        if (code == KeyEvent.VK_RIGHT) {
+            snake.updateDirection(Direction.RIGHT);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
 }
-
