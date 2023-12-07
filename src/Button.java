@@ -17,10 +17,6 @@ public class Button extends JButton implements MouseListener {
 
     }
 
-    private void addMouseListener() {
-
-    }
-
     public void editButton(Button button) {
         Font buttonFont = new Font("Public Pixel", Font.BOLD, 50);
         this.setFont(buttonFont);
