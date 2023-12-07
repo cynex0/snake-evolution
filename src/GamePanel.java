@@ -42,6 +42,12 @@ public class GamePanel extends JPanel implements KeyListener {
         snake.move();
 
         if (snake.doCollisions()) {
+            /*
+            if (leaderBoard.isTopTen(score)) {
+                stateChanger.changeState(GameState.GAME_OVER_ENTERNAME)
+            }
+            else
+             */
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
         }
