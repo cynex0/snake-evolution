@@ -9,7 +9,7 @@ public class Button extends JButton {
         editButton(this);
     }
     public void editButton(Button button) {
-        Font buttonFont = new Font("Courier New", Font.BOLD, 80);
+        Font buttonFont = new Font("Public Pixel", Font.BOLD, 50);
         button.setFont(buttonFont);
         button.setOpaque(true);
         button.setBorderPainted(false);
