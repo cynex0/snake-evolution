@@ -1,42 +1,43 @@
 import javax.swing.*;
 import java.awt.*;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class GamePanel extends JPanel {
-    public static final int CELL_COUNT = 50;
-    public static final int CELL_SIZE = (Main.WINDOW_SIZE.x - 2*(BgPanel.MARGIN_DIST)) / CELL_COUNT;
+
+
+public class GamePanel extends JPanel implements KeyListener {
+    public static final int CELL_COUNT = 40;
+    public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
 
     public static final int FPS = 60;
-    private final BgPanel bg;
+    private BgPanel bg;
     private Snake snake;
-    private final Timer gameLoop;
+    private Food food;
+    private Timer gameLoop;
 
-   private LeaderBoard lb;
+    private StateChangeListener stateChanger;
 
-    KeyHandler keyH = new KeyHandler(); //creating an instance of the KeyHandler abstract
-    public CollisionControl collisionControl = new CollisionControl(this);
 
-    //set snake's default position
-    int snakeX = 100;
-    int snakeY = 100;
-    int snakeSpeed = 4;
-
-    public GamePanel() {
+    public GamePanel(StateChangeListener listener) {
         super();
-        this.setPreferredSize(new Dimension(Main.WINDOW_SIZE.x, Main.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
-        this.addKeyListener(keyH); //To make the gamePanel recognize the key input
         this.setFocusable(true);
 
         bg = new BgPanel();
         snake = new Snake();
-       lb = new LeaderBoard();
+
+        stateChanger = listener;
+        food = new Food(0, 0);
+
 
         gameLoop = new Timer(1000/FPS, e -> { // GAME LOOP, runs every 1/60th of a second
             update();
@@ -46,29 +47,43 @@ public class GamePanel extends JPanel {
 
     public void update() {
         // update positions, etc
-        if (keyH.upPressed) {
-            snakeY = snakeY - snakeSpeed;
-        }
-        else if (keyH.downPressed) {
-            snakeY = snakeY + snakeSpeed;
-        }
-        else if (keyH.rightPressed) {
-            snakeX = snakeX + snakeSpeed;
-        }
-        else if (keyH.leftPressed) {
-            snakeX = snakeX - snakeSpeed;
+        snake.move();
+
+        if (snake.doCollisions()) {
+            stateChanger.changeState(GameState.GAME_OVER);
+            gameLoop.stop();
         }
 
-        snake.move();
+        if (snake.foodEaten(food)) {
+            snake.increaseLength();
+            produceFood();
+        }
+    }
+
+    private void produceFood () {
+        int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
+        int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
+
+        food.setFoodLocation(locX,locY);
+    }
+
+    private int generateRandomLoc (int high, int low) {
+        int randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
+        return randomLoc;
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        bg.paintComponent(g);
-        lb.paintComponent(g);
 
-        Graphics2D frame = (Graphics2D) g;
+        bg.paintComponent(g);
+
+        bg.paintComponent(g); // draw background first
+
+
+        Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
+
+        food.draw(g);
         snake.draw(frame);
         frame.dispose();
     }
@@ -76,5 +91,40 @@ public class GamePanel extends JPanel {
     // starts the game loop
     public void startGame() {
         gameLoop.start();
+        produceFood();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+
+        if (code == KeyEvent.VK_UP) {
+            if (snake.getDirection() != Direction.DOWN) {
+                snake.setDirection(Direction.UP);
+            }
+        }
+        if (code == KeyEvent.VK_DOWN) {
+            if (snake.getDirection() != Direction.UP) {
+                snake.setDirection(Direction.DOWN);
+            }
+        }
+        if (code == KeyEvent.VK_LEFT) {
+            if (snake.getDirection() != Direction.RIGHT) {
+                snake.setDirection(Direction.LEFT);
+            }
+        }
+
+        if (code == KeyEvent.VK_RIGHT) {
+            if (snake.getDirection() != Direction.LEFT) {
+                snake.setDirection(Direction.RIGHT);
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }

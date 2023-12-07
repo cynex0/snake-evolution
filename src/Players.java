@@ -27,7 +27,7 @@ public class Players {
 
     public String getNamesAndScores(){
 
-        return String.format("%-6S .................. %3s", this.name, this.score);
+        return String.format("%-6S ........... %3s", this.name, this.score);
     }
 
 }
