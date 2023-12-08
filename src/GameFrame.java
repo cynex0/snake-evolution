@@ -43,6 +43,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
             case GAME_OVER_ENTERNAME -> {
             }
             case LEADERBOARD -> {
+                currentPanel = new LeaderBoard(this);
             }
         }
         this.add(currentPanel);
