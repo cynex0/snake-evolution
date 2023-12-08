@@ -8,7 +8,7 @@ public class GameOver extends JPanel implements ActionListener {
     private final Button MainMenu;
     private final Button exit;
     public BgPanel panel;
-    private boolean IsHighScore;
+    private boolean IsHighScore; // remove and make a commit
 
     private final ArrayList<Button> buttons;
 
@@ -47,7 +47,7 @@ public class GameOver extends JPanel implements ActionListener {
         for (Button button : buttons) {
             this.add(button);
             if (!isHighScore){ // Debug
-                button.setFocusable(true);
+                button.setFocusable(false);
 
             }
         }
