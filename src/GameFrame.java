@@ -6,6 +6,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
     private static JPanel currentPanel;
     private StateChangeListener stateChangeListener;
 
+
     public GameFrame() {
         super();
 
@@ -23,6 +24,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
         this.setFocusable(true);
     }
 
+
     @Override
     public void changeState(GameState newState) {
         getContentPane().removeAll();
@@ -38,10 +40,12 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 gamePanel.startGame();
             }
             case GAME_OVER -> {
-                currentPanel = new GameOver(this);
+                GamePanel game = (GamePanel) currentPanel;
+                int score = game.getScore();
+
+                currentPanel = new GameOver(this,score,true);//,100, Leaderboard.istop10(score)); // waiting for the function
             }
-            case GAME_OVER_ENTERNAME -> {
-            }
+
             case LEADERBOARD -> {
             }
         }

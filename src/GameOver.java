@@ -8,12 +8,13 @@ public class GameOver extends JPanel implements ActionListener {
     private final Button MainMenu;
     private final Button exit;
     public BgPanel panel;
+    private boolean IsHighScore;
 
     private final ArrayList<Button> buttons;
 
     private StateChangeListener stateChanger;
 
-    public GameOver(StateChangeListener listener) {
+    public GameOver(StateChangeListener listener, int score, boolean isHighScore) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
@@ -25,8 +26,16 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 3)));
         this.add(titleLabel);
 
-        panel = new BgPanel();
+        JLabel EnterNameLabel = new JLabel("Enter your name:");
+        EnterNameLabel.setForeground(Color.BLACK);
+        EnterNameLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
+        EnterNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(Box.createRigidArea(new Dimension(0, 300)));
+        this.add(EnterNameLabel);
 
+
+
+        panel = new BgPanel();
         MainMenu = new Button("Main Menu");
         exit = new Button("Exit");
 
@@ -37,7 +46,10 @@ public class GameOver extends JPanel implements ActionListener {
 
         for (Button button : buttons) {
             this.add(button);
-            button.setFocusable(true);
+            if (!isHighScore){ // Debug
+                button.setFocusable(true);
+
+            }
         }
 
         MainMenu.setActionCommand("menu");
@@ -48,6 +60,7 @@ public class GameOver extends JPanel implements ActionListener {
 
         stateChanger = listener;
     }
+
 
 
     @Override
@@ -66,4 +79,6 @@ public class GameOver extends JPanel implements ActionListener {
             System.exit(0);
         }
     }
+
+
 }
