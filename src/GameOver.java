@@ -2,21 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class GameOver extends JPanel implements ActionListener {
-
-    public static final int BORDER_SIZE = 5;
-    public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
-    public static final int MARGIN_W = MARGIN_DIST - BORDER_SIZE;
-
-
-    private GameState GameState;
-    private final Button retry;
+    private final Button MainMenu;
     private final Button exit;
+    public BgPanel panel;
 
     private final ArrayList<Button> buttons;
 
@@ -34,11 +25,13 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 3)));
         this.add(titleLabel);
 
-        retry = new Button("Retry");
+        panel = new BgPanel();
+
+        MainMenu = new Button("Main Menu");
         exit = new Button("Exit");
 
         buttons = new ArrayList<>();
-        buttons.add(retry);
+        buttons.add(MainMenu);
         buttons.add(exit);
 
 
@@ -47,8 +40,8 @@ public class GameOver extends JPanel implements ActionListener {
             button.setFocusable(true);
         }
 
-        retry.setActionCommand("retry");
-        retry.addActionListener(this);
+        MainMenu.setActionCommand("menu");
+        MainMenu.addActionListener(this);
 
         exit.setActionCommand("exit");
         exit.addActionListener( this);
@@ -56,11 +49,19 @@ public class GameOver extends JPanel implements ActionListener {
         stateChanger = listener;
     }
 
+
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        panel.paintComponent(graphics);
+
+
+    }
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
 
-        if ("retry".equals(actionCommand)) {
-            stateChanger.changeState(GameState.GAME);
+        if ("menu".equals(actionCommand)) {
+            stateChanger.changeState(GameState.MENU);
         } else if ("exit".equals(actionCommand)) {
             System.exit(0);
         }
