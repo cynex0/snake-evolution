@@ -41,6 +41,8 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 currentPanel = new GameOver(this);
             }
             case GAME_OVER_ENTERNAME -> {
+                //int highScore = currentState.getScore();
+                //currentPanel = new EnterName (this, highScore);
             }
             case LEADERBOARD -> {
                 currentPanel = new LeaderBoard(this);

@@ -50,6 +50,12 @@ public class GamePanel extends JPanel implements KeyListener {
         snake.move();
 
         if (snake.doCollisions()) {
+            /*
+            if (leaderBoard.isTopTen(score)) {
+                stateChanger.changeState(GameState.GAME_OVER_ENTERNAME)
+            }
+            else
+             */
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
         }
@@ -61,6 +67,9 @@ public class GamePanel extends JPanel implements KeyListener {
         }
     }
 
+    public int getScore () {
+        return this.score;
+    }
     private void produceFood () {
         int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
         int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
