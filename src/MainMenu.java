@@ -31,7 +31,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
         this.add(Box.createRigidArea(new Dimension(0, 15))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
-        this.add(Box.createRigidArea(new Dimension(0, 50)));
+        this.add(Box.createRigidArea(new Dimension(0, 100)));
 
         startBtn = new Button("Start"); //assigning buttons.
         leaderboardBtn = new Button("Leaderboard");

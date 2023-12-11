@@ -25,8 +25,9 @@ public class Button extends JButton implements MouseListener {
         this.setForeground(Color.BLACK);
         this.setContentAreaFilled(false);
         this.setBorder(BorderFactory.createEmptyBorder());
-        this.setPreferredSize(new Dimension(700, 200));
-        this.setMaximumSize(new Dimension(700, 200));
+        this.setPreferredSize(new Dimension(700, 170));
+        this.setMaximumSize(new Dimension(700, 170
+        ));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
     public void onHover(boolean hovering) {
