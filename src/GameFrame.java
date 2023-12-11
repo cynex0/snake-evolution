@@ -47,6 +47,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
             }
 
             case LEADERBOARD -> {
+                currentPanel = new LeaderBoard(this);
             }
         }
         this.add(currentPanel);
