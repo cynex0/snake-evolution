@@ -19,7 +19,11 @@ public class GamePanel extends JPanel implements KeyListener {
     private BgPanel bg;
     private Snake snake;
     private Food food;
+<<<<<<< HEAD
     private int score = 0; //
+=======
+    private int score = 0;
+>>>>>>> 2b2ce2c08cee82ebfd8ed68a36c74593012ab3fe
     private final Timer gameLoop;
 
     private StateChangeListener stateChanger;
@@ -38,7 +42,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         stateChanger = listener;
         food = new Food(0, 0);
-        score = 0; //
+        score = 0;
 
         gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
             update();
@@ -51,6 +55,12 @@ public class GamePanel extends JPanel implements KeyListener {
         snake.move();
 
         if (snake.doCollisions()) {
+            /*
+            if (leaderBoard.isTopTen(score)) {
+                stateChanger.changeState(GameState.GAME_OVER_ENTERNAME)
+            }
+            else
+             */
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
         }
@@ -62,10 +72,9 @@ public class GamePanel extends JPanel implements KeyListener {
         }
     }
 
-    public int getScore(){
+    public int getScore () {
         return this.score;
     }
-
     private void produceFood () {
         int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
         int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
@@ -90,6 +99,10 @@ public class GamePanel extends JPanel implements KeyListener {
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
         food.draw(g);
+
+        g.setColor(Color.blue);
+        g.drawString("Score: "+ score, 65 , GameFrame.WINDOW_SIZE.y - 770);
+
         snake.draw(frame);
         frame.dispose();
     }
