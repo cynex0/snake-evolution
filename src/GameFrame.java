@@ -40,10 +40,9 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 gamePanel.startGame();
             }
             case GAME_OVER -> {
-                GamePanel game = (GamePanel) currentPanel;
-                int score = game.getScore();
-
-                currentPanel = new GameOver(this,score,true);//,100, Leaderboard.istop10(score)); // waiting for the function
+                // TODO: Fix switching bug
+                GameOver nextPanel = new GameOver(this,100,true);//,100, Leaderboard.istop10(score)); // waiting for the function
+                currentPanel = nextPanel;
             }
 
             case LEADERBOARD -> {

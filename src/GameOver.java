@@ -8,7 +8,7 @@ public class GameOver extends JPanel implements ActionListener {
     private final Button MainMenu;
     private final Button exit;
     public BgPanel panel;
-    private boolean IsHighScore; // remove and make a commit
+
 
     private final ArrayList<Button> buttons;
 
