@@ -22,7 +22,10 @@ public class GameOver extends JPanel implements ActionListener {
 
     private StateChangeListener stateChanger;
 
+    public BgPanel panel; // BgPanel reference for instantiation
+
     public GameOver(StateChangeListener listener) {
+        panel = new BgPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
@@ -54,6 +57,10 @@ public class GameOver extends JPanel implements ActionListener {
         exit.addActionListener( this);
 
         stateChanger = listener;
+    }
+    public void paintComponent(Graphics g) { //calling the BgPanel paintComponent method to draw the border rectangles
+        super.paintComponent(g);
+        panel.paintComponent(g);
     }
 
     public void actionPerformed(ActionEvent event) {

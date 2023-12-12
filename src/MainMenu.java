@@ -59,7 +59,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
             stateChanger = listener;
         }
     }
-    public void paintComponent(Graphics g) { //calling the BgPanel paintcomponent method to draw the border rectangles
+    public void paintComponent(Graphics g) { //calling the BgPanel paintComponent method to draw the border rectangles
         super.paintComponent(g);
         panel.paintComponent(g);
     }
