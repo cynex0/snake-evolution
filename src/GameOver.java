@@ -23,6 +23,7 @@ public class GameOver extends JPanel implements ActionListener {
     private StateChangeListener stateChanger;
 
     public BgPanel panel; // BgPanel reference for instantiation
+    private JLabel scoreText;
 
     public GameOver(StateChangeListener listener) {
         panel = new BgPanel();
@@ -34,8 +35,15 @@ public class GameOver extends JPanel implements ActionListener {
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(Box.createRigidArea(new Dimension(0, 3)));
+        this.add(Box.createRigidArea(new Dimension(0, 15)));
         this.add(titleLabel);
+        this.add(Box.createRigidArea(new Dimension(0, 150)));
+
+        scoreText = new JLabel("Your Score: " , SwingConstants.CENTER);
+        scoreText.setForeground(Color.BLACK);
+        scoreText.setFont(new Font("Public Pixel", Font.BOLD, 40));
+        scoreText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(scoreText);
 
         retry = new Button("Retry");
         mainmenu = new Button("Main Menu");
