@@ -16,7 +16,7 @@ public class GameOver extends JPanel implements ActionListener {
 
     private GameState GameState;
     private final Button retry;
-    private final Button exit;
+    private final Button mainmenu;
 
     private final ArrayList<Button> buttons;
 
@@ -38,11 +38,11 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(titleLabel);
 
         retry = new Button("Retry");
-        exit = new Button("Exit");
+        mainmenu = new Button("Main Menu");
 
         buttons = new ArrayList<>();
         buttons.add(retry);
-        buttons.add(exit);
+        buttons.add(mainmenu);
 
 
         for (Button button : buttons) {
@@ -53,8 +53,8 @@ public class GameOver extends JPanel implements ActionListener {
         retry.setActionCommand("retry");
         retry.addActionListener(this);
 
-        exit.setActionCommand("exit");
-        exit.addActionListener( this);
+        mainmenu.setActionCommand("main menu");
+        mainmenu.addActionListener( this);
 
         stateChanger = listener;
     }
@@ -68,7 +68,7 @@ public class GameOver extends JPanel implements ActionListener {
 
         if ("retry".equals(actionCommand)) {
             stateChanger.changeState(GameState.GAME);
-        } else if ("Main Menu".equals(actionCommand)) {
+        } else if ("main menu".equals(actionCommand)) {
             stateChanger.changeState(GameState.MENU);
         }
     }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
         private GameState GameState;
         private final Button retry;
-        private final Button exit;
+        private final Button mainmenu;
 
         private final ArrayList<Button> buttons;
 
@@ -33,11 +33,11 @@ import java.util.ArrayList;
             this.add(titleLabel);
 
             retry = new Button("Retry");
-            exit = new Button("Exit");
+            mainmenu = new Button("Main Menu");
 
             buttons = new ArrayList<>();
             buttons.add(retry);
-            buttons.add(exit);
+            buttons.add(mainmenu);
 
 
             for (Button button : buttons) {
@@ -48,8 +48,8 @@ import java.util.ArrayList;
             retry.setActionCommand("retry");
             retry.addActionListener(this);
 
-            exit.setActionCommand("exit");
-            exit.addActionListener( this);
+            mainmenu.setActionCommand("main menu");
+            mainmenu.addActionListener( this);
 
             stateChanger = listener;
         }
