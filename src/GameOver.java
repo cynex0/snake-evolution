@@ -31,7 +31,7 @@ public class GameOver extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
 
-        JLabel titleLabel = new JLabel("Game Over!", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("GAME OVER!", SwingConstants.CENTER);
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -39,11 +39,12 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(titleLabel);
         this.add(Box.createRigidArea(new Dimension(0, 150)));
 
-        scoreText = new JLabel("Your Score: " , SwingConstants.CENTER);
+        scoreText = new JLabel("YOUR SCORE: " , SwingConstants.CENTER);
         scoreText.setForeground(Color.BLACK);
         scoreText.setFont(new Font("Public Pixel", Font.BOLD, 40));
         scoreText.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(scoreText);
+        this.add(Box.createRigidArea(new Dimension(0, 220)));
 
         retry = new Button("Retry");
         mainmenu = new Button("Main Menu");
@@ -55,6 +56,10 @@ public class GameOver extends JPanel implements ActionListener {
 
         for (Button button : buttons) {
             this.add(button);
+            Font newButtonFont = new Font("Public Pixel", Font.BOLD, 35);
+            button.setFont(newButtonFont);
+            button.setPreferredSize(new Dimension(700, 120));
+            button.setMaximumSize(new Dimension(700, 120));
             button.setFocusable(true);
         }
 
