@@ -61,8 +61,8 @@ public class GameOver extends JPanel implements ActionListener {
 
         if ("retry".equals(actionCommand)) {
             stateChanger.changeState(GameState.GAME);
-        } else if ("exit".equals(actionCommand)) {
-            System.exit(0);
+        } else if ("Main Menu".equals(actionCommand)) {
+            stateChanger.changeState(GameState.MENU);
         }
     }
 }
