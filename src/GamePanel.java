@@ -87,8 +87,6 @@ public class GamePanel extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        bg.paintComponent(g);
-
         bg.paintComponent(g); // draw background first
 
 

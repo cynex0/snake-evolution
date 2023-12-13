@@ -6,34 +6,49 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class LeaderBoard extends JPanel implements ActionListener {
-    public static final int BORDER_SIZE = 5;
-    public static final int MARGIN_DIST = 50; // distance from screen edge to inner margin point
-    public static final int MARGIN_W = MARGIN_DIST - BORDER_SIZE; // margin width excluding border thickness
+public class Leaderboard extends JPanel implements ActionListener {
+    Font gameFont = null;
     private static DefaultListModel<String> listItems;
     private static JList<String> lbList;
 
     private JButton mainMenu;     // a Button to go back to the main menu
     private StateChangeListener stateChanger;
+
+    private BgPanel panel;
     private static ArrayList<Players> playersList = new ArrayList<Players>();
 
-    public LeaderBoard(StateChangeListener listener){
+    public Leaderboard(StateChangeListener listener){
+        panel = new BgPanel();
+        // creating custom font for the game
+        try {
+            gameFont = Font.createFont(Font.TRUETYPE_FONT,new File("res/PublicPixel.ttf")).deriveFont(25f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(gameFont);
+
+        } catch (FontFormatException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
         JLabel titleLabel = new JLabel("Leaderboard", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.
         titleLabel.setForeground(Color.BLACK); //colors it black.
-        titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25)); //changes font and size.
+        titleLabel.setFont(gameFont);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
+
+        // defining layout of list
         listItems = new DefaultListModel<>(); // A list that will hold players names and score
         lbList = new JList<>(listItems); // a list that will define the layout ie color, size, etc
+        lbList.setBackground(Color.decode("#A9E000"));
+        lbList.setFont(gameFont);
+        lbList.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         this.add(Box.createRigidArea(new Dimension(0, 3))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
         this.add(lbList);
@@ -42,7 +57,6 @@ public class LeaderBoard extends JPanel implements ActionListener {
 
         mainMenu = new Button("Main menu");
         mainMenu.setFocusable(true);
-        mainMenu.setBounds(400,700,200,400);
         mainMenu.setActionCommand("MENU");
 
         this.add(mainMenu);
@@ -51,6 +65,7 @@ public class LeaderBoard extends JPanel implements ActionListener {
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        panel.paintComponent(g);// Drawing black border on the frame
     }
 
     @Override
@@ -58,7 +73,7 @@ public class LeaderBoard extends JPanel implements ActionListener {
         String actionCommand = event.getActionCommand();
 
         if ("MENU".equals(actionCommand)) {
-            stateChanger.changeState(GameState.MENU); // switches to state GAME.
+            stateChanger.changeState(GameState.MENU); // switches to main menu.
 
         }
 
@@ -67,13 +82,8 @@ public class LeaderBoard extends JPanel implements ActionListener {
     public static void readTop10Players(){
         JSONParser parser = new JSONParser();
         try {
-            FileReader reader = new  FileReader("Top10Scores.json"); // Creating reader to read data from json file
+            FileReader reader = new  FileReader("res/Top10Scores.json"); // Creating reader to read data from json file
             JSONObject readJsonObj = (JSONObject) parser.parse(reader); // parsing data from json file to string
-
-            lbList.setBounds(100,100,700,700);
-            lbList.setBackground(Color.decode("#A9E000"));
-            lbList.setFont(new Font("Public Pixel", Font.BOLD, 25));
-            lbList.setAlignmentX(CENTER_ALIGNMENT);
 
             // Reading data from json and adding it to an arraylist of Players class
             ArrayList<Players> top10Scorers = new ArrayList<>();
@@ -93,6 +103,7 @@ public class LeaderBoard extends JPanel implements ActionListener {
                 }
 
             }
+            // filling the list with top 10 players names and scores
             int playerIndex = 1;
             for (Players player : top10Scorers) {
                 if (playerIndex <= 10) {
@@ -153,7 +164,7 @@ public class LeaderBoard extends JPanel implements ActionListener {
 
         // Storing top 10 players' names and scores in json file
         try {
-            writer = new FileWriter("Top10Scores.json");
+              writer = new FileWriter("res/Top10Scores.json");
             for (Players players : playersList) {
                 jsonObj.put(players.getName(), players.getScore());
             }
@@ -164,4 +175,5 @@ public class LeaderBoard extends JPanel implements ActionListener {
             throw new RuntimeException(e);
         }
     }
+
 }
