@@ -8,7 +8,7 @@ public class GameOver extends JPanel implements ActionListener {
     private final Button MainMenu;
     private final Button exit;
     public BgPanel panel;
-    private boolean IsHighScore;
+
 
     private final ArrayList<Button> buttons;
 
@@ -26,6 +26,7 @@ public class GameOver extends JPanel implements ActionListener {
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         this.add(Box.createRigidArea(new Dimension(0, 5)));
         this.add(titleLabel);
 
@@ -37,16 +38,12 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(scoreText);
         this.add(Box.createRigidArea(new Dimension(0, 150)));
 
-
-
         JLabel EnterNameLabel = new JLabel("Enter your name:");
         EnterNameLabel.setForeground(Color.BLACK);
         EnterNameLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         EnterNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(EnterNameLabel);
         this.add(Box.createRigidArea(new Dimension(0, 100)));
-
-
 
         panel = new BgPanel();
         MainMenu = new Button("Main Menu");
@@ -66,7 +63,7 @@ public class GameOver extends JPanel implements ActionListener {
             button.setFocusable(true);
 
             if (!isHighScore){ // Debug
-                button.setFocusable(true);
+                button.setFocusable(false);
 
             }
         }
