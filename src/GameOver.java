@@ -45,9 +45,6 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(EnterNameLabel);
         this.add(Box.createRigidArea(new Dimension(0, 100)));
 
-        this.add(Box.createRigidArea(new Dimension(0, 100)));
-
-
         panel = new BgPanel();
         MainMenu = new Button("Main Menu");
         exit = new Button("Exit");
