@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-public class mainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel & implements ActionListener interface.
+public class MainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel & implements ActionListener interface.
 
     private GameState GameState;
     private Button startBtn; // Declaring Button references
@@ -17,7 +17,7 @@ public class mainMenu extends JPanel implements ActionListener { //the mainMenu 
 
     private StateChangeListener stateChanger;
 
-    public mainMenu(StateChangeListener listener) {
+    public MainMenu(StateChangeListener listener) {
         panel = new BgPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
