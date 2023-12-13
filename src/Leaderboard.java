@@ -52,8 +52,6 @@ public class Leaderboard extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 3))); //creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
         this.add(lbList);
-        createPlayers();
-        readTop10Players();
 
         mainMenu = new Button("Main menu");
         mainMenu.setFocusable(true);
@@ -62,6 +60,9 @@ public class Leaderboard extends JPanel implements ActionListener {
         this.add(mainMenu);
         mainMenu.addActionListener(this);
         stateChanger = listener;
+
+        createPlayers();
+        readTop10Players();
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -174,6 +175,54 @@ public class Leaderboard extends JPanel implements ActionListener {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    // check if players score is among top 10.
+    public static boolean scoreAmongTop10Scores(Players playerInTop10){
+        boolean inTop10Score=true;
+
+        JSONParser parser = new JSONParser();
+        try{
+            FileReader reader = new FileReader("res/Top10Scores.json");//Creating reader to read data from json file
+            JSONObject readJsonObj=(JSONObject)parser.parse(reader);//parsing data from json file to  string
+
+            ArrayList<Players> top10Scorers = new ArrayList<>();
+            for(Object PlayersData:readJsonObj.keySet()){
+                String playerName=(String)PlayersData;
+                long playerScore=(Long)readJsonObj.get(PlayersData);
+                Players player=new Players(playerName);
+                player.setScore((int)playerScore);
+                top10Scorers.add(player);
+            }
+            for(int i=0;i<top10Scorers.size();i++){
+                for(int j=i+1;j<top10Scorers.size();j++){
+                    if(top10Scorers.get(i).getScore()<top10Scorers.get(j).getScore()){
+                        Collections.swap(top10Scorers,i,j);
+                    }
+                }
+
+            }
+
+            int playerScore=playerInTop10.getScore();
+
+            for (int i=0;i<top10Scorers.size();i++){
+                if(playerScore==top10Scorers.get(i).getScore()){
+                    inTop10Score=true;
+
+                }
+                else if(playerScore!=top10Scorers.get(i).getScore()){
+                    inTop10Score=false;
+                    break;
+                }
+            }
+
+            System.out.println(inTop10Score);
+
+
+        } catch(IOException | ParseException e){
+            throw new RuntimeException(e);
+        }
+        return inTop10Score;
     }
 
 }
