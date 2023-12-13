@@ -43,6 +43,7 @@ public class GameOver extends JPanel implements ActionListener {
         EnterNameLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         EnterNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(EnterNameLabel);
+        this.add(Box.createRigidArea(new Dimension(0, 100)));
 
         this.add(Box.createRigidArea(new Dimension(0, 100)));
 
@@ -58,6 +59,12 @@ public class GameOver extends JPanel implements ActionListener {
 
         for (Button button : buttons) {
             this.add(button);
+            Font newButtonFont = new Font("Public Pixel", Font.BOLD, 35);
+            button.setFont(newButtonFont);
+            button.setPreferredSize(new Dimension(700, 120));
+            button.setMaximumSize(new Dimension(700, 120));
+            button.setFocusable(true);
+
             if (!isHighScore){ // Debug
                 button.setFocusable(false);
 
