@@ -10,7 +10,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
     public GameFrame() {
         super();
 
-        currentPanel = new MainMenu(this);
+        currentPanel = new mainMenu(this);
         this.add(currentPanel);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
         getContentPane().removeAll();
         switch (newState) {
             case MENU -> {
-                currentPanel = new MainMenu(this);
+                currentPanel = new mainMenu(this);
             }
             case GAME -> {
                 GamePanel gamePanel = new GamePanel(this);

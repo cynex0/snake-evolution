@@ -2,12 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 
-public class MainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel & implements ActionListener interface.
+public class mainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel & implements ActionListener interface.
 
     private GameState GameState;
     private Button startBtn; // Declaring Button references
@@ -19,7 +17,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
     private StateChangeListener stateChanger;
 
-    public MainMenu(StateChangeListener listener) {
+    public mainMenu(StateChangeListener listener) {
         panel = new BgPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));

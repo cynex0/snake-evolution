@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameOver extends JPanel implements ActionListener {
-    private final Button MainMenu;
-    private final Button exit;
+    private final Button retry;
+    private final Button mainMenu;
     public BgPanel panel;
 
 
@@ -46,12 +46,12 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 100)));
 
         panel = new BgPanel();
-        MainMenu = new Button("Main Menu");
-        exit = new Button("Exit");
+        retry = new Button("Retry");
+        mainMenu = new Button("Main Menu");
 
         buttons = new ArrayList<>();
-        buttons.add(MainMenu);
-        buttons.add(exit);
+        buttons.add(retry);
+        buttons.add(mainMenu);
 
 
         for (Button button : buttons) {
@@ -68,11 +68,11 @@ public class GameOver extends JPanel implements ActionListener {
             }
         }
 
-        MainMenu.setActionCommand("menu");
-        MainMenu.addActionListener(this);
+        retry.setActionCommand("retry");
+        retry.addActionListener( this);
 
-        exit.setActionCommand("exit");
-        exit.addActionListener( this);
+        mainMenu.setActionCommand("menu");
+        mainMenu.addActionListener(this);
 
         stateChanger = listener;
     }
@@ -89,10 +89,11 @@ public class GameOver extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
 
-        if ("menu".equals(actionCommand)) {
+        if ("retry".equals(actionCommand)) {
+            stateChanger.changeState(GameState.GAME);
+        } else if ("menu".equals(actionCommand)) {
             stateChanger.changeState(GameState.MENU);
-        } else if ("exit".equals(actionCommand)) {
-            System.exit(0);
+
         }
     }
 
