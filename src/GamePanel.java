@@ -19,11 +19,7 @@ public class GamePanel extends JPanel implements KeyListener {
     private BgPanel bg;
     private Snake snake;
     private Food food;
-<<<<<<< HEAD
-    private int score = 0; //
-=======
     private int score = 0;
->>>>>>> 2b2ce2c08cee82ebfd8ed68a36c74593012ab3fe
     private final Timer gameLoop;
 
     private StateChangeListener stateChanger;
@@ -90,11 +86,7 @@ public class GamePanel extends JPanel implements KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        bg.paintComponent(g);
-
         bg.paintComponent(g); // draw background first
-
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 

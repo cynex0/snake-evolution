@@ -14,25 +14,37 @@ public class GameOver extends JPanel implements ActionListener {
 
     private StateChangeListener stateChanger;
 
+    private JLabel scoreText;
+
     public GameOver(StateChangeListener listener, int score, boolean isHighScore) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
 
-        JLabel titleLabel = new JLabel("Game Over!", SwingConstants.CENTER);
+        this.add(Box.createRigidArea(new Dimension(0, 10)));
+        JLabel titleLabel = new JLabel("GAME OVER!", SwingConstants.CENTER);
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(Box.createRigidArea(new Dimension(0, 3)));
+
+        this.add(Box.createRigidArea(new Dimension(0, 5)));
         this.add(titleLabel);
+
+        this.add(Box.createRigidArea(new Dimension(0, 100)));
+        scoreText = new JLabel("YOUR SCORE: " , SwingConstants.CENTER);
+        scoreText.setForeground(Color.BLACK);
+        scoreText.setFont(new Font("Public Pixel", Font.BOLD, 35));
+        scoreText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(scoreText);
+        this.add(Box.createRigidArea(new Dimension(0, 150)));
 
         JLabel EnterNameLabel = new JLabel("Enter your name:");
         EnterNameLabel.setForeground(Color.BLACK);
         EnterNameLabel.setFont(new Font("Public Pixel", Font.BOLD, 25));
         EnterNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(EnterNameLabel);
 
+        this.add(Box.createRigidArea(new Dimension(0, 100)));
 
 
         panel = new BgPanel();
