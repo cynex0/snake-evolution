@@ -21,10 +21,9 @@ public class Obstacle {
 
         cells.add(startPos);
 
-        double growChance = 1; // chance for increasing the number of cells
+        double growChance = 0.75; // chance for increasing the number of cells
         for (int i = 0; i < MAX_SIZE; i++) { // generate additional cells, up to MAX_SIZE, with diminishing probability
             double roll = rand.nextDouble();
-            System.out.println(roll + " " + growChance); // DEBUG
 
             if (roll <= growChance) {
                 ArrayList<CellPosition> viableCells = new ArrayList<>();
@@ -48,7 +47,7 @@ public class Obstacle {
                     break;
 
                 cells.add(nextCell);
-                growChance = growChance / 2; // decrease the growth chance 2 times
+                growChance = growChance - 0.1; // add non-linearity to the chance
             }
             else break;
         }
