@@ -40,22 +40,13 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
         buttons.add(leaderboardBtn);
         buttons.add(exitBtn);
 
-
         for (Button button : buttons) {
             this.add(button); // add the buttons to the panel
-
-
-            startBtn.setActionCommand("start"); //sets action command for the button
-            startBtn.addActionListener(this); //adds listener to register button interaction
-
-            leaderboardBtn.setActionCommand("leaderboard");
-            leaderboardBtn.addActionListener(this);
-
-            exitBtn.setActionCommand("exit");
-            exitBtn.addActionListener(this);
-
-            stateChanger = listener;
+            button.setActionCommand(button.getText()); //sets action command for the button that is the same as its name
+            button.addActionListener(this); //adds listener to register button interaction
         }
+
+        stateChanger = listener;
     }
     public void paintComponent(Graphics g) { //calling the BgPanel paintcomponent method to draw the border rectangles
         super.paintComponent(g);
@@ -66,11 +57,11 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
     public void actionPerformed(ActionEvent event) { // logic for when buttons are clicked.
         String actionCommand = event.getActionCommand();
 
-        if ("start".equals(actionCommand)) {
+        if ("Start".equals(actionCommand)) {
             stateChanger.changeState(GameState.GAME); // switches to state GAME.
-        } else if ("leaderboard".equals(actionCommand)) {
+        } else if ("Leaderboard".equals(actionCommand)) {
             stateChanger.changeState(GameState.LEADERBOARD); // switches to state LEADERBOARD.
-        } else if ("exit".equals(actionCommand)) {
+        } else if ("Exit".equals(actionCommand)) {
             System.exit(0); // terminates the program.
         }
     }
