@@ -86,9 +86,7 @@ public class GamePanel extends JPanel implements KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         bg.paintComponent(g); // draw background first
-
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
