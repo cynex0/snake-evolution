@@ -3,7 +3,8 @@ import java.awt.*;
 
 public class BgPanel extends JPanel {
     public static final int BORDER_THC = 5; // border thickness
-    public static final int MARGIN_INNER = GamePanel.CELL_SIZE * 3; // distance from screen edge to inner margin point, 3 cells away
+    public static final int MARGIN_CELLS = 3; // distance from screen edge to margin in cells
+    public static final int MARGIN_INNER = GamePanel.CELL_SIZE * MARGIN_CELLS; // distance from screen edge to inner margin point, 3 cells away
     public static final int MARGIN_OUTER = MARGIN_INNER - BORDER_THC; // distance from screen edge to outer margin point (closer to the screen)
 
 
