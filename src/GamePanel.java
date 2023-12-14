@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements KeyListener {
         snake = new Snake();
 
         stateChanger = listener;
-        food = new Food(0, 0);
+        food = new Food();
         score = 0;
 
         gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
@@ -63,24 +63,13 @@ public class GamePanel extends JPanel implements KeyListener {
 
         if (snake.foodEaten(food)) {
             snake.increaseLength();
-            produceFood();
+            food.respawn();
             score++;
         }
     }
 
     public int getScore () {
         return this.score;
-    }
-    private void produceFood () {
-        int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
-        int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
-
-        food.setFoodLocation(locX,locY);
-    }
-
-    private int generateRandomLoc (int high, int low) {
-        int randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
-        return randomLoc;
     }
 
     @Override
@@ -102,7 +91,6 @@ public class GamePanel extends JPanel implements KeyListener {
     // starts the game loop
     public void startGame() {
         gameLoop.start();
-        produceFood();
     }
 
     @Override
