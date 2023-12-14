@@ -14,7 +14,6 @@ public class Leaderboard extends JPanel implements ActionListener {
     Font gameFont = null;
     private static DefaultListModel<String> listItems;
     private static JList<String> lbList;
-
     private JButton mainMenu;     // a Button to go back to the main menu
     private StateChangeListener stateChanger;
 
@@ -46,11 +45,12 @@ public class Leaderboard extends JPanel implements ActionListener {
         listItems = new DefaultListModel<>(); // A list that will hold players names and score
         lbList = new JList<>(listItems); // a list that will define the layout ie color, size, etc
         lbList.setBackground(Color.decode("#A9E000"));
+        lbList.setForeground(Color.BLACK);
         lbList.setFont(gameFont);
-        lbList.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        this.add(Box.createRigidArea(new Dimension(0, 3))); //creates a blank area above title for visual spacing.
+        this.add(Box.createRigidArea(new Dimension(0, 10)));//creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
+        this.add(Box.createRigidArea(new Dimension(0, 50)));// drawing blank area above JList
         this.add(lbList);
 
         mainMenu = new Button("Main menu");
@@ -107,46 +107,75 @@ public class Leaderboard extends JPanel implements ActionListener {
             // filling the list with top 10 players names and scores
             int playerIndex = 1;
             for (Players player : top10Scorers) {
-                if (playerIndex <= 10) {
-                    listItems.addElement(playerIndex + ". " + player.getNamesAndScores());
-                    playerIndex++;
+
+                if (playerIndex < 10) {
+
+                    listItems.addElement(playerIndex + " . " + player.getNamesAndScores());
+
                 }
+                else if (playerIndex == 10) {
+
+                    listItems.addElement(playerIndex + ". " + player.getNamesAndScores());
+                }
+                playerIndex++;
             }
 
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
+
     }
     public static void createPlayers(){
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
         // Creating dummy players and their scores
-        Players player1 = new Players("Wick");
+        Players player1 = new Players("P1");
         player1.addScore(); // addScore will add 10 points to the players current score
-        Players player2 = new Players("Mike");
-        player2.addScore();player2.addScore();
-        Players player3 = new Players("Pia");
-        player3.addScore();player3.addScore();
-        Players player4 = new Players("Willy");
-        player4.addScore();player4.addScore();player4.addScore();player4.addScore();
-        Players player5 = new Players("Teo");
-        player5.addScore();player5.addScore();player5.addScore();player5.addScore();player5.addScore();
-        player5.addScore();player5.addScore();player5.addScore();player5.addScore();player5.addScore();player5.addScore();
-        Players player6 = new Players("Tina");
-        player6.addScore();
-        Players player7 = new Players("Lia");
-        player7.addScore(); player7.addScore(); player7.addScore(); player7.addScore();
-        Players player8 = new Players("Lina");
-        player8.addScore();player8.addScore();player8.addScore();
-        Players player9 = new Players("Lind");
-        Players player10 = new Players("Tony");
-        player10.addScore();  player10.addScore(); player10.addScore(); player10.addScore();
-        player10.addScore();  player10.addScore() ;player10.addScore();
+        Players player2 = new Players("P2");
+        player2.addScore();
+        Players player3 = new Players("P4444444444443");
+        player3.addScore();player3.addScore();player3.addScore();
+        Players player4 = new Players("P3434343433434344");
+        player4.addScore();player4.addScore();player4.addScore();
+        player4.addScore();
+        Players player5 = new Players("P5");
+        player5.addScore();player5.addScore();player5.addScore();
+        player5.addScore();        player5.addScore();
+        Players player6 = new Players("P6");
+        player6.addScore();player6.addScore();player6.addScore();
+        player6.addScore();player6.addScore();player6.addScore();
+        Players player7 = new Players("P7");
+        player7.addScore(); player7.addScore(); player7.addScore();
+        player7.addScore(); player7.addScore();player7.addScore();
+        player7.addScore();
+        Players player8 = new Players("P8");
 
-        Players player11 = new Players("Lucas");
+        player8.addScore();player8.addScore();player8.addScore();
+        player8.addScore();player8.addScore();player8.addScore();
+        player8.addScore();player8.addScore();
+
+        Players player9 = new Players("P9");
+        player9.addScore();player9.addScore();player9.addScore();
+        player9.addScore();player9.addScore();player9.addScore();
+        player9.addScore();player9.addScore();player9.addScore();
+
+        Players player10 = new Players("P10");
+        player10.addScore();  player10.addScore(); player10.addScore();
+        player10.addScore(); player10.addScore(); player10.addScore();
+        player10.addScore();  player10.addScore() ;player10.addScore();
+        player10.addScore();
+
+        Players player11 = new Players("P11");
+        player11.addScore();player11.addScore();player11.addScore();
+        player11.addScore();player11.addScore();player11.addScore();
+        player11.addScore();player11.addScore();player11.addScore();
         player11.addScore();player11.addScore();
-        Players player12 = new Players("Sam");
+
+        Players player12 = new Players("P12");
+        player12.addScore();player12.addScore();player12.addScore();
+        player12.addScore();player12.addScore();player12.addScore();
+        player12.addScore();player12.addScore();player12.addScore();
         player12.addScore();player12.addScore();player12.addScore();
 
         // Adding dummy  players to an Arraylist
@@ -162,6 +191,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         playersList.add(player10);
         playersList.add(player11);
         playersList.add(player12);
+        isTopTen(player2);
 
         // Storing top 10 players' names and scores in json file
         try {
@@ -178,8 +208,8 @@ public class Leaderboard extends JPanel implements ActionListener {
     }
 
     // check if players score is among top 10.
-    public static boolean scoreAmongTop10Scores(Players playerInTop10){
-        boolean inTop10Score=true;
+    public static boolean isTopTen(Players playerInTop10){
+        boolean isInTopTen = true;
 
         JSONParser parser = new JSONParser();
         try{
@@ -202,27 +232,41 @@ public class Leaderboard extends JPanel implements ActionListener {
                 }
 
             }
+            int playerIndex = 1;
+            for (Players player : top10Scorers) {
+                if (playerIndex <= 10) {
+                    if(playerInTop10.getScore() < top10Scorers.get(playerIndex).getScore()){
+                        isInTopTen = false;
+                    }
 
-            int playerScore=playerInTop10.getScore();
+                    else if (playerInTop10.getScore() == top10Scorers.get(playerIndex).getScore()){
+                        isInTopTen = true;
+                    }
+                }
+                playerIndex++;
+            }
 
-            for (int i=0;i<top10Scorers.size();i++){
+           /* int playerScore=playerInTop10.getScore();
+
+            for (int i=0;i<=10;i++){
                 if(playerScore==top10Scorers.get(i).getScore()){
-                    inTop10Score=true;
+                    isInTopTen=true;
 
                 }
                 else if(playerScore!=top10Scorers.get(i).getScore()){
-                    inTop10Score=false;
+                    isInTopTen=false;
                     break;
                 }
-            }
+            }*/
 
-            System.out.println(inTop10Score);
 
 
         } catch(IOException | ParseException e){
             throw new RuntimeException(e);
         }
-        return inTop10Score;
+
+        System.out.println(isInTopTen);
+        return isInTopTen;
     }
 
 }

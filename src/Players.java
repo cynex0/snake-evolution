@@ -21,13 +21,17 @@ public class Players {
         return this.score;
     }
     public int addScore(){
-        this.score += 10;
+        this.score++;
         return score;
     }
 
-    public String getNamesAndScores(){
 
-        return String.format("%-6S ........... %3s", this.name, this.score);
+    public String getNamesAndScores(){
+        String truncatedName = this.name;
+        if (this.name.length() > 5) {
+            truncatedName = this.name.substring(0, 5);
+        }
+        return String.format("%-5S-------------%3s", truncatedName, this.score);
     }
 
 }
