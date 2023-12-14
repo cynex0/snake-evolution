@@ -87,7 +87,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
-        food.draw(g);
+        food.draw(frame);
         obstacle.draw(frame);
 
         g.setColor(Color.blue);

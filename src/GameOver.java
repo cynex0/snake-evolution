@@ -31,7 +31,7 @@ public class GameOver extends JPanel implements ActionListener {
         this.add(titleLabel);
 
         this.add(Box.createRigidArea(new Dimension(0, 100)));
-        scoreText = new JLabel("YOUR SCORE: " , SwingConstants.CENTER);
+        scoreText = new JLabel("YOUR SCORE: " + score , SwingConstants.CENTER);
         scoreText.setForeground(Color.BLACK);
         scoreText.setFont(new Font("Public Pixel", Font.BOLD, 35));
         scoreText.setAlignmentX(Component.CENTER_ALIGNMENT);
