@@ -11,12 +11,47 @@ public class Obstacle {
 
     public Obstacle(ArrayList<CellPosition> snakePos) {
         rand = new Random();
+        cells = new ArrayList<>();
         respawn(snakePos);
     }
 
     public void respawn(ArrayList<CellPosition> snakePos) {
         CellPosition startPos = getRandomCell();
+        if (snakePos.contains(startPos)) return; // prevent spawning if started spawning inside of the snake
+
         cells.add(startPos);
+
+        double growChance = 1; // chance for increasing the number of cells
+        for (int i = 0; i < MAX_SIZE; i++) { // generate additional cells, up to MAX_SIZE, with diminishing probability
+            double roll = rand.nextDouble();
+            System.out.println(roll + " " + growChance); // DEBUG
+
+            if (roll <= growChance) {
+                ArrayList<CellPosition> viableCells = new ArrayList<>();
+                CellPosition prevCell = cells.get(i);
+
+                if (prevCell.x + 1 <= MAX_CELL) // can grow to the right
+                    viableCells.add(new CellPosition(prevCell.x + 1, prevCell.y));
+                if (prevCell.x - 1 >= MIN_CELL) // can grow to the left
+                    viableCells.add(new CellPosition(prevCell.x - 1, prevCell.y));
+                if (prevCell.y + 1 <= MAX_CELL) // can grow down
+                    viableCells.add(new CellPosition(prevCell.x, prevCell.y + 1));
+                if (prevCell.y - 1 >= MIN_CELL) // can grow up
+                    viableCells.add(new CellPosition(prevCell.x, prevCell.y - 1));
+
+                if (viableCells.isEmpty()) // stop spawning if no viable cells found
+                    break;
+
+                // choose a random cell out of the possible cells
+                CellPosition nextCell = viableCells.get(rand.nextInt(viableCells.size()));
+                if (snakePos.contains(nextCell)) // stop spawning if spawned inside the snake
+                    break;
+
+                cells.add(nextCell);
+                growChance = growChance / 2; // decrease the growth chance 2 times
+            }
+            else break;
+        }
     }
 
     private CellPosition getRandomCell() {
@@ -31,5 +66,9 @@ public class Obstacle {
             Point p = pos.getCoordinates();
             frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
         }
+    }
+
+    public ArrayList<CellPosition> getCells() {
+        return cells;
     }
 }

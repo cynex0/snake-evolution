@@ -19,6 +19,8 @@ public class GamePanel extends JPanel implements KeyListener {
     private BgPanel bg;
     private Snake snake;
     private Food food;
+    private Obstacle obstacle;
+
     private int score = 0;
     private final Timer gameLoop;
 
@@ -38,6 +40,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         stateChanger = listener;
         food = new Food();
+        obstacle = new Obstacle(snake.getBody());
         score = 0;
 
         gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
@@ -61,10 +64,15 @@ public class GamePanel extends JPanel implements KeyListener {
             gameLoop.stop();
         }
 
-        if (snake.foodEaten(food)) {
+        if (snake.checkCollisionWith(food.getFoodLocation())) {
             snake.increaseLength();
             food.respawn();
             score++;
+        }
+
+        if (snake.checkCollisionWith(obstacle.getCells())) {
+            stateChanger.changeState(GameState.GAME_OVER);
+            gameLoop.stop();
         }
     }
 
@@ -80,6 +88,7 @@ public class GamePanel extends JPanel implements KeyListener {
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
         food.draw(g);
+        obstacle.draw(frame);
 
         g.setColor(Color.blue);
         g.drawString("Score: "+ score, 65 , GameFrame.WINDOW_SIZE.y - 770);
