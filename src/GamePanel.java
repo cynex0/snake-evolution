@@ -19,6 +19,8 @@ public class GamePanel extends JPanel implements KeyListener {
     private BgPanel bg;
     private Snake snake;
     private Food food;
+    private Obstacle obstacle;
+
     private int score = 0;
     private final Timer gameLoop;
     private StateChangeListener stateChanger;
@@ -36,7 +38,8 @@ public class GamePanel extends JPanel implements KeyListener {
         snake = new Snake();
 
         stateChanger = listener;
-        food = new Food(0, 0);
+        food = new Food();
+        obstacle = new Obstacle(snake.getBody());
         score = 0;
 
         gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
@@ -50,50 +53,42 @@ public class GamePanel extends JPanel implements KeyListener {
         snake.move();
 
         if (snake.doCollisions()) {
-            /*
-            if (leaderBoard.isTopTen(score)) {
-                stateChanger.changeState(GameState.GAME_OVER_ENTERNAME)
+            Players tempPlayer = new Players("");
+            tempPlayer.setScore(score);
+            if (Leaderboard.isTopTen(tempPlayer)) {
+                stateChanger.changeState(GameState.GAME_OVER_ENTERNAME);
             }
-            else
-             */
-            stateChanger.changeState(GameState.GAME_OVER);
-            gameLoop.stop();
+            else {
+                stateChanger.changeState(GameState.GAME_OVER);
+                gameLoop.stop();
+            }
         }
 
-        if (snake.foodEaten(food)) {
+        if (snake.checkCollisionWith(food.getFoodLocation())) {
             snake.increaseLength();
-            produceFood();
+            food.respawn();
             score++;
+        }
+
+        if (snake.checkCollisionWith(obstacle.getCells())) {
+            stateChanger.changeState(GameState.GAME_OVER);
+            gameLoop.stop();
         }
     }
 
     public int getScore () {
         return this.score;
     }
-    private void produceFood () {
-        int locX = generateRandomLoc(GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3 , 10);
-        int locY = generateRandomLoc( GameFrame.WINDOW_SIZE.x / 15 - CELL_SIZE-3, 10);
-
-        food.setFoodLocation(locX,locY);
-    }
-
-    private int generateRandomLoc (int high, int low) {
-        int randomLoc = (int) (Math.floor (Math.random() * (1+high-low)) + low) * 20;
-        return randomLoc;
-    }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        bg.paintComponent(g);
-
         bg.paintComponent(g); // draw background first
-
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
-        food.draw(g);
+        food.draw(frame);
+        obstacle.draw(frame);
 
         g.setColor(Color.blue);
         g.drawString("Score: "+ score, 65 , GameFrame.WINDOW_SIZE.y - 770);
@@ -105,7 +100,6 @@ public class GamePanel extends JPanel implements KeyListener {
     // starts the game loop
     public void startGame() {
         gameLoop.start();
-        produceFood();
     }
 
     @Override
