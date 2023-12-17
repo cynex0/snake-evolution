@@ -41,14 +41,17 @@ public class GameFrame extends JFrame implements StateChangeListener {
             }
             case GAME_OVER -> {
                 int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be GamePanel
-                GameOver nextPanel = new GameOver(this, score,false);
+                GameOver nextPanel = new GameOver(this, score);
                 currentPanel = nextPanel;
             }
+
             case GAME_OVER_ENTERNAME -> {
                 int score = ((GamePanel)currentPanel).getScore();
-                GameOver nextPanel = new GameOver(this, score,true);
+                GameOver nextPanel = new GameOver(this, score);
                 currentPanel = nextPanel;
             }
+
+
             case LEADERBOARD -> {
                 currentPanel = new Leaderboard(this);
             }
