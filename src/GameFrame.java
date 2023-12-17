@@ -44,12 +44,15 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 GameOver nextPanel = new GameOver(this, score);
                 currentPanel = nextPanel;
             }
+            /*
 
             case GAME_OVER_ENTERNAME -> {
                 int score = ((GamePanel)currentPanel).getScore();
                 GameOver nextPanel = new GameOver(this, score);
                 currentPanel = nextPanel;
             }
+
+             */
 
 
             case LEADERBOARD -> {
