@@ -96,14 +96,8 @@ public class Leaderboard extends JPanel implements ActionListener {
                 top10Scorers.add(player);
             }
             // sorting players from high to low scores
-            for (int i=0; i < top10Scorers.size(); i++){
-                for (int j = i+1; j < top10Scorers.size(); j++){
-                    if (top10Scorers.get(i).getScore() < top10Scorers.get(j).getScore()){
-                        Collections.swap(top10Scorers, i , j);
-                    }
-                }
+            Collections.sort(top10Scorers);
 
-            }
             // filling the list with top 10 players names and scores
             int playerIndex = 1;
             for (Players player : top10Scorers) {
@@ -209,14 +203,13 @@ public class Leaderboard extends JPanel implements ActionListener {
 
     // check if players score is among top 10.
     public static boolean isTopTen(Players playerInTop10){
-        boolean isInTopTen = true;
+        ArrayList<Players> top10Scorers = new ArrayList<>();
 
         JSONParser parser = new JSONParser();
         try{
             FileReader reader = new FileReader("res/Top10Scores.json");//Creating reader to read data from json file
             JSONObject readJsonObj=(JSONObject)parser.parse(reader);//parsing data from json file to  string
 
-            ArrayList<Players> top10Scorers = new ArrayList<>();
             for(Object PlayersData:readJsonObj.keySet()){
                 String playerName=(String)PlayersData;
                 long playerScore=(Long)readJsonObj.get(PlayersData);
@@ -224,49 +217,14 @@ public class Leaderboard extends JPanel implements ActionListener {
                 player.setScore((int)playerScore);
                 top10Scorers.add(player);
             }
-            for(int i=0;i<top10Scorers.size();i++){
-                for(int j=i+1;j<top10Scorers.size();j++){
-                    if(top10Scorers.get(i).getScore()<top10Scorers.get(j).getScore()){
-                        Collections.swap(top10Scorers,i,j);
-                    }
-                }
 
-            }
-            int playerIndex = 1;
-            for (Players player : top10Scorers) {
-                if (playerIndex <= 10) {
-                    if(playerInTop10.getScore() < top10Scorers.get(playerIndex).getScore()){
-                        isInTopTen = false;
-                    }
-
-                    else if (playerInTop10.getScore() == top10Scorers.get(playerIndex).getScore()){
-                        isInTopTen = true;
-                    }
-                }
-                playerIndex++;
-            }
-
-           /* int playerScore=playerInTop10.getScore();
-
-            for (int i=0;i<=10;i++){
-                if(playerScore==top10Scorers.get(i).getScore()){
-                    isInTopTen=true;
-
-                }
-                else if(playerScore!=top10Scorers.get(i).getScore()){
-                    isInTopTen=false;
-                    break;
-                }
-            }*/
-
-
+            Collections.sort(top10Scorers);
 
         } catch(IOException | ParseException e){
             throw new RuntimeException(e);
         }
 
-        System.out.println(isInTopTen);
-        return isInTopTen;
+        return playerInTop10.getScore() > top10Scorers.get(9).getScore();
     }
 
 }

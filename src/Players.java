@@ -1,4 +1,4 @@
-public class Players {
+public class Players implements Comparable<Players> {
 
     private String name;
     private int score;
@@ -34,4 +34,10 @@ public class Players {
         return String.format("%-5S-------------%3s", truncatedName, this.score);
     }
 
+    @Override
+    public int compareTo(Players other) {
+        if (this.score < other.score) return 1;
+        if (this.score > other.score) return -1;
+        return 0;
+    }
 }
