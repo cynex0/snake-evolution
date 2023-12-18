@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements KeyListener {
     public static final int FPS = 60;
     private BgPanel bg;
     private Snake snake;
-    private Food food;
+    private Food food, speedFood;
     private Obstacle obstacle;
 
     private int score = 0;
@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         stateChanger = listener;
         food = new Food();
+        speedFood = new Food();
         obstacle = new Obstacle(snake.getBody());
         score = 0;
 
@@ -70,6 +71,11 @@ public class GamePanel extends JPanel implements KeyListener {
             score++;
         }
 
+        if (snake.checkCollisionWith(speedFood.getBonusFoodLocation())) {
+            speedFood.respawnBonusFood();
+            score++;
+        }
+
         if (snake.checkCollisionWith(obstacle.getCells())) {
             stateChanger.changeState(GameState.GAME_OVER);
             gameLoop.stop();
@@ -89,8 +95,10 @@ public class GamePanel extends JPanel implements KeyListener {
 
         food.draw(frame);
         obstacle.draw(frame);
+        speedFood.drawSpeedFood(frame);
 
-        g.setColor(Color.blue);
+
+        g.setColor(Color.black);
         g.drawString("Score: "+ score, 65 , GameFrame.WINDOW_SIZE.y - 770);
 
         snake.draw(frame);
