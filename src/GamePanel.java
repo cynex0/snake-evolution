@@ -53,15 +53,13 @@ public class GamePanel extends JPanel implements KeyListener {
         snake.move();
 
         if (snake.doCollisions()) {
-            Players tempPlayer = new Players("");
-            tempPlayer.setScore(score);
-            if (Leaderboard.isTopTen(tempPlayer)) {
-                stateChanger.changeState(GameState.GAME_OVER_ENTERNAME);
-            }
-            else {
-                stateChanger.changeState(GameState.GAME_OVER);
-                gameLoop.stop();
-            }
+            stopGame();
+            return;
+        }
+
+        if (snake.checkCollisionWith(obstacle.getCells())) {
+            stopGame();
+            return;
         }
 
         if (snake.checkCollisionWith(food.getFoodLocation())) {
@@ -70,10 +68,6 @@ public class GamePanel extends JPanel implements KeyListener {
             score++;
         }
 
-        if (snake.checkCollisionWith(obstacle.getCells())) {
-            stateChanger.changeState(GameState.GAME_OVER);
-            gameLoop.stop();
-        }
     }
 
     public int getScore () {
@@ -100,6 +94,20 @@ public class GamePanel extends JPanel implements KeyListener {
     // starts the game loop
     public void startGame() {
         gameLoop.start();
+    }
+
+    public void stopGame() {
+        gameLoop.stop();
+
+        Players tempPlayer = new Players("");
+        tempPlayer.setScore(score);
+
+        if (Leaderboard.isTopTen(tempPlayer)) {
+            stateChanger.changeState(GameState.GAME_OVER_ENTERNAME);
+        }
+        else {
+            stateChanger.changeState(GameState.GAME_OVER);
+        }
     }
 
     @Override
