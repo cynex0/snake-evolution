@@ -47,7 +47,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             this.add(Box.createRigidArea(new Dimension(0, 100)));  // Add space above the newHighScoreLabel.
             this.add(newHighScoreLabel); // adds the label to the panel
 
-            scoreText = new JLabel("YOUR SCORE: ",SwingConstants.CENTER);
+            scoreText = new JLabel("YOUR SCORE:",SwingConstants.CENTER);
             scoreText.setForeground(Color.BLACK);
             scoreText.setFont(new Font("Public Pixel", Font.BOLD, 35)); // Sets the font and size
             scoreText.setAlignmentX(Component.CENTER_ALIGNMENT);
