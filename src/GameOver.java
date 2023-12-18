@@ -76,7 +76,7 @@ public class GameOver extends JPanel implements ActionListener {
 
         } else {       // if the score is not considered a high score "temp score < 5", go back to menu or retry the game using buttons.
             this.add(Box.createRigidArea(new Dimension(0, 80)));
-            scoreText = new JLabel("YOUR SCORE: ",SwingConstants.CENTER);
+            scoreText = new JLabel("YOUR SCORE:",SwingConstants.CENTER);
             scoreText.setForeground(Color.BLACK);
             scoreText.setFont(new Font("Public Pixel", Font.BOLD, 35));
             scoreText.setAlignmentX(Component.CENTER_ALIGNMENT);
