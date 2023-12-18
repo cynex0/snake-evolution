@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class GameOver extends JPanel implements ActionListener {
+public class GameOver extends JPanel implements ActionListener, KeyListener, FocusListener {
     private final Button retryBtn; // Declaring button references
     private final Button mainMenuBtn;
     public BgPanel panel; // BgPanel reference for instantiation
@@ -13,6 +13,7 @@ public class GameOver extends JPanel implements ActionListener {
     private StateChangeListener stateChanger;
 
     private JLabel scoreText;
+    private JTextField enterNameField;
 
     public GameOver(StateChangeListener listener, int score) {
 
@@ -67,10 +68,10 @@ public class GameOver extends JPanel implements ActionListener {
             this.add(Box.createRigidArea(new Dimension(0, 170)));
             this.add(EnterNameLabel);
 
-            JTextField EnterNameField = getjTextField(); // Creates a text field
+            enterNameField = getjTextField(); // Creates a text field
             setVisible(true);
             this.add(Box.createRigidArea(new Dimension(0,50))); // Add the text field to the panel with spacing adjustments.
-            this.add(EnterNameField);
+            this.add(enterNameField);
             this.add(Box.createRigidArea(new Dimension(0, 50)));
 
 
@@ -107,12 +108,10 @@ public class GameOver extends JPanel implements ActionListener {
 
             stateChanger = listener;
         }
-
-        }
-
+    }
 
     @NotNull // Indicates that the method should not return null.
-    private static JTextField getjTextField() {
+    private JTextField getjTextField() {
         JTextField EnterNameField = new JTextField("___",SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
         EnterNameField.add(Box.createRigidArea(new Dimension(0,100))); //
         EnterNameField.setBorder(BorderFactory.createEmptyBorder()); // Sets an empty border around the text field.
@@ -122,24 +121,11 @@ public class GameOver extends JPanel implements ActionListener {
         EnterNameField.setAlignmentX(Component.CENTER_ALIGNMENT);
         EnterNameField.setMaximumSize(new Dimension(100, 50));
 
-        EnterNameField.addFocusListener(new FocusListener() {  //  Allows the user to start typing without manually removing the initial placeholder text.
-     @Override
-         public void focusGained(FocusEvent e) {
-                if(EnterNameField.getText().equals("___")){
-                    EnterNameField.setText("");
-                }
-            }
+        EnterNameField.addFocusListener(this);  //  Allows the user to start typing without manually removing the initial placeholder text.
+        EnterNameField.addKeyListener(this);
 
-            @Override
-            public void focusLost(FocusEvent e) {
-
-            }
-        }
-        );
         return EnterNameField;
     }
-
-
 
     @Override
     protected void paintComponent(Graphics graphics) { //calling the BgPanel paintComponent method to draw the border rectangles
@@ -159,4 +145,25 @@ public class GameOver extends JPanel implements ActionListener {
     }
 
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if (enterNameField.getText().length() >= 3 ) // limit textfield to 3 characters
+            e.consume();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        if(enterNameField.getText().equals("___")){
+            enterNameField.setText("");
+        }
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {}
 }
