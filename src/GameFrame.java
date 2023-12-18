@@ -32,6 +32,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
             case MENU -> {
                 currentPanel = new MainMenu(this);
             }
+
             case GAME -> {
                 GamePanel gamePanel = new GamePanel(this);
                 this.addKeyListener(gamePanel);
@@ -39,21 +40,18 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 currentPanel = gamePanel;
                 gamePanel.startGame();
             }
+
             case GAME_OVER -> {
                 int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be GamePanel
-                GameOver nextPanel = new GameOver(this, score);
+                GameOver nextPanel = new GameOver(this, score, false);
                 currentPanel = nextPanel;
             }
-            /*
 
             case GAME_OVER_ENTERNAME -> {
                 int score = ((GamePanel)currentPanel).getScore();
-                GameOver nextPanel = new GameOver(this, score);
+                GameOver nextPanel = new GameOver(this, score, true);
                 currentPanel = nextPanel;
             }
-
-             */
-
 
             case LEADERBOARD -> {
                 currentPanel = new Leaderboard(this);

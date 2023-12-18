@@ -15,7 +15,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     private JLabel scoreText;
     private JTextField enterNameField;
 
-    public GameOver(StateChangeListener listener, int score) {
+    public GameOver(StateChangeListener listener, int score, boolean isHighScore) {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
@@ -37,7 +37,6 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         buttons.add(mainMenuBtn);
 
 
-        boolean isHighScore = score >= 5; // Temp value to change state based on the score
         if( isHighScore ){ // If the score qualifies as a high score " temp score = 5 ", The player can enter name.
 
             JLabel newHighScoreLabel = new JLabel("NEW HIGH SCORE!",SwingConstants.CENTER); // A label to display "NEW HIGH SCORE!".
