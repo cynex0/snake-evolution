@@ -61,7 +61,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         mainMenu.addActionListener(this);
         stateChanger = listener;
 
-        createPlayers();
+        createPlayer();
         readTop10Players();
     }
     public void paintComponent(Graphics g) {
@@ -90,8 +90,8 @@ public class Leaderboard extends JPanel implements ActionListener {
             ArrayList<Players> top10Scorers = new ArrayList<>();
             for (Object PlayersData : readJsonObj.keySet()) {
                 String playerName = (String) PlayersData;
-                long playerScore = (Long) readJsonObj.get(PlayersData);
-                Players player = new Players(playerName);
+                long playerScore = (long) readJsonObj.get(PlayersData);
+                Players player = new Players(playerName, playerScore);
                 player.setScore((int) playerScore);
                 top10Scorers.add(player);
             }
@@ -125,58 +125,39 @@ public class Leaderboard extends JPanel implements ActionListener {
         }
 
     }
-    public static void createPlayers(){
+    public static void createPlayer(){
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
         // Creating dummy players and their scores
-        Players player1 = new Players("P1");
-        player1.addScore(); // addScore will add 10 points to the players current score
-        Players player2 = new Players("P2");
-        player2.addScore();
-        Players player3 = new Players("P4444444444443");
-        player3.addScore();player3.addScore();player3.addScore();
-        Players player4 = new Players("P3434343433434344");
-        player4.addScore();player4.addScore();player4.addScore();
-        player4.addScore();
-        Players player5 = new Players("P5");
-        player5.addScore();player5.addScore();player5.addScore();
-        player5.addScore();        player5.addScore();
-        Players player6 = new Players("P6");
-        player6.addScore();player6.addScore();player6.addScore();
-        player6.addScore();player6.addScore();player6.addScore();
-        Players player7 = new Players("P7");
-        player7.addScore(); player7.addScore(); player7.addScore();
-        player7.addScore(); player7.addScore();player7.addScore();
-        player7.addScore();
-        Players player8 = new Players("P8");
+        Players player1 = new Players("Ritta",0);
 
-        player8.addScore();player8.addScore();player8.addScore();
-        player8.addScore();player8.addScore();player8.addScore();
-        player8.addScore();player8.addScore();
+        Players player2 = new Players("Fanny",22);
 
-        Players player9 = new Players("P9");
-        player9.addScore();player9.addScore();player9.addScore();
-        player9.addScore();player9.addScore();player9.addScore();
-        player9.addScore();player9.addScore();player9.addScore();
+        Players player3 = new Players("Tiger",42);
 
-        Players player10 = new Players("P10");
-        player10.addScore();  player10.addScore(); player10.addScore();
-        player10.addScore(); player10.addScore(); player10.addScore();
-        player10.addScore();  player10.addScore() ;player10.addScore();
-        player10.addScore();
+        Players player4 = new Players("Tony",90);
 
-        Players player11 = new Players("P11");
-        player11.addScore();player11.addScore();player11.addScore();
-        player11.addScore();player11.addScore();player11.addScore();
-        player11.addScore();player11.addScore();player11.addScore();
-        player11.addScore();player11.addScore();
+        Players player5 = new Players("Lisa",33);
 
-        Players player12 = new Players("P12");
-        player12.addScore();player12.addScore();player12.addScore();
-        player12.addScore();player12.addScore();player12.addScore();
-        player12.addScore();player12.addScore();player12.addScore();
-        player12.addScore();player12.addScore();player12.addScore();
+        Players player6 = new Players("Peter", 98);
+
+        Players player7 = new Players("Tomas", 25);
+
+        Players player8 = new Players("Nina", 49);
+
+        Players player9 = new Players("Tim", 66);
+
+
+        Players player10 = new Players("Eric",12);
+
+
+
+        Players player11 = new Players("Larsson", 40);
+
+
+        Players player12 = new Players("Cecilia", 100);
+
 
         // Adding dummy  players to an Arraylist
         playersList.add(player1);
@@ -219,8 +200,8 @@ public class Leaderboard extends JPanel implements ActionListener {
             ArrayList<Players> top10Scorers = new ArrayList<>();
             for(Object PlayersData:readJsonObj.keySet()){
                 String playerName=(String)PlayersData;
-                long playerScore=(Long)readJsonObj.get(PlayersData);
-                Players player=new Players(playerName);
+                long playerScore=(long)readJsonObj.get(PlayersData);
+                Players player=new Players(playerName, playerScore);
                 player.setScore((int)playerScore);
                 top10Scorers.add(player);
             }
@@ -245,21 +226,6 @@ public class Leaderboard extends JPanel implements ActionListener {
                 }
                 playerIndex++;
             }
-
-           /* int playerScore=playerInTop10.getScore();
-
-            for (int i=0;i<=10;i++){
-                if(playerScore==top10Scorers.get(i).getScore()){
-                    isInTopTen=true;
-
-                }
-                else if(playerScore!=top10Scorers.get(i).getScore()){
-                    isInTopTen=false;
-                    break;
-                }
-            }*/
-
-
 
         } catch(IOException | ParseException e){
             throw new RuntimeException(e);
