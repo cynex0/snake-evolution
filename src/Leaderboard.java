@@ -130,11 +130,11 @@ public class Leaderboard extends JPanel implements ActionListener {
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
         // Creating dummy players and their scores
-        Players player1 = new Players("Ritta",0);
+        Players player1 = new Players("Ritta",42);
 
-        Players player2 = new Players("Fanny",22);
+        Players player2 = new Players("Fanny",42);
 
-        Players player3 = new Players("Tiger",42);
+        Players player3 = new Players("Tiger",2);
 
         Players player4 = new Players("Tony",90);
 
@@ -148,15 +148,13 @@ public class Leaderboard extends JPanel implements ActionListener {
 
         Players player9 = new Players("Tim", 66);
 
-
         Players player10 = new Players("Eric",12);
-
-
 
         Players player11 = new Players("Larsson", 40);
 
-
-        Players player12 = new Players("Cecilia", 100);
+        Players player12 = new Players("Cecilia", 1000);
+        Players player13 = new Players("Linda", 66);
+        Players player14 = new Players("Willy", 0);
 
 
         // Adding dummy  players to an Arraylist
@@ -172,7 +170,9 @@ public class Leaderboard extends JPanel implements ActionListener {
         playersList.add(player10);
         playersList.add(player11);
         playersList.add(player12);
-        isTopTen(player2);
+        playersList.add(player13);
+        playersList.add(player14);
+        isTopTen(player11);
 
         // Storing top 10 players' names and scores in json file
         try {
@@ -190,7 +190,7 @@ public class Leaderboard extends JPanel implements ActionListener {
 
     // check if players score is among top 10.
     public static boolean isTopTen(Players playerInTop10){
-        boolean isInTopTen = true;
+        boolean isInTopTen = false;
 
         JSONParser parser = new JSONParser();
         try{
@@ -215,14 +215,14 @@ public class Leaderboard extends JPanel implements ActionListener {
             }
             int playerIndex = 1;
             for (Players player : top10Scorers) {
-                if (playerIndex <= 10) {
-                    if(playerInTop10.getScore() < top10Scorers.get(playerIndex).getScore()){
+                if (playerIndex <= 10 && (playerInTop10.getScore() == top10Scorers.get(playerIndex).getScore())) {
+                    /*if(playerInTop10.getScore() < top10Scorers.get(playerIndex).getScore()){
                         isInTopTen = false;
-                    }
+                    }*/
 
-                    else if (playerInTop10.getScore() == top10Scorers.get(playerIndex).getScore()){
+                   //if (){
                         isInTopTen = true;
-                    }
+                   //}
                 }
                 playerIndex++;
             }
