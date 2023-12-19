@@ -154,7 +154,8 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+        if(e.getKeyCode() == KeyEvent.VK_ENTER && !enterNameField.getText().isEmpty()){
+            // TODO: add a player to the leaderboard
             stateChanger.changeState(GameState.LEADERBOARD);
         }
     }
