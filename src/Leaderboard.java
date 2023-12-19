@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Leaderboard extends JPanel implements ActionListener {
-    Font gameFont = null;
     private static DefaultListModel<String> listItems;
     private static JList<String> lbList;
     private JButton mainMenu;     // a Button to go back to the main menu
@@ -23,22 +22,13 @@ public class Leaderboard extends JPanel implements ActionListener {
     public Leaderboard(StateChangeListener listener){
         panel = new BgPanel();
         // creating custom font for the game
-        try {
-            gameFont = Font.createFont(Font.TRUETYPE_FONT,new File("res/PublicPixel.ttf")).deriveFont(25f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(gameFont);
-
-        } catch (FontFormatException | IOException e) {
-            throw new RuntimeException(e);
-        }
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
         JLabel titleLabel = new JLabel("Leaderboard", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.
         titleLabel.setForeground(Color.BLACK); //colors it black.
-        titleLabel.setFont(gameFont);
+        titleLabel.setFont(new Font("Public Pixel", Font.BOLD,25));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
 
         // defining layout of list
@@ -46,7 +36,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         lbList = new JList<>(listItems); // a list that will define the layout ie color, size, etc
         lbList.setBackground(Color.decode("#A9E000"));
         lbList.setForeground(Color.BLACK);
-        lbList.setFont(gameFont);
+        lbList.setFont(new Font("Public Pixel", Font.BOLD,25));
 
         this.add(Box.createRigidArea(new Dimension(0, 10)));//creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
@@ -96,14 +86,8 @@ public class Leaderboard extends JPanel implements ActionListener {
                 top10Scorers.add(player);
             }
             // sorting players from high to low scores
-            for (int i=0; i < top10Scorers.size(); i++){
-                for (int j = i+1; j < top10Scorers.size(); j++){
-                    if (top10Scorers.get(i).getScore() < top10Scorers.get(j).getScore()){
-                        Collections.swap(top10Scorers, i , j);
-                    }
-                }
+            Collections.sort(top10Scorers);
 
-            }
             // filling the list with top 10 players names and scores
             int playerIndex = 1;
             for (Players player : top10Scorers) {
@@ -190,14 +174,13 @@ public class Leaderboard extends JPanel implements ActionListener {
 
     // check if players score is among top 10.
     public static boolean isTopTen(Players playerInTop10){
-        boolean isInTopTen = false;
+        ArrayList<Players> top10Scorers = new ArrayList<>();
 
         JSONParser parser = new JSONParser();
         try{
             FileReader reader = new FileReader("res/Top10Scores.json");//Creating reader to read data from json file
             JSONObject readJsonObj=(JSONObject)parser.parse(reader);//parsing data from json file to  string
 
-            ArrayList<Players> top10Scorers = new ArrayList<>();
             for(Object PlayersData:readJsonObj.keySet()){
                 String playerName=(String)PlayersData;
                 long playerScore=(long)readJsonObj.get(PlayersData);
@@ -205,34 +188,14 @@ public class Leaderboard extends JPanel implements ActionListener {
                 player.setScore((int)playerScore);
                 top10Scorers.add(player);
             }
-            for(int i=0;i<top10Scorers.size();i++){
-                for(int j=i+1;j<top10Scorers.size();j++){
-                    if(top10Scorers.get(i).getScore()<top10Scorers.get(j).getScore()){
-                        Collections.swap(top10Scorers,i,j);
-                    }
-                }
 
-            }
-            int playerIndex = 1;
-            for (Players player : top10Scorers) {
-                if (playerIndex <= 10 && (playerInTop10.getScore() == top10Scorers.get(playerIndex).getScore())) {
-                    /*if(playerInTop10.getScore() < top10Scorers.get(playerIndex).getScore()){
-                        isInTopTen = false;
-                    }*/
-
-                   //if (){
-                        isInTopTen = true;
-                   //}
-                }
-                playerIndex++;
-            }
+            Collections.sort(top10Scorers);
 
         } catch(IOException | ParseException e){
             throw new RuntimeException(e);
         }
 
-        System.out.println(isInTopTen);
-        return isInTopTen;
+        return playerInTop10.getScore() > top10Scorers.get(9).getScore();
     }
 
 }

@@ -118,4 +118,16 @@ public class Snake {
         }
         return false;
     }
+
+    // checks if snake collides with any object at given position
+    public boolean checkCollisionWith(CellPosition pos) {
+        return body.contains(pos);
+    }
+
+    public boolean checkCollisionWith(ArrayList<CellPosition> pos) {
+        for (CellPosition p : pos) {
+            if (body.contains(p)) return true;
+        }
+        return false;
+    }
 }
