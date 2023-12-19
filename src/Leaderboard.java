@@ -70,44 +70,49 @@ public class Leaderboard extends JPanel implements ActionListener {
 
     }
 
-    public static void readTop10Players(){
+    private static ArrayList<Players> readFromFile() {
+        // Returns a sorted list of players read from the json file
         JSONParser parser = new JSONParser();
+        ArrayList<Players> players = new ArrayList<>();
+
         try {
-            FileReader reader = new  FileReader("res/Top10Scores.json"); // Creating reader to read data from json file
+            FileReader reader = new FileReader("res/Top10Scores.json"); // Creating reader to read data from json file
             JSONObject readJsonObj = (JSONObject) parser.parse(reader); // parsing data from json file to string
 
-            // Reading data from json and adding it to an arraylist of Players class
-            ArrayList<Players> top10Scorers = new ArrayList<>();
             for (Object PlayersData : readJsonObj.keySet()) {
                 String playerName = (String) PlayersData;
                 long playerScore = (long) readJsonObj.get(PlayersData);
                 Players player = new Players(playerName, playerScore);
-                player.setScore((int) playerScore);
-                top10Scorers.add(player);
+                players.add(player);
             }
-            // sorting players from high to low scores
-            Collections.sort(top10Scorers);
-
-            // filling the list with top 10 players names and scores
-            int playerIndex = 1;
-            for (Players player : top10Scorers) {
-
-                if (playerIndex < 10) {
-
-                    listItems.addElement(playerIndex + " . " + player.getNamesAndScores());
-
-                }
-                else if (playerIndex == 10) {
-
-                    listItems.addElement(playerIndex + ". " + player.getNamesAndScores());
-                }
-                playerIndex++;
-            }
-
-        } catch (IOException | ParseException e) {
-            throw new RuntimeException(e);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Error while reading file!\n" + e.getMessage());
         }
 
+        // sorting players from high to low scores
+        Collections.sort(players);
+        return players;
+    }
+
+    public static void readTop10Players(){
+        ArrayList<Players> top10Scorers = readFromFile();
+
+        // filling the list with top 10 players names and scores
+        int playerIndex = 1;
+        for (Players player : top10Scorers) {
+
+            if (playerIndex < 10) {
+
+                listItems.addElement(playerIndex + " . " + player.getNamesAndScores());
+
+            }
+            else if (playerIndex == 10) {
+
+                listItems.addElement(playerIndex + ". " + player.getNamesAndScores());
+            }
+            playerIndex++;
+        }
     }
     public static void createPlayer(){
         FileWriter writer;
@@ -156,7 +161,6 @@ public class Leaderboard extends JPanel implements ActionListener {
         playersList.add(player12);
         playersList.add(player13);
         playersList.add(player14);
-        isTopTen(player11);
 
         // Storing top 10 players' names and scores in json file
         try {
@@ -174,28 +178,8 @@ public class Leaderboard extends JPanel implements ActionListener {
 
     // check if players score is among top 10.
     public static boolean isTopTen(Players playerInTop10){
-        ArrayList<Players> top10Scorers = new ArrayList<>();
-
-        JSONParser parser = new JSONParser();
-        try{
-            FileReader reader = new FileReader("res/Top10Scores.json");//Creating reader to read data from json file
-            JSONObject readJsonObj=(JSONObject)parser.parse(reader);//parsing data from json file to  string
-
-            for(Object PlayersData:readJsonObj.keySet()){
-                String playerName=(String)PlayersData;
-                long playerScore=(long)readJsonObj.get(PlayersData);
-                Players player=new Players(playerName, playerScore);
-                player.setScore((int)playerScore);
-                top10Scorers.add(player);
-            }
-
-            Collections.sort(top10Scorers);
-
-        } catch(IOException | ParseException e){
-            throw new RuntimeException(e);
-        }
-
-        return playerInTop10.getScore() > top10Scorers.get(9).getScore();
+        ArrayList<Players> players = readFromFile();
+        return playerInTop10.getScore() > players.get(9).getScore();
     }
 
 }
