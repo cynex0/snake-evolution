@@ -28,6 +28,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         this.add(Box.createRigidArea(new Dimension(0, 5))); // creates a blank area under title for visual spacing.
         this.add(titleLabel);
 
+
         panel = new BgPanel();
         retryBtn = new Button("Retry"); // Assigning buttons
         mainMenuBtn = new Button("Main Menu");
@@ -36,8 +37,11 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         buttons.add(retryBtn); // adding the existing Button objects to the list.
         buttons.add(mainMenuBtn);
 
+        stateChanger = listener;
 
-        if( isHighScore ){ // If the score qualifies as a high score " temp score = 5 ", The player can enter name.
+
+
+        if( isHighScore ){
 
             JLabel newHighScoreLabel = new JLabel("NEW HIGH SCORE!",SwingConstants.CENTER); // A label to display "NEW HIGH SCORE!".
             newHighScoreLabel.setForeground(Color.BLACK);
@@ -74,7 +78,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             this.add(Box.createRigidArea(new Dimension(0, 50)));
 
 
-        } else {       // if the score is not considered a high score "temp score < 5", go back to menu or retry the game using buttons.
+        } else {
             this.add(Box.createRigidArea(new Dimension(0, 80)));
             scoreText = new JLabel("YOUR SCORE:",SwingConstants.CENTER);
             scoreText.setForeground(Color.BLACK);
@@ -105,7 +109,6 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             mainMenuBtn.setActionCommand("menu");
             mainMenuBtn.addActionListener(this);
 
-            stateChanger = listener;
         }
     }
 
@@ -132,7 +135,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         panel.paintComponent(graphics);
 
     }
-    public void actionPerformed(ActionEvent event) { // Performs action when buttons are clicked
+    public void actionPerformed(ActionEvent event ) { // Performs action when buttons are clicked
         String actionCommand = event.getActionCommand();
 
         if ("retry".equals(actionCommand)) {
@@ -140,9 +143,8 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         } else if ("menu".equals(actionCommand)) {
             stateChanger.changeState(GameState.MENU); // Menu button changes the game over  state to main menu.
 
+            }
         }
-    }
-
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -151,7 +153,12 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER && !enterNameField.getText().isEmpty()){
+            // TODO: add a player to the leaderboard
+            stateChanger.changeState(GameState.LEADERBOARD);
+        }
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {}
