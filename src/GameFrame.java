@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class GameFrame extends JFrame implements StateChangeListener {
     public static final Point WINDOW_SIZE = new Point(800, 800);
@@ -10,18 +12,25 @@ public class GameFrame extends JFrame implements StateChangeListener {
     public GameFrame() {
         super();
 
-        currentPanel = new MainMenu(this);
-        this.add(currentPanel);
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setTitle("Snake Evolution");
         this.setSize(WINDOW_SIZE.x, WINDOW_SIZE.y);
 
-        this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setFocusable(true);
+
+        // create font for use in all panels
+        try {
+            Font gameFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/PublicPixel.ttf"));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(gameFont); // makes the font available to font constructors by font name
+        } catch (FontFormatException | IOException e) {
+            throw new RuntimeException("Font creation error\n" + e);
+        }
+
+        changeState(GameState.MENU);
     }
 
 
@@ -32,6 +41,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
             case MENU -> {
                 currentPanel = new MainMenu(this);
             }
+
             case GAME -> {
                 GamePanel gamePanel = new GamePanel(this);
                 this.addKeyListener(gamePanel);
@@ -39,9 +49,16 @@ public class GameFrame extends JFrame implements StateChangeListener {
                 currentPanel = gamePanel;
                 gamePanel.startGame();
             }
+
             case GAME_OVER -> {
-                // TODO: Fix switching bug
-                GameOver nextPanel = new GameOver(this,100,true);//,100, Leaderboard.istop10(score)); // waiting for the function
+                int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be GamePanel
+                GameOver nextPanel = new GameOver(this, score, false);
+                currentPanel = nextPanel;
+            }
+
+            case GAME_OVER_ENTERNAME -> {
+                int score = ((GamePanel)currentPanel).getScore();
+                GameOver nextPanel = new GameOver(this, score, true);
                 currentPanel = nextPanel;
             }
 
