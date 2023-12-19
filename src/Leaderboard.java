@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Leaderboard extends JPanel implements ActionListener {
-    Font gameFont = null;
     private static DefaultListModel<String> listItems;
     private static JList<String> lbList;
     private JButton mainMenu;     // a Button to go back to the main menu
@@ -23,22 +22,13 @@ public class Leaderboard extends JPanel implements ActionListener {
     public Leaderboard(StateChangeListener listener){
         panel = new BgPanel();
         // creating custom font for the game
-        try {
-            gameFont = Font.createFont(Font.TRUETYPE_FONT,new File("res/PublicPixel.ttf")).deriveFont(25f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(gameFont);
-
-        } catch (FontFormatException | IOException e) {
-            throw new RuntimeException(e);
-        }
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
         JLabel titleLabel = new JLabel("Leaderboard", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.
         titleLabel.setForeground(Color.BLACK); //colors it black.
-        titleLabel.setFont(gameFont);
+        titleLabel.setFont(new Font("Public Pixel", Font.BOLD,25));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); //centers the text.
 
         // defining layout of list
@@ -46,7 +36,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         lbList = new JList<>(listItems); // a list that will define the layout ie color, size, etc
         lbList.setBackground(Color.decode("#A9E000"));
         lbList.setForeground(Color.BLACK);
-        lbList.setFont(gameFont);
+        lbList.setFont(new Font("Public Pixel", Font.BOLD,25));
 
         this.add(Box.createRigidArea(new Dimension(0, 10)));//creates a blank area above title for visual spacing.
         this.add(titleLabel); // adds title to panel.
