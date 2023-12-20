@@ -51,7 +51,6 @@ public class Leaderboard extends JPanel implements ActionListener {
         mainMenu.addActionListener(this);
         stateChanger = listener;
 
-        createPlayer();
         readTop10Players();
     }
     public void paintComponent(Graphics g) {
@@ -114,57 +113,16 @@ public class Leaderboard extends JPanel implements ActionListener {
             playerIndex++;
         }
     }
-    public static void createPlayer(){
+    public static void createPlayer(String name, long score){
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
-        // Creating dummy players and their scores
-        Players player1 = new Players("Ritta",42);
-
-        Players player2 = new Players("Fanny",42);
-
-        Players player3 = new Players("Tiger",2);
-
-        Players player4 = new Players("Tony",90);
-
-        Players player5 = new Players("Lisa",33);
-
-        Players player6 = new Players("Peter", 98);
-
-        Players player7 = new Players("Tomas", 25);
-
-        Players player8 = new Players("Nina", 49);
-
-        Players player9 = new Players("Tim", 66);
-
-        Players player10 = new Players("Eric",12);
-
-        Players player11 = new Players("Larsson", 40);
-
-        Players player12 = new Players("Cecilia", 1000);
-        Players player13 = new Players("Linda", 66);
-        Players player14 = new Players("Willy", 0);
-
-
-        // Adding dummy  players to an Arraylist
-        playersList.add(player1);
-        playersList.add(player2);
-        playersList.add(player3);
-        playersList.add(player4);
-        playersList.add(player5);
-        playersList.add(player6);
-        playersList.add(player7);
-        playersList.add(player8);
-        playersList.add(player9);
-        playersList.add(player10);
-        playersList.add(player11);
-        playersList.add(player12);
-        playersList.add(player13);
-        playersList.add(player14);
+        Players newPlayer = new Players(name, score);
+        playersList.add(newPlayer);
 
         // Storing top 10 players' names and scores in json file
         try {
-              writer = new FileWriter("res/Top10Scores.json");
+            writer = new FileWriter("res/Top10Scores.json");
             for (Players players : playersList) {
                 jsonObj.put(players.getName(), players.getScore());
             }
