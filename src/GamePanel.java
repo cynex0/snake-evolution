@@ -2,19 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 
 public class GamePanel extends JPanel implements KeyListener {
+    public static final int FPS = 60;
     public static final int CELL_COUNT = 40;
     public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
 
-    public static final int FPS = 60;
+    private Random rand;
     private BgPanel bg;
     private Snake snake;
     private Food food;
-    private Obstacle obstacle;
+    private ObstacleList obstacles;
 
-    private int score = 0;
+    private int score;
     private final Timer gameLoop;
     private StateChangeListener stateChanger;
 
@@ -24,15 +26,15 @@ public class GamePanel extends JPanel implements KeyListener {
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-
         this.setFocusable(true);
 
+        rand = new Random();
         bg = new BgPanel();
         snake = new Snake();
 
         stateChanger = listener;
         food = new Food();
-        obstacle = new Obstacle(snake.getBody());
+        obstacles = new ObstacleList();
         score = 0;
 
         gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
@@ -51,21 +53,28 @@ public class GamePanel extends JPanel implements KeyListener {
         }
 
         // collision with obstacles
-        if (snake.checkCollisionWith(obstacle.getCells())) {
+        if (snake.checkCollisionWith(obstacles.getAllCells())) {
             stopGame();
             return;
         }
 
         // collision with food
         if (snake.checkCollisionWith(food.getFoodLocation())) {
-            // spawn food in a valid position
+            score++;
+
+            // spawn new food in a valid position
             CellPosition newFoodPos;
             do {
                 food.respawn(); // respawn food until its in a valid position
                 newFoodPos = food.getFoodLocation();
-            } while (snake.checkCollisionWith(newFoodPos) || obstacle.getCells().contains(newFoodPos));
-            score++;
-        } else {
+            } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
+
+            // spawn new obstacle every 5th time food is eaten
+            if (score % 5 == 0) {
+                obstacles.add(new Obstacle(snake.getBody()));
+            }
+        }
+        else {
             snake.getBody().remove(snake.getBody().size() - 1); // remove the tail to complete movement
         }
     }
@@ -82,7 +91,8 @@ public class GamePanel extends JPanel implements KeyListener {
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
         food.draw(frame);
-        obstacle.draw(frame);
+        for (Obstacle obstacle : obstacles.getObstacles())
+            obstacle.draw(frame);
 
         g.setColor(Color.blue);
         g.drawString("Score: "+ score, 65 , GameFrame.WINDOW_SIZE.y - 770);

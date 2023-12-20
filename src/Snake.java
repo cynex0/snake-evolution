@@ -100,6 +100,8 @@ public class Snake {
     }
 
     public boolean checkCollisionWith(ArrayList<CellPosition> pos) {
+        if (pos.isEmpty()) return false;
+
         for (CellPosition p : pos) {
             if (body.contains(p)) return true;
         }
