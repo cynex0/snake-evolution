@@ -20,11 +20,6 @@ public class Players implements Comparable<Players> {
     public long getScore(){
         return this.score;
     }
-    /*public long addScore(){
-        this.score++;
-        return score;
-    }*/
-
 
     public String getNamesAndScores(){
         String truncatedName = this.name;

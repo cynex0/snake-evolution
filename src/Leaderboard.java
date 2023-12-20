@@ -120,9 +120,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
-        for (Players player : top10Scorers){
-            playersList.add(player);
-        }
+        playersList.addAll(top10Scorers);
         Players newPlayer = new Players(name, score);
         playersList.add(newPlayer);
 
