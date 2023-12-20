@@ -91,12 +91,13 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             ScoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(ScoreLabel);
 
+            this.add(Box.createRigidArea(new Dimension(0, 160)));  // Adds space above the new score label
+
             for (Button button : buttons) {
                 Font newButtonFont = new Font("Public Pixel", Font.BOLD, 35);
                 button.setFont(newButtonFont);
                 button.setPreferredSize(new Dimension(700, 120));
                 button.setMaximumSize(new Dimension(700, 120));
-                this.add(Box.createRigidArea(new Dimension(0, 80)));  // Adds space above the new score label
                 this.add(button); // Adds the buttons to the panel.
             }
 
