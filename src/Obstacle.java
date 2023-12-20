@@ -3,11 +3,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Obstacle {
-    private ArrayList<CellPosition> cells;
-    private Random rand;
     private static final int MIN_CELL = BgPanel.MARGIN_CELLS + 1; // first playable cell + 1
     private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 2; // last playable cell - 1
     private static final int MAX_SIZE = 5; // maximum amt of cells in an obstacle
+    private static final int PARTICLE_COUNT = 8;
+    private static final int PARTICLE_SIZE = GamePanel.CELL_SIZE / 5;
+
+    private ArrayList<CellPosition> cells;
+    private Random rand;
 
     public Obstacle(ArrayList<CellPosition> snakePos) {
         rand = new Random();
@@ -60,10 +63,24 @@ public class Obstacle {
     }
 
     public void draw(Graphics2D frame) {
-        frame.setColor(Color.BLACK);
         for (CellPosition pos : cells) {
             Point p = pos.getCoordinates();
+
+            // draw the obstacle
+            frame.setColor(Color.BLACK);
             frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
+
+            // draw the "cracks" in the obstacle
+            for (int i = 0; i < PARTICLE_COUNT; i++) {
+                if (rand.nextFloat() > 0.75)
+                    frame.setColor(Color.DARK_GRAY);
+                else
+                    frame.setColor(Color.GRAY);
+
+                int x = (int) (rand.nextFloat() * (GamePanel.CELL_SIZE - PARTICLE_SIZE)) + p.x;
+                int y = (int) (rand.nextFloat() * (GamePanel.CELL_SIZE - PARTICLE_SIZE)) + p.y;
+                frame.fillRect(x, y, PARTICLE_SIZE, PARTICLE_SIZE);
+            }
         }
     }
 
