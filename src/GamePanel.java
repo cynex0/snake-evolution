@@ -1,14 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 
 
 public class GamePanel extends JPanel implements KeyListener {
@@ -64,10 +57,14 @@ public class GamePanel extends JPanel implements KeyListener {
 
         if (snake.checkCollisionWith(food.getFoodLocation())) {
             snake.increaseLength();
-            food.respawn();
+            // spawn food in a valid position
+            CellPosition newFoodPos;
+            do {
+                food.respawn(); // respawn food until its in a valid position
+                newFoodPos = food.getFoodLocation();
+            } while (snake.checkCollisionWith(newFoodPos) || obstacle.getCells().contains(newFoodPos));
             score++;
         }
-
     }
 
     public int getScore () {
