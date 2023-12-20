@@ -115,9 +115,14 @@ public class Leaderboard extends JPanel implements ActionListener {
     }
 
     public static void createPlayer(String name, long score){
+        ArrayList<Players> top10Scorers = readFromFile();
+
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
+        for (Players player : top10Scorers){
+            playersList.add(player);
+        }
         Players newPlayer = new Players(name, score);
         playersList.add(newPlayer);
 
