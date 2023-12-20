@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-public class MainMenu extends JPanel implements ActionListener { //the mainMenu class javas JPanel & implements ActionListener interface.
+public class MainMenu extends JPanel implements ActionListener { // the mainMenu class javas JPanel & implements ActionListener interface.
 
     private GameState GameState;
     private Button startBtn; // Declaring Button references
@@ -15,7 +15,7 @@ public class MainMenu extends JPanel implements ActionListener { //the mainMenu 
 
     private ArrayList<Button> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
-    private StateChangeListener stateChanger;
+    private StateChangeListener stateChanger; // reference to state changer instance.
 
     public MainMenu(StateChangeListener listener) {
         panel = new BgPanel();
