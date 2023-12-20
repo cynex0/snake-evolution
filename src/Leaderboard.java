@@ -113,6 +113,7 @@ public class Leaderboard extends JPanel implements ActionListener {
             playerIndex++;
         }
     }
+
     public static void createPlayer(String name, long score){
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
@@ -137,6 +138,7 @@ public class Leaderboard extends JPanel implements ActionListener {
     // check if players score is among top 10.
     public static boolean isTopTen(Players playerInTop10){
         ArrayList<Players> players = readFromFile();
+        if (players.size() < 10) return true;
         return playerInTop10.getScore() > players.get(9).getScore();
     }
 
