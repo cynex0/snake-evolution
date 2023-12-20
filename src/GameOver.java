@@ -138,12 +138,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             stateChanger.changeState(GameState.GAME); // Retry button changes the game over state to the game state.
         } else if ("menu".equals(actionCommand)) {
             stateChanger.changeState(GameState.MENU); // Menu button changes the game over  state to main menu.
-
-            }
         }
-
-    private void moveToLB() {
-
     }
 
     @Override

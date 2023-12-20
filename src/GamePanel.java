@@ -111,7 +111,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         Players tempPlayer = new Players("", score);
 
-        if (Leaderboard.isTopTen(tempPlayer)) {
+        if (score > 0 && Leaderboard.isTopTen(tempPlayer)) {
             stateChanger.changeState(GameState.GAME_OVER_ENTERNAME);
         }
         else {

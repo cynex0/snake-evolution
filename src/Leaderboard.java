@@ -115,9 +115,12 @@ public class Leaderboard extends JPanel implements ActionListener {
     }
 
     public static void createPlayer(String name, long score){
+        ArrayList<Players> top10Scorers = readFromFile();
+
         FileWriter writer;
         org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
 
+        playersList.addAll(top10Scorers);
         Players newPlayer = new Players(name, score);
         playersList.add(newPlayer);
 
@@ -125,6 +128,9 @@ public class Leaderboard extends JPanel implements ActionListener {
         try {
             writer = new FileWriter("res/Top10Scores.json");
             for (Players players : playersList) {
+                if (jsonObj.containsKey(players.getName()) && (long) jsonObj.get(players.getName()) > players.getScore()) {
+                    continue; // do not put a lower score if an entry with the same name exists
+                }
                 jsonObj.put(players.getName(), players.getScore());
             }
             writer.write(jsonObj.toJSONString());
