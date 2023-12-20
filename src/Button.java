@@ -14,7 +14,6 @@ public class Button extends JButton implements MouseListener {
         editButton(this);
         setFocusable(true);
         this.addMouseListener(this);
-
     }
 
     public void editButton(Button button) {
