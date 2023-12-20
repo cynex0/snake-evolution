@@ -1,4 +1,3 @@
-import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -110,7 +109,6 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         }
     }
 
-    @NotNull // Indicates that the method should not return null.
     private JTextField getjTextField() {
         JTextField EnterNameField = new JTextField("___",SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
         EnterNameField.add(Box.createRigidArea(new Dimension(0,100))); //
