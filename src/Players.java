@@ -33,6 +33,6 @@ public class Players implements Comparable<Players> {
     public int compareTo(Players other) {
         if (this.score < other.score) return 1;
         if (this.score > other.score) return -1;
-        return 0;
+        return this.name.compareTo(other.getName());
     }
 }
