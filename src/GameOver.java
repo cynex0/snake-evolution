@@ -14,8 +14,11 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
 
     private JLabel scoreText;
     private JTextField enterNameField;
+    private int score;
 
     public GameOver(StateChangeListener listener, int score, boolean isHighScore) {
+        this.score = score;
+        stateChanger = listener;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
@@ -28,7 +31,6 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         this.add(Box.createRigidArea(new Dimension(0, 5))); // creates a blank area under title for visual spacing.
         this.add(titleLabel);
 
-
         panel = new BgPanel();
         retryBtn = new Button("Retry"); // Assigning buttons
         mainMenuBtn = new Button("Main Menu");
@@ -37,12 +39,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         buttons.add(retryBtn); // adding the existing Button objects to the list.
         buttons.add(mainMenuBtn);
 
-        stateChanger = listener;
-
-
-
         if( isHighScore ){
-
             JLabel newHighScoreLabel = new JLabel("NEW HIGH SCORE!",SwingConstants.CENTER); // A label to display "NEW HIGH SCORE!".
             newHighScoreLabel.setForeground(Color.BLACK);
             newHighScoreLabel.setFont(new Font("Public Pixel", Font.BOLD, 30));
@@ -146,6 +143,10 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             }
         }
 
+    private void moveToLB() {
+
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
         if (enterNameField.getText().length() >= 3 ) // limit textfield to 3 characters
@@ -155,7 +156,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ENTER && !enterNameField.getText().isEmpty()){
-            // TODO: add a player to the leaderboard
+            Leaderboard.createPlayer(enterNameField.getText(), score);
             stateChanger.changeState(GameState.LEADERBOARD);
         }
     }
