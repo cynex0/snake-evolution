@@ -72,7 +72,7 @@ public class Obstacle {
 
             // draw the "cracks" in the obstacle
             for (int i = 0; i < PARTICLE_COUNT; i++) {
-                if (rand.nextFloat() > 0.75)
+                if (rand.nextFloat() > 0.25)
                     frame.setColor(Color.DARK_GRAY);
                 else
                     frame.setColor(Color.GRAY);
