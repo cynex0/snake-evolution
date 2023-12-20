@@ -42,21 +42,22 @@ public class GamePanel extends JPanel implements KeyListener {
     }
 
     public void update() {
-        // update positions, etc
-        snake.move();
+        snake.move(); // add a new "head" based on the movement direction
 
+        // snake collisions (self and borders)
         if (snake.doCollisions()) {
             stopGame();
             return;
         }
 
+        // collision with obstacles
         if (snake.checkCollisionWith(obstacle.getCells())) {
             stopGame();
             return;
         }
 
+        // collision with food
         if (snake.checkCollisionWith(food.getFoodLocation())) {
-            snake.increaseLength();
             // spawn food in a valid position
             CellPosition newFoodPos;
             do {
@@ -64,6 +65,8 @@ public class GamePanel extends JPanel implements KeyListener {
                 newFoodPos = food.getFoodLocation();
             } while (snake.checkCollisionWith(newFoodPos) || obstacle.getCells().contains(newFoodPos));
             score++;
+        } else {
+            snake.getBody().remove(snake.getBody().size() - 1); // remove the tail to complete movement
         }
     }
 
