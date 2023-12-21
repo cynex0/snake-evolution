@@ -96,7 +96,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("Public Pixel", Font.PLAIN,20));
-        g.drawString(""+ score, 65 , GameFrame.WINDOW_SIZE.y - 760);
+        g.drawString(String.format("%03d", score), 65 , GameFrame.WINDOW_SIZE.y - 760);
 
 
         snake.draw(frame);
