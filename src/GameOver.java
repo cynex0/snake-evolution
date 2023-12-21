@@ -73,6 +73,10 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             this.add(enterNameField);
             this.add(Box.createRigidArea(new Dimension(0, 50)));
 
+            SwingUtilities.invokeLater(() -> {
+                enterNameField.requestFocusInWindow();   // Set the focus on the JTextField
+            });
+
 
         } else {
             this.add(Box.createRigidArea(new Dimension(0, 80)));
@@ -160,7 +164,6 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     @Override
     public void focusGained(FocusEvent e) {
         if( enterNameField.getText().equals("___") ){
-            enterNameField.requestFocus();
             enterNameField.setText("");
         }
     }
