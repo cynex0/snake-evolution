@@ -114,7 +114,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     }
 
     private JTextField getjTextField() {
-        JTextField enterNameField = new JTextField("___",SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
+        JTextField enterNameField = new JTextField(SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
         enterNameField.add(Box.createRigidArea(new Dimension(0,100))); //
         enterNameField.setBorder(BorderFactory.createEmptyBorder()); // Sets an empty border around the text field.
         enterNameField.setForeground(Color.BLACK); // Sets the text color of the field to black.
@@ -163,7 +163,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
 
     @Override
     public void focusGained(FocusEvent e) {
-        if( enterNameField.getText().equals("___") ){
+        if( enterNameField.getText().isBlank() ){
             enterNameField.setText("");
         }
     }
