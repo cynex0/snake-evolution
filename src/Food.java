@@ -9,6 +9,8 @@ public class Food {
     private CellPosition foodLocation;
     private CellPosition bonusFoodLocation;
     private Random rand;
+    private BonusFoodType currentFoodType;
+    private Color bonusFoodColor;
 
     public Food () {
         foodLocation = new CellPosition();
@@ -16,8 +18,34 @@ public class Food {
         rand = new Random();
         respawn();
         respawnBonusFood();
+        bonusFoodColor = Color.blue;
+        currentFoodType = BonusFoodType.SPEEDFOOD;
     }
 
+    //generate a random BonusFoodType
+    public void setBonusFoodType () {
+        BonusFoodType newFoodType = BonusFoodType.SPEEDFOOD;
+        int randInt = rand.nextInt(4) +1;
+        switch (randInt) {
+            case 1 -> {
+                newFoodType = BonusFoodType.SPEEDFOOD;
+                bonusFoodColor = Color.blue;
+            }
+            case 2 -> {
+                newFoodType = BonusFoodType.SLOWFOOD;
+                bonusFoodColor = Color.yellow;
+            }
+            case 3 -> {
+                newFoodType = BonusFoodType.PLUSFOOD;
+                bonusFoodColor = Color.green;
+            }
+            case 4 -> {
+                newFoodType = BonusFoodType.MINUSFOOD;
+                bonusFoodColor = Color.red;
+            }
+        }
+        this.currentFoodType = newFoodType;
+    }
     public void respawn() {
         int randX = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
         int randY = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
@@ -40,9 +68,11 @@ public class Food {
         frame.fillPolygon(xPoints, yPoints,4); // draws a romb centered in the cell
     }
 
-    public void drawSpeedFood (Graphics2D frame) {
+
+
+    public void drawBonusFood (Graphics2D frame) {
         Point coords = bonusFoodLocation.getCoordinates(); // top left coords of the cell
-        frame.setColor(Color.blue);
+        frame.setColor(bonusFoodColor);
         frame.fillRect(coords.x, coords.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
     }
 
@@ -51,5 +81,9 @@ public class Food {
     }
     public CellPosition getBonusFoodLocation () {
         return this.bonusFoodLocation;
+    }
+
+    public BonusFoodType getBonusFoodType() {
+        return this.currentFoodType;
     }
 }

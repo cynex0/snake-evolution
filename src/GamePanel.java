@@ -20,13 +20,13 @@ public class GamePanel extends JPanel implements KeyListener {
     public static int FPS = 60;
     private BgPanel bg;
     private Snake snake;
-    private Food food, speedFood;
+    private Food food, bonusFood;
     private Obstacle obstacle;
 
     private int score = 0;
     private final Timer gameLoop;
     private long startTime;
-    private boolean fastMode;
+    private boolean fastMode, slowMode;
     private StateChangeListener stateChanger;
 
 
@@ -43,11 +43,12 @@ public class GamePanel extends JPanel implements KeyListener {
 
         stateChanger = listener;
         food = new Food();
-        speedFood = new Food();
+        bonusFood = new Food();
         obstacle = new Obstacle(snake.getBody());
         score = 0;
         startTime = 0;
         fastMode = false;
+        slowMode = false;
 
         int delay = (int) (1000 / (FPS * Snake.SPEED));
         gameLoop = new Timer(delay, e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
@@ -61,9 +62,10 @@ public class GamePanel extends JPanel implements KeyListener {
 
     public void update() {
         // update positions, etc
-        if (fastMode) {
+        if (fastMode || slowMode) {
             if (System.currentTimeMillis() - startTime > 5000) {
                 fastMode = false;
+                slowMode = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
             }
         }
@@ -88,13 +90,30 @@ public class GamePanel extends JPanel implements KeyListener {
             score++;
         }
 
-        if (snake.checkCollisionWith(speedFood.getBonusFoodLocation())) {
-            speedFood.respawnBonusFood();
-            score++;
-            //increase speed
-            fastMode = true;
-            adjustSnakeSpeed(2);
-            startTime = System.currentTimeMillis();
+        if (snake.checkCollisionWith(bonusFood.getBonusFoodLocation())) {
+            switch (bonusFood.getBonusFoodType()) {
+                case SPEEDFOOD -> {
+                    fastMode = true;
+                    adjustSnakeSpeed(2);
+                    startTime = System.currentTimeMillis();
+                }
+                case SLOWFOOD -> {
+                    slowMode = true;
+                    adjustSnakeSpeed(0.5);
+                    startTime = System.currentTimeMillis();
+                }
+                case PLUSFOOD -> {
+                    score += 2;
+                }
+                case MINUSFOOD -> {
+                    score -= 2;
+                    if (score <0){
+                        score = 0;
+                    }
+                }
+            }
+            bonusFood.setBonusFoodType();
+            bonusFood.respawnBonusFood();
         }
 
         if (snake.checkCollisionWith(obstacle.getCells())) {
@@ -122,7 +141,7 @@ public class GamePanel extends JPanel implements KeyListener {
         food.draw(frame);
         obstacle.draw(frame);
 
-        speedFood.drawSpeedFood(frame);
+        bonusFood.drawBonusFood(frame);
     // timer
 
 
