@@ -9,7 +9,6 @@ public class Snake {
     private ArrayList<CellPosition> body;
     private Direction currentDirection;
     private LinkedList<Direction> inputQueue;
-    private boolean foodEaten;
 
     public Snake() {
         body = new ArrayList<>();
@@ -22,16 +21,10 @@ public class Snake {
         body.add(new CellPosition(17, 20));
         body.add(new CellPosition(16, 20));
         body.add(new CellPosition(15, 20));
-
-        foodEaten = false;
     }
 
     public ArrayList<CellPosition> getBody() {
         return body;
-    }
-
-    public void increaseLength() {
-        foodEaten = true;
     }
     
     private CellPosition calculateNextPos() {
@@ -75,11 +68,6 @@ public class Snake {
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
-
-        if (!foodEaten)
-            body.remove(body.size() - 1);
-        else
-            foodEaten = false;
     }
 
     public void updateDirection(Direction newDir) {
@@ -90,10 +78,6 @@ public class Snake {
 
         if (!inputQueue.isEmpty() && isOppositeDir(inputQueue.peek(), currentDirection))
             inputQueue.removeFirst(); // drops the next direction in queue if it is opposite to the current direction
-    }
-
-    public Direction getCurrentDirection() {
-        return currentDirection;
     }
 
     private boolean isOppositeDir(Direction dir1, Direction dir2) {
@@ -111,21 +95,14 @@ public class Snake {
         }
     }
 
-    public boolean foodEaten(Food f) {
-        Point headCoords = body.get(0).getCoordinates();
-        if (headCoords.x == f.getFoodLocation().x) {
-            if (headCoords.y == f.getFoodLocation().y)
-                return true;
-        }
-        return false;
-    }
-
     // checks if snake collides with any object at given position
     public boolean checkCollisionWith(CellPosition pos) {
         return body.contains(pos);
     }
 
     public boolean checkCollisionWith(ArrayList<CellPosition> pos) {
+        if (pos.isEmpty()) return false;
+
         for (CellPosition p : pos) {
             if (body.contains(p)) return true;
         }
