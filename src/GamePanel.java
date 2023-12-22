@@ -16,8 +16,8 @@ import java.util.Random;
 public class GamePanel extends JPanel implements KeyListener {
     public static final int CELL_COUNT = 40;
     public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
+    public static final int FPS = 60;
 
-    public static int FPS = 60;
     private BgPanel bg;
     private Snake snake;
     private ArrayList<Food> food;
