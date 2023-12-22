@@ -1,23 +1,33 @@
 import javax.swing.*;
 import java.awt.*;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Iterator;
 import java.util.Random;
 
 
 public class GamePanel extends JPanel implements KeyListener {
-    public static final int FPS = 60;
     public static final int CELL_COUNT = 40;
     public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
+    public static final int FPS = 60;
 
-    private Random rand;
     private BgPanel bg;
     private Snake snake;
-    private Food food;
+    private ArrayList<Food> food;
+    private Random rand;
     private ObstacleList obstacles;
 
     private int score;
     private final Timer gameLoop;
+    private long startTime;
+    private boolean fastMode, slowMode;
     private StateChangeListener stateChanger;
 
 
@@ -33,17 +43,34 @@ public class GamePanel extends JPanel implements KeyListener {
         snake = new Snake();
 
         stateChanger = listener;
-        food = new Food();
+        food = new ArrayList<>();
+        food.add(new Food());
         obstacles = new ObstacleList();
         score = 0;
+        startTime = 0;
+        fastMode = false;
+        slowMode = false;
 
-        gameLoop = new Timer(1000/(int)(FPS * Snake.SPEED), e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
+        int delay = (int) (1000 / (FPS * Snake.SPEED));
+        gameLoop = new Timer(delay, e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
+
+            //1000/(int)(FPS * Snake.SPEED)
             update();
             repaint(); // calls paintComponent()
+
         });
     }
 
     public void update() {
+        // update positions, etc
+        if (fastMode || slowMode) {
+            if (System.currentTimeMillis() - startTime > 5000) {
+                fastMode = false;
+                slowMode = false;
+                adjustSnakeSpeed(1); // Set the speed back to normal
+            }
+        }
+
         snake.move(); // add a new "head" based on the movement direction
 
         // snake collisions (self and borders)
@@ -59,24 +86,81 @@ public class GamePanel extends JPanel implements KeyListener {
         }
 
         // collision with food
-        if (snake.checkCollisionWith(food.getFoodLocation())) {
-            score++;
+        boolean incLenght = false;
+        ArrayList<Food> newFoodList = new ArrayList<>();
 
-            // spawn new food in a valid position
-            CellPosition newFoodPos;
-            do {
-                food.respawn(); // respawn food until its in a valid position
-                newFoodPos = food.getFoodLocation();
-            } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
+        for (Iterator<Food> it = food.iterator(); it.hasNext();) {
+            Food foodItem = it.next();
+            if (snake.checkCollisionWith(foodItem.getFoodLocation())) {
+                it.remove(); // remove consumed food from list
 
-            // spawn new obstacle every 5th time food is eaten
-            if (score % 5 == 0) {
-                obstacles.add(new Obstacle(snake.getBody()));
+                switch (foodItem.getFoodType()) {
+                    case DEFAULT -> {
+                        incLenght = true;
+                        score++;
+
+                        // spawn new default food in a valid position
+                        CellPosition newFoodPos;
+                        Food newFood;
+                        do {
+                            newFood = new Food(); // respawn food until its in a valid position
+                            newFoodPos = newFood.getFoodLocation();
+                        } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
+                        newFoodList.add(newFood);
+                    }
+
+                    case SPEEDFOOD -> {
+                        fastMode = true;
+                        adjustSnakeSpeed(2);
+                        startTime = System.currentTimeMillis();
+                    }
+
+                    case SLOWFOOD -> {
+                        slowMode = true;
+                        adjustSnakeSpeed(0.5);
+                        startTime = System.currentTimeMillis();
+                    }
+
+                    case PLUSFOOD -> {
+                        score += 2;
+                        incLenght = true;
+                    }
+
+                    case MINUSFOOD -> {
+                        score -= 2;
+                        if (score < 0)
+                            score = 0;
+                    }
+                }
+
+                // 20% to spawn new bonus food in a valid position
+                if (food.size() < 2 && rand.nextFloat() <= 0.2) {
+                    CellPosition newFoodPos;
+                    Food bonusFood;
+                    do {
+                        bonusFood = new BonusFood(); // respawn food until its in a valid position
+                        newFoodPos = bonusFood.getFoodLocation();
+                    } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
+                    newFoodList.add(bonusFood);
+                }
+
+                // spawn new obstacle every 5th time food is eaten
+                if (score % 5 == 0) {
+                    obstacles.add(new Obstacle(snake.getBody()));
+                }
             }
         }
-        else {
+
+        food.addAll(newFoodList);
+
+        if(!incLenght) {
             snake.getBody().remove(snake.getBody().size() - 1); // remove the tail to complete movement
         }
+    }
+
+    private void adjustSnakeSpeed(double speedMultiplier) {
+        int delay = (int) (1000 / (FPS * Snake.SPEED * speedMultiplier));
+        gameLoop.setDelay(delay);
     }
 
     public int getScore () {
@@ -90,11 +174,12 @@ public class GamePanel extends JPanel implements KeyListener {
 
         Graphics2D frame = (Graphics2D) g; // frame for drawing 2d graphics
 
-        food.draw(frame);
+        for (Food foodItem : food)
+            foodItem.draw(frame);
         for (Obstacle obstacle : obstacles.getObstacles())
             obstacle.draw(frame);
 
-        g.setColor(Color.blue);
+        g.setColor(Color.black);
         g.drawString("Score: "+ score, 65 , GameFrame.WINDOW_SIZE.y - 770);
 
         snake.draw(frame);
