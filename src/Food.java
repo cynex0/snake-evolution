@@ -4,14 +4,19 @@ import java.util.Random;
 public class Food {
     private static final int MIN_CELL = BgPanel.MARGIN_CELLS; // first playable cell
     private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 1; // last playable cell
-    private static final int FOOD_SIZE = GamePanel.CELL_SIZE-2 ;
+    private static final int BORDER_SIZE = 2;
 
     private CellPosition foodLocation;
-    private Random rand;
+    protected Random rand;
+    protected Color color;
+    protected FoodType type;
 
-    public Food (){
+
+    public Food () {
         foodLocation = new CellPosition();
         rand = new Random();
+        color = new Color(0x2b331a);
+        type = FoodType.DEFAULT;
         respawn();
     }
 
@@ -24,28 +29,26 @@ public class Food {
     public void draw (Graphics2D frame) {
         Point coords = foodLocation.getCoordinates(); // top left coords of the cell
         int halfCell = GamePanel.CELL_SIZE / 2;
+        int[] xPoints, yPoints; // romb point coordinates, clockwise, starting from left (9 o'clock) corner
 
-        int[] xPoints = {coords.x, coords.x + halfCell, coords.x + 2*halfCell, coords.x + halfCell};
-        int[] yPoints = {coords.y + halfCell, coords.y, coords.y + halfCell, coords.y + 2*halfCell};
+        // draw border
+        frame.setColor(Color.BLACK);
+        xPoints = new int[]{coords.x - BORDER_SIZE, coords.x + halfCell, coords.x + 2*halfCell + BORDER_SIZE, coords.x + halfCell};
+        yPoints = new int[]{coords.y + halfCell, coords.y - BORDER_SIZE, coords.y + halfCell, coords.y + 2*halfCell + BORDER_SIZE};
+        frame.fillPolygon(xPoints, yPoints,4);
 
-        frame.setColor(new Color(0x2b331a));
-        frame.fillPolygon(xPoints, yPoints,4); // draws a romb centered in the cell
+        // draw colored middle
+        frame.setColor(color);
+        xPoints = new int[]{coords.x, coords.x + halfCell, coords.x + 2*halfCell, coords.x + halfCell};
+        yPoints = new int[]{coords.y + halfCell, coords.y, coords.y + halfCell, coords.y + 2*halfCell};
+        frame.fillPolygon(xPoints, yPoints,4);
     }
-/*
-    public void drawSpeedFood (Graphics2D frame) {
-        Point coords = foodLocation.getCoordinates(); // top left coords of the cell
-        int halfCell = GamePanel.CELL_SIZE / 2;
-
-        int[] xPoints = {coords.x, coords.x + halfCell, coords.x + 2*halfCell, coords.x + halfCell};
-        int[] yPoints = {coords.y + halfCell, coords.y, coords.y + halfCell, coords.y + 2*halfCell};
-
-        frame.setColor(Color.blue);
-        frame.fillRect(xPoints, yPoints,4, 4); // draws a romb centered in the cell
-    }
-
- */
 
     public CellPosition getFoodLocation () {
         return this.foodLocation;
+    }
+
+    public FoodType getFoodType() {
+        return this.type;
     }
 }

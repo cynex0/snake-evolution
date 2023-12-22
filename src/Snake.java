@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Snake {
+
     public static final double SPEED = 0.18; // FPS multiplier
 
     private ArrayList<CellPosition> body;
