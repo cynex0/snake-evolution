@@ -73,6 +73,10 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
             this.add(enterNameField);
             this.add(Box.createRigidArea(new Dimension(0, 50)));
 
+            SwingUtilities.invokeLater(() -> {
+                enterNameField.requestFocusInWindow();   // Set the focus on the JTextField
+            });
+
 
         } else {
             this.add(Box.createRigidArea(new Dimension(0, 80)));
@@ -110,19 +114,18 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     }
 
     private JTextField getjTextField() {
-        JTextField EnterNameField = new JTextField("___",SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
-        EnterNameField.add(Box.createRigidArea(new Dimension(0,100))); //
-        EnterNameField.setBorder(BorderFactory.createEmptyBorder()); // Sets an empty border around the text field.
-        EnterNameField.setForeground(Color.BLACK); // Sets the text color of the field to black.
-        EnterNameField.setBackground(Color.decode("#A9E000"));
-        EnterNameField.setFont(new Font("Public Pixel", Font.BOLD,30));
-        EnterNameField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        EnterNameField.setMaximumSize(new Dimension(100, 50));
+        JTextField enterNameField = new JTextField(SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
+        enterNameField.add(Box.createRigidArea(new Dimension(0,100))); //
+        enterNameField.setBorder(BorderFactory.createEmptyBorder()); // Sets an empty border around the text field.
+        enterNameField.setForeground(Color.BLACK); // Sets the text color of the field to black.
+        enterNameField.setBackground(Color.decode("#A9E000"));
+        enterNameField.setFont(new Font("Public Pixel", Font.BOLD,30));
+        enterNameField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        enterNameField.setMaximumSize(new Dimension(100, 50));
+        enterNameField.addFocusListener(this);  //  Allows the user to start typing without manually removing the initial placeholder text.
+        enterNameField.addKeyListener(this);
 
-        EnterNameField.addFocusListener(this);  //  Allows the user to start typing without manually removing the initial placeholder text.
-        EnterNameField.addKeyListener(this);
-
-        return EnterNameField;
+        return enterNameField;
     }
 
     @Override
@@ -143,7 +146,8 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
 
     @Override
     public void keyTyped(KeyEvent e) {
-        if (enterNameField.getText().length() >= 3 ) // limit textfield to 3 characters
+        char c = e.getKeyChar();
+        if (enterNameField.getText().length() >= 3 ||(!Character.isLetter(c) && !Character.isWhitespace(c)) ) // limit textfield to 3 characters and disallow typing special characters.
             e.consume();
     }
 
@@ -160,7 +164,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
 
     @Override
     public void focusGained(FocusEvent e) {
-        if(enterNameField.getText().equals("___")){
+        if( enterNameField.getText().isBlank() ){
             enterNameField.setText("");
         }
     }
