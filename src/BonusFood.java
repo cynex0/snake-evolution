@@ -38,7 +38,7 @@ public class BonusFood extends Food {
             }
             case 1 -> {
                 this.type = FoodType.SLOWFOOD;
-                this.color = new Color(0x3f48cc);
+                this.color = new Color(0x2F38B4);
                 this.icon = "v";
             }
             case 2 -> {
