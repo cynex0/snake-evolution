@@ -49,13 +49,13 @@ public class Leaderboard extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 50)));// drawing blank area above JList
         this.add(lbList);
 
-        mainMenu = new Button("Main Menu");
-        mainMenu.setFocusable(true);
-        mainMenu.setActionCommand("MENU");
+        mainMenuBtn = new Button("Main Menu");
+        mainMenuBtn.setFocusable(true);
+        mainMenuBtn.setActionCommand("MENU");
 
         this.add(Box.createRigidArea(new Dimension(0, 450))); // adds empty area before MM button
-        this.add(mainMenu);
-        mainMenu.addActionListener(this);
+        this.add(mainMenuBtn);
+        mainMenuBtn.addActionListener(this);
         stateChanger = listener;
 
         readToList();
