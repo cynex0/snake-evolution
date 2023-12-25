@@ -111,19 +111,17 @@ public class GamePanel extends JPanel implements KeyListener {
                 eaten = true;
                 applyFoodEffect(foodItem.getFoodType());
 
-                // spawn new default food in a valid position
+                // always spawn new default food as soon as the previous one is eaten
                 if(foodItem.getFoodType() == FoodType.DEFAULT)
                     newFood.add(generateNewFoodItem(false));
 
                 // 33% to spawn new bonus food in a valid position, up to 1 normal and 2 bonus
-                if (food.size() < 2 && rand.nextFloat() <= 0.33) {
+                if (food.size() < 2 && rand.nextFloat() <= 0.33)
                     newFood.add(generateNewFoodItem(true));
-                }
 
                 // spawn new obstacle every 5th time food is eaten
-                if (score % 5 == 0) {
+                if (score % 5 == 0)
                     obstacles.add(new Obstacle(snake.getBody()));
-                }
             }
         }
 
