@@ -18,7 +18,12 @@ public class BonusFood extends Food {
         super.draw(frame);
         Point coords = foodLocation.getCoordinates();
 
-        frame.setFont(new Font("Public Pixel", Font.BOLD, 12));
+        Font font = new Font("Public Pixel", Font.BOLD, 14);
+        frame.setFont(font);
+        FontMetrics metrics = frame.getFontMetrics(font); // for position calculation
+        coords.x += (GamePanel.CELL_SIZE - metrics.stringWidth(icon)) / 2; // shift to the half of the cell - char width
+        coords.y += metrics.getAscent() + (GamePanel.CELL_SIZE - metrics.getHeight()) / 2; // shift to the half of the cell - char height
+
         frame.setColor(Color.BLACK);
         frame.drawString(icon, coords.x, coords.y);
     }
