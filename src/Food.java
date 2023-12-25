@@ -6,7 +6,7 @@ public class Food {
     private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 1; // last playable cell
     private static final int BORDER_SIZE = 2;
 
-    private CellPosition foodLocation;
+    protected CellPosition foodLocation;
     protected Random rand;
     protected Color color;
     protected FoodType type;
