@@ -1,11 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -63,14 +59,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
     public void update() {
         // update positions, etc
-        if (fastMode || slowMode) {
-            if (System.currentTimeMillis() - startTime > 5000) {
-                fastMode = false;
-                slowMode = false;
-                adjustSnakeSpeed(1); // Set the speed back to normal
-            }
-        }
-
+        updateEffects();
         snake.move(); // add a new "head" based on the movement direction
 
         // snake collisions (self and borders)
@@ -86,74 +75,9 @@ public class GamePanel extends JPanel implements KeyListener {
         }
 
         // collision with food
-        boolean incLenght = false;
-        ArrayList<Food> newFoodList = new ArrayList<>();
-
-        for (Iterator<Food> it = food.iterator(); it.hasNext();) {
-            Food foodItem = it.next();
-            if (snake.checkCollisionWith(foodItem.getFoodLocation())) {
-                it.remove(); // remove consumed food from list
-
-                switch (foodItem.getFoodType()) {
-                    case DEFAULT -> {
-                        incLenght = true;
-                        score++;
-
-                        // spawn new default food in a valid position
-                        CellPosition newFoodPos;
-                        Food newFood;
-                        do {
-                            newFood = new Food(); // respawn food until its in a valid position
-                            newFoodPos = newFood.getFoodLocation();
-                        } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
-                        newFoodList.add(newFood);
-                    }
-
-                    case SPEEDFOOD -> {
-                        fastMode = true;
-                        adjustSnakeSpeed(2);
-                        startTime = System.currentTimeMillis();
-                    }
-
-                    case SLOWFOOD -> {
-                        slowMode = true;
-                        adjustSnakeSpeed(0.5);
-                        startTime = System.currentTimeMillis();
-                    }
-
-                    case PLUSFOOD -> {
-                        score += 2;
-                        incLenght = true;
-                    }
-
-                    case MINUSFOOD -> {
-                        score -= 2;
-                        if (score < 0)
-                            score = 0;
-                    }
-                }
-
-                // 33% to spawn new bonus food in a valid position
-                if (food.size() < 2 && rand.nextFloat() <= 0.33) {
-                    CellPosition newFoodPos;
-                    Food bonusFood;
-                    do {
-                        bonusFood = new BonusFood(); // respawn food until its in a valid position
-                        newFoodPos = bonusFood.getFoodLocation();
-                    } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
-                    newFoodList.add(bonusFood);
-                }
-
-                // spawn new obstacle every 5th time food is eaten
-                if (score % 5 == 0) {
-                    obstacles.add(new Obstacle(snake.getBody()));
-                }
-            }
-        }
-
-        food.addAll(newFoodList);
-
-        if(!incLenght) {
+        boolean incLength = doFoodCollisions();
+        // do not remove tail for a length-increase effect
+        if(!incLength) {
             snake.getBody().remove(snake.getBody().size() - 1); // remove the tail to complete movement
         }
     }
@@ -163,7 +87,89 @@ public class GamePanel extends JPanel implements KeyListener {
         gameLoop.setDelay(delay);
     }
 
-    public int getScore () {
+    private void updateEffects() {
+        if (fastMode || slowMode) {
+            if (System.currentTimeMillis() - startTime > 5000) {
+                fastMode = false;
+                slowMode = false;
+                adjustSnakeSpeed(1); // Set the speed back to normal
+            }
+        }
+    }
+
+    // checks collisions with food items, returns true if a length-increasing food is eaten
+    private boolean doFoodCollisions() {
+        boolean incLength = false;
+        Iterator<Food> it = food.iterator();
+        ArrayList<Food> newFood = new ArrayList<>();
+
+        while (it.hasNext()) {
+            Food foodItem = it.next();
+            if (snake.checkCollisionWith(foodItem.getFoodLocation())) {
+                it.remove(); // remove consumed food from list
+                switch (foodItem.getFoodType()) {
+                    case DEFAULT -> {
+                        incLength = true;
+                        score++;
+
+                        // spawn new default food in a valid position
+                        newFood.add(generateNewFoodItem(false));
+                    }
+                    case SPEEDFOOD -> {
+                        fastMode = true;
+                        adjustSnakeSpeed(2);
+                        startTime = System.currentTimeMillis();
+                    }
+                    case SLOWFOOD -> {
+                        slowMode = true;
+                        adjustSnakeSpeed(0.5);
+                        startTime = System.currentTimeMillis();
+                    }
+                    case PLUSFOOD -> {
+                        score += 2;
+                        incLength = true;
+                    }
+                    case MINUSFOOD -> {
+                        score -= 2;
+                        if (score < 0) score = 0;
+                    }
+                }
+
+                // 33% to spawn new bonus food in a valid position, up to 1 normal and 2 bonus
+                if (food.size() < 2 && rand.nextFloat() <= 0.33) {
+                    newFood.add(generateNewFoodItem(true));
+                }
+
+                // spawn new obstacle every 5th time food is eaten
+                if (score % 5 == 0) {
+                    spawnNewObstacle();
+                }
+            }
+        }
+
+        food.addAll(newFood);
+        return incLength;
+    }
+
+    private void spawnNewObstacle() {
+        obstacles.add(new Obstacle(snake.getBody()));
+    }
+
+    private Food generateNewFoodItem(boolean isBonus) {
+        CellPosition newFoodPos;
+        Food newFood;
+
+        // respawn food until its in a valid position
+        do {
+            if (!isBonus) newFood = new Food();
+            else newFood = new BonusFood();
+            newFoodPos = newFood.getFoodLocation();
+        } while (snake.checkCollisionWith(newFoodPos) || obstacles.getAllCells().contains(newFoodPos));
+
+        return newFood;
+    }
+
+    public int getScore() {
         return this.score;
     }
 
@@ -182,7 +188,6 @@ public class GamePanel extends JPanel implements KeyListener {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Public Pixel", Font.PLAIN,20));
         g.drawString(String.format("%03d", score), 65 , GameFrame.WINDOW_SIZE.y - 760);
-
 
         snake.draw(frame);
         frame.dispose();
