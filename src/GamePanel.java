@@ -200,7 +200,7 @@ public class GamePanel extends JPanel implements KeyListener {
     public void stopGame() {
         gameLoop.stop();
 
-        Players tempPlayer = new Players("", score);
+        Player tempPlayer = new Player("", score);
 
         if (score > 0 && Leaderboard.isTopTen(tempPlayer)) {
             stateChanger.changeState(GameState.GAME_OVER_ENTERNAME);

@@ -1,26 +1,32 @@
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class Leaderboard extends JPanel implements ActionListener {
-    private static DefaultListModel<String> listItems;
-    private static JList<String> lbList;
-    private JButton mainMenu;     // a Button to go back to the main menu
+    private DefaultListModel<String> listItems;
+    private JList<String> lbList;
+    private JButton mainMenuBtn;     // a Button to go back to the main menu
+    private BgPanel bg;
+
+    private static ArrayList<Player> playerList = new ArrayList<>();
+
     private StateChangeListener stateChanger;
 
-    private BgPanel panel;
-    private static ArrayList<Players> playersList = new ArrayList<Players>();
-
     public Leaderboard(StateChangeListener listener){
-        panel = new BgPanel();
+        bg = new BgPanel();
         // creating custom font for the game
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
@@ -52,11 +58,12 @@ public class Leaderboard extends JPanel implements ActionListener {
         mainMenu.addActionListener(this);
         stateChanger = listener;
 
-        readTop10Players();
+        readToList();
     }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        panel.paintComponent(g);// Drawing black border on the frame
+        bg.paintComponent(g);// Drawing black border on the frame
     }
 
     @Override
@@ -65,74 +72,78 @@ public class Leaderboard extends JPanel implements ActionListener {
 
         if ("MENU".equals(actionCommand)) {
             stateChanger.changeState(GameState.MENU); // switches to main menu.
-
         }
-
     }
 
-    private static ArrayList<Players> readFromFile() {
-        // Returns a sorted list of players read from the json file
+    // Returns a sorted list of all players read from the json file
+    private static ArrayList<Player> readFromFile() {
         JSONParser parser = new JSONParser();
-        ArrayList<Players> players = new ArrayList<>();
+        ArrayList<Player> players = new ArrayList<>();
+        File file = new File("res/Top10Scores.json");
 
         try {
-            FileReader reader = new FileReader("res/Top10Scores.json"); // Creating reader to read data from json file
-            JSONObject readJsonObj = (JSONObject) parser.parse(reader); // parsing data from json file to string
+            if (!file.exists()) {
+                JSONObject jsonObj = new JSONObject();
+                FileWriter writer = new FileWriter(file);
+                writer.write(jsonObj.toJSONString());
+                writer.close();
+            } else {
+                FileReader reader = new FileReader(file); // Creating reader to read data from json file
+                JSONObject readJsonObj = (JSONObject) parser.parse(reader); // parsing data from json file to string
 
-            for (Object PlayersData : readJsonObj.keySet()) {
-                String playerName = (String) PlayersData;
-                long playerScore = (long) readJsonObj.get(PlayersData);
-                Players player = new Players(playerName, playerScore);
-                players.add(player);
+                for (Object PlayersData : readJsonObj.keySet()) {
+                    String playerName = (String) PlayersData;
+                    long playerScore = (long) readJsonObj.get(PlayersData);
+                    Player player = new Player(playerName, playerScore);
+                    players.add(player);
+                }
+
+                // sorting players from high to low scores
+                Collections.sort(players);
             }
         }
         catch (Exception e) {
             throw new RuntimeException("Error while reading file!\n" + e.getMessage());
         }
 
-        // sorting players from high to low scores
-        Collections.sort(players);
         return players;
     }
 
-    public static void readTop10Players(){
-        ArrayList<Players> top10Scorers = readFromFile();
+    // adds 10 top scoring players to the list for display
+    private void readToList() {
+        ArrayList<Player> top10Scorers = readFromFile();
 
         // filling the list with top 10 players names and scores
         int playerIndex = 1;
-        for (Players player : top10Scorers) {
-
-            if (playerIndex < 10) {
-
+        for (Player player : top10Scorers) {
+            if (playerIndex < 10)
                 listItems.addElement(playerIndex + " . " + player.getNamesAndScores());
-
-            }
-            else if (playerIndex == 10) {
-
+            else if (playerIndex == 10)
                 listItems.addElement(playerIndex + ". " + player.getNamesAndScores());
-            }
+            else
+                break; // stop iterating after 10th player
             playerIndex++;
         }
     }
 
     public static void createPlayer(String name, long score){
-        ArrayList<Players> top10Scorers = readFromFile();
+        ArrayList<Player> currentPlayers = readFromFile();
 
         FileWriter writer;
-        org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
+        JSONObject jsonObj = new JSONObject();
 
-        playersList.addAll(top10Scorers);
-        Players newPlayer = new Players(name, score);
-        playersList.add(newPlayer);
+        playerList.addAll(currentPlayers);
+        Player newPlayer = new Player(name, score);
+        playerList.add(newPlayer);
 
         // Storing top 10 players' names and scores in json file
         try {
             writer = new FileWriter("res/Top10Scores.json");
-            for (Players players : playersList) {
-                if (jsonObj.containsKey(players.getName()) && (long) jsonObj.get(players.getName()) > players.getScore()) {
+            for (Player player : playerList) {
+                if (jsonObj.containsKey(player.getName()) && (long) jsonObj.get(player.getName()) > player.getScore()) {
                     continue; // do not put a lower score if an entry with the same name exists
                 }
-                jsonObj.put(players.getName(), players.getScore());
+                jsonObj.put(player.getName(), player.getScore());
             }
             writer.write(jsonObj.toJSONString());
             writer.close();
@@ -143,10 +154,9 @@ public class Leaderboard extends JPanel implements ActionListener {
     }
 
     // check if players score is among top 10.
-    public static boolean isTopTen(Players playerInTop10){
-        ArrayList<Players> players = readFromFile();
+    public static boolean isTopTen(Player playerInTop10){
+        ArrayList<Player> players = readFromFile();
         if (players.size() < 10) return true;
         return playerInTop10.getScore() > players.get(9).getScore();
     }
-
 }
