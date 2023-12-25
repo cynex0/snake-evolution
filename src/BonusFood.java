@@ -30,7 +30,6 @@ public class BonusFood extends Food {
     }
 
     private void setType() {
-        FoodType newFoodType;
         switch (rand.nextInt(4)) {
             case 0 -> {
                 this.type = FoodType.SPEEDFOOD;
