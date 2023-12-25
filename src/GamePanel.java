@@ -133,8 +133,8 @@ public class GamePanel extends JPanel implements KeyListener {
                     }
                 }
 
-                // 20% to spawn new bonus food in a valid position
-                if (food.size() < 2 && rand.nextFloat() <= 0.2) {
+                // 33% to spawn new bonus food in a valid position
+                if (food.size() < 2 && rand.nextFloat() <= 0.33) {
                     CellPosition newFoodPos;
                     Food bonusFood;
                     do {
