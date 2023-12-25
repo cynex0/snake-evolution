@@ -18,7 +18,6 @@ public class GameFrame extends JFrame implements StateChangeListener {
         this.setSize(WINDOW_SIZE.x, WINDOW_SIZE.y);
 
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
         this.setFocusable(true);
 
         // create font for use in all panels
@@ -31,6 +30,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
         }
 
         changeState(GameState.MENU);
+        this.setVisible(true);
     }
 
 
