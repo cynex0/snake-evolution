@@ -98,9 +98,9 @@ public class GamePanel extends JPanel implements KeyListener {
         }
     }
 
-    // checks collisions with food items, returns true if a length-increasing food is eaten
+    // checks collisions with food items, returns true if food is eaten
     private boolean doFoodCollisions() {
-        boolean incLength = false;
+        boolean eaten = false;
         Iterator<Food> it = food.iterator();
         ArrayList<Food> newFood = new ArrayList<>();
 
@@ -108,33 +108,12 @@ public class GamePanel extends JPanel implements KeyListener {
             Food foodItem = it.next();
             if (snake.checkCollisionWith(foodItem.getFoodLocation())) {
                 it.remove(); // remove consumed food from list
-                switch (foodItem.getFoodType()) {
-                    case DEFAULT -> {
-                        incLength = true;
-                        score++;
+                eaten = true;
+                applyFoodEffect(foodItem.getFoodType());
 
-                        // spawn new default food in a valid position
-                        newFood.add(generateNewFoodItem(false));
-                    }
-                    case SPEEDFOOD -> {
-                        fastMode = true;
-                        adjustSnakeSpeed(2);
-                        startTime = System.currentTimeMillis();
-                    }
-                    case SLOWFOOD -> {
-                        slowMode = true;
-                        adjustSnakeSpeed(0.5);
-                        startTime = System.currentTimeMillis();
-                    }
-                    case PLUSFOOD -> {
-                        score += 2;
-                        incLength = true;
-                    }
-                    case MINUSFOOD -> {
-                        score -= 2;
-                        if (score < 0) score = 0;
-                    }
-                }
+                // spawn new default food in a valid position
+                if(foodItem.getFoodType() == FoodType.DEFAULT)
+                    newFood.add(generateNewFoodItem(false));
 
                 // 33% to spawn new bonus food in a valid position, up to 1 normal and 2 bonus
                 if (food.size() < 2 && rand.nextFloat() <= 0.33) {
@@ -149,7 +128,32 @@ public class GamePanel extends JPanel implements KeyListener {
         }
 
         food.addAll(newFood);
-        return incLength;
+        return eaten;
+    }
+
+    private void applyFoodEffect(FoodType foodType) {
+        switch (foodType) {
+            case DEFAULT -> {
+                score++;
+            }
+            case SPEEDFOOD -> {
+                fastMode = true;
+                adjustSnakeSpeed(2);
+                startTime = System.currentTimeMillis();
+            }
+            case SLOWFOOD -> {
+                slowMode = true;
+                adjustSnakeSpeed(0.5);
+                startTime = System.currentTimeMillis();
+            }
+            case PLUSFOOD -> {
+                score += 2;
+            }
+            case MINUSFOOD -> {
+                score -= 2;
+                if (score < 0) score = 0;
+            }
+        }
     }
 
     private Food generateNewFoodItem(boolean isBonus) {
