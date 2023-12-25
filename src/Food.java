@@ -4,7 +4,7 @@ import java.util.Random;
 public class Food {
     private static final int MIN_CELL = BgPanel.MARGIN_CELLS; // first playable cell
     private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 1; // last playable cell
-    private static final int BORDER_SIZE = 2;
+    protected static final int BORDER_SIZE = 2;
 
     protected CellPosition foodLocation;
     protected Random rand;

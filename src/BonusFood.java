@@ -9,8 +9,8 @@ public class BonusFood extends Food {
 
     @Override
     public void respawn() {
-        setType();
         super.respawn();
+        setType();
     }
 
     @Override
@@ -18,14 +18,15 @@ public class BonusFood extends Food {
         super.draw(frame);
         Point coords = foodLocation.getCoordinates();
 
-        Font font = new Font("Public Pixel", Font.BOLD, 14);
+        Font font = new Font("Public Pixel", Font.BOLD, 11);
         frame.setFont(font);
+
         FontMetrics metrics = frame.getFontMetrics(font); // for position calculation
-        coords.x += (GamePanel.CELL_SIZE - metrics.stringWidth(icon)) / 2; // shift to the half of the cell - char width
-        coords.y += metrics.getAscent() + (GamePanel.CELL_SIZE - metrics.getHeight()) / 2; // shift to the half of the cell - char height
+        float x = coords.x + GamePanel.CELL_SIZE / 2f - metrics.stringWidth(icon) / 2f;
+        float y = coords.y + GamePanel.CELL_SIZE / 2f - metrics.getHeight() / 2f + metrics.getAscent();
 
         frame.setColor(Color.BLACK);
-        frame.drawString(icon, coords.x, coords.y);
+        frame.drawString(icon, x, y);
     }
 
     private void setType() {
@@ -35,22 +36,22 @@ public class BonusFood extends Food {
             case 1 -> {
                 newFoodType = FoodType.SPEEDFOOD;
                 this.color = Color.blue;
-                this.icon = "↑";
+                this.icon = "^";
             }
             case 2 -> {
                 newFoodType = FoodType.SLOWFOOD;
                 this.color = Color.yellow;
-                this.icon = "↓";
+                this.icon = "v";
             }
             case 3 -> {
                 newFoodType = FoodType.PLUSFOOD;
                 this.color = Color.green;
-                this.icon = "+";
+                this.icon = "2";
             }
             case 4 -> {
                 newFoodType = FoodType.MINUSFOOD;
                 this.color = Color.red;
-                this.icon = "-";
+                this.icon = "2";
             }
         }
         this.type = newFoodType;
