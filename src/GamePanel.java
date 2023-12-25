@@ -12,7 +12,8 @@ import java.util.Random;
 public class GamePanel extends JPanel implements KeyListener {
     public static final int CELL_COUNT = 40;
     public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
-    public static final int FPS = 60;
+    private static final int FPS = 60;
+    private static final int EFFECT_DURATION = 8000; // timed effect duration in ms
 
     private BgPanel bg;
     private Snake snake;
@@ -89,7 +90,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private void updateEffects() {
         if (fastMode || slowMode) {
-            if (System.currentTimeMillis() - startTime > 5000) {
+            if (System.currentTimeMillis() - startTime > EFFECT_DURATION) {
                 fastMode = false;
                 slowMode = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
@@ -142,17 +143,13 @@ public class GamePanel extends JPanel implements KeyListener {
 
                 // spawn new obstacle every 5th time food is eaten
                 if (score % 5 == 0) {
-                    spawnNewObstacle();
+                    obstacles.add(new Obstacle(snake.getBody()));
                 }
             }
         }
 
         food.addAll(newFood);
         return incLength;
-    }
-
-    private void spawnNewObstacle() {
-        obstacles.add(new Obstacle(snake.getBody()));
     }
 
     private Food generateNewFoodItem(boolean isBonus) {
