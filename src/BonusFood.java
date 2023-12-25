@@ -10,7 +10,7 @@ public class BonusFood extends Food {
     @Override
     public void respawn() {
         super.respawn();
-        setType();
+        randType();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class BonusFood extends Food {
         frame.drawString(icon, x, y);
     }
 
-    private void setType() {
+    private void randType() {
         switch (rand.nextInt(4)) {
             case 0 -> {
                 this.type = FoodType.SPEEDFOOD;
