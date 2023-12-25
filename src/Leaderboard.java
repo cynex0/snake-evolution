@@ -66,31 +66,39 @@ public class Leaderboard extends JPanel implements ActionListener {
             stateChanger.changeState(GameState.MENU); // switches to main menu.
 
         }
-
     }
 
     private static ArrayList<Players> readFromFile() {
         // Returns a sorted list of players read from the json file
         JSONParser parser = new JSONParser();
         ArrayList<Players> players = new ArrayList<>();
+        File file = new File("res/Top10Scores.json");
 
         try {
-            FileReader reader = new FileReader("res/Top10Scores.json"); // Creating reader to read data from json file
-            JSONObject readJsonObj = (JSONObject) parser.parse(reader); // parsing data from json file to string
+            if (!file.exists()) {
+                JSONObject jsonObj = new JSONObject();
+                FileWriter writer = new FileWriter(file);
+                writer.write(jsonObj.toJSONString());
+                writer.close();
+            } else {
+                FileReader reader = new FileReader(file); // Creating reader to read data from json file
+                JSONObject readJsonObj = (JSONObject) parser.parse(reader); // parsing data from json file to string
 
-            for (Object PlayersData : readJsonObj.keySet()) {
-                String playerName = (String) PlayersData;
-                long playerScore = (long) readJsonObj.get(PlayersData);
-                Players player = new Players(playerName, playerScore);
-                players.add(player);
+                for (Object PlayersData : readJsonObj.keySet()) {
+                    String playerName = (String) PlayersData;
+                    long playerScore = (long) readJsonObj.get(PlayersData);
+                    Players player = new Players(playerName, playerScore);
+                    players.add(player);
+                }
+
+                // sorting players from high to low scores
+                Collections.sort(players);
             }
         }
         catch (Exception e) {
             throw new RuntimeException("Error while reading file!\n" + e.getMessage());
         }
 
-        // sorting players from high to low scores
-        Collections.sort(players);
         return players;
     }
 
@@ -118,7 +126,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         ArrayList<Players> top10Scorers = readFromFile();
 
         FileWriter writer;
-        org.json.simple.JSONObject jsonObj = new org.json.simple.JSONObject();
+        JSONObject jsonObj = new JSONObject();
 
         playersList.addAll(top10Scorers);
         Players newPlayer = new Players(name, score);
