@@ -1,11 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -196,7 +192,7 @@ public class GamePanel extends JPanel implements KeyListener {
     public void stopGame() {
         gameLoop.stop();
 
-        Players tempPlayer = new Players("", score);
+        Player tempPlayer = new Player("", score);
 
         if (score > 0 && Leaderboard.isTopTen(tempPlayer)) {
             stateChanger.changeState(GameState.GAME_OVER_ENTERNAME);
