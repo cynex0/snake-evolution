@@ -30,30 +30,28 @@ public class BonusFood extends Food {
     }
 
     private void setType() {
-        FoodType newFoodType = FoodType.SPEEDFOOD;
-        int randInt = rand.nextInt(4) +1;
-        switch (randInt) {
-            case 1 -> {
-                newFoodType = FoodType.SPEEDFOOD;
+        FoodType newFoodType;
+        switch (rand.nextInt(4)) {
+            case 0 -> {
+                this.type = FoodType.SPEEDFOOD;
                 this.color = Color.blue;
                 this.icon = "^";
             }
-            case 2 -> {
-                newFoodType = FoodType.SLOWFOOD;
+            case 1 -> {
+                this.type = FoodType.SLOWFOOD;
                 this.color = Color.yellow;
                 this.icon = "v";
             }
-            case 3 -> {
-                newFoodType = FoodType.PLUSFOOD;
+            case 2 -> {
+                this.type = FoodType.PLUSFOOD;
                 this.color = Color.green;
                 this.icon = "2";
             }
-            case 4 -> {
-                newFoodType = FoodType.MINUSFOOD;
+            case 3 -> {
+                this.type = FoodType.MINUSFOOD;
                 this.color = Color.red;
                 this.icon = "2";
             }
         }
-        this.type = newFoodType;
     }
 }
