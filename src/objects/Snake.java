@@ -1,6 +1,5 @@
 package objects;
 
-import panels.BgPanel;
 import utilities.CellPosition;
 import utilities.Direction;
 import utilities.GameConstants;

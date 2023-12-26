@@ -1,8 +1,5 @@
 package utilities;
 
-import panels.BgPanel;
-import panels.GamePanel;
-
 import java.awt.Point;
 
 public interface GameConstants {

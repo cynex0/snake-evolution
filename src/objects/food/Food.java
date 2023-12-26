@@ -3,7 +3,6 @@ package objects.food;
 import java.awt.*;
 import java.util.Random;
 
-import panels.GamePanel;
 import utilities.CellPosition;
 import utilities.GameConstants;
 

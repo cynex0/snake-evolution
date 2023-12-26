@@ -1,6 +1,5 @@
 package objects.obstacle;
 
-import panels.GamePanel;
 import utilities.CellPosition;
 import utilities.GameConstants;
 
