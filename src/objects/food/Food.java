@@ -1,9 +1,12 @@
+package objects.food;
+
 import java.awt.*;
 import java.util.Random;
 
+import utilities.CellPosition;
+import utilities.GameConstants;
+
 public class Food {
-    private static final int MIN_CELL = BgPanel.MARGIN_CELLS; // first playable cell
-    private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 1; // last playable cell
     protected static final int BORDER_SIZE = 2;
 
     protected CellPosition foodLocation;
@@ -21,14 +24,14 @@ public class Food {
     }
 
     public void respawn() {
-        int randX = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
-        int randY = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
+        int randX = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
+        int randY = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
         foodLocation = new CellPosition(randX, randY);
     }
 
     public void draw (Graphics2D frame) {
         Point coords = foodLocation.getCoordinates(); // top left coords of the cell
-        int halfCell = GamePanel.CELL_SIZE / 2;
+        int halfCell = GameConstants.CELL_SIZE / 2;
         int[] xPoints, yPoints; // romb point coordinates, clockwise, starting from left (9 o'clock) corner
 
         // draw border

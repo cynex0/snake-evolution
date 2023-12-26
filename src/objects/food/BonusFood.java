@@ -1,4 +1,7 @@
+package objects.food;
+
 import java.awt.*;
+import utilities.GameConstants;
 
 public class BonusFood extends Food {
     private String icon;
@@ -22,8 +25,8 @@ public class BonusFood extends Food {
         frame.setFont(font);
 
         FontMetrics metrics = frame.getFontMetrics(font); // for position calculation
-        float x = coords.x + GamePanel.CELL_SIZE / 2f - metrics.stringWidth(icon) / 2f;
-        float y = coords.y + GamePanel.CELL_SIZE / 2f - metrics.getHeight() / 2f + metrics.getAscent();
+        float x = coords.x + GameConstants.CELL_SIZE / 2f - metrics.stringWidth(icon) / 2f;
+        float y = coords.y + GameConstants.CELL_SIZE / 2f - metrics.getHeight() / 2f + metrics.getAscent();
 
         frame.setColor(Color.BLACK);
         frame.drawString(icon, x, y);

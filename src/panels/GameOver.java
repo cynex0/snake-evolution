@@ -1,13 +1,19 @@
+package panels;
+
+import main.engine.*;
+import utilities.GameButton;
+import utilities.GameConstants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
 public class GameOver extends JPanel implements ActionListener, KeyListener, FocusListener {
-    private final Button retryBtn; // Declaring button references
-    private final Button mainMenuBtn;
-    public BgPanel panel; // BgPanel reference for instantiation
-    private final ArrayList<Button> buttons; //declaring arrayList of Buttons to perform redundant button-tasks.
+    private final GameButton retryBtn; // Declaring button references
+    private final GameButton mainMenuBtn;
+    public BgPanel bg; // BgPanel reference for instantiation
+    private final ArrayList<GameButton> buttons; //declaring arrayList of Buttons to perform redundant button-tasks.
 
     private StateChangeListener stateChanger;
 
@@ -20,7 +26,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         stateChanger = listener;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // creates a box layout for the panel.
-        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
         this.add(Box.createRigidArea(new Dimension(0, 10))); // Gives some space over title
         JLabel titleLabel = new JLabel("GAME OVER!", SwingConstants.CENTER);
@@ -30,9 +36,9 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         this.add(Box.createRigidArea(new Dimension(0, 5))); // creates a blank area under title for visual spacing.
         this.add(titleLabel);
 
-        panel = new BgPanel();
-        retryBtn = new Button("Retry"); // Assigning buttons
-        mainMenuBtn = new Button("Main Menu");
+        bg = new BgPanel();
+        retryBtn = new GameButton("Retry"); // Assigning buttons
+        mainMenuBtn = new GameButton("Main Menu");
 
         buttons = new ArrayList<>(); // initializing the Button ArrayList.
         buttons.add(retryBtn); // adding the existing Button objects to the list.
@@ -96,7 +102,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
 
             this.add(Box.createRigidArea(new Dimension(0, 160)));  // Adds space above the new score label
 
-            for (Button button : buttons) {
+            for (GameButton button : buttons) {
                 Font newButtonFont = new Font("Public Pixel", Font.BOLD, 35);
                 button.setFont(newButtonFont);
                 button.setPreferredSize(new Dimension(700, 120));
@@ -129,9 +135,9 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     }
 
     @Override
-    protected void paintComponent(Graphics graphics) { //calling the BgPanel paintComponent method to draw the border rectangles
+    protected void paintComponent(Graphics graphics) { //calling the utilities.BgPanel paintComponent method to draw the border rectangles
         super.paintComponent(graphics);
-        panel.paintComponent(graphics);
+        bg.paintComponent(graphics);
 
     }
     public void actionPerformed(ActionEvent event ) { // Performs action when buttons are clicked

@@ -1,3 +1,5 @@
+package panels;
+
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
 
@@ -14,11 +16,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import utilities.Player;
+import utilities.GameButton;
+import utilities.GameConstants;
+import main.engine.*;
+
 
 public class Leaderboard extends JPanel implements ActionListener {
     private DefaultListModel<String> listItems;
     private JList<String> lbList;
-    private JButton mainMenuBtn;     // a Button to go back to the main menu
+    private GameButton mainMenuBtn;     // a Button to go back to the main menu
     private BgPanel bg;
 
     private static ArrayList<Player> playerList = new ArrayList<>();
@@ -29,7 +36,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         bg = new BgPanel();
         // creating custom font for the game
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
-        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
         JLabel titleLabel = new JLabel("Leaderboard", SwingConstants.CENTER); //creates the title "snake evolution" for the menu.
@@ -49,7 +56,7 @@ public class Leaderboard extends JPanel implements ActionListener {
         this.add(Box.createRigidArea(new Dimension(0, 50)));// drawing blank area above JList
         this.add(lbList);
 
-        mainMenuBtn = new Button("Main Menu");
+        mainMenuBtn = new GameButton("Main Menu");
         mainMenuBtn.setFocusable(true);
         mainMenuBtn.setActionCommand("MENU");
 
