@@ -6,6 +6,7 @@ import objects.obstacle.*;
 import main.engine.*;
 import utilities.CellPosition;
 import utilities.Direction;
+import utilities.GameConstants;
 import utilities.Player;
 
 import javax.swing.*;
@@ -19,11 +20,6 @@ import java.util.Random;
 
 
 public class GamePanel extends JPanel implements KeyListener {
-    public static final int CELL_COUNT = 40;
-    public static final int CELL_SIZE = GameFrame.WINDOW_SIZE.x / CELL_COUNT;
-    private static final int FPS = 60;
-    private static final int EFFECT_DURATION = 8000; // timed effect duration in ms
-
     private BgPanel bg;
     private Snake snake;
     private ArrayList<Food> food;
@@ -39,7 +35,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
     public GamePanel(StateChangeListener listener) {
         super();
-        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
@@ -57,7 +53,7 @@ public class GamePanel extends JPanel implements KeyListener {
         fastMode = false;
         slowMode = false;
 
-        int delay = (int) (1000 / (FPS * Snake.SPEED));
+        int delay = (int) (1000 / (GameConstants.FPS * Snake.SPEED));
         gameLoop = new Timer(delay, e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
 
             //1000/(int)(FPS * objects.Snake.SPEED)
@@ -93,13 +89,13 @@ public class GamePanel extends JPanel implements KeyListener {
     }
 
     private void adjustSnakeSpeed(double speedMultiplier) {
-        int delay = (int) (1000 / (FPS * Snake.SPEED * speedMultiplier));
+        int delay = (int) (1000 / (GameConstants.FPS * Snake.SPEED * speedMultiplier));
         gameLoop.setDelay(delay);
     }
 
     private void updateEffects() {
         if (fastMode || slowMode) {
-            if (System.currentTimeMillis() - startTime > EFFECT_DURATION) {
+            if (System.currentTimeMillis() - startTime > GameConstants.EFFECT_DURATION) {
                 fastMode = false;
                 slowMode = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
@@ -195,7 +191,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("Public Pixel", Font.PLAIN,20));
-        g.drawString(String.format("%03d", score), 65 , GameFrame.WINDOW_SIZE.y - 760);
+        g.drawString(String.format("%03d", score), 65 , GameConstants.WINDOW_SIZE.y - 760);
 
         snake.draw(frame);
         frame.dispose();

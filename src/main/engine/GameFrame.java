@@ -1,19 +1,20 @@
 package main.engine;
 
+import panels.GameOver;
+import panels.GamePanel;
 import panels.Leaderboard;
+import panels.MainMenu;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import panels.*;
+import utilities.GameConstants;
 
 public class GameFrame extends JFrame implements StateChangeListener {
-    public static final Point WINDOW_SIZE = new Point(800, 800);
     private static JPanel currentPanel;
     private StateChangeListener stateChangeListener;
-
 
     public GameFrame() {
         super();
@@ -21,7 +22,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setTitle("Snake Evolution");
-        this.setSize(WINDOW_SIZE.x, WINDOW_SIZE.y);
+        this.setSize(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y);
 
         this.setLocationRelativeTo(null);
         this.setFocusable(true);

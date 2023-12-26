@@ -1,17 +1,15 @@
 package objects;
 
-import main.engine.GameFrame;
-import panels.GamePanel;
 import panels.BgPanel;
 import utilities.CellPosition;
 import utilities.Direction;
+import utilities.GameConstants;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Snake {
-
     public static final double SPEED = 0.18; // FPS multiplier
 
     private ArrayList<CellPosition> body;
@@ -56,10 +54,10 @@ public class Snake {
 
     private boolean doBorderCollision(CellPosition pos) {
         Point nextCoords = pos.getCoordinates();
-        if ((nextCoords.x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (nextCoords.x < BgPanel.MARGIN_INNER)) {
+        if ((nextCoords.x >= GameConstants.WINDOW_SIZE.x - GameConstants.MARGIN_INNER) || (nextCoords.x < GameConstants.MARGIN_INNER)) {
             return true;
         }
-        if ((nextCoords.y >= GameFrame.WINDOW_SIZE.y - BgPanel.MARGIN_INNER) || (nextCoords.y < BgPanel.MARGIN_INNER)) {
+        if ((nextCoords.y >= GameConstants.WINDOW_SIZE.y - GameConstants.MARGIN_INNER) || (nextCoords.y < GameConstants.MARGIN_INNER)) {
             return true;
         }
         return false;
@@ -99,7 +97,7 @@ public class Snake {
         frame.setColor(new Color(0x2b331a));
         for (CellPosition pos : body) {
             Point p = pos.getCoordinates();
-            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
+            frame.fillRect(p.x, p.y, GameConstants.CELL_SIZE, GameConstants.CELL_SIZE);
         }
     }
 

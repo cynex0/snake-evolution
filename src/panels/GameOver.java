@@ -2,6 +2,7 @@ package panels;
 
 import main.engine.*;
 import utilities.GameButton;
+import utilities.GameConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +26,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         stateChanger = listener;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // creates a box layout for the panel.
-        this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
+        this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000"));
         this.add(Box.createRigidArea(new Dimension(0, 10))); // Gives some space over title
         JLabel titleLabel = new JLabel("GAME OVER!", SwingConstants.CENTER);
