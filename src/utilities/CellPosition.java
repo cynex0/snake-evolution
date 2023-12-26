@@ -1,3 +1,7 @@
+package utilities;
+
+import panels.GamePanel;
+
 import java.awt.*;
 
 public class CellPosition extends Point {

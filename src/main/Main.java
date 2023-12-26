@@ -1,5 +1,7 @@
+package main;
+
 public class Main {
     public static void main(String[] args) {
-        new GameFrame();
+        new main.engine.GameFrame();
     }
 }

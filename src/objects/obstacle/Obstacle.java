@@ -1,3 +1,9 @@
+package objects.obstacle;
+
+import panels.GamePanel;
+import utilities.BgPanel;
+import utilities.CellPosition;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;

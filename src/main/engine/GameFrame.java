@@ -1,7 +1,13 @@
+package main.engine;
+
+import leaderboard.Leaderboard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+
+import panels.*;
 
 public class GameFrame extends JFrame implements StateChangeListener {
     public static final Point WINDOW_SIZE = new Point(800, 800);
@@ -51,7 +57,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
             }
 
             case GAME_OVER -> {
-                int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be GamePanel
+                int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be panels.GamePanel
                 GameOver nextPanel = new GameOver(this, score, false);
                 currentPanel = nextPanel;
             }

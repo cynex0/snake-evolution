@@ -1,3 +1,8 @@
+package objects.obstacle;
+
+import objects.obstacle.Obstacle;
+import utilities.CellPosition;
+
 import java.util.ArrayList;
 
 public class ObstacleList {

@@ -1,5 +1,11 @@
+package objects.food;
+
 import java.awt.*;
 import java.util.Random;
+
+import panels.GamePanel;
+import utilities.BgPanel;
+import utilities.CellPosition;
 
 public class Food {
     private static final int MIN_CELL = BgPanel.MARGIN_CELLS; // first playable cell

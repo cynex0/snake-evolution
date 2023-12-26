@@ -1,12 +1,14 @@
+package utilities;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Button extends JButton implements MouseListener {  // extends the JButton class and uses the mouseListener interface.
+public class GameButton extends JButton implements MouseListener {  // extends the JButton class and uses the mouseListener interface.
     private final String standardText; // declaring variable to store the name of the button as standard text.
 
-    public Button(String standardText) { // constructor that takes the button name as parameter.
+    public GameButton(String standardText) { // constructor that takes the button name as parameter.
         super(standardText);
         this.standardText = standardText;
         editButton(this); // calls the editButton function when creating a button.
@@ -14,7 +16,7 @@ public class Button extends JButton implements MouseListener {  // extends the J
         this.addMouseListener(this); // adding a mouseListener to the button upon creation.
     }
 
-    public void editButton(Button button) { // function to apply desired button design
+    public void editButton(GameButton button) { // function to apply desired button design
         Font buttonFont = new Font("Public Pixel", Font.BOLD, 50); // instantiating a Font object to use as standard font.
         this.setFont(buttonFont); // calling setFont on button, using my buttonFont as parameter.
         this.setBorderPainted(false); // making borders of button disappear and just display the text.

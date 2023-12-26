@@ -1,4 +1,7 @@
+package objects.food;
+
 import java.awt.*;
+import panels.GamePanel;
 
 public class BonusFood extends Food {
     private String icon;

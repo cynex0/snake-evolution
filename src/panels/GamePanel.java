@@ -1,3 +1,15 @@
+package panels;
+
+import objects.*;
+import objects.food.*;
+import objects.obstacle.*;
+import leaderboard.Leaderboard;
+import main.engine.*;
+import utilities.BgPanel;
+import utilities.CellPosition;
+import utilities.Direction;
+import utilities.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -51,7 +63,7 @@ public class GamePanel extends JPanel implements KeyListener {
         int delay = (int) (1000 / (FPS * Snake.SPEED));
         gameLoop = new Timer(delay, e -> { // GAME LOOP, runs every 1/60*SPEED -th of a second
 
-            //1000/(int)(FPS * Snake.SPEED)
+            //1000/(int)(FPS * objects.Snake.SPEED)
             update();
             repaint(); // calls paintComponent()
 

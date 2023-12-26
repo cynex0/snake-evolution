@@ -1,3 +1,9 @@
+package panels;
+
+import main.engine.*;
+import utilities.BgPanel;
+import utilities.GameButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,14 +12,12 @@ import java.util.ArrayList;
 
 
 public class MainMenu extends JPanel implements ActionListener { // the mainMenu class javas JPanel & implements ActionListener interface.
+    private GameButton startBtn; // Declaring utilities.Button references
+    private GameButton leaderboardBtn;
+    private GameButton exitBtn;
+    public BgPanel panel; // utilities.BgPanel reference for instantiation
 
-    private GameState GameState;
-    private Button startBtn; // Declaring Button references
-    private Button leaderboardBtn;
-    private Button exitBtn;
-    public BgPanel panel; // BgPanel reference for instantiation
-
-    private ArrayList<Button> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
+    private ArrayList<GameButton> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
     private StateChangeListener stateChanger; // reference to state changer instance.
 
@@ -31,16 +35,16 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
         this.add(titleLabel); // adds title to panel.
         this.add(Box.createRigidArea(new Dimension(0, 100)));
 
-        startBtn = new Button("Start"); //assigning buttons.
-        leaderboardBtn = new Button("Leaderboard");
-        exitBtn = new Button("Exit");
+        startBtn = new GameButton("Start"); //assigning buttons.
+        leaderboardBtn = new GameButton("Leaderboard");
+        exitBtn = new GameButton("Exit");
 
-        buttons = new ArrayList<>();// initializing the Button ArrayList.
-        buttons.add(startBtn);// adding the existing Button objects to the list.
+        buttons = new ArrayList<>();// initializing the utilities.Button ArrayList.
+        buttons.add(startBtn);// adding the existing utilities.Button objects to the list.
         buttons.add(leaderboardBtn);
         buttons.add(exitBtn);
 
-        for (Button button : buttons) {
+        for (GameButton button : buttons) {
             this.add(button); // add the buttons to the panel
             button.setActionCommand(button.getText()); //sets action command for the button that is the same as its name
             button.addActionListener(this); //adds listener to register button interaction
@@ -48,7 +52,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
 
         stateChanger = listener;
     }
-    public void paintComponent(Graphics g) { //calling the BgPanel paintcomponent method to draw the border rectangles
+    public void paintComponent(Graphics g) { //calling the utilities.BgPanel paintcomponent method to draw the border rectangles
         super.paintComponent(g);
         panel.paintComponent(g);
     }

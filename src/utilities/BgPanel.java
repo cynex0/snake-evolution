@@ -1,3 +1,8 @@
+package utilities;
+
+import main.engine.GameFrame;
+import panels.GamePanel;
+
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -40,7 +45,4 @@ public class BgPanel extends JPanel {
         frame.fillRect(0, GameFrame.WINDOW_SIZE.y - BORDER_THC, GameFrame.WINDOW_SIZE.x, BORDER_THC); // bottom border
 
     }
-
-
-    }
-
+}

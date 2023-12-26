@@ -1,3 +1,11 @@
+package objects;
+
+import main.engine.GameFrame;
+import panels.GamePanel;
+import utilities.BgPanel;
+import utilities.CellPosition;
+import utilities.Direction;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
