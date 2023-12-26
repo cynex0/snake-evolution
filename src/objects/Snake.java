@@ -2,7 +2,7 @@ package objects;
 
 import main.engine.GameFrame;
 import panels.GamePanel;
-import utilities.BgPanel;
+import panels.BgPanel;
 import utilities.CellPosition;
 import utilities.Direction;
 

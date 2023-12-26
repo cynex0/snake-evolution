@@ -1,6 +1,6 @@
 package main.engine;
 
-import leaderboard.Leaderboard;
+import panels.Leaderboard;
 
 import javax.swing.*;
 import java.awt.*;

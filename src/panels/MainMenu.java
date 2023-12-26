@@ -1,7 +1,6 @@
 package panels;
 
 import main.engine.*;
-import utilities.BgPanel;
 import utilities.GameButton;
 
 import javax.swing.*;
@@ -15,14 +14,14 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
     private GameButton startBtn; // Declaring utilities.Button references
     private GameButton leaderboardBtn;
     private GameButton exitBtn;
-    public BgPanel panel; // utilities.BgPanel reference for instantiation
+    public BgPanel bg; // utilities.BgPanel reference for instantiation
 
     private ArrayList<GameButton> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
     private StateChangeListener stateChanger; // reference to state changer instance.
 
     public MainMenu(StateChangeListener listener) {
-        panel = new BgPanel();
+        bg = new BgPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameFrame.WINDOW_SIZE.x, GameFrame.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
@@ -54,7 +53,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
     }
     public void paintComponent(Graphics g) { //calling the utilities.BgPanel paintcomponent method to draw the border rectangles
         super.paintComponent(g);
-        panel.paintComponent(g);
+        bg.paintComponent(g);
     }
 
 

@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 import panels.GamePanel;
-import utilities.BgPanel;
+import panels.BgPanel;
 import utilities.CellPosition;
 
 public class Food {

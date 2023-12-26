@@ -1,7 +1,7 @@
 package objects.obstacle;
 
 import panels.GamePanel;
-import utilities.BgPanel;
+import panels.BgPanel;
 import utilities.CellPosition;
 
 import java.awt.*;

@@ -1,4 +1,4 @@
-package leaderboard;
+package panels;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import utilities.BgPanel;
 import utilities.Player;
 import utilities.GameButton;
 import main.engine.*;

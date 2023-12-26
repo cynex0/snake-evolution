@@ -1,7 +1,6 @@
-package utilities;
+package panels;
 
 import main.engine.GameFrame;
-import panels.GamePanel;
 
 import javax.swing.JPanel;
 import java.awt.*;

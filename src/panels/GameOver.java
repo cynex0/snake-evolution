@@ -1,8 +1,6 @@
 package panels;
 
-import leaderboard.Leaderboard;
 import main.engine.*;
-import utilities.BgPanel;
 import utilities.GameButton;
 
 import javax.swing.*;
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 public class GameOver extends JPanel implements ActionListener, KeyListener, FocusListener {
     private final GameButton retryBtn; // Declaring button references
     private final GameButton mainMenuBtn;
-    public BgPanel panel; // utilities.BgPanel reference for instantiation
+    public BgPanel bg; // BgPanel reference for instantiation
     private final ArrayList<GameButton> buttons; //declaring arrayList of Buttons to perform redundant button-tasks.
 
     private StateChangeListener stateChanger;
@@ -37,12 +35,12 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
         this.add(Box.createRigidArea(new Dimension(0, 5))); // creates a blank area under title for visual spacing.
         this.add(titleLabel);
 
-        panel = new BgPanel();
+        bg = new BgPanel();
         retryBtn = new GameButton("Retry"); // Assigning buttons
         mainMenuBtn = new GameButton("Main Menu");
 
-        buttons = new ArrayList<>(); // initializing the utilities.Button ArrayList.
-        buttons.add(retryBtn); // adding the existing utilities.Button objects to the list.
+        buttons = new ArrayList<>(); // initializing the Button ArrayList.
+        buttons.add(retryBtn); // adding the existing Button objects to the list.
         buttons.add(mainMenuBtn);
 
         if( isHighScore ){
@@ -138,7 +136,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     @Override
     protected void paintComponent(Graphics graphics) { //calling the utilities.BgPanel paintComponent method to draw the border rectangles
         super.paintComponent(graphics);
-        panel.paintComponent(graphics);
+        bg.paintComponent(graphics);
 
     }
     public void actionPerformed(ActionEvent event ) { // Performs action when buttons are clicked

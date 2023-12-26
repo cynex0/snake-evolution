@@ -3,20 +3,17 @@ package panels;
 import objects.*;
 import objects.food.*;
 import objects.obstacle.*;
-import leaderboard.Leaderboard;
 import main.engine.*;
-import utilities.BgPanel;
 import utilities.CellPosition;
 import utilities.Direction;
 import utilities.Player;
 
 import javax.swing.*;
 import java.awt.*;
-
-import java.util.ArrayList;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
