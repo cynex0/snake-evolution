@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class MainMenu extends JPanel implements ActionListener { // the mainMenu class javas JPanel & implements ActionListener interface.
     private GameButton startBtn; // Declaring utilities.Button references
+
+    private GameButton tutorialBtn;
     private GameButton leaderboardBtn;
     private GameButton exitBtn;
     public BgPanel bg; // utilities.BgPanel reference for instantiation
@@ -41,6 +43,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
 
         buttons = new ArrayList<>();// initializing the utilities.Button ArrayList.
         buttons.add(startBtn);// adding the existing utilities.Button objects to the list.
+        buttons.add(tutorialBtn);
         buttons.add(leaderboardBtn);
         buttons.add(exitBtn);
 
@@ -63,6 +66,8 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
 
         if ("Start".equals(actionCommand)) {
             stateChanger.changeState(GameState.GAME); // switches to state GAME.
+        }else if ("Tutorial".equals(actionCommand)){
+            stateChanger.changeState(GameState.TUTORIAL);
         } else if ("Leaderboard".equals(actionCommand)) {
             stateChanger.changeState(GameState.LEADERBOARD); // switches to state LEADERBOARD.
         } else if ("Exit".equals(actionCommand)) {
