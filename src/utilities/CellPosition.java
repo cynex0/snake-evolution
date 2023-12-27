@@ -1,3 +1,7 @@
+package utilities;
+
+import panels.GamePanel;
+
 import java.awt.*;
 
 public class CellPosition extends Point {
@@ -13,7 +17,7 @@ public class CellPosition extends Point {
     }
 
     public Point getCoordinates() { // returns coordinates of the current cell
-        return new Point(x * GamePanel.CELL_SIZE, y * GamePanel.CELL_SIZE);
+        return new Point(x * GameConstants.CELL_SIZE, y * GameConstants.CELL_SIZE);
     }
 
     public Point getCell() { return new Point(x, y); }

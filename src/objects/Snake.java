@@ -1,3 +1,9 @@
+package objects;
+
+import utilities.CellPosition;
+import utilities.Direction;
+import utilities.GameConstants;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,7 +14,6 @@ public class Snake {
     private ArrayList<CellPosition> body;
     private Direction currentDirection;
     private LinkedList<Direction> inputQueue;
-    private boolean foodEaten;
 
     public Snake() {
         body = new ArrayList<>();
@@ -21,16 +26,10 @@ public class Snake {
         body.add(new CellPosition(17, 20));
         body.add(new CellPosition(16, 20));
         body.add(new CellPosition(15, 20));
-
-        foodEaten = false;
     }
 
     public ArrayList<CellPosition> getBody() {
         return body;
-    }
-
-    public void increaseLength() {
-        foodEaten = true;
     }
     
     private CellPosition calculateNextPos() {
@@ -54,10 +53,10 @@ public class Snake {
 
     private boolean doBorderCollision(CellPosition pos) {
         Point nextCoords = pos.getCoordinates();
-        if ((nextCoords.x >= GameFrame.WINDOW_SIZE.x - BgPanel.MARGIN_INNER) || (nextCoords.x < BgPanel.MARGIN_INNER)) {
+        if ((nextCoords.x >= GameConstants.WINDOW_SIZE.x - GameConstants.MARGIN_INNER) || (nextCoords.x < GameConstants.MARGIN_INNER)) {
             return true;
         }
-        if ((nextCoords.y >= GameFrame.WINDOW_SIZE.y - BgPanel.MARGIN_INNER) || (nextCoords.y < BgPanel.MARGIN_INNER)) {
+        if ((nextCoords.y >= GameConstants.WINDOW_SIZE.y - GameConstants.MARGIN_INNER) || (nextCoords.y < GameConstants.MARGIN_INNER)) {
             return true;
         }
         return false;
@@ -74,11 +73,6 @@ public class Snake {
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
-
-        if (!foodEaten)
-            body.remove(body.size() - 1);
-        else
-            foodEaten = false;
     }
 
     public void updateDirection(Direction newDir) {
@@ -89,10 +83,6 @@ public class Snake {
 
         if (!inputQueue.isEmpty() && isOppositeDir(inputQueue.peek(), currentDirection))
             inputQueue.removeFirst(); // drops the next direction in queue if it is opposite to the current direction
-    }
-
-    public Direction getCurrentDirection() {
-        return currentDirection;
     }
 
     private boolean isOppositeDir(Direction dir1, Direction dir2) {
@@ -106,17 +96,8 @@ public class Snake {
         frame.setColor(new Color(0x2b331a));
         for (CellPosition pos : body) {
             Point p = pos.getCoordinates();
-            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
+            frame.fillRect(p.x, p.y, GameConstants.CELL_SIZE, GameConstants.CELL_SIZE);
         }
-    }
-
-    public boolean foodEaten(Food f) {
-        Point headCoords = body.get(0).getCoordinates();
-        if (headCoords.x == f.getFoodLocation().x) {
-            if (headCoords.y == f.getFoodLocation().y)
-                return true;
-        }
-        return false;
     }
 
     // checks if snake collides with any object at given position
@@ -125,6 +106,8 @@ public class Snake {
     }
 
     public boolean checkCollisionWith(ArrayList<CellPosition> pos) {
+        if (pos.isEmpty()) return false;
+
         for (CellPosition p : pos) {
             if (body.contains(p)) return true;
         }

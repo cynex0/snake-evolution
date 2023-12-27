@@ -1,13 +1,19 @@
+package objects.obstacle;
+
+import utilities.CellPosition;
+import utilities.GameConstants;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Obstacle {
+    private static final int MAX_SIZE = 5; // maximum amt of cells in an obstacle
+    private static final int PARTICLE_COUNT = 8;
+    private static final int PARTICLE_SIZE = GameConstants.CELL_SIZE / 5;
+
     private ArrayList<CellPosition> cells;
     private Random rand;
-    private static final int MIN_CELL = BgPanel.MARGIN_CELLS + 1; // first playable cell + 1
-    private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 2; // last playable cell - 1
-    private static final int MAX_SIZE = 5; // maximum amt of cells in an obstacle
 
     public Obstacle(ArrayList<CellPosition> snakePos) {
         rand = new Random();
@@ -29,13 +35,13 @@ public class Obstacle {
                 ArrayList<CellPosition> viableCells = new ArrayList<>();
                 CellPosition prevCell = cells.get(i);
 
-                if (prevCell.x + 1 <= MAX_CELL) // can grow to the right
+                if (prevCell.x + 1 <= GameConstants.MAX_CELL) // can grow to the right
                     viableCells.add(new CellPosition(prevCell.x + 1, prevCell.y));
-                if (prevCell.x - 1 >= MIN_CELL) // can grow to the left
+                if (prevCell.x - 1 >= GameConstants.MIN_CELL) // can grow to the left
                     viableCells.add(new CellPosition(prevCell.x - 1, prevCell.y));
-                if (prevCell.y + 1 <= MAX_CELL) // can grow down
+                if (prevCell.y + 1 <= GameConstants.MAX_CELL) // can grow down
                     viableCells.add(new CellPosition(prevCell.x, prevCell.y + 1));
-                if (prevCell.y - 1 >= MIN_CELL) // can grow up
+                if (prevCell.y - 1 >= GameConstants.MIN_CELL) // can grow up
                     viableCells.add(new CellPosition(prevCell.x, prevCell.y - 1));
 
                 if (viableCells.isEmpty()) // stop spawning if no viable cells found
@@ -54,16 +60,30 @@ public class Obstacle {
     }
 
     private CellPosition getRandomCell() {
-        int randX = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
-        int randY = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
+        int randX = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
+        int randY = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
         return new CellPosition(randX, randY);
     }
 
     public void draw(Graphics2D frame) {
-        frame.setColor(Color.BLACK);
         for (CellPosition pos : cells) {
             Point p = pos.getCoordinates();
-            frame.fillRect(p.x, p.y, GamePanel.CELL_SIZE, GamePanel.CELL_SIZE);
+
+            // draw the obstacle
+            frame.setColor(Color.BLACK);
+            frame.fillRect(p.x, p.y, GameConstants.CELL_SIZE, GameConstants.CELL_SIZE);
+
+            // draw the "cracks" in the obstacle
+            for (int i = 0; i < PARTICLE_COUNT; i++) {
+                if (rand.nextFloat() > 0.25)
+                    frame.setColor(Color.DARK_GRAY);
+                else
+                    frame.setColor(Color.GRAY);
+
+                int x = (int) (rand.nextFloat() * (GameConstants.CELL_SIZE - PARTICLE_SIZE)) + p.x;
+                int y = (int) (rand.nextFloat() * (GameConstants.CELL_SIZE - PARTICLE_SIZE)) + p.y;
+                frame.fillRect(x, y, PARTICLE_SIZE, PARTICLE_SIZE);
+            }
         }
     }
 
