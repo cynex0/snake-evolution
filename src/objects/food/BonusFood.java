@@ -33,7 +33,7 @@ public class BonusFood extends Food {
     }
 
     private void randType() {
-        switch (rand.nextInt(4)) {
+        switch (rand.nextInt(5)) {
             case 0 -> {
                 this.type = FoodType.SPEEDFOOD;
                 this.color = new Color(0xffbf00);
@@ -53,6 +53,11 @@ public class BonusFood extends Food {
                 this.type = FoodType.MINUSFOOD;
                 this.color = new Color(0xd40000);
                 this.icon = "2";
+            }
+            case 4 -> {
+                this.type = FoodType.CONTROLINVERTER;
+                this.color = Color.darkGray;
+                this.icon = "><";
             }
         }
     }
