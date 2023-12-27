@@ -38,6 +38,7 @@ public class Leaderboard extends JPanel implements ActionListener {
     /**
      * Creates the Leaderboard panel. Reads the stored leaderboard data from file.
      * @param listener reference to the observer object to allow requesting state change
+     * @author Victoria Rönnlid (co-author)
      */
     public Leaderboard(StateChangeListener listener){
         bg = new BgPanel();

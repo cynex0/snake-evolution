@@ -26,6 +26,7 @@ public class BgPanel extends JPanel {
      * Draws the background and the borders on the screen, specified by the design.
      * @param g graphics component supplied by the GameFrame
      * @author Maksims Orlovs
+     * @author Victoria Rönnlid (co-author)
      */
     @Override
     public void paintComponent(Graphics g) {

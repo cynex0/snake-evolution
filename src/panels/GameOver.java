@@ -31,6 +31,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
      * @param listener reference to the observer class to allow state switching
      * @param score player's score to be displayed
      * @param isHighScore a flag to determine if the score is a new record
+     * @author Victoria Rönnlid (co-author)
      */
     public GameOver(StateChangeListener listener, int score, boolean isHighScore) {
         this.score = score;
