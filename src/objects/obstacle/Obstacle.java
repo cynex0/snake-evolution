@@ -10,6 +10,7 @@ import java.util.Random;
 
 /**
  * Represents an obstacle.
+ * @author Maksims Orlovs
  */
 public class Obstacle {
     private static final int MAX_SIZE = 5; // maximum amt of cells in an obstacle
@@ -21,6 +22,7 @@ public class Obstacle {
 
     /**
      * Creates and spawnds an obstacle object.
+     * @author Maksims Orlovs
      * @param snakePos snake position at the time of obstacle spawning to prevent incorrect spawning position.
      * @see Obstacle#respawn(ArrayList)
      */
@@ -34,6 +36,7 @@ public class Obstacle {
      * Spawns the obstacle of a random size and shape on the playing field, in a valid position.
      * Spawning stops when an incorrect position has been generated.
      * @param snakePos snake position at the time of obstacle spawning to prevent spawning in the snake.
+     * @author Maksims Orlovs
      */
     public void respawn(ArrayList<CellPosition> snakePos) {
         CellPosition startPos = getRandomCell(); // gets a random cell to start the spawning process
@@ -78,6 +81,8 @@ public class Obstacle {
     /**
      * Generates a random cell within the playable area (excludes margins)
      * @return CellPosition representing a traversable cell
+     * @author Fatemeh Akbarifar
+     * @author Maksims Orlovs
      */
     private CellPosition getRandomCell() {
         int randX = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
@@ -89,6 +94,7 @@ public class Obstacle {
      * Method to draw the obstacle item onto the screen (frame). Draws squares in obstacle positions and random "noise"
      * inside of them.
      * @param frame Swing Graphics2D object that represents the current frame to be updated.
+     * @author Maksims Orlovs
      */
     public void draw(Graphics2D frame) {
         for (CellPosition pos : cells) {
@@ -115,6 +121,7 @@ public class Obstacle {
     /**
      * Getter for the total obstacle position.
      * @return ArrayList of CellPosition:s that represent the cells occupied by the obstacle.
+     * @author Maksims Orlovs
      */
     public ArrayList<CellPosition> getCells() {
         return cells;

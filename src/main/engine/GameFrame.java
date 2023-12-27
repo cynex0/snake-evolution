@@ -18,12 +18,15 @@ import utilities.GameConstants;
  * states.
  * It extends JFrame to use Swing for displaying a game window and implements StateChangeListener to receive requests
  * from the states to switch to a different state.
+ * @author Maksims Orlovs
  */
 public class GameFrame extends JFrame implements StateChangeListener {
     private static JPanel currentPanel;
 
     /**
      * Creates a GameFrame and sets up the game, the window and the font.
+     * @author Maksims Orlovs
+     * @author Halah Hasani
      */
     public GameFrame() {
         super();
@@ -53,6 +56,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
     /**
      * Receives the call to switch to the next state, handles logic required for each state.
      * @param newState the next state of the game
+     * @author Maksims Orlovs
      */
     @Override
     public void changeState(GameState newState) {

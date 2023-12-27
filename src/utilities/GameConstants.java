@@ -5,6 +5,7 @@ import java.awt.Point;
 
 /**
  * Defines constants used in the game.
+ * @author Maksims Orlovs
  */
 public interface GameConstants {
     // game window constants
@@ -51,7 +52,7 @@ public interface GameConstants {
     static final int MARGIN_INNER = CELL_SIZE * MARGIN_CELLS;
 
     /**
-     * Distance from screen edge to outer margin point (excluding the thickness)-
+     * Distance from screen edge to outer margin point (excluding the thickness).
      */
     static final int MARGIN_OUTER = MARGIN_INNER - BORDER_THC;
 

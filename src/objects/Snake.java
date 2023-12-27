@@ -10,6 +10,7 @@ import java.util.LinkedList;
 
 /**
  * Represents a snake object
+ * @author Maksims Orlovs
  */
 public class Snake {
     public static final double SPEED = 0.18; // FPS multiplier
@@ -21,6 +22,7 @@ public class Snake {
 
     /**
      * Constructs a Snake object in the middle of the screen. Initial parameters: length 5, direction right.
+     * @author Maksims Orlovs
      */
     public Snake() {
         body = new ArrayList<>();
@@ -36,6 +38,7 @@ public class Snake {
     /**
      * Getter for the current snake position.
      * @return an ArrayList of CellPosition:s representing all cells occupied by the Snake body.
+     * @author Maksims Orlovs
      */
     public ArrayList<CellPosition> getBody() {
         return body;
@@ -44,6 +47,7 @@ public class Snake {
     /**
      * Helper method for calculating the position of the head in after applying the movement.
      * @return a CellPosition representing the cell that the Snake's head is to be moved to.
+     * @author Maksims Orlovs
      */
     private CellPosition calculateNextPos() {
         CellPosition currHeadPos = body.get(0);
@@ -63,6 +67,7 @@ public class Snake {
      * Helper method that checks if the snake collided with itself.
      * @param head the CellPosition representing the Snake's head position
      * @return true if snake's head collided with its body
+     * @author Maksims Orlovs
      */
     private boolean doSelfCollision(CellPosition head) {
         return body.subList(1, body.size())
@@ -73,6 +78,7 @@ public class Snake {
      * Helper method that checks if the snake collided with itself.
      * @param head the CellPosition representing the Snake's head position
      * @return true if snake's head collided with one of the borders
+     * @author Fatemeh Akbarifar
      */
     private boolean doBorderCollision(CellPosition head) {
         Point nextCoords = head.getCoordinates();
@@ -90,6 +96,7 @@ public class Snake {
      * @return true if the snake collided with self or one of the borders.
      * @see Snake#doSelfCollision(CellPosition)
      * @see Snake#doBorderCollision(CellPosition)
+     * @author Maksims Orlovs
      */
     public boolean doCollisions() {
         CellPosition headPos = body.get(0);
@@ -99,6 +106,7 @@ public class Snake {
     /**
      * Updates the position of the head depending on the direction input. Adds the new head to the snake body.
      * @see Snake#calculateNextPos()
+     * @author Maksims Orlovs
      */
     public void move() {
         if (!inputQueue.isEmpty())
@@ -112,6 +120,7 @@ public class Snake {
      * Adds new input to the input queue if less than 2 inputs are queued and if is not opposite to the previously
      * queued input.
      * @param newDir new direction requested from the user (from the keyboard input in the engine)
+     * @author Maksims Orlovs
      */
     public void updateDirection(Direction newDir) {
         if (inputQueue.size() < 2 && !isOppositeDir(inputQueue.peekLast(), newDir))
@@ -126,6 +135,7 @@ public class Snake {
      * @param dir1 Direction 1
      * @param dir2 Direction 2
      * @return true if the directions are opposite
+     * @author Maksims Orlovs
      */
     private boolean isOppositeDir(Direction dir1, Direction dir2) {
         return (dir1 == Direction.DOWN && dir2 == Direction.UP) ||
@@ -137,6 +147,7 @@ public class Snake {
     /**
      * Method to draw the snake object onto the screen (frame).
      * @param frame Swing Graphics2D object that represents the current frame to be updated.
+     * @author Maksims Orlovs
      */
     public void draw(Graphics2D frame) {
         frame.setColor(new Color(0x2b331a));
@@ -150,6 +161,7 @@ public class Snake {
      * Checks if snake collides with any object at given position.
      * @param pos a CellPosition of an object to check collision with.
      * @return true if the snake collides with the object.
+     * @author Maksims Orlovs
      */
     public boolean checkCollisionWith(CellPosition pos) {
         return body.contains(pos);
@@ -159,6 +171,7 @@ public class Snake {
      * Checks if snake collides with a multi-cell object at given position. Overload to support multi-cell objects.
      * @param pos an ArrayList of CellPosition:s that represents a multi-cell object to check collision with.
      * @return true if the snake collides with any cell of the multi-cell object.
+     * @author Maksims Orlovs
      */
     public boolean checkCollisionWith(ArrayList<CellPosition> pos) {
         if (pos.isEmpty()) return false;

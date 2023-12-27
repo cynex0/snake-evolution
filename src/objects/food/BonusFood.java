@@ -7,6 +7,8 @@ import utilities.GameConstants;
  * Represents bonus food.
  * Extends food.
  * Includes random type selection and appropriate icon and color selection.
+ * @author Maksims Orlovs
+ * @author Fatemeh Akbarifar
  */
 public class BonusFood extends Food {
     private String icon;
@@ -14,6 +16,7 @@ public class BonusFood extends Food {
     /**
      * Creates a BonusFood instance. Same as food, but uses overridden respawn() that includes random type generation.
      * @see Food#Food()
+     * @author Maksims Orlovs
      */
     public BonusFood() {
         super();
@@ -22,6 +25,7 @@ public class BonusFood extends Food {
     /**
      * Overrides default food respawning. Same as Food, but includes random type generation.
      * @see Food#respawn()
+     * @author Maksims Orlovs
      */
     @Override
     public void respawn() {
@@ -34,6 +38,7 @@ public class BonusFood extends Food {
      * Same as Food, but includes an appropriate icon based on the type.
      * @param frame Swing Graphics2D object that represents the current frame to be updated.
      * @see Food#draw(Graphics2D)
+     * @author Maksims Orlovs
      */
     @Override
     public void draw(Graphics2D frame) {
@@ -54,6 +59,8 @@ public class BonusFood extends Food {
     /**
      * Helper method to generate and assign a random type. Assigns the color and icon according to the type.
      * @see FoodType
+     * @author Fatemeh Akbarifar
+     * @author Maksims Orlovs
      */
     private void randType() {
         switch (rand.nextInt(4)) {
