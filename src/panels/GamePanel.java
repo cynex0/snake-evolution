@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements KeyListener {
     private int score;
     private final Timer gameLoop;
     private long startTime;
-    private boolean fastMode, slowMode;
+    private boolean fastMode, slowMode, keyInverter;
     private StateChangeListener stateChanger;
 
 
@@ -94,10 +94,11 @@ public class GamePanel extends JPanel implements KeyListener {
     }
 
     private void updateEffects() {
-        if (fastMode || slowMode) {
+        if (fastMode || slowMode || keyInverter) {
             if (System.currentTimeMillis() - startTime > GameConstants.EFFECT_DURATION) {
                 fastMode = false;
                 slowMode = false;
+                keyInverter = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
             }
         }
@@ -156,6 +157,10 @@ public class GamePanel extends JPanel implements KeyListener {
                 score -= 2;
                 if (score < 0) score = 0;
             }
+            case CONTROLINVERTER -> {
+                keyInverter = true;
+                startTime = System.currentTimeMillis();
+            }
         }
     }
 
@@ -163,7 +168,7 @@ public class GamePanel extends JPanel implements KeyListener {
         CellPosition newFoodPos;
         Food newFood;
 
-        // respawn food until its in a valid position
+        // respawn food until it's in a valid position
         do {
             if (!isBonus) newFood = new Food();
             else newFood = new BonusFood();
@@ -223,16 +228,36 @@ public class GamePanel extends JPanel implements KeyListener {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_UP) {
-            snake.updateDirection(Direction.UP);
+            if(keyInverter) {
+                snake.updateDirection(Direction.DOWN);
+            }
+            else {
+                snake.updateDirection(Direction.UP);
+            }
         }
         if (code == KeyEvent.VK_DOWN) {
-            snake.updateDirection(Direction.DOWN);
+            if(keyInverter) {
+                snake.updateDirection(Direction.UP);
+            }
+            else {
+                snake.updateDirection(Direction.DOWN);
+            }
         }
         if (code == KeyEvent.VK_LEFT) {
-            snake.updateDirection(Direction.LEFT);
+            if(keyInverter) {
+                snake.updateDirection(Direction.RIGHT);
+            }
+            else {
+                snake.updateDirection(Direction.LEFT);
+            }
         }
         if (code == KeyEvent.VK_RIGHT) {
-            snake.updateDirection(Direction.RIGHT);
+            if(keyInverter) {
+                snake.updateDirection(Direction.LEFT);
+            }
+            else {
+                snake.updateDirection(Direction.RIGHT);
+            }
         }
     }
 
