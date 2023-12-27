@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * A panel that represents the game-over screen.
+ * @author Marwa Abohahcem
  */
 public class GameOver extends JPanel implements ActionListener, KeyListener, FocusListener {
     private final GameButton retryBtn; // Declaring button references
@@ -31,6 +32,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
      * @param listener reference to the observer class to allow state switching
      * @param score player's score to be displayed
      * @param isHighScore a flag to determine if the score is a new record
+     * @author Marwa Abohahcem
      * @author Victoria Rönnlid (co-author)
      */
     public GameOver(StateChangeListener listener, int score, boolean isHighScore) {
@@ -134,6 +136,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     /**
      * Helper method to generate the text field.
      * @return JTextField object to be put onto the panel for the player's name prompt.
+     * @author Marwa Abohahcem
      */
     private JTextField getjTextField() {
         JTextField enterNameField = new JTextField(SwingConstants.CENTER); // Declaring a private static method that returns a JTextField instance, with the initial text (___), and centers the text within the field.
@@ -153,9 +156,10 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     /**
      * Draws the contents of the panel and the background.
      * @param graphics graphics component supplied by the GameFrame
+     * @author Marwa Abohahcem
      */
     @Override
-    protected void paintComponent(Graphics graphics) { //calling the utilities.BgPanel paintComponent method to draw the border rectangles
+    protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         bg.paintComponent(graphics);
     }
@@ -163,21 +167,23 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     /**
      * Defines the buttons' behaviour.
      * @param event the event to be processed
+     * @author Marwa Abohahcem
      */
     @Override
-    public void actionPerformed(ActionEvent event ) { // Performs action when buttons are clicked
+    public void actionPerformed(ActionEvent event ) {
         String actionCommand = event.getActionCommand();
 
         if ("retry".equals(actionCommand)) {
-            stateChanger.changeState(GameState.GAME); // Retry button changes the game over state to the game state.
+            stateChanger.changeState(GameState.GAME);
         } else if ("menu".equals(actionCommand)) {
-            stateChanger.changeState(GameState.MENU); // Menu button changes the game over  state to main menu.
+            stateChanger.changeState(GameState.MENU);
         }
     }
 
     /**
      * Limits text field to 3 characters and disallows typing special characters.
      * @param e the key-press event to be processed
+     * @author Marwa Abohahcem
      */
     @Override
     public void keyTyped(KeyEvent e) {
@@ -189,6 +195,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     /**
      * Request the observer to switch to the Leaderboard state when the name is entered and 'Enter' is pressed
      * @param e the key-press event to be processed
+     * @author Marwa Abohahcem
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -204,6 +211,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
     /**
      * Remove the placeholder text from the text field when it gains focus.
      * @param e the event to be processed
+     * @author Marwa Abohahcem
      */
     @Override
     public void focusGained(FocusEvent e) {
