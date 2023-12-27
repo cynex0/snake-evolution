@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 /**
  * A panel representing the main menu.
+ * @author Victoria Rönnlid
  */
 public class MainMenu extends JPanel implements ActionListener { // the mainMenu class javas JPanel & implements ActionListener interface.
     private GameButton startBtn; // Declaring Button references
@@ -27,6 +28,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
     /**
      * Creates the menu object.
      * @param listener reference to the observer object to allow requesting state change
+     * @author Victoria Rönnlid
      */
     public MainMenu(StateChangeListener listener) {
         bg = new BgPanel();
@@ -63,6 +65,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
     /**
      * Draws all menu elements and the background.
      * @param g graphics component supplied by the GameFrame
+     * @author Victoria Rönnlid
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -73,6 +76,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
     /**
      * Defines button behaviour
      * @param event the button-press event to be processed
+     * @author Victoria Rönnlid
      */
     @Override
     public void actionPerformed(ActionEvent event) { // logic for when buttons are clicked.
