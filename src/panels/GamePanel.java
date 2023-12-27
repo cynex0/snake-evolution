@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements KeyListener {
     private final Timer gameLoop;
     private long startTime;
     private boolean fastMode, slowMode;
+    String currentEffectLabel;
     private StateChangeListener stateChanger;
 
 
@@ -142,19 +143,23 @@ public class GamePanel extends JPanel implements KeyListener {
             case SPEEDFOOD -> {
                 fastMode = true;
                 adjustSnakeSpeed(2);
+                currentEffectLabel = "SPED UP!";
                 startTime = System.currentTimeMillis();
             }
             case SLOWFOOD -> {
                 slowMode = true;
                 adjustSnakeSpeed(0.5);
+                currentEffectLabel = "SLOWED!";
                 startTime = System.currentTimeMillis();
             }
             case PLUSFOOD -> {
                 score += 2;
+                currentEffectLabel = "2 EXTRA POINTS!";
             }
             case MINUSFOOD -> {
                 score -= 2;
                 if (score < 0) score = 0;
+                currentEffectLabel = " 2 MINUS POINTS!";
             }
         }
     }
@@ -192,6 +197,16 @@ public class GamePanel extends JPanel implements KeyListener {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Public Pixel", Font.PLAIN,20));
         g.drawString(String.format("%03d", score), 65 , GameConstants.WINDOW_SIZE.y - 760);
+
+        if (currentEffectLabel != null && !currentEffectLabel.isEmpty()) {
+            frame.setColor(Color.BLACK);
+            frame.setFont(new Font("Public Pixel", Font.BOLD, 20));
+
+            int x = (getWidth() - frame.getFontMetrics().stringWidth(currentEffectLabel)) / 2;
+            int y = getHeight() - frame.getFontMetrics().getHeight() - 2; // centers the effect label 2 pixels from the bottom
+
+            frame.drawString(currentEffectLabel, x, y);
+        }
 
         snake.draw(frame);
         frame.dispose();
