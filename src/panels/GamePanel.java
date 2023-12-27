@@ -19,6 +19,9 @@ import java.util.Iterator;
 import java.util.Random;
 
 
+/**
+ * Represents the gameplay state. Handles gameplay logic and drawing of all objects.
+ */
 public class GamePanel extends JPanel implements KeyListener {
     private BgPanel bg;
     private Snake snake;
@@ -32,7 +35,10 @@ public class GamePanel extends JPanel implements KeyListener {
     private boolean fastMode, slowMode;
     private StateChangeListener stateChanger;
 
-
+    /**
+     * Constructs the initial GamePanel and objects for handling the gameplay.
+     * @param listener reference to the observer object to allow requesting state change
+     */
     public GamePanel(StateChangeListener listener) {
         super();
         this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
@@ -63,8 +69,10 @@ public class GamePanel extends JPanel implements KeyListener {
         });
     }
 
+    /**
+     * Updates positions and interaction of all objects (snake effects, position, collision). Part of game loop.
+     */
     public void update() {
-        // update positions, etc
         updateEffects();
         snake.move(); // add a new "head" based on the movement direction
 
@@ -88,11 +96,18 @@ public class GamePanel extends JPanel implements KeyListener {
         }
     }
 
+    /**
+     * Adjusts the delay between frames in the game loop. Appears as the game's speed change.
+     * @param speedMultiplier factor to multiply the speed by.
+     */
     private void adjustSnakeSpeed(double speedMultiplier) {
         int delay = (int) (1000 / (GameConstants.FPS * Snake.SPEED * speedMultiplier));
         gameLoop.setDelay(delay);
     }
 
+    /**
+     * Updates the status of the effects. Check if the effect time is over, removes the effect.
+     */
     private void updateEffects() {
         if (fastMode || slowMode) {
             if (System.currentTimeMillis() - startTime > GameConstants.EFFECT_DURATION) {
@@ -103,7 +118,10 @@ public class GamePanel extends JPanel implements KeyListener {
         }
     }
 
-    // checks collisions with food items, returns true if food is eaten
+    /**
+     * Checks collisions with food items
+     * @return true if food is eaten
+     */
     private boolean doFoodCollisions() {
         boolean eaten = false;
         Iterator<Food> it = food.iterator();
@@ -130,10 +148,14 @@ public class GamePanel extends JPanel implements KeyListener {
             }
         }
 
-        food.addAll(newFood);
+        food.addAll(newFood); // add all generated food from the temporary storage to the actual list
         return eaten;
     }
 
+    /**
+     * Applies the effect of an eaten food object to the game depending on the type of the food.
+     * @param foodType the type of the eaten food
+     */
     private void applyFoodEffect(FoodType foodType) {
         switch (foodType) {
             case DEFAULT -> {
@@ -159,11 +181,16 @@ public class GamePanel extends JPanel implements KeyListener {
         }
     }
 
+    /**
+     * Generates a food object in a random valid position.
+     * @param isBonus determines if a food item to generate is default or bonus
+     * @return generated Food object
+     */
     private Food generateNewFoodItem(boolean isBonus) {
         CellPosition newFoodPos;
         Food newFood;
 
-        // respawn food until its in a valid position
+        // respawn food until it's in a valid position
         do {
             if (!isBonus) newFood = new Food();
             else newFood = new BonusFood();
@@ -173,10 +200,18 @@ public class GamePanel extends JPanel implements KeyListener {
         return newFood;
     }
 
+    /**
+     * Getter for the current player score.
+     * @return current score
+     */
     public int getScore() {
         return this.score;
     }
 
+    /**
+     * Draws all contents of the panel (snake, food objects, obstacles, score) and the background.
+     * @param g graphics component supplied by the GameFrame
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -197,11 +232,16 @@ public class GamePanel extends JPanel implements KeyListener {
         frame.dispose();
     }
 
-    // starts the game loop
+    /**
+     * Starts the game loop.
+     */
     public void startGame() {
         gameLoop.start();
     }
 
+    /**
+     * Ends the game loop and changes to the appropriate game-over screen.
+     */
     public void stopGame() {
         gameLoop.stop();
 
@@ -218,6 +258,10 @@ public class GamePanel extends JPanel implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {}
 
+    /**
+     * Handles user input. Requests the change of direction from the snake if one of the arrow keys is pressed.
+     * @param e the key-press event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();

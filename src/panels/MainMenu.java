@@ -11,16 +11,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
+/**
+ * A panel representing the main menu.
+ */
 public class MainMenu extends JPanel implements ActionListener { // the mainMenu class javas JPanel & implements ActionListener interface.
     private GameButton startBtn; // Declaring Button references
     private GameButton leaderboardBtn;
     private GameButton exitBtn;
     public BgPanel bg; // BgPanel reference for instantiation
 
-    private ArrayList<GameButton> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
+    private ArrayList<GameButton> buttons; //declaring arrayList of Buttons to perform redundant button-tasks.
 
     private StateChangeListener stateChanger; // reference to state changer instance.
 
+    /**
+     * Creates the menu object.
+     * @param listener reference to the observer object to allow requesting state change
+     */
     public MainMenu(StateChangeListener listener) {
         bg = new BgPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
@@ -52,12 +59,22 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
 
         stateChanger = listener;
     }
-    public void paintComponent(Graphics g) { //calling the BgPanel paintcomponent method to draw the border rectangles
+
+    /**
+     * Draws all menu elements and the background.
+     * @param g graphics component supplied by the GameFrame
+     */
+    @Override
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         bg.paintComponent(g);
     }
 
-
+    /**
+     * Defines button behaviour
+     * @param event the button-press event to be processed
+     */
+    @Override
     public void actionPerformed(ActionEvent event) { // logic for when buttons are clicked.
         String actionCommand = event.getActionCommand();
 

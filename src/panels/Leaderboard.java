@@ -22,6 +22,9 @@ import utilities.GameConstants;
 import main.engine.*;
 
 
+/**
+ * Panel representing the Leaderboard screen.
+ */
 public class Leaderboard extends JPanel implements ActionListener {
     private DefaultListModel<String> listItems;
     private JList<String> lbList;
@@ -32,6 +35,10 @@ public class Leaderboard extends JPanel implements ActionListener {
 
     private StateChangeListener stateChanger;
 
+    /**
+     * Creates the Leaderboard panel. Reads the stored leaderboard data from file.
+     * @param listener reference to the observer object to allow requesting state change
+     */
     public Leaderboard(StateChangeListener listener){
         bg = new BgPanel();
         // creating custom font for the game
@@ -68,11 +75,20 @@ public class Leaderboard extends JPanel implements ActionListener {
         readToList();
     }
 
+    /**
+     * Draws all the contents of the panel and the background.
+     * @param g graphics component supplied by the GameFrame
+     */
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         bg.paintComponent(g);// Drawing black border on the frame
     }
 
+    /**
+     * Defines button behaviour
+     * @param event the button-press event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
@@ -82,7 +98,10 @@ public class Leaderboard extends JPanel implements ActionListener {
         }
     }
 
-    // Returns a sorted list of all players read from the json file
+    /**
+     * Returns a sorted list of all players read from the json file. Creates an empty JSON file if it is not present.
+     * @return sorted ArrayList of all Player:s stored on disk
+     */
     private static ArrayList<Player> readFromFile() {
         JSONParser parser = new JSONParser();
         ArrayList<Player> players = new ArrayList<>();
@@ -116,7 +135,10 @@ public class Leaderboard extends JPanel implements ActionListener {
         return players;
     }
 
-    // adds 10 top scoring players to the list for display
+    /**
+     * Adds first 10 top scoring players from the file to the list for display. Formats the list elements according to
+     * the design.
+     */
     private void readToList() {
         ArrayList<Player> top10Scorers = readFromFile();
 
@@ -133,6 +155,11 @@ public class Leaderboard extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Creates and appends a new player to the leaderboard file. Completely rewrites the json file.
+     * @param name player's name
+     * @param score player's score
+     */
     public static void createPlayer(String name, long score){
         ArrayList<Player> currentPlayers = readFromFile();
 
@@ -160,7 +187,11 @@ public class Leaderboard extends JPanel implements ActionListener {
         }
     }
 
-    // check if players score is among top 10.
+    /**
+     * Checks if players score is among top 10.
+     * @param playerInTop10 player object to be checked against the leaderboard file
+     * @return true if the player qualifies for the leaderboard
+     */
     public static boolean isTopTen(Player playerInTop10){
         ArrayList<Player> players = readFromFile();
         if (players.size() < 10) return true;
