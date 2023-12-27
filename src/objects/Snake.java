@@ -8,30 +8,43 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Represents a snake object
+ */
 public class Snake {
     public static final double SPEED = 0.18; // FPS multiplier
+    public static final int INIT_LEN = 5; // FPS multiplier
 
     private ArrayList<CellPosition> body;
     private Direction currentDirection;
     private LinkedList<Direction> inputQueue;
 
+    /**
+     * Constructs a Snake object in the middle of the screen. Initial parameters: length 5, direction right.
+     */
     public Snake() {
         body = new ArrayList<>();
         currentDirection = Direction.RIGHT;
         inputQueue = new LinkedList<>();
 
-        body.add(new CellPosition(20, 20));
-        body.add(new CellPosition(19, 20));
-        body.add(new CellPosition(18, 20));
-        body.add(new CellPosition(17, 20));
-        body.add(new CellPosition(16, 20));
-        body.add(new CellPosition(15, 20));
+        // body elements starting from the middle of the screen and "growing" to the left
+        int xPos = GameConstants.CELL_COUNT / 2;
+        for (int i = 0; i < INIT_LEN; i++)
+            body.add(new CellPosition(xPos--, GameConstants.CELL_COUNT / 2));
     }
 
+    /**
+     * Getter for the current snake position.
+     * @return an ArrayList of CellPosition:s representing all cells occupied by the Snake body.
+     */
     public ArrayList<CellPosition> getBody() {
         return body;
     }
-    
+
+    /**
+     * Helper method for calculating the position of the head in after applying the movement.
+     * @return a CellPosition representing the cell that the Snake's head is to be moved to.
+     */
     private CellPosition calculateNextPos() {
         CellPosition currHeadPos = body.get(0);
         CellPosition nextPos = null;
@@ -45,14 +58,24 @@ public class Snake {
         
         return nextPos;
     }
-    
-    private boolean doSelfCollision(CellPosition pos) {
+
+    /**
+     * Helper method that checks if the snake collided with itself.
+     * @param head the CellPosition representing the Snake's head position
+     * @return true if snake's head collided with its body
+     */
+    private boolean doSelfCollision(CellPosition head) {
         return body.subList(1, body.size())
-                   .contains(pos);
+                   .contains(head);
     }
 
-    private boolean doBorderCollision(CellPosition pos) {
-        Point nextCoords = pos.getCoordinates();
+    /**
+     * Helper method that checks if the snake collided with itself.
+     * @param head the CellPosition representing the Snake's head position
+     * @return true if snake's head collided with one of the borders
+     */
+    private boolean doBorderCollision(CellPosition head) {
+        Point nextCoords = head.getCoordinates();
         if ((nextCoords.x >= GameConstants.WINDOW_SIZE.x - GameConstants.MARGIN_INNER) || (nextCoords.x < GameConstants.MARGIN_INNER)) {
             return true;
         }
@@ -62,22 +85,35 @@ public class Snake {
         return false;
     }
 
+    /**
+     * Checks snake's collision with self and borders
+     * @return true if the snake collided with self or one of the borders.
+     * @see Snake#doSelfCollision(CellPosition)
+     * @see Snake#doBorderCollision(CellPosition)
+     */
     public boolean doCollisions() {
         CellPosition headPos = body.get(0);
         return doSelfCollision(headPos) || doBorderCollision(headPos);
     }
 
+    /**
+     * Updates the position of the head depending on the direction input. Adds the new head to the snake body.
+     * @see Snake#calculateNextPos()
+     */
     public void move() {
         if (!inputQueue.isEmpty())
-            currentDirection = inputQueue.poll();
+            currentDirection = inputQueue.poll(); // change direction if any inputs queued
 
         CellPosition newHeadPos = calculateNextPos();
         body.add(0, newHeadPos);
     }
 
+    /**
+     * Adds new input to the input queue if less than 2 inputs are queued and if is not opposite to the previously
+     * queued input.
+     * @param newDir new direction requested from the user (from the keyboard input in the engine)
+     */
     public void updateDirection(Direction newDir) {
-        // adds new input to the queue,
-        // if less than 2 inputs are queued and if is not opposite to the previously queued input
         if (inputQueue.size() < 2 && !isOppositeDir(inputQueue.peekLast(), newDir))
             inputQueue.add(newDir);
 
@@ -85,6 +121,12 @@ public class Snake {
             inputQueue.removeFirst(); // drops the next direction in queue if it is opposite to the current direction
     }
 
+    /**
+     * Checks if two supplied directions are opposite to each other
+     * @param dir1 Direction 1
+     * @param dir2 Direction 2
+     * @return true if the directions are opposite
+     */
     private boolean isOppositeDir(Direction dir1, Direction dir2) {
         return (dir1 == Direction.DOWN && dir2 == Direction.UP) ||
                (dir1 == Direction.UP && dir2 == Direction.DOWN) ||
@@ -92,6 +134,10 @@ public class Snake {
                (dir1 == Direction.RIGHT && dir2 == Direction.LEFT);
     }
 
+    /**
+     * Method to draw the snake object onto the screen (frame).
+     * @param frame Swing Graphics2D object that represents the current frame to be updated.
+     */
     public void draw(Graphics2D frame) {
         frame.setColor(new Color(0x2b331a));
         for (CellPosition pos : body) {
@@ -100,11 +146,20 @@ public class Snake {
         }
     }
 
-    // checks if snake collides with any object at given position
+    /**
+     * Checks if snake collides with any object at given position.
+     * @param pos a CellPosition of an object to check collision with.
+     * @return true if the snake collides with the object.
+     */
     public boolean checkCollisionWith(CellPosition pos) {
         return body.contains(pos);
     }
 
+    /**
+     * Checks if snake collides with a multi-cell object at given position. Overload to support multi-cell objects.
+     * @param pos an ArrayList of CellPosition:s that represents a multi-cell object to check collision with.
+     * @return true if the snake collides with any cell of the multi-cell object.
+     */
     public boolean checkCollisionWith(ArrayList<CellPosition> pos) {
         if (pos.isEmpty()) return false;
 

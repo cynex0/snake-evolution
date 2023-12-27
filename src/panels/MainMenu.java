@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 
 public class MainMenu extends JPanel implements ActionListener { // the mainMenu class javas JPanel & implements ActionListener interface.
-    private GameButton startBtn; // Declaring utilities.Button references
+    private GameButton startBtn; // Declaring Button references
     private GameButton leaderboardBtn;
     private GameButton exitBtn;
-    public BgPanel bg; // utilities.BgPanel reference for instantiation
+    public BgPanel bg; // BgPanel reference for instantiation
 
     private ArrayList<GameButton> buttons;//declaring arrayList of Buttons to perform redundant button-tasks.
 
@@ -39,8 +39,8 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
         leaderboardBtn = new GameButton("Leaderboard");
         exitBtn = new GameButton("Exit");
 
-        buttons = new ArrayList<>();// initializing the utilities.Button ArrayList.
-        buttons.add(startBtn);// adding the existing utilities.Button objects to the list.
+        buttons = new ArrayList<>();// initializing the Button ArrayList.
+        buttons.add(startBtn);// adding the existing Button objects to the list.
         buttons.add(leaderboardBtn);
         buttons.add(exitBtn);
 
@@ -52,7 +52,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
 
         stateChanger = listener;
     }
-    public void paintComponent(Graphics g) { //calling the utilities.BgPanel paintcomponent method to draw the border rectangles
+    public void paintComponent(Graphics g) { //calling the BgPanel paintcomponent method to draw the border rectangles
         super.paintComponent(g);
         bg.paintComponent(g);
     }

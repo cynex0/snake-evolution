@@ -5,7 +5,13 @@ import java.awt.*;
 
 import static utilities.GameConstants.*;
 
+/**
+ * A Panel that represents the game's background to be reused in every game screen. Extends JPanel.
+ */
 public class BgPanel extends JPanel {
+    /**
+     * Constructs a JPanel matching the screen's size with a specified background color.
+     */
     public BgPanel() {
         super();
         this.setPreferredSize(new Dimension(WINDOW_SIZE.x, WINDOW_SIZE.y));
@@ -13,6 +19,11 @@ public class BgPanel extends JPanel {
         this.setDoubleBuffered(true);
     }
 
+    /**
+     * Overrides JPanel.paintComponent() to allow adding and drawing the panel to the GameFrame.
+     * Draws the background and the borders on the screen, specified by the design.
+     * @param g graphics component supplied by the GameFrame
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

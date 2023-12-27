@@ -3,19 +3,38 @@ package objects.food;
 import java.awt.*;
 import utilities.GameConstants;
 
+/**
+ * Represents bonus food.
+ * Extends food.
+ * Includes random type selection and appropriate icon and color selection.
+ */
 public class BonusFood extends Food {
     private String icon;
 
+    /**
+     * Creates a BonusFood instance. Same as food, but uses overridden respawn() that includes random type generation.
+     * @see Food#Food()
+     */
     public BonusFood() {
         super();
     }
 
+    /**
+     * Overrides default food respawning. Same as Food, but includes random type generation.
+     * @see Food#respawn()
+     */
     @Override
     public void respawn() {
         super.respawn();
         randType();
     }
 
+    /**
+     * Method to draw the food item onto the screen (frame).
+     * Same as Food, but includes an appropriate icon based on the type.
+     * @param frame Swing Graphics2D object that represents the current frame to be updated.
+     * @see Food#draw(Graphics2D)
+     */
     @Override
     public void draw(Graphics2D frame) {
         super.draw(frame);
@@ -32,6 +51,10 @@ public class BonusFood extends Food {
         frame.drawString(icon, x, y);
     }
 
+    /**
+     * Helper method to generate and assign a random type. Assigns the color and icon according to the type.
+     * @see FoodType
+     */
     private void randType() {
         switch (rand.nextInt(4)) {
             case 0 -> {

@@ -15,7 +15,7 @@ public class Food {
     protected FoodType type;
 
 
-    public Food () {
+    public Food() {
         foodLocation = new CellPosition();
         rand = new Random();
         color = new Color(0x2b331a);
