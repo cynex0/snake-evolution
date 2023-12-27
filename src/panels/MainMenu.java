@@ -39,6 +39,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
 
         startBtn = new GameButton("Start"); //assigning buttons.
         leaderboardBtn = new GameButton("Leaderboard");
+        tutorialBtn = new GameButton("Tutorial");
         exitBtn = new GameButton("Exit");
 
         buttons = new ArrayList<>();// initializing the utilities.Button ArrayList.
@@ -67,7 +68,7 @@ public class MainMenu extends JPanel implements ActionListener { // the mainMenu
         if ("Start".equals(actionCommand)) {
             stateChanger.changeState(GameState.GAME); // switches to state GAME.
         }else if ("Tutorial".equals(actionCommand)){
-            stateChanger.changeState(GameState.TUTORIAL);
+            stateChanger.changeState(GameState.TUTORIAL); // switches to state TUTORIAL.
         } else if ("Leaderboard".equals(actionCommand)) {
             stateChanger.changeState(GameState.LEADERBOARD); // switches to state LEADERBOARD.
         } else if ("Exit".equals(actionCommand)) {
