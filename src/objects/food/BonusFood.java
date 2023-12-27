@@ -56,8 +56,8 @@ public class BonusFood extends Food {
             }
             case 4 -> {
                 this.type = FoodType.CONTROLINVERTER;
-                this.color = Color.darkGray;
-                this.icon = "><";
+                this.color = new Color(0x68009c);
+                this.icon = "?";
             }
         }
     }
