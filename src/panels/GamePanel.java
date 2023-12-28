@@ -165,6 +165,7 @@ public class GamePanel extends JPanel implements KeyListener {
             case CONTROLINVERTER -> {
                 keyInverter = true;
                 startTime = System.currentTimeMillis();
+                adjustSnakeSpeed(0.75);
                 currentEffectLabel = "CONFUSED!";
             }
         }
