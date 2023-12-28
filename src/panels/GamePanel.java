@@ -96,11 +96,13 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private void updateEffects() {
         if (fastMode || slowMode || keyInverter) {
+            // check if effect time expired
             if (System.currentTimeMillis() - startTime > GameConstants.EFFECT_DURATION) {
                 fastMode = false;
                 slowMode = false;
                 keyInverter = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
+                currentEffectLabel = ""; // remove the label
             }
         }
     }
