@@ -34,7 +34,8 @@ public class GamePanel extends JPanel implements KeyListener {
     private int score;
     private final Timer gameLoop;
     private long startTime;
-    private boolean fastMode, slowMode;
+    String currentEffectLabel;
+    private boolean fastMode, slowMode, keyInverter;
     private StateChangeListener stateChanger;
 
     /**
@@ -117,11 +118,14 @@ public class GamePanel extends JPanel implements KeyListener {
      * @author Fatemeh Akbarifar
      */
     private void updateEffects() {
-        if (fastMode || slowMode) {
+        if (fastMode || slowMode || keyInverter) {
+            // check if effect time expired
             if (System.currentTimeMillis() - startTime > GameConstants.EFFECT_DURATION) {
                 fastMode = false;
                 slowMode = false;
+                keyInverter = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
+                currentEffectLabel = ""; // remove the label
             }
         }
     }
@@ -176,11 +180,13 @@ public class GamePanel extends JPanel implements KeyListener {
             case SPEEDFOOD -> {
                 fastMode = true;
                 adjustSnakeSpeed(2);
+                currentEffectLabel = "SPED UP!";
                 startTime = System.currentTimeMillis();
             }
             case SLOWFOOD -> {
                 slowMode = true;
                 adjustSnakeSpeed(0.5);
+                currentEffectLabel = "SLOWED!";
                 startTime = System.currentTimeMillis();
             }
             case PLUSFOOD -> {
@@ -189,6 +195,12 @@ public class GamePanel extends JPanel implements KeyListener {
             case MINUSFOOD -> {
                 score -= 2;
                 if (score < 0) score = 0;
+            }
+            case CONTROLINVERTER -> {
+                keyInverter = true;
+                startTime = System.currentTimeMillis();
+                adjustSnakeSpeed(0.75);
+                currentEffectLabel = "CONFUSED!";
             }
         }
     }
@@ -245,6 +257,16 @@ public class GamePanel extends JPanel implements KeyListener {
         g.setFont(new Font("Public Pixel", Font.PLAIN,20));
         g.drawString(String.format("%03d", score), 65 , GameConstants.WINDOW_SIZE.y - 760);
 
+        if (currentEffectLabel != null && !currentEffectLabel.isEmpty()) {
+            frame.setColor(Color.BLACK);
+            frame.setFont(new Font("Public Pixel", Font.BOLD, 20));
+
+            int x = (getWidth() - frame.getFontMetrics().stringWidth(currentEffectLabel)) / 2;
+            int y = getHeight() - frame.getFontMetrics().getHeight() - 2; // centers the effect label 2 pixels from the bottom
+
+            frame.drawString(currentEffectLabel, x, y);
+        }
+
         snake.draw(frame);
         frame.dispose();
     }
@@ -288,16 +310,36 @@ public class GamePanel extends JPanel implements KeyListener {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_UP) {
-            snake.updateDirection(Direction.UP);
+            if(keyInverter) {
+                snake.updateDirection(Direction.DOWN);
+            }
+            else {
+                snake.updateDirection(Direction.UP);
+            }
         }
         if (code == KeyEvent.VK_DOWN) {
-            snake.updateDirection(Direction.DOWN);
+            if(keyInverter) {
+                snake.updateDirection(Direction.UP);
+            }
+            else {
+                snake.updateDirection(Direction.DOWN);
+            }
         }
         if (code == KeyEvent.VK_LEFT) {
-            snake.updateDirection(Direction.LEFT);
+            if(keyInverter) {
+                snake.updateDirection(Direction.RIGHT);
+            }
+            else {
+                snake.updateDirection(Direction.LEFT);
+            }
         }
         if (code == KeyEvent.VK_RIGHT) {
-            snake.updateDirection(Direction.RIGHT);
+            if(keyInverter) {
+                snake.updateDirection(Direction.LEFT);
+            }
+            else {
+                snake.updateDirection(Direction.RIGHT);
+            }
         }
     }
 

@@ -5,5 +5,5 @@ package objects.food;
  * @author Fatemeh Akbarifar
  */
 public enum FoodType {
-    DEFAULT, SPEEDFOOD, SLOWFOOD, MINUSFOOD, PLUSFOOD
+    DEFAULT, SPEEDFOOD, SLOWFOOD, MINUSFOOD, PLUSFOOD, CONTROLINVERTER
 }
