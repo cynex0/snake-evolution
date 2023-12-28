@@ -155,12 +155,10 @@ public class GamePanel extends JPanel implements KeyListener {
             }
             case PLUSFOOD -> {
                 score += 2;
-                currentEffectLabel = "2 EXTRA POINTS!";
             }
             case MINUSFOOD -> {
                 score -= 2;
                 if (score < 0) score = 0;
-                currentEffectLabel = " 2 MINUS POINTS!";
             }
             case CONTROLINVERTER -> {
                 keyInverter = true;
