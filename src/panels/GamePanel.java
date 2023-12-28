@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements KeyListener {
     private int score;
     private final Timer gameLoop;
     private long startTime;
+    String currentEffectLabel;
     private boolean fastMode, slowMode, keyInverter;
     private StateChangeListener stateChanger;
 
@@ -95,11 +96,13 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private void updateEffects() {
         if (fastMode || slowMode || keyInverter) {
+            // check if effect time expired
             if (System.currentTimeMillis() - startTime > GameConstants.EFFECT_DURATION) {
                 fastMode = false;
                 slowMode = false;
                 keyInverter = false;
                 adjustSnakeSpeed(1); // Set the speed back to normal
+                currentEffectLabel = ""; // remove the label
             }
         }
     }
@@ -143,11 +146,13 @@ public class GamePanel extends JPanel implements KeyListener {
             case SPEEDFOOD -> {
                 fastMode = true;
                 adjustSnakeSpeed(2);
+                currentEffectLabel = "SPED UP!";
                 startTime = System.currentTimeMillis();
             }
             case SLOWFOOD -> {
                 slowMode = true;
                 adjustSnakeSpeed(0.5);
+                currentEffectLabel = "SLOWED!";
                 startTime = System.currentTimeMillis();
             }
             case PLUSFOOD -> {
@@ -161,6 +166,7 @@ public class GamePanel extends JPanel implements KeyListener {
                 keyInverter = true;
                 startTime = System.currentTimeMillis();
                 adjustSnakeSpeed(0.75);
+                currentEffectLabel = "CONFUSED!";
             }
         }
     }
@@ -198,6 +204,16 @@ public class GamePanel extends JPanel implements KeyListener {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Public Pixel", Font.PLAIN,20));
         g.drawString(String.format("%03d", score), 65 , GameConstants.WINDOW_SIZE.y - 760);
+
+        if (currentEffectLabel != null && !currentEffectLabel.isEmpty()) {
+            frame.setColor(Color.BLACK);
+            frame.setFont(new Font("Public Pixel", Font.BOLD, 20));
+
+            int x = (getWidth() - frame.getFontMetrics().stringWidth(currentEffectLabel)) / 2;
+            int y = getHeight() - frame.getFontMetrics().getHeight() - 2; // centers the effect label 2 pixels from the bottom
+
+            frame.drawString(currentEffectLabel, x, y);
+        }
 
         snake.draw(frame);
         frame.dispose();
