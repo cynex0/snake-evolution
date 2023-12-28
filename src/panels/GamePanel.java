@@ -171,6 +171,7 @@ public class GamePanel extends JPanel implements KeyListener {
      * @param foodType the type of the eaten food
      * @author Fatemeh Akbarifar
      * @author Maksims Orlovs
+     * @author Marwa Abohachem
      */
     private void applyFoodEffect(FoodType foodType) {
         switch (foodType) {
