@@ -5,35 +5,45 @@ import main.engine.StateChangeListener;
 import utilities.GameButton;
 import utilities.GameConstants;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 
 public class Tutorial extends JPanel implements ActionListener {
-    private BgPanel backPanel;
     private GameButton menuBtn;
 
-    private ImageIcon tutorialPic;
+    private BufferedImage tutorialPic;
     private StateChangeListener stateChanger;
 
     public Tutorial(StateChangeListener listener) {
-        backPanel = new BgPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
         this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
-        this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
-        this.setBackground(Color.decode("#A9E000")); // sets the color to the nokia snake green background color.
-
-        tutorialPic = new ImageIcon("res/HowToPlaySnake.png");
-        JLabel label = new JLabel(tutorialPic);
+        try {
+            tutorialPic = ImageIO.read(new File("res/HowToPlaySnake.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         menuBtn = new GameButton("Main Menu");
-        this.add(backPanel);
-        this.add(label);
+        menuBtn.addActionListener(this);
+        menuBtn.setActionCommand(menuBtn.getText());
+        this.add(Box.createRigidArea(new Dimension(0, 650))); // adds empty area before MM button
         this.add(menuBtn);
+
         stateChanger = listener;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(tutorialPic,0,0,null);
     }
 
     @Override
