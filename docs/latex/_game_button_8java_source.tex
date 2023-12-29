@@ -1,0 +1,66 @@
+\hypertarget{_game_button_8java_source}{}\doxysection{Game\+Button.\+java}
+\label{_game_button_8java_source}\index{GameButton.java@{GameButton.java}}
+\mbox{\hyperlink{_game_button_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00001}00001\ \textcolor{keyword}{package\ }utilities;}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00003}00003\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.awt.event.MouseEvent;}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00006}00006\ \textcolor{keyword}{import}\ java.awt.event.MouseListener;}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00012}\mbox{\hyperlink{classutilities_1_1_game_button}{00012}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ \textcolor{keyword}{extends}\ JButton\ implements\ MouseListener\ \{\ \ \textcolor{comment}{//\ extends\ the\ JButton\ class\ and\ uses\ the\ mouseListener\ interface.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00013}\mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{00013}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ String\ \mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{standardText}};\ \textcolor{comment}{//\ declaring\ variable\ to\ store\ the\ name\ of\ the\ button\ as\ standard\ text.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00020}\mbox{\hyperlink{classutilities_1_1_game_button_abc7aa8bc8f3708e5bd86c4734211ef74}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classutilities_1_1_game_button_abc7aa8bc8f3708e5bd86c4734211ef74}{GameButton}}(String\ \mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{standardText}})\ \{\ \textcolor{comment}{//\ constructor\ that\ takes\ the\ button\ name\ as\ parameter.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ super(\mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{standardText}});}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00022}00022\ \ \ \ \ \ \ \ \ this.standardText\ =\ \mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{standardText}};}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_game_button_a84f981b8ba59d71b96eb8713ab59cc8e}{editButton}}(\textcolor{keyword}{this});\ \textcolor{comment}{//\ calls\ the\ editButton\ function\ when\ creating\ a\ button.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ setFocusable(\textcolor{keyword}{true});\ \textcolor{comment}{//\ calling\ setFocusable\ for\ every\ button\ just\ in\ case.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ this.addMouseListener(\textcolor{keyword}{this});\ \textcolor{comment}{//\ adding\ a\ mouseListener\ to\ the\ button\ upon\ creation.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00033}\mbox{\hyperlink{classutilities_1_1_game_button_a84f981b8ba59d71b96eb8713ab59cc8e}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_a84f981b8ba59d71b96eb8713ab59cc8e}{editButton}}(\mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ button)\ \{\ \textcolor{comment}{//\ function\ to\ apply\ desired\ button\ design}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ Font\ buttonFont\ =\ \textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 50);\ \textcolor{comment}{//\ instantiating\ a\ Font\ object\ to\ use\ as\ standard\ font.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ this.setFont(buttonFont);\ \textcolor{comment}{//\ calling\ setFont\ on\ button,\ using\ my\ buttonFont\ as\ parameter.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ this.setBorderPainted(\textcolor{keyword}{false});\ \textcolor{comment}{//\ making\ borders\ of\ button\ disappear\ and\ just\ display\ the\ text.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ this.setForeground(Color.BLACK);\ \textcolor{comment}{//setting\ button\ text\ to\ black.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ this.setContentAreaFilled(\textcolor{keyword}{false});\ \textcolor{comment}{//\ making\ the\ button\ transparent.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ this.setBorder(BorderFactory.createEmptyBorder());\ \textcolor{comment}{//\ removes\ the\ default\ JButton\ borders.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ this.setPreferredSize(\textcolor{keyword}{new}\ Dimension(750,\ 150));\ \textcolor{comment}{//\ setting\ the\ size\ of\ the\ buttons\ to\ fit\ the\ text.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ this.setMaximumSize(\textcolor{keyword}{new}\ Dimension(800,\ 150));\ \textcolor{comment}{//\ sets\ maximum\ size\ to\ same\ as\ preferred\ size\ for\ consistency.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ this.setAlignmentX(Component.CENTER\_ALIGNMENT);\ \textcolor{comment}{//\ centers\ the\ buttons\ in\ the\ window.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00051}\mbox{\hyperlink{classutilities_1_1_game_button_a5f33fc6ef7d4900c03e6fd3870b930f4}{00051}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_a5f33fc6ef7d4900c03e6fd3870b930f4}{onHover}}(\textcolor{keywordtype}{boolean}\ hovering)\ \{\ \textcolor{comment}{//\ function\ for\ mouse\ hovering.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hovering)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ this.setText(\textcolor{stringliteral}{"{}<"{}}\ +\ \mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{standardText}}\ +\ \textcolor{stringliteral}{"{}>"{}}\ );\ \textcolor{comment}{//\ adds\ the\ "{}<\ >"{}\ to\ the\ button\ text\ upon\ hovering\ on\ it.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ this.setText(\mbox{\hyperlink{classutilities_1_1_game_button_a55643b4ee422fab585f6da30900f3d1b}{standardText}});\ \textcolor{comment}{//\ restores\ the\ text\ to\ only\ display\ button\ text\ when\ not\ hovering.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00061}00061\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00062}\mbox{\hyperlink{classutilities_1_1_game_button_ac15de41dd0f26b1406eecd35a448e4d6}{00062}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_ac15de41dd0f26b1406eecd35a448e4d6}{mouseClicked}}(MouseEvent\ e)\ \{\}\ \textcolor{comment}{//mandatory\ part\ of\ mouseListener\ interface,\ but\ not\ used.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00064}00064\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00065}\mbox{\hyperlink{classutilities_1_1_game_button_aee5fd5cc060d53320f49e5b5461e38ec}{00065}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_aee5fd5cc060d53320f49e5b5461e38ec}{mousePressed}}(MouseEvent\ e)\ \{\}\ \textcolor{comment}{//mandatory\ part\ of\ mouseListener\ interface,\ but\ not\ used.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00067}00067\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00068}\mbox{\hyperlink{classutilities_1_1_game_button_aa3cbd8bbc5308f96e1987430c35bd3fc}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_aa3cbd8bbc5308f96e1987430c35bd3fc}{mouseReleased}}(MouseEvent\ e)\ \{\}\ \textcolor{comment}{//mandatory\ part\ of\ mouseListener\ interface,\ but\ not\ used.}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00075}00075\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00076}\mbox{\hyperlink{classutilities_1_1_game_button_abb1f39c27b708500281f8e70151313a6}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_abb1f39c27b708500281f8e70151313a6}{mouseEntered}}(MouseEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{classutilities_1_1_game_button_a5f33fc6ef7d4900c03e6fd3870b930f4}{onHover}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00085}00085\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00086}\mbox{\hyperlink{classutilities_1_1_game_button_a32b8f0a405986f5335727716e27db7ef}{00086}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutilities_1_1_game_button_a32b8f0a405986f5335727716e27db7ef}{mouseExited}}(MouseEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{classutilities_1_1_game_button_a5f33fc6ef7d4900c03e6fd3870b930f4}{onHover}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{_game_button_8java_source_l00090}00090\ }
+
+\end{DoxyCode}

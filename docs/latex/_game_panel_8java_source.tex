@@ -1,0 +1,286 @@
+\hypertarget{_game_panel_8java_source}{}\doxysection{Game\+Panel.\+java}
+\label{_game_panel_8java_source}\index{GamePanel.java@{GamePanel.java}}
+\mbox{\hyperlink{_game_panel_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00001}00001\ \textcolor{keyword}{package\ }panels;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceobjects}{objects}}.*;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceobjects}{objects}}.\mbox{\hyperlink{namespaceobjects_1_1food}{food}}.*;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00005}00005\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceobjects}{objects}}.\mbox{\hyperlink{namespaceobjects_1_1obstacle}{obstacle}}.*;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00006}00006\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespacemain}{main}}.\mbox{\hyperlink{namespacemain_1_1engine}{engine}}.*;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00007}00007\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00008}00008\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00009}00009\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00010}00010\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_player}{Player}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00012}00012\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.awt.event.KeyEvent;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00015}00015\ \textcolor{keyword}{import}\ java.awt.event.KeyListener;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00017}00017\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00018}00018\ \textcolor{keyword}{import}\ java.util.Iterator;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00019}00019\ \textcolor{keyword}{import}\ java.util.Random;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00027}\mbox{\hyperlink{classpanels_1_1_game_panel}{00027}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpanels_1_1_game_panel}{GamePanel}}\ \textcolor{keyword}{extends}\ JPanel\ implements\ KeyListener\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00028}\mbox{\hyperlink{classpanels_1_1_game_panel_a7c6e871adfa0cd9536dd2f6fdcbb05e1}{00028}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7c6e871adfa0cd9536dd2f6fdcbb05e1}{bg}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00029}\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{00029}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classobjects_1_1_snake}{Snake}}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00030}\mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{00030}}\ \ \ \ \ \textcolor{keyword}{private}\ ArrayList<Food>\ \mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00031}\mbox{\hyperlink{classpanels_1_1_game_panel_adb3de0dbf16096eb62dc5a8956b0135b}{00031}}\ \ \ \ \ \textcolor{keyword}{private}\ Random\ \mbox{\hyperlink{classpanels_1_1_game_panel_adb3de0dbf16096eb62dc5a8956b0135b}{rand}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00032}\mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{00032}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list}{ObstacleList}}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{obstacles}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00034}\mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{00034}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00035}\mbox{\hyperlink{classpanels_1_1_game_panel_aa7378ff49ef01247f614891398ad896f}{00035}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ Timer\ \mbox{\hyperlink{classpanels_1_1_game_panel_aa7378ff49ef01247f614891398ad896f}{gameLoop}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00036}\mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{00036}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{startTime}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00037}00037\ \ \ \ \ String\ currentEffectLabel;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00038}\mbox{\hyperlink{classpanels_1_1_game_panel_a1a7855e7c7f239ab0902804a2f0e5bee}{00038}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a1a7855e7c7f239ab0902804a2f0e5bee}{fastMode}},\ \mbox{\hyperlink{classpanels_1_1_game_panel_a6345c7d1ad8ddd5709591173f41da531}{slowMode}},\ \mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00039}\mbox{\hyperlink{classpanels_1_1_game_panel_abb8298071cac669472a777bf7e27c5c2}{00039}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ \mbox{\hyperlink{classpanels_1_1_game_panel_abb8298071cac669472a777bf7e27c5c2}{stateChanger}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00047}\mbox{\hyperlink{classpanels_1_1_game_panel_a539b3c136b6b9d83ab810a4fd6c8078f}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a539b3c136b6b9d83ab810a4fd6c8078f}{GamePanel}}(\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ listener)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ super();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ this.setPreferredSize(\textcolor{keyword}{new}\ Dimension(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.x,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.y));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ this.setBackground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ this.setDoubleBuffered(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ this.setFocusable(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_adb3de0dbf16096eb62dc5a8956b0135b}{rand}}\ =\ \textcolor{keyword}{new}\ Random();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a7c6e871adfa0cd9536dd2f6fdcbb05e1}{bg}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classobjects_1_1_snake}{Snake}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_abb8298071cac669472a777bf7e27c5c2}{stateChanger}}\ =\ listener;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}}\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}}.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}());}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{obstacles}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list}{ObstacleList}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{startTime}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a1a7855e7c7f239ab0902804a2f0e5bee}{fastMode}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a6345c7d1ad8ddd5709591173f41da531}{slowMode}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ delay\ =\ (int)\ (1000\ /\ (\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a2021df83540f5108c2c3543086f16cc0}{FPS}}\ *\ \mbox{\hyperlink{classobjects_1_1_snake}{Snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ab0ce9929e0844f02f3d9229fca0358f5}{SPEED}}));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_aa7378ff49ef01247f614891398ad896f}{gameLoop}}\ =\ \textcolor{keyword}{new}\ Timer(delay,\ e\ -\/>\ \{\ \textcolor{comment}{//\ GAME\ LOOP,\ runs\ every\ 1/60*SPEED\ -\/th\ of\ a\ second}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//1000/(int)(FPS\ *\ objects.Snake.SPEED)}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_af2bac3e0d26082b6633fc59ae267d3e6}{update}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ repaint();\ \textcolor{comment}{//\ calls\ paintComponent()}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00082}\mbox{\hyperlink{classpanels_1_1_game_panel_af2bac3e0d26082b6633fc59ae267d3e6}{00082}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_af2bac3e0d26082b6633fc59ae267d3e6}{update}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a9d990d39924c116f11783ea9c8a37290}{updateEffects}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_add7f9c2e87560ab6242208e921129713}{move}}();\ \textcolor{comment}{//\ add\ a\ new\ "{}head"{}\ based\ on\ the\ movement\ direction}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ snake\ collisions\ (self\ and\ borders)}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a7452fff0dad6722beedd1fa8659a4107}{doCollisions}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_ad321fae28067c03bbb6346f5f169deac}{stopGame}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ collision\ with\ obstacles}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a18c573b169fdaad001b3c5f6e99f3877}{checkCollisionWith}}(\mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{obstacles}}.\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a5f4f097ab4c270d098d03aa13c3fb8cf}{getAllCells}}()))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_ad321fae28067c03bbb6346f5f169deac}{stopGame}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ collision\ with\ food}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ incLength\ =\ \mbox{\hyperlink{classpanels_1_1_game_panel_abc96ec639f11fc3a6652ba4eb8c48030}{doFoodCollisions}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ do\ not\ remove\ tail\ for\ a\ length-\/increase\ effect}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!incLength)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a5539c5ab789c4166b915cf90a4d24fae}{getBody}}().remove(\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a5539c5ab789c4166b915cf90a4d24fae}{getBody}}().size()\ -\/\ 1);\ \textcolor{comment}{//\ remove\ the\ tail\ to\ complete\ movement}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00111}\mbox{\hyperlink{classpanels_1_1_game_panel_a08bdbc9873ce8e5ca4a7b93b40fd3d45}{00111}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a08bdbc9873ce8e5ca4a7b93b40fd3d45}{adjustSnakeSpeed}}(\textcolor{keywordtype}{double}\ speedMultiplier)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ delay\ =\ (int)\ (1000\ /\ (\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a2021df83540f5108c2c3543086f16cc0}{FPS}}\ *\ \mbox{\hyperlink{classobjects_1_1_snake}{Snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ab0ce9929e0844f02f3d9229fca0358f5}{SPEED}}\ *\ speedMultiplier));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_aa7378ff49ef01247f614891398ad896f}{gameLoop}}.setDelay(delay);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00120}\mbox{\hyperlink{classpanels_1_1_game_panel_a9d990d39924c116f11783ea9c8a37290}{00120}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a9d990d39924c116f11783ea9c8a37290}{updateEffects}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a1a7855e7c7f239ab0902804a2f0e5bee}{fastMode}}\ ||\ \mbox{\hyperlink{classpanels_1_1_game_panel_a6345c7d1ad8ddd5709591173f41da531}{slowMode}}\ ||\ \mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ effect\ time\ expired}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (System.currentTimeMillis()\ -\/\ \mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{startTime}}\ >\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a27ba68f50e40a3a8e554b179b49f6bda}{EFFECT\_DURATION}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a1a7855e7c7f239ab0902804a2f0e5bee}{fastMode}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a6345c7d1ad8ddd5709591173f41da531}{slowMode}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a08bdbc9873ce8e5ca4a7b93b40fd3d45}{adjustSnakeSpeed}}(1);\ \textcolor{comment}{//\ Set\ the\ speed\ back\ to\ normal}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentEffectLabel\ =\ \textcolor{stringliteral}{"{}"{}};\ \textcolor{comment}{//\ remove\ the\ label}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00139}\mbox{\hyperlink{classpanels_1_1_game_panel_abc96ec639f11fc3a6652ba4eb8c48030}{00139}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classpanels_1_1_game_panel_abc96ec639f11fc3a6652ba4eb8c48030}{doFoodCollisions}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ eaten\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00141}00141\ \ \ \ \ \ \ \ \ Iterator<Food>\ it\ =\ \mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}}.iterator();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00142}00142\ \ \ \ \ \ \ \ \ ArrayList<Food>\ newFood\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it.hasNext())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}\ foodItem\ =\ it.next();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a18c573b169fdaad001b3c5f6e99f3877}{checkCollisionWith}}(foodItem.\mbox{\hyperlink{classobjects_1_1food_1_1_food_aa9a0513b12fc192e96c02c7636285d99}{getFoodLocation}}()))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it.remove();\ \textcolor{comment}{//\ remove\ consumed\ food\ from\ list}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ eaten\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_ad8701691144e53afc855b65ceac97e78}{applyFoodEffect}}(foodItem.\mbox{\hyperlink{classobjects_1_1food_1_1_food_ab48baeaa6e26b81d51c16ef4140efc7d}{getFoodType}}());}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ always\ spawn\ new\ default\ food\ as\ soon\ as\ the\ previous\ one\ is\ eaten}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(foodItem.\mbox{\hyperlink{classobjects_1_1food_1_1_food_ab48baeaa6e26b81d51c16ef4140efc7d}{getFoodType}}()\ ==\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_abef4e58c457baa97919e278767dec4f0}{DEFAULT}})}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newFood.add(\mbox{\hyperlink{classpanels_1_1_game_panel_a38e5d7f3ad6f42f200d2ff0085eaf996}{generateNewFoodItem}}(\textcolor{keyword}{false}));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 33\%\ to\ spawn\ new\ bonus\ food\ in\ a\ valid\ position,\ up\ to\ 1\ normal\ and\ 2\ bonus}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}}.size()\ <\ 2\ \&\&\ \mbox{\hyperlink{classpanels_1_1_game_panel_adb3de0dbf16096eb62dc5a8956b0135b}{rand}}.nextFloat()\ <=\ 0.33)}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newFood.add(\mbox{\hyperlink{classpanels_1_1_game_panel_a38e5d7f3ad6f42f200d2ff0085eaf996}{generateNewFoodItem}}(\textcolor{keyword}{true}));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ spawn\ new\ obstacle\ every\ 5th\ time\ food\ is\ eaten}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ \%\ 5\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{obstacles}}.\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a820204c8c121b6d8edf9cd66b0ed60af}{add}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle}{Obstacle}}(\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a5539c5ab789c4166b915cf90a4d24fae}{getBody}}()));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00165}00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}}.addAll(newFood);\ \textcolor{comment}{//\ add\ all\ generated\ food\ from\ the\ temporary\ storage\ to\ the\ actual\ list}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ eaten;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00167}00167\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00176}\mbox{\hyperlink{classpanels_1_1_game_panel_ad8701691144e53afc855b65ceac97e78}{00176}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_ad8701691144e53afc855b65ceac97e78}{applyFoodEffect}}(\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}\ foodType)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (foodType)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DEFAULT\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}++;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SPEEDFOOD\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a1a7855e7c7f239ab0902804a2f0e5bee}{fastMode}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a08bdbc9873ce8e5ca4a7b93b40fd3d45}{adjustSnakeSpeed}}(2);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentEffectLabel\ =\ \textcolor{stringliteral}{"{}SPED\ UP!"{}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{startTime}}\ =\ System.currentTimeMillis();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SLOWFOOD\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a6345c7d1ad8ddd5709591173f41da531}{slowMode}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a08bdbc9873ce8e5ca4a7b93b40fd3d45}{adjustSnakeSpeed}}(0.5);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentEffectLabel\ =\ \textcolor{stringliteral}{"{}SLOWED!"{}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{startTime}}\ =\ System.currentTimeMillis();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PLUSFOOD\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ +=\ 2;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MINUSFOOD\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ -\/=\ 2;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ <\ 0)\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CONTROLINVERTER\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a177178d5549428c545db09adf7462123}{startTime}}\ =\ System.currentTimeMillis();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a08bdbc9873ce8e5ca4a7b93b40fd3d45}{adjustSnakeSpeed}}(0.75);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentEffectLabel\ =\ \textcolor{stringliteral}{"{}CONFUSED!"{}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00206}00206\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00207}00207\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00215}\mbox{\hyperlink{classpanels_1_1_game_panel_a38e5d7f3ad6f42f200d2ff0085eaf996}{00215}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a38e5d7f3ad6f42f200d2ff0085eaf996}{generateNewFoodItem}}(\textcolor{keywordtype}{boolean}\ isBonus)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00216}00216\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ newFoodPos;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00217}00217\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}\ newFood;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ respawn\ food\ until\ it's\ in\ a\ valid\ position}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isBonus)\ newFood\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ newFood\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food}{BonusFood}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ newFoodPos\ =\ newFood.\mbox{\hyperlink{classobjects_1_1food_1_1_food_aa9a0513b12fc192e96c02c7636285d99}{getFoodLocation}}();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00224}00224\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a18c573b169fdaad001b3c5f6e99f3877}{checkCollisionWith}}(newFoodPos)\ ||\ \mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{obstacles}}.\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a5f4f097ab4c270d098d03aa13c3fb8cf}{getAllCells}}().contains(newFoodPos));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newFood;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00227}00227\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00234}\mbox{\hyperlink{classpanels_1_1_game_panel_ad50c8e3a636e005f277039787b6e043a}{00234}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classpanels_1_1_game_panel_ad50c8e3a636e005f277039787b6e043a}{getScore}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}};}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00236}00236\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00245}00245\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00246}\mbox{\hyperlink{classpanels_1_1_game_panel_a7d55705c080106c9e79755ff02ef84ad}{00246}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7d55705c080106c9e79755ff02ef84ad}{paintComponent}}(Graphics\ g)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00247}00247\ \ \ \ \ \ \ \ \ super.paintComponent(g);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00248}00248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a7c6e871adfa0cd9536dd2f6fdcbb05e1}{bg}}.\mbox{\hyperlink{classpanels_1_1_bg_panel_a4fb0f468b63ef60b005dd942c0eb302f}{paintComponent}}(g);\ \textcolor{comment}{//\ draw\ background\ first}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00250}00250\ \ \ \ \ \ \ \ \ Graphics2D\ frame\ =\ (Graphics2D)\ g;\ \textcolor{comment}{//\ frame\ for\ drawing\ 2d\ graphics}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}\ foodItem\ :\ \mbox{\hyperlink{classpanels_1_1_game_panel_a1cff88f3d336077253de1132825cb906}{food}})}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ foodItem.draw(frame);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle}{Obstacle}}\ obstacle\ :\ \mbox{\hyperlink{classpanels_1_1_game_panel_a8da13e09451433adc3f09f028b4ab27d}{obstacles}}.\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a9ecad28e71f47cb3cd03b9c908576ce2}{getObstacles}}())}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ obstacle.draw(frame);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00257}00257\ \ \ \ \ \ \ \ \ g.setColor(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00258}00258\ \ \ \ \ \ \ \ \ g.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.PLAIN,20));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00259}00259\ \ \ \ \ \ \ \ \ g.drawString(String.format(\textcolor{stringliteral}{"{}\%03d"{}},\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}),\ 65\ ,\ GameConstants.WINDOW\_SIZE.y\ -\/\ 760);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentEffectLabel\ !=\ \textcolor{keyword}{null}\ \&\&\ !currentEffectLabel.isEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ frame.setColor(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ frame.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 20));}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ (getWidth()\ -\/\ frame.getFontMetrics().stringWidth(currentEffectLabel))\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ getHeight()\ -\/\ frame.getFontMetrics().getHeight()\ -\/\ 2;\ \textcolor{comment}{//\ centers\ the\ effect\ label\ 2\ pixels\ from\ the\ bottom}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ frame.drawString(currentEffectLabel,\ x,\ y);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00269}00269\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00271}00271\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_a40d6261351603038d243eb85db2a8184}{draw}}(frame);}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00272}00272\ \ \ \ \ \ \ \ \ frame.dispose();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00273}00273\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00279}\mbox{\hyperlink{classpanels_1_1_game_panel_a0e077911a2ec6887bf187d28f0370669}{00279}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a0e077911a2ec6887bf187d28f0370669}{startGame}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00280}00280\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_aa7378ff49ef01247f614891398ad896f}{gameLoop}}.start();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00281}00281\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00287}\mbox{\hyperlink{classpanels_1_1_game_panel_ad321fae28067c03bbb6346f5f169deac}{00287}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_ad321fae28067c03bbb6346f5f169deac}{stopGame}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00288}00288\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_aa7378ff49ef01247f614891398ad896f}{gameLoop}}.stop();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00290}00290\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_player}{Player}}\ tempPlayer\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_player}{Player}}(\textcolor{stringliteral}{"{}"{}},\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_panel_a7fbc11bb1e5dc5d91838bc64d34ebf62}{score}}\ >\ 0\ \&\&\ \mbox{\hyperlink{classpanels_1_1_leaderboard}{Leaderboard}}.\mbox{\hyperlink{classpanels_1_1_leaderboard_a66e5ef37519d22911becc42752263f43}{isTopTen}}(tempPlayer))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_abb8298071cac669472a777bf7e27c5c2}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_a54c579c4542805c001161d86861dbc79}{GAME\_OVER\_ENTERNAME}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00294}00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_abb8298071cac669472a777bf7e27c5c2}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_adbaa08a898a267552f27d14f2a903626}{GAME\_OVER}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00297}00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00300}00300\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00301}\mbox{\hyperlink{classpanels_1_1_game_panel_af258fca9754dd983be33ec38daa16e57}{00301}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_af258fca9754dd983be33ec38daa16e57}{keyTyped}}(KeyEvent\ e)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00309}00309\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00310}\mbox{\hyperlink{classpanels_1_1_game_panel_a7865eed190db829854bb137cc34b642d}{00310}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_a7865eed190db829854bb137cc34b642d}{keyPressed}}(KeyEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ code\ =\ e.getKeyCode();}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ ==\ KeyEvent.VK\_UP)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a1640c0e65cb2588a13acf0fe7c92de69}{DOWN}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a8340dc223b0bfa1e858b32a92e11cd83}{UP}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00320}00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ ==\ KeyEvent.VK\_DOWN)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a8340dc223b0bfa1e858b32a92e11cd83}{UP}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a1640c0e65cb2588a13acf0fe7c92de69}{DOWN}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00328}00328\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ ==\ KeyEvent.VK\_LEFT)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a7cc07ee420e0c45c01c8b5c36f51a8ed}{RIGHT}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a787ebe3548df94056d6141523807be26}{LEFT}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00336}00336\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ ==\ KeyEvent.VK\_RIGHT)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classpanels_1_1_game_panel_aa1dcb748f1eb63fca847d238beddd24c}{keyInverter}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a787ebe3548df94056d6141523807be26}{LEFT}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_panel_a661ff2bfe2e8cd958d38d3924b4bbf3b}{snake}}.\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a7cc07ee420e0c45c01c8b5c36f51a8ed}{RIGHT}});}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00344}00344\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00345}00345\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00347}00347\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00348}\mbox{\hyperlink{classpanels_1_1_game_panel_ac8944762aa2b542aa67ad73340f61735}{00348}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_panel_ac8944762aa2b542aa67ad73340f61735}{keyReleased}}(KeyEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00349}00349\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_panel_8java_source_l00350}00350\ \}}
+
+\end{DoxyCode}

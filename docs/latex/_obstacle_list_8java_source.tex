@@ -1,0 +1,35 @@
+\hypertarget{_obstacle_list_8java_source}{}\doxysection{Obstacle\+List.\+java}
+\label{_obstacle_list_8java_source}\index{ObstacleList.java@{ObstacleList.java}}
+\mbox{\hyperlink{_obstacle_list_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00001}00001\ \textcolor{keyword}{package\ }objects.obstacle;}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00011}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list}{ObstacleList}}\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00012}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_ab6f2e31891465908b139d75316a51826}{00012}}\ \ \ \ \ \textcolor{keyword}{private}\ ArrayList<Obstacle>\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_ab6f2e31891465908b139d75316a51826}{obstacles}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00018}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_aaaf1b0a5cf491e5583c99f8fe78e18e4}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_aaaf1b0a5cf491e5583c99f8fe78e18e4}{ObstacleList}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_ab6f2e31891465908b139d75316a51826}{obstacles}}\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00027}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a5f4f097ab4c270d098d03aa13c3fb8cf}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ ArrayList<CellPosition>\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a5f4f097ab4c270d098d03aa13c3fb8cf}{getAllCells}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ ArrayList<CellPosition>\ cells\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle}{Obstacle}}\ obstacle\ :\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_ab6f2e31891465908b139d75316a51826}{obstacles}})\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ cells.addAll(obstacle.getCells());}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cells;}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00040}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a820204c8c121b6d8edf9cd66b0ed60af}{00040}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a820204c8c121b6d8edf9cd66b0ed60af}{add}}(\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle}{Obstacle}}\ obstacle)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_ab6f2e31891465908b139d75316a51826}{obstacles}}.add(obstacle);}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00049}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a9ecad28e71f47cb3cd03b9c908576ce2}{00049}}\ \ \ \ \ \textcolor{keyword}{public}\ ArrayList<Obstacle>\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_a9ecad28e71f47cb3cd03b9c908576ce2}{getObstacles}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_list_ab6f2e31891465908b139d75316a51826}{obstacles}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_list_8java_source_l00052}00052\ \}}
+
+\end{DoxyCode}

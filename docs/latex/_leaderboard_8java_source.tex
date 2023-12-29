@@ -1,0 +1,173 @@
+\hypertarget{_leaderboard_8java_source}{}\doxysection{Leaderboard.\+java}
+\label{_leaderboard_8java_source}\index{Leaderboard.java@{Leaderboard.java}}
+\mbox{\hyperlink{_leaderboard_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00001}00001\ \textcolor{keyword}{package\ }panels;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00003}00003\ \textcolor{keyword}{import}\ org.json.simple.parser.JSONParser;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00004}00004\ \textcolor{keyword}{import}\ org.json.simple.JSONObject;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00006}00006\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.awt.event.ActionEvent;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00009}00009\ \textcolor{keyword}{import}\ java.awt.event.ActionListener;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00011}00011\ \textcolor{keyword}{import}\ java.io.File;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00012}00012\ \textcolor{keyword}{import}\ java.io.FileReader;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.io.FileWriter;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.io.IOException;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00016}00016\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00017}00017\ \textcolor{keyword}{import}\ java.util.Collections;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00019}00019\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_player}{Player}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00020}00020\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00021}00021\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00022}00022\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespacemain}{main}}.\mbox{\hyperlink{namespacemain_1_1engine}{engine}}.*;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00029}\mbox{\hyperlink{classpanels_1_1_leaderboard}{00029}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpanels_1_1_leaderboard}{Leaderboard}}\ \textcolor{keyword}{extends}\ JPanel\ implements\ ActionListener\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00030}\mbox{\hyperlink{classpanels_1_1_leaderboard_a90cbd9223128b3024f2bf44bb6f4852c}{00030}}\ \ \ \ \ \textcolor{keyword}{private}\ DefaultListModel<String>\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a90cbd9223128b3024f2bf44bb6f4852c}{listItems}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00031}\mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{00031}}\ \ \ \ \ \textcolor{keyword}{private}\ JList<String>\ \mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{lbList}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00032}\mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{00032}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{mainMenuBtn}};\ \ \ \ \ \textcolor{comment}{//\ a\ Button\ to\ go\ back\ to\ the\ main\ menu}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00033}\mbox{\hyperlink{classpanels_1_1_leaderboard_af9f01e820f5b0f1f37d1e68e701906df}{00033}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_af9f01e820f5b0f1f37d1e68e701906df}{bg}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00035}\mbox{\hyperlink{classpanels_1_1_leaderboard_a310b61d335d48621dde2734e247d5ea9}{00035}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ ArrayList<Player>\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a310b61d335d48621dde2734e247d5ea9}{playerList}}\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00037}\mbox{\hyperlink{classpanels_1_1_leaderboard_a35e6729a52e1b67976be45619d6a4618}{00037}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a35e6729a52e1b67976be45619d6a4618}{stateChanger}};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00046}\mbox{\hyperlink{classpanels_1_1_leaderboard_aa4a3c552c0bdb9a76bbe9a10957ef9e7}{00046}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_aa4a3c552c0bdb9a76bbe9a10957ef9e7}{Leaderboard}}(\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ listener)\{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_af9f01e820f5b0f1f37d1e68e701906df}{bg}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ creating\ custom\ font\ for\ the\ game}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ this.setLayout(\textcolor{keyword}{new}\ BoxLayout(\textcolor{keyword}{this},\ BoxLayout.Y\_AXIS));\ \textcolor{comment}{//creates\ a\ box\ layout\ for\ the\ panel.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ this.setPreferredSize(\textcolor{keyword}{new}\ Dimension(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.x,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.y));}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ this.setBackground(Color.decode(\textcolor{stringliteral}{"{}\#A9E000"{}}));\ \textcolor{comment}{//\ sets\ the\ color\ to\ the\ nokia\ snake\ green\ background\ color.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ JLabel\ titleLabel\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}Leaderboard"{}},\ SwingConstants.CENTER);\ \textcolor{comment}{//creates\ the\ title\ "{}snake\ evolution"{}\ for\ the\ menu.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ titleLabel.setForeground(Color.BLACK);\ \textcolor{comment}{//colors\ it\ black.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ titleLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,25));}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ titleLabel.setAlignmentX(Component.CENTER\_ALIGNMENT);\ \textcolor{comment}{//centers\ the\ text.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ defining\ layout\ of\ list}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a90cbd9223128b3024f2bf44bb6f4852c}{listItems}}\ =\ \textcolor{keyword}{new}\ DefaultListModel<>();\ \textcolor{comment}{//\ A\ list\ that\ will\ hold\ players\ names\ and\ score}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{lbList}}\ =\ \textcolor{keyword}{new}\ JList<>(\mbox{\hyperlink{classpanels_1_1_leaderboard_a90cbd9223128b3024f2bf44bb6f4852c}{listItems}});\ \textcolor{comment}{//\ a\ list\ that\ will\ define\ the\ layout\ ie\ color,\ size,\ etc}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{lbList}}.setBackground(Color.decode(\textcolor{stringliteral}{"{}\#A9E000"{}}));}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{lbList}}.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{lbList}}.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,25));}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 10)));\textcolor{comment}{//creates\ a\ blank\ area\ above\ title\ for\ visual\ spacing.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ this.add(titleLabel);\ \textcolor{comment}{//\ adds\ title\ to\ panel.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 50)));\textcolor{comment}{//\ drawing\ blank\ area\ above\ JList}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ this.add(\mbox{\hyperlink{classpanels_1_1_leaderboard_ada750232ef378df06b2d4efd790f478a}{lbList}});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{mainMenuBtn}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}(\textcolor{stringliteral}{"{}Main\ Menu"{}});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{mainMenuBtn}}.setFocusable(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{mainMenuBtn}}.setActionCommand(\textcolor{stringliteral}{"{}MENU"{}});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 250)));\ \textcolor{comment}{//\ adds\ empty\ area\ before\ MM\ button}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ this.add(\mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{mainMenuBtn}});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a835e1c28e2b69838640982f0227c1c3f}{mainMenuBtn}}.addActionListener(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a35e6729a52e1b67976be45619d6a4618}{stateChanger}}\ =\ listener;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a1a75bf9c5b60244013d44bd354d9663e}{readToList}}();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00086}00086\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00087}\mbox{\hyperlink{classpanels_1_1_leaderboard_a4a5e6700355da259ba03d4bb0bb9f02f}{00087}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a4a5e6700355da259ba03d4bb0bb9f02f}{paintComponent}}(Graphics\ g)\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ super.paintComponent(g);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_af9f01e820f5b0f1f37d1e68e701906df}{bg}}.\mbox{\hyperlink{classpanels_1_1_bg_panel_a4fb0f468b63ef60b005dd942c0eb302f}{paintComponent}}(g);\textcolor{comment}{//\ Drawing\ black\ border\ on\ the\ frame}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00097}00097\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00098}\mbox{\hyperlink{classpanels_1_1_leaderboard_aec54f5be782fe792eba065b37d51b010}{00098}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_aec54f5be782fe792eba065b37d51b010}{actionPerformed}}(ActionEvent\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ String\ actionCommand\ =\ \textcolor{keyword}{event}.getActionCommand();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{stringliteral}{"{}MENU"{}}.equals(actionCommand))\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a35e6729a52e1b67976be45619d6a4618}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_a4d6088ae533a27895ffe820220c36e48}{MENU}});\ \textcolor{comment}{//\ switches\ to\ main\ menu.}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00111}\mbox{\hyperlink{classpanels_1_1_leaderboard_a02413de1247d26534cae1ed80827899a}{00111}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ ArrayList<Player>\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a02413de1247d26534cae1ed80827899a}{readFromFile}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ JSONParser\ parser\ =\ \textcolor{keyword}{new}\ JSONParser();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ ArrayList<Player>\ players\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ File\ file\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}res/Top10Scores.json"{}});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.exists())\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSONObject\ jsonObj\ =\ \textcolor{keyword}{new}\ JSONObject();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FileWriter\ writer\ =\ \textcolor{keyword}{new}\ FileWriter(file);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.write(jsonObj.toJSONString());}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.close();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FileReader\ reader\ =\ \textcolor{keyword}{new}\ FileReader(file);\ \textcolor{comment}{//\ Creating\ reader\ to\ read\ data\ from\ json\ file}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSONObject\ readJsonObj\ =\ (JSONObject)\ parser.parse(reader);\ \textcolor{comment}{//\ parsing\ data\ from\ json\ file\ to\ string}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Object\ PlayersData\ :\ readJsonObj.keySet())\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ playerName\ =\ (String)\ PlayersData;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ playerScore\ =\ (long)\ readJsonObj.get(PlayersData);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_player}{Player}}\ player\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_player}{Player}}(playerName,\ playerScore);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ players.add(player);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorting\ players\ from\ high\ to\ low\ scores}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Collections.sort(players);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ RuntimeException(\textcolor{stringliteral}{"{}Error\ while\ reading\ file!\(\backslash\)n"{}}\ +\ e.getMessage());}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00139}00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ players;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00142}00142\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00149}\mbox{\hyperlink{classpanels_1_1_leaderboard_a1a75bf9c5b60244013d44bd354d9663e}{00149}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a1a75bf9c5b60244013d44bd354d9663e}{readToList}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00150}00150\ \ \ \ \ \ \ \ \ ArrayList<Player>\ top10Scorers\ =\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a02413de1247d26534cae1ed80827899a}{readFromFile}}();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filling\ the\ list\ with\ top\ 10\ players\ names\ and\ scores}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ playerIndex\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutilities_1_1_player}{Player}}\ player\ :\ top10Scorers)\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerIndex\ <\ 10)}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a90cbd9223128b3024f2bf44bb6f4852c}{listItems}}.addElement(playerIndex\ +\ \textcolor{stringliteral}{"{}\ .\ "{}}\ +\ player.getNamesAndScores());}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (playerIndex\ ==\ 10)}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a90cbd9223128b3024f2bf44bb6f4852c}{listItems}}.addElement(playerIndex\ +\ \textcolor{stringliteral}{"{}.\ "{}}\ +\ player.getNamesAndScores());}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ stop\ iterating\ after\ 10th\ player}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ playerIndex++;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00171}\mbox{\hyperlink{classpanels_1_1_leaderboard_a86cef97b56ad0de58e636dca68cc7d18}{00171}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a86cef97b56ad0de58e636dca68cc7d18}{createPlayer}}(String\ name,\ \textcolor{keywordtype}{long}\ score)\{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ ArrayList<Player>\ currentPlayers\ =\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a02413de1247d26534cae1ed80827899a}{readFromFile}}();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ FileWriter\ writer;}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ JSONObject\ jsonObj\ =\ \textcolor{keyword}{new}\ JSONObject();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a310b61d335d48621dde2734e247d5ea9}{playerList}}.addAll(currentPlayers);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_player}{Player}}\ newPlayer\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_player}{Player}}(name,\ score);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard_a310b61d335d48621dde2734e247d5ea9}{playerList}}.add(newPlayer);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Storing\ top\ 10\ players'\ names\ and\ scores\ in\ json\ file}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ writer\ =\ \textcolor{keyword}{new}\ FileWriter(\textcolor{stringliteral}{"{}res/Top10Scores.json"{}});}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutilities_1_1_player}{Player}}\ player\ :\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a310b61d335d48621dde2734e247d5ea9}{playerList}})\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jsonObj.containsKey(player.getName())\ \&\&\ (\textcolor{keywordtype}{long})\ jsonObj.get(player.getName())\ >\ player.getScore())\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ do\ not\ put\ a\ lower\ score\ if\ an\ entry\ with\ the\ same\ name\ exists}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jsonObj.put(player.getName(),\ player.getScore());}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ writer.write(jsonObj.toJSONString());}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ writer.close();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (IOException\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ RuntimeException(e);}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00195}00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00196}00196\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00205}\mbox{\hyperlink{classpanels_1_1_leaderboard_a66e5ef37519d22911becc42752263f43}{00205}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a66e5ef37519d22911becc42752263f43}{isTopTen}}(\mbox{\hyperlink{classutilities_1_1_player}{Player}}\ playerInTop10)\{}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00206}00206\ \ \ \ \ \ \ \ \ ArrayList<Player>\ players\ =\ \mbox{\hyperlink{classpanels_1_1_leaderboard_a02413de1247d26534cae1ed80827899a}{readFromFile}}();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (players.size()\ <\ 10)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ playerInTop10.\mbox{\hyperlink{classutilities_1_1_player_a74e77ecb124ba84eb3073c306b1b40b9}{getScore}}()\ >\ players.get(9).getScore();}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_leaderboard_8java_source_l00210}00210\ \}}
+
+\end{DoxyCode}
