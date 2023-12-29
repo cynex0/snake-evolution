@@ -3,7 +3,7 @@ package panels;
 import objects.*;
 import objects.food.*;
 import objects.obstacle.*;
-import main.engine.*;
+import engine.*;
 import utilities.CellPosition;
 import utilities.Direction;
 import utilities.GameConstants;

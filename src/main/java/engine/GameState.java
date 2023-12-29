@@ -1,4 +1,4 @@
-package main.engine;
+package engine;
 
 /**
  * Represents all possible game states
