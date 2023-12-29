@@ -23,8 +23,8 @@ public class GameButton extends JButton implements MouseListener {  // extends t
         this.setForeground(Color.BLACK); //setting button text to black.
         this.setContentAreaFilled(false); // making the button transparent.
         this.setBorder(BorderFactory.createEmptyBorder()); // removes the default JButton borders.
-        this.setPreferredSize(new Dimension(700, 170)); // setting the size of the buttons to fit the text.
-        this.setMaximumSize(new Dimension(700, 170)); // sets maximum size to same as preferred size for consistency.
+        this.setPreferredSize(new Dimension(750, 150)); // setting the size of the buttons to fit the text.
+        this.setMaximumSize(new Dimension(800, 150)); // sets maximum size to same as preferred size for consistency.
         this.setAlignmentX(Component.CENTER_ALIGNMENT); // centers the buttons in the window.
     }
     public void onHover(boolean hovering) { // function for mouse hovering.
