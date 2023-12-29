@@ -21,7 +21,8 @@ public class Food {
 
     /**
      * Creates a food item of default type in a random playable cell.
-     * @author Maksims Orlovs
+     * @author Fatemeh Akbarifar
+     * @author Maksims Orlovs (co-author)
      */
     public Food() {
         foodLocation = new CellPosition();

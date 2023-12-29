@@ -82,7 +82,6 @@ public class Obstacle {
      * Generates a random cell within the playable area (excludes margins)
      * @return CellPosition representing a traversable cell
      * @author Fatemeh Akbarifar
-     * @author Maksims Orlovs
      */
     private CellPosition getRandomCell() {
         int randX = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;

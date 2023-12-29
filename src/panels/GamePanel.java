@@ -22,7 +22,7 @@ import java.util.Random;
 /**
  * Represents the gameplay state. Handles gameplay logic and drawing of all objects.
  * @author Maksims Orlovs
- * @author Fatemeh Akbarifar
+ * @author Fatemeh Akbarifar (co-author)
  */
 public class GamePanel extends JPanel implements KeyListener {
     private BgPanel bg;
@@ -42,7 +42,7 @@ public class GamePanel extends JPanel implements KeyListener {
      * Constructs the initial GamePanel and objects for handling the gameplay.
      * @param listener reference to the observer object to allow requesting state change
      * @author Maksims Orlovs
-     * @author Fatemeh Akbarifar
+     * @author Fatemeh Akbarifar (co-author)
      */
     public GamePanel(StateChangeListener listener) {
         super();
@@ -77,7 +77,7 @@ public class GamePanel extends JPanel implements KeyListener {
     /**
      * Updates positions and interaction of all objects (snake effects, position, collision). Part of game loop.
      * @author Maksims Orlovs
-     * @author Fatemeh Akbarifar
+     * @author Fatemeh Akbarifar (co-author)
      */
     public void update() {
         updateEffects();
@@ -134,7 +134,7 @@ public class GamePanel extends JPanel implements KeyListener {
      * Checks collisions with food items
      * @return true if food is eaten
      * @author Fatemeh Akbarifar
-     * @author Maksims Orlovs
+     * @author Maksims Orlovs (co-author)
      */
     private boolean doFoodCollisions() {
         boolean eaten = false;
@@ -170,8 +170,8 @@ public class GamePanel extends JPanel implements KeyListener {
      * Applies the effect of an eaten food object to the game depending on the type of the food.
      * @param foodType the type of the eaten food
      * @author Fatemeh Akbarifar
-     * @author Maksims Orlovs
-     * @author Marwa Abohachem
+     * @author Maksims Orlovs (co-author)
+     * @author Marwa Abohachem (co-author)
      */
     private void applyFoodEffect(FoodType foodType) {
         switch (foodType) {
@@ -239,8 +239,8 @@ public class GamePanel extends JPanel implements KeyListener {
      * Draws all contents of the panel (snake, food objects, obstacles, score) and the background.
      * @param g graphics component supplied by the GameFrame
      * @author Maksims Orlovs
-     * @author Fatemeh Akbarifar
-     * @author Marwa Abohachem
+     * @author Fatemeh Akbarifar (co-author)
+     * @author Marwa Abohachem (co-author)
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -304,7 +304,7 @@ public class GamePanel extends JPanel implements KeyListener {
      * Handles user input. Requests the change of direction from the snake if one of the arrow keys is pressed.
      * @param e the key-press event to be processed
      * @author Fatemeh Akbarifar
-     * @author Maksims Orlovs
+     * @author Maksims Orlovs (co-author)
      */
     @Override
     public void keyPressed(KeyEvent e) {

@@ -8,7 +8,7 @@ import utilities.GameConstants;
  * Extends food.
  * Includes random type selection and appropriate icon and color selection.
  * @author Maksims Orlovs
- * @author Fatemeh Akbarifar
+ * @author Fatemeh Akbarifar (co-author)
  */
 public class BonusFood extends Food {
     private String icon;
@@ -60,7 +60,7 @@ public class BonusFood extends Food {
      * Helper method to generate and assign a random type. Assigns the color and icon according to the type.
      * @see FoodType
      * @author Fatemeh Akbarifar
-     * @author Maksims Orlovs
+     * @author Maksims Orlovs (co-author)
      */
     private void randType() {
         switch (rand.nextInt(5)) {

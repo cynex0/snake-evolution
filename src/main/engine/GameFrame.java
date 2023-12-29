@@ -26,7 +26,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
     /**
      * Creates a GameFrame and sets up the game, the window and the font.
      * @author Maksims Orlovs
-     * @author Halah Hasani
+     * @author Halah Hasani (co-author)
      */
     public GameFrame() {
         super();

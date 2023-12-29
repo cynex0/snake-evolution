@@ -184,6 +184,7 @@ public class GameOver extends JPanel implements ActionListener, KeyListener, Foc
      * Limits text field to 3 characters and disallows typing special characters.
      * @param e the key-press event to be processed
      * @author Marwa Abohahcem
+     * @author Maksims Orlovs (co-author)
      */
     @Override
     public void keyTyped(KeyEvent e) {
