@@ -1,0 +1,46 @@
+\hypertarget{_bg_panel_8java_source}{}\doxysection{Bg\+Panel.\+java}
+\label{_bg_panel_8java_source}\index{BgPanel.java@{BgPanel.java}}
+\mbox{\hyperlink{_bg_panel_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00001}\mbox{\hyperlink{namespacepanels}{00001}}\ \textcolor{keyword}{package\ }panels;}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00003}00003\ \textcolor{keyword}{import}\ javax.swing.JPanel;}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00006}00006\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.*;}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00012}\mbox{\hyperlink{classpanels_1_1_bg_panel}{00012}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}\ \textcolor{keyword}{extends}\ JPanel\ \{}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00017}\mbox{\hyperlink{classpanels_1_1_bg_panel_a5965c891cd96af5d41bae769d1ef7454}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classpanels_1_1_bg_panel_a5965c891cd96af5d41bae769d1ef7454}{BgPanel}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00018}00018\ \ \ \ \ \ \ \ \ super();}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ this.setPreferredSize(\textcolor{keyword}{new}\ Dimension(WINDOW\_SIZE.x,\ WINDOW\_SIZE.y));}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00020}00020\ \ \ \ \ \ \ \ \ this.setBackground(\textcolor{keyword}{new}\ Color(0xA9E000));}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ this.setDoubleBuffered(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00031}00031\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00032}\mbox{\hyperlink{classpanels_1_1_bg_panel_a4fb0f468b63ef60b005dd942c0eb302f}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_bg_panel_a4fb0f468b63ef60b005dd942c0eb302f}{paintComponent}}(Graphics\ g)\ \{}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ super.paintComponent(g);}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ Graphics2D\ frame\ =\ (Graphics2D)\ g;}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fill\ background}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ frame.setColor(\textcolor{keyword}{new}\ Color(0xA9E000));}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ frame.fillRect(0,\ 0,\ WINDOW\_SIZE.x,\ WINDOW\_SIZE.y);}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ borders}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ frame.setColor(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ frame.fillRect(MARGIN\_OUTER,\ MARGIN\_OUTER,\ WINDOW\_SIZE.x\ -\/\ 2\ *\ MARGIN\_OUTER,\ BORDER\_THC);\ \textcolor{comment}{//\ top\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ frame.fillRect(MARGIN\_OUTER,\ MARGIN\_OUTER,\ BORDER\_THC,\ WINDOW\_SIZE.y\ -\/\ 2\ *\ MARGIN\_OUTER);\ \textcolor{comment}{//\ left\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ frame.fillRect(WINDOW\_SIZE.x\ -\/\ MARGIN\_OUTER\ -\/\ BORDER\_THC,\ MARGIN\_OUTER,\ BORDER\_THC,\ WINDOW\_SIZE.y\ -\/\ 2\ *\ MARGIN\_OUTER);\ \textcolor{comment}{//\ right\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ frame.fillRect(MARGIN\_OUTER,\ WINDOW\_SIZE.y\ -\/\ MARGIN\_OUTER\ -\/\ BORDER\_THC,\ WINDOW\_SIZE.x\ -\/\ 2\ *\ MARGIN\_OUTER,\ BORDER\_THC);\ \textcolor{comment}{//\ bottom\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ outer\ border\ frame}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ frame.fillRect(0,\ 0,\ WINDOW\_SIZE.x,\ BORDER\_THC);\ \textcolor{comment}{//\ top\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ frame.fillRect(0,\ 0,\ BORDER\_THC,\ WINDOW\_SIZE.y);\ \textcolor{comment}{//left\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ frame.fillRect(WINDOW\_SIZE.x\ -\/\ BORDER\_THC,\ 0,\ BORDER\_THC,\ WINDOW\_SIZE.y);\ \textcolor{comment}{//\ right\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ frame.fillRect(0,\ WINDOW\_SIZE.y\ -\/\ BORDER\_THC,\ WINDOW\_SIZE.x,\ BORDER\_THC);\ \textcolor{comment}{//\ bottom\ border}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bg_panel_8java_source_l00055}00055\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,215 @@
+\hypertarget{classutilities_1_1_player}{}\doxysection{utilities.\+Player Class Reference}
+\label{classutilities_1_1_player}\index{utilities.Player@{utilities.Player}}
+
+
+Represents a player that can be added to the leaderboard.  
+
+
+Inheritance diagram for utilities.\+Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classutilities_1_1_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutilities_1_1_player_ae584b8db881055f5c706c25209fe5950}{Player}} (String \mbox{\hyperlink{classutilities_1_1_player_adad7911495d3bda39322bfde48e1a7d5}{name}}, long \mbox{\hyperlink{classutilities_1_1_player_a7f27ffaa886c67a3fcf0300afc8dca83}{score}})
+\begin{DoxyCompactList}\small\item\em Creates a player object with specified parameters. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classutilities_1_1_player_a21e3fb0f25b7a3ff62fbb57af020a98f}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the Player\textquotesingle{}s name. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{classutilities_1_1_player_a74e77ecb124ba84eb3073c306b1b40b9}{get\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the Player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classutilities_1_1_player_a03c55d48e00edf57a0958ed55af109c2}{get\+Names\+And\+Scores}} ()
+\begin{DoxyCompactList}\small\item\em Creates a String representing a line in the leaderboard. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classutilities_1_1_player_a391dbad5aa252686964ef1e7f86a7856}{equals}} (Object o)
+\begin{DoxyCompactList}\small\item\em Compares the Player to another object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classutilities_1_1_player_a993d8014432e16030fce2c1a9b84fb05}{compare\+To}} (\mbox{\hyperlink{classutilities_1_1_player}{Player}} other)
+\begin{DoxyCompactList}\small\item\em Compares the Player\textquotesingle{}s score to another Player\textquotesingle{}s score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classutilities_1_1_player_adad7911495d3bda39322bfde48e1a7d5}{name}}
+\item 
+long \mbox{\hyperlink{classutilities_1_1_player_a7f27ffaa886c67a3fcf0300afc8dca83}{score}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a player that can be added to the leaderboard. 
+
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00008}{8}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classutilities_1_1_player_ae584b8db881055f5c706c25209fe5950}\label{classutilities_1_1_player_ae584b8db881055f5c706c25209fe5950}} 
+\index{utilities.Player@{utilities.Player}!Player@{Player}}
+\index{Player@{Player}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily utilities.\+Player.\+Player (\begin{DoxyParamCaption}\item[{String}]{name,  }\item[{long}]{score }\end{DoxyParamCaption})}
+
+
+
+Creates a player object with specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & player\textquotesingle{}s name \\
+\hline
+{\em score} & player\textquotesingle{}s score \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00019}{19}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classutilities_1_1_player_a993d8014432e16030fce2c1a9b84fb05}\label{classutilities_1_1_player_a993d8014432e16030fce2c1a9b84fb05}} 
+\index{utilities.Player@{utilities.Player}!compareTo@{compareTo}}
+\index{compareTo@{compareTo}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{compareTo()}{compareTo()}}
+{\footnotesize\ttfamily int utilities.\+Player.\+compare\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutilities_1_1_player}{Player}}}]{other }\end{DoxyParamCaption})}
+
+
+
+Compares the Player\textquotesingle{}s score to another Player\textquotesingle{}s score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the player to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if other\textquotesingle{}s score is higher, -\/1 if other\textquotesingle{}s score is lower. Returns result of two players\textquotesingle{} name lexicographic comparison if scores are equal. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Maskims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00080}{80}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+\mbox{\Hypertarget{classutilities_1_1_player_a391dbad5aa252686964ef1e7f86a7856}\label{classutilities_1_1_player_a391dbad5aa252686964ef1e7f86a7856}} 
+\index{utilities.Player@{utilities.Player}!equals@{equals}}
+\index{equals@{equals}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily boolean utilities.\+Player.\+equals (\begin{DoxyParamCaption}\item[{Object}]{o }\end{DoxyParamCaption})}
+
+
+
+Compares the Player to another object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & an object to be compared with this object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if names and scores of both players are equal 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Maskims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00062}{62}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+\mbox{\Hypertarget{classutilities_1_1_player_a21e3fb0f25b7a3ff62fbb57af020a98f}\label{classutilities_1_1_player_a21e3fb0f25b7a3ff62fbb57af020a98f}} 
+\index{utilities.Player@{utilities.Player}!getName@{getName}}
+\index{getName@{getName}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily String utilities.\+Player.\+get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the Player\textquotesingle{}s name. 
+
+\begin{DoxyReturn}{Returns}
+player\textquotesingle{}s name 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00029}{29}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+\mbox{\Hypertarget{classutilities_1_1_player_a03c55d48e00edf57a0958ed55af109c2}\label{classutilities_1_1_player_a03c55d48e00edf57a0958ed55af109c2}} 
+\index{utilities.Player@{utilities.Player}!getNamesAndScores@{getNamesAndScores}}
+\index{getNamesAndScores@{getNamesAndScores}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{getNamesAndScores()}{getNamesAndScores()}}
+{\footnotesize\ttfamily String utilities.\+Player.\+get\+Names\+And\+Scores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a String representing a line in the leaderboard. 
+
+Formatted according to the design (ABC-\/-\/---1). \begin{DoxyReturn}{Returns}
+Leaderboard line with the player\textquotesingle{}s name and score 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00047}{47}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+\mbox{\Hypertarget{classutilities_1_1_player_a74e77ecb124ba84eb3073c306b1b40b9}\label{classutilities_1_1_player_a74e77ecb124ba84eb3073c306b1b40b9}} 
+\index{utilities.Player@{utilities.Player}!getScore@{getScore}}
+\index{getScore@{getScore}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily long utilities.\+Player.\+get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the Player\textquotesingle{}s score. 
+
+\begin{DoxyReturn}{Returns}
+player\textquotesingle{}s score 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00038}{38}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classutilities_1_1_player_adad7911495d3bda39322bfde48e1a7d5}\label{classutilities_1_1_player_adad7911495d3bda39322bfde48e1a7d5}} 
+\index{utilities.Player@{utilities.Player}!name@{name}}
+\index{name@{name}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily String utilities.\+Player.\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00010}{10}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+\mbox{\Hypertarget{classutilities_1_1_player_a7f27ffaa886c67a3fcf0300afc8dca83}\label{classutilities_1_1_player_a7f27ffaa886c67a3fcf0300afc8dca83}} 
+\index{utilities.Player@{utilities.Player}!score@{score}}
+\index{score@{score}!utilities.Player@{utilities.Player}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily long utilities.\+Player.\+score\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_8java_source_l00011}{11}} of file \mbox{\hyperlink{_player_8java_source}{Player.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_player_8java}{Player.\+java}}\end{DoxyCompactItemize}

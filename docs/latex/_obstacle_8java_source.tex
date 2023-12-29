@@ -1,0 +1,102 @@
+\hypertarget{_obstacle_8java_source}{}\doxysection{Obstacle.\+java}
+\label{_obstacle_8java_source}\index{Obstacle.java@{Obstacle.java}}
+\mbox{\hyperlink{_obstacle_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00001}\mbox{\hyperlink{namespaceobjects_1_1obstacle}{00001}}\ \textcolor{keyword}{package\ }objects.obstacle;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceobjects}{objects}}.\mbox{\hyperlink{namespaceobjects_1_1food}{food}}.\mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00005}00005\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00009}00009\ \textcolor{keyword}{import}\ java.util.Random;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00015}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle}{Obstacle}}\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00016}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a8b1e39824b95c24dacbe3d73e67ba191}{00016}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a8b1e39824b95c24dacbe3d73e67ba191}{MAX\_SIZE}}\ =\ 5;\ \textcolor{comment}{//\ maximum\ amt\ of\ cells\ in\ an\ obstacle}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00017}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_ac535e820601e279d075733b846f69604}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_ac535e820601e279d075733b846f69604}{PARTICLE\_COUNT}}\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00018}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aa45e6f8c2635bb1171558550207adcd8}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aa45e6f8c2635bb1171558550207adcd8}{PARTICLE\_SIZE}}\ =\ GameConstants.CELL\_SIZE\ /\ 5;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00020}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ ArrayList<CellPosition>\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00021}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ Random\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00029}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a61438ac7afa9c0d1e286064925498dc1}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a61438ac7afa9c0d1e286064925498dc1}{Obstacle}}(ArrayList<CellPosition>\ snakePos)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}\ =\ \textcolor{keyword}{new}\ Random();}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}}\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_af47dc9be71f306f0a86f5b1090e50583}{respawn}}(snakePos);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00041}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_af47dc9be71f306f0a86f5b1090e50583}{00041}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_af47dc9be71f306f0a86f5b1090e50583}{respawn}}(ArrayList<CellPosition>\ snakePos)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ startPos\ =\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_ae3e2ee23b4ee98b5fd11ea5260b77071}{getRandomCell}}();\ \textcolor{comment}{//\ gets\ a\ random\ cell\ to\ start\ the\ spawning\ process}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (snakePos.contains(startPos))\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ prevent\ spawning\ if\ started\ spawning\ inside\ of\ the\ snake}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}}.add(startPos);\ \textcolor{comment}{//\ add\ the\ starting\ cell\ to\ the\ list\ of\ obstacle\ cells}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ growChance\ =\ 0.75;\ \textcolor{comment}{//\ chance\ for\ increasing\ the\ number\ of\ cells}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ generate\ additional\ cells,\ up\ to\ MAX\_SIZE,\ with\ diminishing\ probability}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a8b1e39824b95c24dacbe3d73e67ba191}{MAX\_SIZE}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ roll\ =\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextDouble();\ \textcolor{comment}{//\ random\ number\ to\ determine\ if\ the\ obstacle\ should\ grow\ more}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (roll\ <=\ growChance)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ grow\ in\ a\ random\ direction}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ArrayList<CellPosition>\ viableCells\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ prevCell\ =\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}}.get(i);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prevCell.x\ +\ 1\ <=\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a8c43aad0f4b7f21d5049f7bbd289c953}{MAX\_CELL}})\ \textcolor{comment}{//\ can\ grow\ to\ the\ right}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viableCells.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(prevCell.x\ +\ 1,\ prevCell.y));}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prevCell.x\ -\/\ 1\ >=\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}})\ \textcolor{comment}{//\ can\ grow\ to\ the\ left}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viableCells.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(prevCell.x\ -\/\ 1,\ prevCell.y));}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prevCell.y\ +\ 1\ <=\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a8c43aad0f4b7f21d5049f7bbd289c953}{MAX\_CELL}})\ \textcolor{comment}{//\ can\ grow\ down}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viableCells.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(prevCell.x,\ prevCell.y\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prevCell.y\ -\/\ 1\ >=\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}})\ \textcolor{comment}{//\ can\ grow\ up}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viableCells.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(prevCell.x,\ prevCell.y\ -\/\ 1));}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (viableCells.isEmpty())\ \textcolor{comment}{//\ stop\ spawning\ if\ no\ viable\ cells\ found}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ choose\ a\ random\ cell\ out\ of\ the\ possible\ cells}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ nextCell\ =\ viableCells.get(\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextInt(viableCells.size()));}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (snakePos.contains(nextCell))\ \textcolor{comment}{//\ stop\ spawning\ if\ spawned\ inside\ the\ snake}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}}.add(nextCell);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ growChance\ =\ growChance\ -\/\ 0.1;\ \textcolor{comment}{//\ add\ non-\/linearity\ to\ the\ chance}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00086}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_ae3e2ee23b4ee98b5fd11ea5260b77071}{00086}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_ae3e2ee23b4ee98b5fd11ea5260b77071}{getRandomCell}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randX\ =\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextInt(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a8c43aad0f4b7f21d5049f7bbd289c953}{MAX\_CELL}}\ -\/\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}}\ +\ 1)\ +\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randY\ =\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextInt(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a8c43aad0f4b7f21d5049f7bbd289c953}{MAX\_CELL}}\ -\/\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}}\ +\ 1)\ +\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(randX,\ randY);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00098}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a076c10386879fc9ed8aedd12deea7789}{00098}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a076c10386879fc9ed8aedd12deea7789}{draw}}(Graphics2D\ frame)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ pos\ :\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}})\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ Point\ p\ =\ pos.getCoordinates();}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ the\ obstacle}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ frame.setColor(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ frame.fillRect(p.x,\ p.y,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a6b50b651e91ec69123b96d04ebf07f59}{CELL\_SIZE}},\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a6b50b651e91ec69123b96d04ebf07f59}{CELL\_SIZE}});}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ the\ "{}noise"{}\ in\ the\ obstacle}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_ac535e820601e279d075733b846f69604}{PARTICLE\_COUNT}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextFloat()\ >\ 0.25)}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame.setColor(Color.DARK\_GRAY);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame.setColor(Color.GRAY);}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ (int)\ (\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextFloat()\ *\ (GameConstants.CELL\_SIZE\ -\/\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aa45e6f8c2635bb1171558550207adcd8}{PARTICLE\_SIZE}}))\ +\ p.x;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ (int)\ (\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aba411d747f815f8c4aff25488e729d35}{rand}}.nextFloat()\ *\ (GameConstants.CELL\_SIZE\ -\/\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aa45e6f8c2635bb1171558550207adcd8}{PARTICLE\_SIZE}}))\ +\ p.y;}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame.fillRect(x,\ y,\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aa45e6f8c2635bb1171558550207adcd8}{PARTICLE\_SIZE}},\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_aa45e6f8c2635bb1171558550207adcd8}{PARTICLE\_SIZE}});}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00125}\mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a1aee988a15d445b2452a7b98afc19c9c}{00125}}\ \ \ \ \ \textcolor{keyword}{public}\ ArrayList<CellPosition>\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a1aee988a15d445b2452a7b98afc19c9c}{getCells}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobjects_1_1obstacle_1_1_obstacle_a24bb7dd0e833f3cc0d17f1c482e1fabb}{cells}};}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_obstacle_8java_source_l00128}00128\ \}}
+
+\end{DoxyCode}

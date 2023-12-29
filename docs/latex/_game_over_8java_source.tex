@@ -1,0 +1,187 @@
+\hypertarget{_game_over_8java_source}{}\doxysection{Game\+Over.\+java}
+\label{_game_over_8java_source}\index{GameOver.java@{GameOver.java}}
+\mbox{\hyperlink{_game_over_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00001}00001\ \textcolor{keyword}{package\ }panels;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespacemain}{main}}.\mbox{\hyperlink{namespacemain_1_1engine}{engine}}.*;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00005}00005\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00007}00007\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00009}00009\ \textcolor{keyword}{import}\ java.awt.event.*;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00010}00010\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00016}\mbox{\hyperlink{classpanels_1_1_game_over}{00016}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpanels_1_1_game_over}{GameOver}}\ \textcolor{keyword}{extends}\ JPanel\ implements\ ActionListener,\ KeyListener,\ FocusListener\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00017}\mbox{\hyperlink{classpanels_1_1_game_over_af7345d57ad22c065a45768920b5610fb}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ \mbox{\hyperlink{classpanels_1_1_game_over_af7345d57ad22c065a45768920b5610fb}{retryBtn}};\ \textcolor{comment}{//\ Declaring\ button\ references}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00018}\mbox{\hyperlink{classpanels_1_1_game_over_a8c1437ae0386872be4d9d2a551cb797a}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ \mbox{\hyperlink{classpanels_1_1_game_over_a8c1437ae0386872be4d9d2a551cb797a}{mainMenuBtn}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00019}\mbox{\hyperlink{classpanels_1_1_game_over_a9783e7aa26e95325c0e0eb63dd7c3b16}{00019}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}\ \mbox{\hyperlink{classpanels_1_1_game_over_a9783e7aa26e95325c0e0eb63dd7c3b16}{bg}};\ \textcolor{comment}{//\ BgPanel\ reference\ for\ instantiation}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00020}\mbox{\hyperlink{classpanels_1_1_game_over_aa2cea896f15e5f813559592cfb17f979}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ ArrayList<GameButton>\ \mbox{\hyperlink{classpanels_1_1_game_over_aa2cea896f15e5f813559592cfb17f979}{buttons}};\ \textcolor{comment}{//declaring\ arrayList\ of\ Buttons\ to\ perform\ redundant\ button-\/tasks.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00022}\mbox{\hyperlink{classpanels_1_1_game_over_a9c0214a3669498569c4bf313d8eec39f}{00022}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ \mbox{\hyperlink{classpanels_1_1_game_over_a9c0214a3669498569c4bf313d8eec39f}{stateChanger}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00024}\mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{00024}}\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00025}\mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00026}\mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{score}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00038}\mbox{\hyperlink{classpanels_1_1_game_over_aad5c828729d28100d2a316fa1b357d61}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classpanels_1_1_game_over_aad5c828729d28100d2a316fa1b357d61}{GameOver}}(\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ listener,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{score}},\ \textcolor{keywordtype}{boolean}\ isHighScore)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ this.score\ =\ \mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{score}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a9c0214a3669498569c4bf313d8eec39f}{stateChanger}}\ =\ listener;}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ this.setLayout(\textcolor{keyword}{new}\ BoxLayout(\textcolor{keyword}{this},\ BoxLayout.Y\_AXIS));\ \textcolor{comment}{//\ creates\ a\ box\ layout\ for\ the\ panel.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ this.setPreferredSize(\textcolor{keyword}{new}\ Dimension(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.x,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.y));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ this.setBackground(Color.decode(\textcolor{stringliteral}{"{}\#A9E000"{}}));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 10)));\ \textcolor{comment}{//\ Gives\ some\ space\ over\ title}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ JLabel\ titleLabel\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}GAME\ OVER!"{}},\ SwingConstants.CENTER);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ titleLabel.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ titleLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 25));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ titleLabel.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 5)));\ \textcolor{comment}{//\ creates\ a\ blank\ area\ under\ title\ for\ visual\ spacing.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ this.add(titleLabel);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a9783e7aa26e95325c0e0eb63dd7c3b16}{bg}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classpanels_1_1_bg_panel}{BgPanel}}();}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_af7345d57ad22c065a45768920b5610fb}{retryBtn}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}(\textcolor{stringliteral}{"{}Retry"{}});\ \textcolor{comment}{//\ Assigning\ buttons}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a8c1437ae0386872be4d9d2a551cb797a}{mainMenuBtn}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}(\textcolor{stringliteral}{"{}Main\ Menu"{}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_aa2cea896f15e5f813559592cfb17f979}{buttons}}\ =\ \textcolor{keyword}{new}\ ArrayList<>();\ \textcolor{comment}{//\ initializing\ the\ Button\ ArrayList.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_aa2cea896f15e5f813559592cfb17f979}{buttons}}.add(\mbox{\hyperlink{classpanels_1_1_game_over_af7345d57ad22c065a45768920b5610fb}{retryBtn}});\ \textcolor{comment}{//\ adding\ the\ existing\ Button\ objects\ to\ the\ list.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_aa2cea896f15e5f813559592cfb17f979}{buttons}}.add(\mbox{\hyperlink{classpanels_1_1_game_over_a8c1437ae0386872be4d9d2a551cb797a}{mainMenuBtn}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ isHighScore\ )\{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ JLabel\ newHighScoreLabel\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}NEW\ HIGH\ SCORE!"{}},SwingConstants.CENTER);\ \textcolor{comment}{//\ A\ label\ to\ display\ "{}NEW\ HIGH\ SCORE!"{}.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ newHighScoreLabel.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ newHighScoreLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 30));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ newHighScoreLabel.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 100)));\ \ \textcolor{comment}{//\ Add\ space\ above\ the\ newHighScoreLabel.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(newHighScoreLabel);\ \textcolor{comment}{//\ adds\ the\ label\ to\ the\ panel}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}YOUR\ SCORE:"{}},SwingConstants.CENTER);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 35));\ \textcolor{comment}{//\ Sets\ the\ font\ and\ size}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 50)));\ \textcolor{comment}{//\ Adds\ space\ above\ YOUR\ SCORE\ label}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(\mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 50)));\ \textcolor{comment}{//\ Adds\ visual\ space\ between\ the\ label\ and\ score.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ JLabel\ ScoreLabel\ =\ \textcolor{keyword}{new}\ JLabel(String.valueOf(\mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{score}}),SwingConstants.CENTER);\ \textcolor{comment}{//\ Adding\ the\ score\ as\ a\ label,\ following\ our\ design\ protoType.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ ScoreLabel.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ ScoreLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 35));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ ScoreLabel.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(ScoreLabel);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ JLabel\ EnterNameLabel\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}ENTER\ YOUR\ NAME:"{}},SwingConstants.CENTER);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ EnterNameLabel.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ EnterNameLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 30));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ EnterNameLabel.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 170)));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(EnterNameLabel);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}\ =\ \mbox{\hyperlink{classpanels_1_1_game_over_a36b137e02444415a3d2569d7e5ccd0e9}{getjTextField}}();\ \textcolor{comment}{//\ Creates\ a\ text\ field}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,50)));\ \textcolor{comment}{//\ Add\ the\ text\ field\ to\ the\ panel\ with\ spacing\ adjustments.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(\mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 50)));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ SwingUtilities.invokeLater(()\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.requestFocusInWindow();\ \ \ \textcolor{comment}{//\ Set\ the\ focus\ on\ the\ JTextField}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 80)));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}YOUR\ SCORE:"{}},SwingConstants.CENTER);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 35));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}}.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 50)));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(\mbox{\hyperlink{classpanels_1_1_game_over_ad0a99d03900df1898d9c4bc41739ead6}{scoreText}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 50)));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ JLabel\ ScoreLabel\ =\ \textcolor{keyword}{new}\ JLabel(String.valueOf(\mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{score}}),SwingConstants.CENTER);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ ScoreLabel.setForeground(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ ScoreLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 35));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ ScoreLabel.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(ScoreLabel);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 160)));\ \ \textcolor{comment}{//\ Adds\ space\ above\ the\ new\ score\ label}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ button\ :\ \mbox{\hyperlink{classpanels_1_1_game_over_aa2cea896f15e5f813559592cfb17f979}{buttons}})\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Font\ newButtonFont\ =\ \textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 35);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ button.setFont(newButtonFont);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ button.setPreferredSize(\textcolor{keyword}{new}\ Dimension(700,\ 120));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ button.setMaximumSize(\textcolor{keyword}{new}\ Dimension(700,\ 120));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.add(button);\ \textcolor{comment}{//\ Adds\ the\ buttons\ to\ the\ panel.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_af7345d57ad22c065a45768920b5610fb}{retryBtn}}.setActionCommand(\textcolor{stringliteral}{"{}retry"{}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_af7345d57ad22c065a45768920b5610fb}{retryBtn}}.addActionListener(\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a8c1437ae0386872be4d9d2a551cb797a}{mainMenuBtn}}.setActionCommand(\textcolor{stringliteral}{"{}menu"{}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a8c1437ae0386872be4d9d2a551cb797a}{mainMenuBtn}}.addActionListener(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00133}00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00141}\mbox{\hyperlink{classpanels_1_1_game_over_a36b137e02444415a3d2569d7e5ccd0e9}{00141}}\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ \mbox{\hyperlink{classpanels_1_1_game_over_a36b137e02444415a3d2569d7e5ccd0e9}{getjTextField}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00142}00142\ \ \ \ \ \ \ \ \ JTextField\ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}\ =\ \textcolor{keyword}{new}\ JTextField(SwingConstants.CENTER);\ \textcolor{comment}{//\ Declaring\ a\ private\ static\ method\ that\ returns\ a\ JTextField\ instance,\ with\ the\ initial\ text\ (\_\_\_),\ and\ centers\ the\ text\ within\ the\ field.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00143}00143\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,100)));\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00144}00144\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setBorder(BorderFactory.createEmptyBorder());\ \textcolor{comment}{//\ Sets\ an\ empty\ border\ around\ the\ text\ field.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setForeground(Color.BLACK);\ \textcolor{comment}{//\ Sets\ the\ text\ color\ of\ the\ field\ to\ black.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00146}00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setBackground(Color.decode(\textcolor{stringliteral}{"{}\#A9E000"{}}));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00147}00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,30));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00148}00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setAlignmentX(Component.CENTER\_ALIGNMENT);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00149}00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setMaximumSize(\textcolor{keyword}{new}\ Dimension(100,\ 50));}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00150}00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.addFocusListener(\textcolor{keyword}{this});\ \ \textcolor{comment}{//\ \ Allows\ the\ user\ to\ start\ typing\ without\ manually\ removing\ the\ initial\ placeholder\ text.}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00151}00151\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.addKeyListener(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}};}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00161}00161\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00162}\mbox{\hyperlink{classpanels_1_1_game_over_a6975b032b3be23808a7cff4dcc09c939}{00162}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_a6975b032b3be23808a7cff4dcc09c939}{paintComponent}}(Graphics\ graphics)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00163}00163\ \ \ \ \ \ \ \ \ super.paintComponent(graphics);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00164}00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a9783e7aa26e95325c0e0eb63dd7c3b16}{bg}}.\mbox{\hyperlink{classpanels_1_1_bg_panel_a4fb0f468b63ef60b005dd942c0eb302f}{paintComponent}}(graphics);}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00172}00172\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00173}\mbox{\hyperlink{classpanels_1_1_game_over_aaa5f2d55a25dafd24a3c98a0888225ee}{00173}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_aaa5f2d55a25dafd24a3c98a0888225ee}{actionPerformed}}(ActionEvent\ event\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ String\ actionCommand\ =\ \textcolor{keyword}{event}.getActionCommand();}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{stringliteral}{"{}retry"{}}.equals(actionCommand))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a9c0214a3669498569c4bf313d8eec39f}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_a0bf5d0f610bd9da61a2823c13b8a2cae}{GAME}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{stringliteral}{"{}menu"{}}.equals(actionCommand))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a9c0214a3669498569c4bf313d8eec39f}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_a4d6088ae533a27895ffe820220c36e48}{MENU}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00189}00189\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00190}\mbox{\hyperlink{classpanels_1_1_game_over_a1a722cbad0ed8719cae2abfa2abaa7a6}{00190}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_a1a722cbad0ed8719cae2abfa2abaa7a6}{keyTyped}}(KeyEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ e.getKeyChar();}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.getText().length()\ >=\ 3\ ||(!Character.isLetter(c)\ \&\&\ !Character.isWhitespace(c))\ )}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ e.consume();}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00194}00194\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00201}00201\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00202}\mbox{\hyperlink{classpanels_1_1_game_over_abe0e098b7d7d0852c33df2a0b4d72083}{00202}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_abe0e098b7d7d0852c33df2a0b4d72083}{keyPressed}}(KeyEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e.getKeyCode()\ ==\ KeyEvent.VK\_ENTER\ \&\&\ !\mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.getText().isEmpty())\{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_leaderboard}{Leaderboard}}.\mbox{\hyperlink{classpanels_1_1_leaderboard_a86cef97b56ad0de58e636dca68cc7d18}{createPlayer}}(\mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.getText(),\ \mbox{\hyperlink{classpanels_1_1_game_over_a3cb69c7fafd5aad2c821d5c7ad2bd45e}{score}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a9c0214a3669498569c4bf313d8eec39f}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_aa0b5b88ec6069fadacc4aa98e39cd3f9}{LEADERBOARD}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00206}00206\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00207}00207\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00209}00209\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00210}\mbox{\hyperlink{classpanels_1_1_game_over_a7d4ae30d85479f32903fd427ede6b32c}{00210}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_a7d4ae30d85479f32903fd427ede6b32c}{keyReleased}}(KeyEvent\ e)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00217}00217\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00218}\mbox{\hyperlink{classpanels_1_1_game_over_af2dc4d8efaba398907c2e4f761b32089}{00218}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_af2dc4d8efaba398907c2e4f761b32089}{focusGained}}(FocusEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.getText().isBlank()\ )\{}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_game_over_a01b094526a178530146e63f0d76eddad}{enterNameField}}.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00221}00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00222}00222\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00224}00224\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00225}\mbox{\hyperlink{classpanels_1_1_game_over_a82825b513d05959bd8d26a2f5beeafa6}{00225}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_game_over_a82825b513d05959bd8d26a2f5beeafa6}{focusLost}}(FocusEvent\ e)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_game_over_8java_source_l00226}00226\ \}}
+
+\end{DoxyCode}
