@@ -1,0 +1,70 @@
+\hypertarget{_bonus_food_8java_source}{}\doxysection{Bonus\+Food.\+java}
+\label{_bonus_food_8java_source}\index{BonusFood.java@{BonusFood.java}}
+\mbox{\hyperlink{_bonus_food_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00001}\mbox{\hyperlink{namespaceobjects_1_1food}{00001}}\ \textcolor{keyword}{package\ }objects.food;}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00013}\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food}{00013}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food}{BonusFood}}\ \textcolor{keyword}{extends}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00014}\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a51bdefb3d52213a3bc5e57dfaa49a587}{00014}}\ \ \ \ \ \textcolor{keyword}{private}\ String\ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a51bdefb3d52213a3bc5e57dfaa49a587}{icon}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00021}\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a4a6c2f3757aebeb8ae9734fe95a7445a}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a4a6c2f3757aebeb8ae9734fe95a7445a}{BonusFood}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00022}00022\ \ \ \ \ \ \ \ \ super();}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00030}00030\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00031}\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a81b7ec67cb5e170d9a900198c3cd7cd8}{00031}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a81b7ec67cb5e170d9a900198c3cd7cd8}{respawn}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ super.respawn();}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a1a86aa776c1b5058703d187850c7f435}{randType}}();}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00043}00043\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00044}\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a0b36db1ad1ba1b8b93808c6683e5e019}{00044}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a0b36db1ad1ba1b8b93808c6683e5e019}{draw}}(Graphics2D\ frame)\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ super.draw(frame);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ Point\ coords\ =\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{foodLocation}}.\mbox{\hyperlink{classutilities_1_1_cell_position_a31f20cf5b18856f81a6e16d1b1a8b394}{getCoordinates}}();}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ Font\ font\ =\ \textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Public\ Pixel"{}},\ Font.BOLD,\ 11);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ frame.setFont(font);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ FontMetrics\ metrics\ =\ frame.getFontMetrics(font);\ \textcolor{comment}{//\ for\ position\ calculation}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ coords.x\ +\ GameConstants.CELL\_SIZE\ /\ 2f\ -\/\ metrics.stringWidth(\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a51bdefb3d52213a3bc5e57dfaa49a587}{icon}})\ /\ 2f;}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ coords.y\ +\ GameConstants.CELL\_SIZE\ /\ 2f\ -\/\ metrics.getHeight()\ /\ 2f\ +\ metrics.getAscent();}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ frame.setColor(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ frame.drawString(\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a51bdefb3d52213a3bc5e57dfaa49a587}{icon}},\ x,\ y);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00065}\mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a1a86aa776c1b5058703d187850c7f435}{00065}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1food_1_1_bonus_food_a1a86aa776c1b5058703d187850c7f435}{randType}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classobjects_1_1food_1_1_food_ab08a5b515420152ad6e0669398ddb97a}{rand}}.nextInt(5))\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.type\ =\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_ab7cbf0753f46051ac8bb7b73ca7d837d}{SPEEDFOOD}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.color\ =\ \textcolor{keyword}{new}\ Color(0xffbf00);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.icon\ =\ \textcolor{stringliteral}{"{}\string^"{}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.type\ =\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_a68cded485653d36fa40db92341d7b1b3}{SLOWFOOD}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.color\ =\ \textcolor{keyword}{new}\ Color(0x2F38B4);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.icon\ =\ \textcolor{stringliteral}{"{}v"{}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.type\ =\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_aa2a803f4cad373c36fb38e004a47b0e4}{PLUSFOOD}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.color\ =\ \textcolor{keyword}{new}\ Color(0x04B000);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.icon\ =\ \textcolor{stringliteral}{"{}2"{}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.type\ =\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_a8347ef1a9a24a9e2970d957017e8c050}{MINUSFOOD}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.color\ =\ \textcolor{keyword}{new}\ Color(0xd40000);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.icon\ =\ \textcolor{stringliteral}{"{}2"{}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.type\ =\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_a48caaa20838671a3d500720be0b5fb8c}{CONTROLINVERTER}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.color\ =\ \textcolor{keyword}{new}\ Color(0x68009c);}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.icon\ =\ \textcolor{stringliteral}{"{}?"{}};}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bonus_food_8java_source_l00094}00094\ \}}
+
+\end{DoxyCode}

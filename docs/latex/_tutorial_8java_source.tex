@@ -1,0 +1,62 @@
+\hypertarget{_tutorial_8java_source}{}\doxysection{Tutorial.\+java}
+\label{_tutorial_8java_source}\index{Tutorial.java@{Tutorial.java}}
+\mbox{\hyperlink{_tutorial_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00001}00001\ \textcolor{keyword}{package\ }panels;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespacemain}{main}}.\mbox{\hyperlink{namespacemain_1_1engine}{engine}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespacemain}{main}}.\mbox{\hyperlink{namespacemain_1_1engine}{engine}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00005}00005\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00006}00006\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00008}00008\ \textcolor{keyword}{import}\ javax.imageio.ImageIO;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00009}00009\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00010}00010\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00011}00011\ \textcolor{keyword}{import}\ java.awt.event.ActionEvent;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00012}00012\ \textcolor{keyword}{import}\ java.awt.event.ActionListener;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.awt.image.BufferedImage;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.io.File;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00015}00015\ \textcolor{keyword}{import}\ java.io.IOException;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00021}\mbox{\hyperlink{classpanels_1_1_tutorial}{00021}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classpanels_1_1_tutorial}{Tutorial}}\ \textcolor{keyword}{extends}\ JPanel\ implements\ ActionListener\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00022}\mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{00022}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}\ \mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{menuBtn}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00024}\mbox{\hyperlink{classpanels_1_1_tutorial_a1304ccde2ee781b92494b2bf39c8727b}{00024}}\ \ \ \ \ \textcolor{keyword}{private}\ BufferedImage\ \mbox{\hyperlink{classpanels_1_1_tutorial_a1304ccde2ee781b92494b2bf39c8727b}{tutorialPic}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00025}\mbox{\hyperlink{classpanels_1_1_tutorial_aebd44a481d014d3f36e0b325cbd8f83f}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ \mbox{\hyperlink{classpanels_1_1_tutorial_aebd44a481d014d3f36e0b325cbd8f83f}{stateChanger}};}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00033}\mbox{\hyperlink{classpanels_1_1_tutorial_aab11e7394e20769c242c2d21fc3a1071}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classpanels_1_1_tutorial_aab11e7394e20769c242c2d21fc3a1071}{Tutorial}}(\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener}{StateChangeListener}}\ listener)\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ this.setLayout(\textcolor{keyword}{new}\ BoxLayout(\textcolor{keyword}{this},\ BoxLayout.Y\_AXIS));\ \textcolor{comment}{//creates\ a\ box\ layout\ for\ the\ panel.}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ this.setPreferredSize(\textcolor{keyword}{new}\ Dimension(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.x,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.y));}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ this.setBackground(Color.decode(\textcolor{stringliteral}{"{}\#A9E000"{}}));\ \textcolor{comment}{//\ sets\ the\ color\ to\ the\ nokia\ snake\ green\ background\ color.}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_tutorial_a1304ccde2ee781b92494b2bf39c8727b}{tutorialPic}}\ =\ ImageIO.read(\textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}res/HowToPlaySnake.png"{}}));}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (IOException\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ RuntimeException(e);}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{menuBtn}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_game_button}{GameButton}}(\textcolor{stringliteral}{"{}Main\ Menu"{}});}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{menuBtn}}.addActionListener(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{menuBtn}}.setActionCommand(\mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{menuBtn}}.getText());}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ this.add(Box.createRigidArea(\textcolor{keyword}{new}\ Dimension(0,\ 650)));\ \textcolor{comment}{//\ adds\ empty\ area\ before\ MM\ button}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ this.add(\mbox{\hyperlink{classpanels_1_1_tutorial_a0ddef463f6aa4f2210cb95490fab4e12}{menuBtn}});}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_tutorial_aebd44a481d014d3f36e0b325cbd8f83f}{stateChanger}}\ =\ listener;}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00052}00052\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00053}\mbox{\hyperlink{classpanels_1_1_tutorial_a068049b1c1782bddcfdbaa1c73f5bfae}{00053}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_tutorial_a068049b1c1782bddcfdbaa1c73f5bfae}{paintComponent}}(Graphics\ g)\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ super.paintComponent(g);}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ g.drawImage(\mbox{\hyperlink{classpanels_1_1_tutorial_a1304ccde2ee781b92494b2bf39c8727b}{tutorialPic}},0,0,\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00058}00058\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00059}\mbox{\hyperlink{classpanels_1_1_tutorial_a129ce5e1458bbfd8f49b77110ecdcb5b}{00059}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classpanels_1_1_tutorial_a129ce5e1458bbfd8f49b77110ecdcb5b}{actionPerformed}}(ActionEvent\ event)\ \{\ \textcolor{comment}{//\ logic\ for\ when\ buttons\ are\ clicked.}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ String\ actionCommand\ =\ \textcolor{keyword}{event}.getActionCommand();}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{stringliteral}{"{}Main\ Menu"{}}.equals(actionCommand))\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classpanels_1_1_tutorial_aebd44a481d014d3f36e0b325cbd8f83f}{stateChanger}}.\mbox{\hyperlink{interfacemain_1_1engine_1_1_state_change_listener_a6e4b3e27e0c128ec5e22374f9f751e34}{changeState}}(\mbox{\hyperlink{enummain_1_1engine_1_1_game_state}{GameState}}.\mbox{\hyperlink{enummain_1_1engine_1_1_game_state_a4d6088ae533a27895ffe820220c36e48}{MENU}});\ \textcolor{comment}{//\ switches\ to\ state\ MENU.}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_8java_source_l00066}00066\ \}}
+
+\end{DoxyCode}
