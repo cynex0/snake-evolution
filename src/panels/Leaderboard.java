@@ -38,6 +38,7 @@ public class Leaderboard extends JPanel implements ActionListener {
     /**
      * Creates the Leaderboard panel. Reads the stored leaderboard data from file.
      * @param listener reference to the observer object to allow requesting state change
+     * @auhtor Halah Hasani
      * @author Victoria Rönnlid (co-author)
      * @author Marwa Abohahcem ( co-author)
      */
@@ -90,6 +91,7 @@ public class Leaderboard extends JPanel implements ActionListener {
     /**
      * Defines button behaviour
      * @param event the button-press event to be processed
+     * @auhtor Halah Hasani
      */
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -103,6 +105,7 @@ public class Leaderboard extends JPanel implements ActionListener {
     /**
      * Returns a sorted list of all players read from the json file. Creates an empty JSON file if it is not present.
      * @return sorted ArrayList of all Player:s stored on disk
+     * @auhtor Halah Hasani
      */
     private static ArrayList<Player> readFromFile() {
         JSONParser parser = new JSONParser();
@@ -140,6 +143,7 @@ public class Leaderboard extends JPanel implements ActionListener {
     /**
      * Adds first 10 top scoring players from the file to the list for display. Formats the list elements according to
      * the design.
+     * @auhtor Halah Hasani
      */
     private void readToList() {
         ArrayList<Player> top10Scorers = readFromFile();
@@ -161,6 +165,7 @@ public class Leaderboard extends JPanel implements ActionListener {
      * Creates and appends a new player to the leaderboard file. Completely rewrites the json file.
      * @param name player's name
      * @param score player's score
+     * @auhtor Halah Hasani
      */
     public static void createPlayer(String name, long score){
         ArrayList<Player> currentPlayers = readFromFile();
@@ -193,6 +198,8 @@ public class Leaderboard extends JPanel implements ActionListener {
      * Checks if players score is among top 10.
      * @param playerInTop10 player object to be checked against the leaderboard file
      * @return true if the player qualifies for the leaderboard
+     * @auhtor Halah Hasani
+     * @auhtor Maksims Orlovs
      */
     public static boolean isTopTen(Player playerInTop10){
         ArrayList<Player> players = readFromFile();
