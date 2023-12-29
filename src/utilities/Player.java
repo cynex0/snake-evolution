@@ -24,7 +24,7 @@ public class Player implements Comparable<Player> {
     /**
      * Getter for the Player's name
      * @return player's name
-     * @auhtor Halah Hasani
+     * @author Halah Hasani
      */
     public String getName(){
         return this.name;
@@ -33,7 +33,7 @@ public class Player implements Comparable<Player> {
     /**
      * Getter for the Player's score
      * @return player's score
-     * @auhtor Halah Hasani
+     * @author Halah Hasani
      */
     public long getScore(){
         return this.score;
@@ -42,7 +42,7 @@ public class Player implements Comparable<Player> {
     /**
      * Creates a String representing a line in the leaderboard. Formatted according to the design (ABC-----1).
      * @return Leaderboard line with the player's name and score
-     * @auhtor Halah Hasani
+     * @author Halah Hasani
      */
     public String getNamesAndScores(){
         String truncatedName = this.name;
@@ -56,7 +56,7 @@ public class Player implements Comparable<Player> {
      * Compares the Player to another object.
      * @param o an object to be compared with this object
      * @return true if names and scores of both players are equal
-     * @auhtor Maskim Orlovs
+     * @author Maskims Orlovs
      */
     @Override
     public boolean equals(Object o) {
@@ -74,7 +74,7 @@ public class Player implements Comparable<Player> {
      * @param other the player to be compared.
      * @return 1 if other's score is higher, -1 if other's score is lower. Returns result of two players' name
      * lexicographic comparison if scores are equal.
-     * @auhtor Maskim Orlovs
+     * @author Maskims Orlovs
      */
     @Override
     public int compareTo(Player other) {
