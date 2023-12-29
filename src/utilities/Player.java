@@ -14,7 +14,7 @@ public class Player implements Comparable<Player> {
      * Creates a player object with specified parameters.
      * @param name player's name
      * @param score player's score
-     * @auhtor Halah Hasani
+     * @author Halah Hasani
      */
     public Player(String name, long score){
         this.name = name;
