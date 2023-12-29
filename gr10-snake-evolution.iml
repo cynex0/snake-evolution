@@ -2,12 +2,8 @@
 <module type="JAVA_MODULE" version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
-<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/assets" type="java-resource" />
-=======
       <sourceFolder url="file://$MODULE_DIR$/res" type="java-resource" />
->>>>>>> 60ff3135df5012a58f1f4df580e16d0036cf89ae
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
   </component>
 </module>
