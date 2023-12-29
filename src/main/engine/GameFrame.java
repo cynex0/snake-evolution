@@ -1,24 +1,43 @@
+package main.engine;
+
+import panels.GameOver;
+import panels.GamePanel;
+import panels.Leaderboard;
+import panels.MainMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+import utilities.GameConstants;
+
+
+/**
+ * The GameFrame class is a part of the Game Engine system that handles switching and displaying appropriate game
+ * states.
+ * It extends JFrame to use Swing for displaying a game window and implements StateChangeListener to receive requests
+ * from the states to switch to a different state.
+ * @author Maksims Orlovs
+ */
 public class GameFrame extends JFrame implements StateChangeListener {
-    public static final Point WINDOW_SIZE = new Point(800, 800);
     private static JPanel currentPanel;
-    private StateChangeListener stateChangeListener;
 
-
+    /**
+     * Creates a GameFrame and sets up the game, the window and the font.
+     * @author Maksims Orlovs
+     * @author Halah Hasani (co-author)
+     */
     public GameFrame() {
         super();
 
+        // window setup
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setTitle("Snake Evolution");
-        this.setSize(WINDOW_SIZE.x, WINDOW_SIZE.y);
+        this.setSize(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y);
 
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
         this.setFocusable(true);
 
         // create font for use in all panels
@@ -31,9 +50,14 @@ public class GameFrame extends JFrame implements StateChangeListener {
         }
 
         changeState(GameState.MENU);
+        this.setVisible(true);
     }
 
-
+    /**
+     * Receives the call to switch to the next state, handles logic required for each state.
+     * @param newState the next state of the game
+     * @author Maksims Orlovs
+     */
     @Override
     public void changeState(GameState newState) {
         getContentPane().removeAll();
@@ -51,7 +75,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
             }
 
             case GAME_OVER -> {
-                int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be GamePanel
+                int score = ((GamePanel)currentPanel).getScore(); // casting is safe, previous panel guaranteed to be panels.GamePanel
                 GameOver nextPanel = new GameOver(this, score, false);
                 currentPanel = nextPanel;
             }

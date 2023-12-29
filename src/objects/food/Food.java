@@ -1,18 +1,30 @@
+package objects.food;
+
 import java.awt.*;
 import java.util.Random;
 
-public class Food {
-    private static final int MIN_CELL = BgPanel.MARGIN_CELLS; // first playable cell
-    private static final int MAX_CELL = GamePanel.CELL_COUNT - BgPanel.MARGIN_CELLS - 1; // last playable cell
-    private static final int BORDER_SIZE = 2;
+import utilities.CellPosition;
+import utilities.GameConstants;
 
-    private CellPosition foodLocation;
+
+/**
+ * Represents a food item.
+ * @author Fatemeh Akbarifar
+ */
+public class Food {
+    protected static final int BORDER_SIZE = 2; // thickness of the border of the food item
+
+    protected CellPosition foodLocation;
     protected Random rand;
     protected Color color;
     protected FoodType type;
 
-
-    public Food () {
+    /**
+     * Creates a food item of default type in a random playable cell.
+     * @author Fatemeh Akbarifar
+     * @author Maksims Orlovs (co-author)
+     */
+    public Food() {
         foodLocation = new CellPosition();
         rand = new Random();
         color = new Color(0x2b331a);
@@ -20,15 +32,24 @@ public class Food {
         respawn();
     }
 
+    /**
+     * Sets the position to a random playable cell.
+     * @author Fatemeh Akbarifar
+     */
     public void respawn() {
-        int randX = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
-        int randY = rand.nextInt(MAX_CELL - MIN_CELL + 1) + MIN_CELL;
+        int randX = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
+        int randY = rand.nextInt(GameConstants.MAX_CELL - GameConstants.MIN_CELL + 1) + GameConstants.MIN_CELL;
         foodLocation = new CellPosition(randX, randY);
     }
 
+    /**
+     * Draws the food object onto the supplied frame in its current position.
+     * @param frame Swing Graphics2D object that represents the current frame to be updated
+     * @author Fatemeh Akbarifar
+     */
     public void draw (Graphics2D frame) {
         Point coords = foodLocation.getCoordinates(); // top left coords of the cell
-        int halfCell = GamePanel.CELL_SIZE / 2;
+        int halfCell = GameConstants.CELL_SIZE / 2;
         int[] xPoints, yPoints; // romb point coordinates, clockwise, starting from left (9 o'clock) corner
 
         // draw border
@@ -44,10 +65,20 @@ public class Food {
         frame.fillPolygon(xPoints, yPoints,4);
     }
 
+    /**
+     * Getter for the current food position.
+     * @return CellPosition representing the current position
+     * @author Fatemeh Akbarifar
+     */
     public CellPosition getFoodLocation () {
         return this.foodLocation;
     }
 
+    /**
+     * Getter for the food type.
+     * @return FoodType of the food item
+     * @author Fatemeh Akbarifar
+     */
     public FoodType getFoodType() {
         return this.type;
     }
