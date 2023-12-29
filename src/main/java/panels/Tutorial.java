@@ -1,7 +1,7 @@
 package panels;
 
-import main.engine.GameState;
-import main.engine.StateChangeListener;
+import engine.GameState;
+import engine.StateChangeListener;
 import utilities.GameButton;
 import utilities.GameConstants;
 

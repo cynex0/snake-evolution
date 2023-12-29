@@ -1,6 +1,6 @@
 package panels;
 
-import main.engine.*;
+import engine.*;
 import utilities.GameButton;
 import utilities.GameConstants;
 

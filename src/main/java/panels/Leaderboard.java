@@ -1,7 +1,7 @@
 package panels;
 
-import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 import utilities.Player;
 import utilities.GameButton;
 import utilities.GameConstants;
-import main.engine.*;
+import engine.*;
 
 
 /**

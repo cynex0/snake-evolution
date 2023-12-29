@@ -1,4 +1,4 @@
-package main.engine;
+package engine;
 
 /**
  * Interface to allow state switching in the engine from the states (Observer).
