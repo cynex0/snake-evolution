@@ -38,7 +38,7 @@ public class GameFrame extends JFrame implements StateChangeListener {
 
         // create font for use in all panels
         try {
-            Font gameFont = Font.createFont(Font.TRUETYPE_FONT, new File("resources/PublicPixel.ttf"));
+            Font gameFont = Font.createFont(Font.TRUETYPE_FONT, new File("assets/PublicPixel.ttf"));
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(gameFont); // makes the font available to font constructors by font name
         } catch (FontFormatException | IOException e) {
