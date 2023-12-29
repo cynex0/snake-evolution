@@ -5,5 +5,5 @@ package main.engine;
  * @author Maksims Orlovs
  */
 public enum GameState {
-    MENU, GAME, GAME_OVER, GAME_OVER_ENTERNAME, LEADERBOARD
+    MENU, GAME, GAME_OVER, GAME_OVER_ENTERNAME, LEADERBOARD, TUTORIAL
 }

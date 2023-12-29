@@ -1,9 +1,6 @@
 package main.engine;
 
-import panels.GameOver;
-import panels.GamePanel;
-import panels.Leaderboard;
-import panels.MainMenu;
+import panels.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,6 +85,9 @@ public class GameFrame extends JFrame implements StateChangeListener {
 
             case LEADERBOARD -> {
                 currentPanel = new Leaderboard(this);
+            }
+            case TUTORIAL -> {
+                currentPanel = new Tutorial(this);
             }
         }
         this.add(currentPanel);
