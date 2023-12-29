@@ -14,13 +14,22 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Represents a tutorial screen.
+ * @author Victoria Rönnlid
+ */
 public class Tutorial extends JPanel implements ActionListener {
     private GameButton menuBtn;
 
     private BufferedImage tutorialPic;
     private StateChangeListener stateChanger;
 
+    /**
+     * Creates the screen, loads tutorial image and applies layout.
+     * @author Victoria Rönnlid
+     * @author Maksims Orlovs (co-author)
+     * @param listener
+     */
     public Tutorial(StateChangeListener listener) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //creates a box layout for the panel.
         this.setPreferredSize(new Dimension(GameConstants.WINDOW_SIZE.x, GameConstants.WINDOW_SIZE.y));
