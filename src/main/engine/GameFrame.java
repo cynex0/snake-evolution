@@ -9,13 +9,26 @@ import java.io.IOException;
 
 import utilities.GameConstants;
 
+
+/**
+ * The GameFrame class is a part of the Game Engine system that handles switching and displaying appropriate game
+ * states.
+ * It extends JFrame to use Swing for displaying a game window and implements StateChangeListener to receive requests
+ * from the states to switch to a different state.
+ * @author Maksims Orlovs
+ */
 public class GameFrame extends JFrame implements StateChangeListener {
     private static JPanel currentPanel;
-    private StateChangeListener stateChangeListener;
 
+    /**
+     * Creates a GameFrame and sets up the game, the window and the font.
+     * @author Maksims Orlovs
+     * @author Halah Hasani (co-author)
+     */
     public GameFrame() {
         super();
 
+        // window setup
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setTitle("Snake Evolution");
@@ -37,7 +50,11 @@ public class GameFrame extends JFrame implements StateChangeListener {
         this.setVisible(true);
     }
 
-
+    /**
+     * Receives the call to switch to the next state, handles logic required for each state.
+     * @param newState the next state of the game
+     * @author Maksims Orlovs
+     */
     @Override
     public void changeState(GameState newState) {
         getContentPane().removeAll();
