@@ -1,0 +1,118 @@
+\hypertarget{_snake_8java_source}{}\doxysection{Snake.\+java}
+\label{_snake_8java_source}\index{Snake.java@{Snake.java}}
+\mbox{\hyperlink{_snake_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00001}00001\ \textcolor{keyword}{package\ }objects;}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00005}00005\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00009}00009\ \textcolor{keyword}{import}\ java.util.LinkedList;}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00015}\mbox{\hyperlink{classobjects_1_1_snake}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classobjects_1_1_snake}{Snake}}\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00016}\mbox{\hyperlink{classobjects_1_1_snake_ab0ce9929e0844f02f3d9229fca0358f5}{00016}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classobjects_1_1_snake_ab0ce9929e0844f02f3d9229fca0358f5}{SPEED}}\ =\ 0.18;\ \textcolor{comment}{//\ FPS\ multiplier}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00017}\mbox{\hyperlink{classobjects_1_1_snake_af048f0aeb770b3ca42fa2e5f07abdda8}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classobjects_1_1_snake_af048f0aeb770b3ca42fa2e5f07abdda8}{INIT\_LEN}}\ =\ 5;\ \textcolor{comment}{//\ FPS\ multiplier}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00019}\mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ ArrayList<CellPosition>\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00020}\mbox{\hyperlink{classobjects_1_1_snake_ae6b26b83f4f6e4d9110a48f1a7ca3531}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}\ \mbox{\hyperlink{classobjects_1_1_snake_ae6b26b83f4f6e4d9110a48f1a7ca3531}{currentDirection}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00021}\mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ LinkedList<Direction>\ \mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00027}\mbox{\hyperlink{classobjects_1_1_snake_ae639fd7c80b058e9c80c1d3953f0d36e}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classobjects_1_1_snake_ae639fd7c80b058e9c80c1d3953f0d36e}{Snake}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_ae6b26b83f4f6e4d9110a48f1a7ca3531}{currentDirection}}\ =\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a7cc07ee420e0c45c01c8b5c36f51a8ed}{RIGHT}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}\ =\ \textcolor{keyword}{new}\ LinkedList<>();}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ body\ elements\ starting\ from\ the\ middle\ of\ the\ screen\ and\ "{}growing"{}\ to\ the\ left}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ xPos\ =\ GameConstants.CELL\_COUNT\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classobjects_1_1_snake_af048f0aeb770b3ca42fa2e5f07abdda8}{INIT\_LEN}};\ i++)}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(xPos-\/-\/,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a203a26e092aae597da574cf79d0aa15d}{CELL\_COUNT}}\ /\ 2));}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00043}\mbox{\hyperlink{classobjects_1_1_snake_a5539c5ab789c4166b915cf90a4d24fae}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ ArrayList<CellPosition>\ \mbox{\hyperlink{classobjects_1_1_snake_a5539c5ab789c4166b915cf90a4d24fae}{getBody}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00052}\mbox{\hyperlink{classobjects_1_1_snake_ab830136e47f994be44765cd30a89bb47}{00052}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ \mbox{\hyperlink{classobjects_1_1_snake_ab830136e47f994be44765cd30a89bb47}{calculateNextPos}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ currHeadPos\ =\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.get(0);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ nextPos\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classobjects_1_1_snake_ae6b26b83f4f6e4d9110a48f1a7ca3531}{currentDirection}})\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ UP\ -\/>\ nextPos\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(currHeadPos.x,\ currHeadPos.y\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DOWN\ -\/>\ nextPos\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(currHeadPos.x,\ currHeadPos.y\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RIGHT\ -\/>\ nextPos\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(currHeadPos.x\ +\ 1,\ currHeadPos.y);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LEFT\ -\/>\ nextPos\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(currHeadPos.x\ -\/\ 1,\ currHeadPos.y);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nextPos;}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00072}\mbox{\hyperlink{classobjects_1_1_snake_a909778da8337231293b3142d39e1a0f3}{00072}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classobjects_1_1_snake_a909778da8337231293b3142d39e1a0f3}{doSelfCollision}}(\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ head)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.subList(1,\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.size())}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .contains(head);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00083}\mbox{\hyperlink{classobjects_1_1_snake_a5de533b3124d776f0caad87f467ca5a2}{00083}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classobjects_1_1_snake_a5de533b3124d776f0caad87f467ca5a2}{doBorderCollision}}(\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ head)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ Point\ nextCoords\ =\ head.\mbox{\hyperlink{classutilities_1_1_cell_position_a31f20cf5b18856f81a6e16d1b1a8b394}{getCoordinates}}();}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((nextCoords.x\ >=\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.x\ -\/\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a916251835b9181079514a4b8e96062ea}{MARGIN\_INNER}})\ ||\ (nextCoords.x\ <\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a916251835b9181079514a4b8e96062ea}{MARGIN\_INNER}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((nextCoords.y\ >=\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab578ced0d7d5c1947131b197f0b6f8d0}{WINDOW\_SIZE}}.y\ -\/\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a916251835b9181079514a4b8e96062ea}{MARGIN\_INNER}})\ ||\ (nextCoords.y\ <\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a916251835b9181079514a4b8e96062ea}{MARGIN\_INNER}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00101}\mbox{\hyperlink{classobjects_1_1_snake_a7452fff0dad6722beedd1fa8659a4107}{00101}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classobjects_1_1_snake_a7452fff0dad6722beedd1fa8659a4107}{doCollisions}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ headPos\ =\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.get(0);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobjects_1_1_snake_a909778da8337231293b3142d39e1a0f3}{doSelfCollision}}(headPos)\ ||\ \mbox{\hyperlink{classobjects_1_1_snake_a5de533b3124d776f0caad87f467ca5a2}{doBorderCollision}}(headPos);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00111}\mbox{\hyperlink{classobjects_1_1_snake_add7f9c2e87560ab6242208e921129713}{00111}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1_snake_add7f9c2e87560ab6242208e921129713}{move}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.isEmpty())}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_ae6b26b83f4f6e4d9110a48f1a7ca3531}{currentDirection}}\ =\ \mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.poll();\ \textcolor{comment}{//\ change\ direction\ if\ any\ inputs\ queued}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ newHeadPos\ =\ \mbox{\hyperlink{classobjects_1_1_snake_ab830136e47f994be44765cd30a89bb47}{calculateNextPos}}();}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.add(0,\ newHeadPos);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00125}\mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{00125}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1_snake_ad7a0e6d00ab85870dd5b259a50d2def2}{updateDirection}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}\ newDir)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.size()\ <\ 2\ \&\&\ !\mbox{\hyperlink{classobjects_1_1_snake_aee78367c12b8198169f48ddd15ec2a08}{isOppositeDir}}(\mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.peekLast(),\ newDir))}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.add(newDir);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.isEmpty()\ \&\&\ \mbox{\hyperlink{classobjects_1_1_snake_aee78367c12b8198169f48ddd15ec2a08}{isOppositeDir}}(\mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.peek(),\ \mbox{\hyperlink{classobjects_1_1_snake_ae6b26b83f4f6e4d9110a48f1a7ca3531}{currentDirection}}))}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1_snake_a613a8d8515d505fbf7686c1176a4dba6}{inputQueue}}.removeFirst();\ \textcolor{comment}{//\ drops\ the\ next\ direction\ in\ queue\ if\ it\ is\ opposite\ to\ the\ current\ direction}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00140}\mbox{\hyperlink{classobjects_1_1_snake_aee78367c12b8198169f48ddd15ec2a08}{00140}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classobjects_1_1_snake_aee78367c12b8198169f48ddd15ec2a08}{isOppositeDir}}(\mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}\ dir1,\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}\ dir2)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (dir1\ ==\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a1640c0e65cb2588a13acf0fe7c92de69}{DOWN}}\ \&\&\ dir2\ ==\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a8340dc223b0bfa1e858b32a92e11cd83}{UP}})\ ||}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (dir1\ ==\ Direction.UP\ \&\&\ dir2\ ==\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a1640c0e65cb2588a13acf0fe7c92de69}{DOWN}})\ ||}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (dir1\ ==\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a787ebe3548df94056d6141523807be26}{LEFT}}\ \&\&\ dir2\ ==\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a7cc07ee420e0c45c01c8b5c36f51a8ed}{RIGHT}})\ ||}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (dir1\ ==\ Direction.RIGHT\ \&\&\ dir2\ ==\ \mbox{\hyperlink{enumutilities_1_1_direction}{Direction}}.\mbox{\hyperlink{enumutilities_1_1_direction_a787ebe3548df94056d6141523807be26}{LEFT}});}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00145}00145\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00152}\mbox{\hyperlink{classobjects_1_1_snake_a40d6261351603038d243eb85db2a8184}{00152}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1_snake_a40d6261351603038d243eb85db2a8184}{draw}}(Graphics2D\ frame)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ frame.setColor(\textcolor{keyword}{new}\ Color(0x2b331a));}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ pos\ :\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}})\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ Point\ p\ =\ pos.getCoordinates();}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ frame.fillRect(p.x,\ p.y,\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a6b50b651e91ec69123b96d04ebf07f59}{CELL\_SIZE}},\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a6b50b651e91ec69123b96d04ebf07f59}{CELL\_SIZE}});}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00157}00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00166}\mbox{\hyperlink{classobjects_1_1_snake_a18c573b169fdaad001b3c5f6e99f3877}{00166}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classobjects_1_1_snake_a18c573b169fdaad001b3c5f6e99f3877}{checkCollisionWith}}(\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ pos)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.contains(pos);}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00176}\mbox{\hyperlink{classobjects_1_1_snake_a7cf0fcd62b8fe837c458c7a5db42647c}{00176}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classobjects_1_1_snake_a7cf0fcd62b8fe837c458c7a5db42647c}{checkCollisionWith}}(ArrayList<CellPosition>\ pos)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos.isEmpty())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ p\ :\ pos)\ \{}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classobjects_1_1_snake_ab2ce07cb0108908f114788a78377110b}{body}}.contains(p))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00183}00183\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_snake_8java_source_l00184}00184\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,35 @@
+\hypertarget{_cell_position_8java_source}{}\doxysection{Cell\+Position.\+java}
+\label{_cell_position_8java_source}\index{CellPosition.java@{CellPosition.java}}
+\mbox{\hyperlink{_cell_position_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00001}\mbox{\hyperlink{namespaceutilities}{00001}}\ \textcolor{keyword}{package\ }utilities;}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00010}\mbox{\hyperlink{classutilities_1_1_cell_position}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ \textcolor{keyword}{extends}\ Point\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ x,y\ -\/\ inherited}}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00016}\mbox{\hyperlink{classutilities_1_1_cell_position_a281cbec7f361333fb8bf36fe41bafab0}{00016}}\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classutilities_1_1_cell_position_a281cbec7f361333fb8bf36fe41bafab0}{CellPosition}}()\{}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00017}00017\ \ \ \ \ \ \ \ \ super(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00026}\mbox{\hyperlink{classutilities_1_1_cell_position_ae46f61e635cfcfbd8ec7063f38a90a71}{00026}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classutilities_1_1_cell_position_ae46f61e635cfcfbd8ec7063f38a90a71}{CellPosition}}(\textcolor{keywordtype}{int}\ initCellX,\ \textcolor{keywordtype}{int}\ initCellY)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ x\ =\ initCellX;}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ y\ =\ initCellY;}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00036}\mbox{\hyperlink{classutilities_1_1_cell_position_a31f20cf5b18856f81a6e16d1b1a8b394}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ Point\ \mbox{\hyperlink{classutilities_1_1_cell_position_a31f20cf5b18856f81a6e16d1b1a8b394}{getCoordinates}}()\ \{\ \textcolor{comment}{//\ returns\ coordinates\ of\ the\ current\ cell}}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ Point(x\ *\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a6b50b651e91ec69123b96d04ebf07f59}{CELL\_SIZE}},\ y\ *\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a6b50b651e91ec69123b96d04ebf07f59}{CELL\_SIZE}});}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00046}00046\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00047}\mbox{\hyperlink{classutilities_1_1_cell_position_a357f0ec9b6f33f39f7ab57855738bdc6}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classutilities_1_1_cell_position_a357f0ec9b6f33f39f7ab57855738bdc6}{equals}}(Object\ \textcolor{keywordtype}{object})\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{object}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(\textcolor{keywordtype}{object}\ instanceof\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ other))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this.x\ ==\ other.x)\ \&\&}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (this.y\ ==\ other.y);}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_position_8java_source_l00054}00054\ \}}
+
+\end{DoxyCode}
