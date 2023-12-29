@@ -1,0 +1,63 @@
+\hypertarget{_food_8java_source}{}\doxysection{Food.\+java}
+\label{_food_8java_source}\index{Food.java@{Food.java}}
+\mbox{\hyperlink{_food_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00001}00001\ \textcolor{keyword}{package\ }objects.food;}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.util.Random;}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00006}00006\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00007}00007\ \textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceutilities}{utilities}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00014}\mbox{\hyperlink{classobjects_1_1food_1_1_food}{00014}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classobjects_1_1food_1_1_food}{Food}}\ \{}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00015}\mbox{\hyperlink{classobjects_1_1food_1_1_food_a5821f4806f0a3d0f9ae98b6fd6f54df4}{00015}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a5821f4806f0a3d0f9ae98b6fd6f54df4}{BORDER\_SIZE}}\ =\ 2;\ \textcolor{comment}{//\ thickness\ of\ the\ border\ of\ the\ food\ item}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00017}\mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{00017}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{foodLocation}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00018}\mbox{\hyperlink{classobjects_1_1food_1_1_food_ab08a5b515420152ad6e0669398ddb97a}{00018}}\ \ \ \ \ \textcolor{keyword}{protected}\ Random\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ab08a5b515420152ad6e0669398ddb97a}{rand}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00019}\mbox{\hyperlink{classobjects_1_1food_1_1_food_a8d3ecd969b79a66f22d7c734b4ba4dc1}{00019}}\ \ \ \ \ \textcolor{keyword}{protected}\ Color\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a8d3ecd969b79a66f22d7c734b4ba4dc1}{color}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00020}\mbox{\hyperlink{classobjects_1_1food_1_1_food_ae599b70033ebc771519043943e44d992}{00020}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ae599b70033ebc771519043943e44d992}{type}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00027}\mbox{\hyperlink{classobjects_1_1food_1_1_food_afcdf71436ec39cd347dec11759001c5f}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_afcdf71436ec39cd347dec11759001c5f}{Food}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{foodLocation}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}();}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ab08a5b515420152ad6e0669398ddb97a}{rand}}\ =\ \textcolor{keyword}{new}\ Random();}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a8d3ecd969b79a66f22d7c734b4ba4dc1}{color}}\ =\ \textcolor{keyword}{new}\ Color(0x2b331a);}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ae599b70033ebc771519043943e44d992}{type}}\ =\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}.\mbox{\hyperlink{enumobjects_1_1food_1_1_food_type_abef4e58c457baa97919e278767dec4f0}{DEFAULT}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ad69ce1f27a5188187c88eab0e336e3b1}{respawn}}();}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00039}\mbox{\hyperlink{classobjects_1_1food_1_1_food_ad69ce1f27a5188187c88eab0e336e3b1}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ad69ce1f27a5188187c88eab0e336e3b1}{respawn}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randX\ =\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ab08a5b515420152ad6e0669398ddb97a}{rand}}.nextInt(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a8c43aad0f4b7f21d5049f7bbd289c953}{MAX\_CELL}}\ -\/\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}}\ +\ 1)\ +\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randY\ =\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ab08a5b515420152ad6e0669398ddb97a}{rand}}.nextInt(\mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_a8c43aad0f4b7f21d5049f7bbd289c953}{MAX\_CELL}}\ -\/\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}}\ +\ 1)\ +\ \mbox{\hyperlink{interfaceutilities_1_1_game_constants}{GameConstants}}.\mbox{\hyperlink{interfaceutilities_1_1_game_constants_ab1a6efe2c6c660ddf08aa80304fe8b92}{MIN\_CELL}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{foodLocation}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}(randX,\ randY);}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00050}\mbox{\hyperlink{classobjects_1_1food_1_1_food_a7755666c0357f07591bf8832b844b4ef}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a7755666c0357f07591bf8832b844b4ef}{draw}}\ (Graphics2D\ frame)\ \{}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ Point\ coords\ =\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{foodLocation}}.\mbox{\hyperlink{classutilities_1_1_cell_position_a31f20cf5b18856f81a6e16d1b1a8b394}{getCoordinates}}();\ \textcolor{comment}{//\ top\ left\ coords\ of\ the\ cell}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ halfCell\ =\ GameConstants.CELL\_SIZE\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}[]\ xPoints,\ yPoints;\ \textcolor{comment}{//\ romb\ point\ coordinates,\ clockwise,\ starting\ from\ left\ (9\ o'clock)\ corner}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ border}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ frame.setColor(Color.BLACK);}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ xPoints\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[]\{coords.x\ -\/\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a5821f4806f0a3d0f9ae98b6fd6f54df4}{BORDER\_SIZE}},\ coords.x\ +\ halfCell,\ coords.x\ +\ 2*halfCell\ +\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a5821f4806f0a3d0f9ae98b6fd6f54df4}{BORDER\_SIZE}},\ coords.x\ +\ halfCell\};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ yPoints\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[]\{coords.y\ +\ halfCell,\ coords.y\ -\/\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a5821f4806f0a3d0f9ae98b6fd6f54df4}{BORDER\_SIZE}},\ coords.y\ +\ halfCell,\ coords.y\ +\ 2*halfCell\ +\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_a5821f4806f0a3d0f9ae98b6fd6f54df4}{BORDER\_SIZE}}\};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ frame.fillPolygon(xPoints,\ yPoints,4);}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ colored\ middle}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ frame.setColor(\mbox{\hyperlink{classobjects_1_1food_1_1_food_a8d3ecd969b79a66f22d7c734b4ba4dc1}{color}});}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ xPoints\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[]\{coords.x,\ coords.x\ +\ halfCell,\ coords.x\ +\ 2*halfCell,\ coords.x\ +\ halfCell\};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ yPoints\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[]\{coords.y\ +\ halfCell,\ coords.y,\ coords.y\ +\ halfCell,\ coords.y\ +\ 2*halfCell\};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ frame.fillPolygon(xPoints,\ yPoints,4);}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00073}\mbox{\hyperlink{classobjects_1_1food_1_1_food_aa9a0513b12fc192e96c02c7636285d99}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classutilities_1_1_cell_position}{CellPosition}}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_aa9a0513b12fc192e96c02c7636285d99}{getFoodLocation}}\ ()\ \{}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\mbox{\hyperlink{classobjects_1_1food_1_1_food_a240f998bf8f22aa43c486c977a6ed40f}{foodLocation}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00082}\mbox{\hyperlink{classobjects_1_1food_1_1_food_ab48baeaa6e26b81d51c16ef4140efc7d}{00082}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{enumobjects_1_1food_1_1_food_type}{FoodType}}\ \mbox{\hyperlink{classobjects_1_1food_1_1_food_ab48baeaa6e26b81d51c16ef4140efc7d}{getFoodType}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\mbox{\hyperlink{classobjects_1_1food_1_1_food_ae599b70033ebc771519043943e44d992}{type}};}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_food_8java_source_l00085}00085\ \}}
+
+\end{DoxyCode}
