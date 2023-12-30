@@ -1,0 +1,224 @@
+\hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle}{}\doxysection{org.\+objects.\+obstacle.\+Obstacle Class Reference}
+\label{classorg_1_1objects_1_1obstacle_1_1_obstacle}\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+
+
+Represents an obstacle.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a7f56e9e95d15555feda90f9b753e7ef3}{Obstacle}} (Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$ snake\+Pos)
+\begin{DoxyCompactList}\small\item\em Creates and spawnds an obstacle object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_ae6955eadf1a3a025e71eecd571ae898f}{respawn}} (Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$ snake\+Pos)
+\begin{DoxyCompactList}\small\item\em Spawns the obstacle of a random size and shape on the playing field, in a valid position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a23457bd5911a8a3fc5b9dafea3fe272e}{draw}} (Graphics2D frame)
+\begin{DoxyCompactList}\small\item\em Method to draw the obstacle item onto the screen (frame). \end{DoxyCompactList}\item 
+Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$ \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a263317b17d18d48213960c89fa6aae6f}{get\+Cells}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the total obstacle position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a8f50d86a9d1dd10b3419c6641d3d742e}{get\+Random\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em Generates a random cell within the playable area (excludes margins) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$ \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a8d3f92c07f18d8a8d760d1de2a81338c}{cells}}
+\item 
+Random \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a5a7dbf0c37e3be677423aec55f40dfca}{rand}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_a6f2cbd33a893503b2dac590aa1d9fe93}{MAX\+\_\+\+SIZE}} = 5
+\item 
+static final int \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_ae5a0a3755faefb25089aec65aa4414e3}{PARTICLE\+\_\+\+COUNT}} = 8
+\item 
+static final int \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_af10d7f3364b2462ee2c8c4303be0b727}{PARTICLE\+\_\+\+SIZE}} = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}{Game\+Constants.\+CELL\+\_\+\+SIZE}} / 5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an obstacle. 
+
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00014}{14}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a7f56e9e95d15555feda90f9b753e7ef3}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a7f56e9e95d15555feda90f9b753e7ef3}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!Obstacle@{Obstacle}}
+\index{Obstacle@{Obstacle}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{Obstacle()}{Obstacle()}}
+{\footnotesize\ttfamily org.\+objects.\+obstacle.\+Obstacle.\+Obstacle (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$}]{snake\+Pos }\end{DoxyParamCaption})}
+
+
+
+Creates and spawnds an obstacle object. 
+
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em snake\+Pos} & snake position at the time of obstacle spawning to prevent incorrect spawning position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+Obstacle\+::respawn(\+Array\+List) 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00028}{28}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a23457bd5911a8a3fc5b9dafea3fe272e}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a23457bd5911a8a3fc5b9dafea3fe272e}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!draw@{draw}}
+\index{draw@{draw}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void org.\+objects.\+obstacle.\+Obstacle.\+draw (\begin{DoxyParamCaption}\item[{Graphics2D}]{frame }\end{DoxyParamCaption})}
+
+
+
+Method to draw the obstacle item onto the screen (frame). 
+
+Draws squares in obstacle positions and random \char`\"{}noise\char`\"{} inside of them. 
+\begin{DoxyParams}{Parameters}
+{\em frame} & Swing Graphics2D object that represents the current frame to be updated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00097}{97}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a263317b17d18d48213960c89fa6aae6f}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a263317b17d18d48213960c89fa6aae6f}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!getCells@{getCells}}
+\index{getCells@{getCells}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{getCells()}{getCells()}}
+{\footnotesize\ttfamily Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$ org.\+objects.\+obstacle.\+Obstacle.\+get\+Cells (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the total obstacle position. 
+
+\begin{DoxyReturn}{Returns}
+Array\+List of Cell\+Position\+:s that represent the cells occupied by the obstacle. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00124}{124}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a8f50d86a9d1dd10b3419c6641d3d742e}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a8f50d86a9d1dd10b3419c6641d3d742e}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!getRandomCell@{getRandomCell}}
+\index{getRandomCell@{getRandomCell}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{getRandomCell()}{getRandomCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} org.\+objects.\+obstacle.\+Obstacle.\+get\+Random\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates a random cell within the playable area (excludes margins) 
+
+\begin{DoxyReturn}{Returns}
+Cell\+Position representing a traversable cell 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00085}{85}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_ae6955eadf1a3a025e71eecd571ae898f}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_ae6955eadf1a3a025e71eecd571ae898f}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!respawn@{respawn}}
+\index{respawn@{respawn}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{respawn()}{respawn()}}
+{\footnotesize\ttfamily void org.\+objects.\+obstacle.\+Obstacle.\+respawn (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} $>$}]{snake\+Pos }\end{DoxyParamCaption})}
+
+
+
+Spawns the obstacle of a random size and shape on the playing field, in a valid position. 
+
+Spawning stops when an incorrect position has been generated. 
+\begin{DoxyParams}{Parameters}
+{\em snake\+Pos} & snake position at the time of obstacle spawning to prevent spawning in the snake. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00040}{40}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a8d3f92c07f18d8a8d760d1de2a81338c}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a8d3f92c07f18d8a8d760d1de2a81338c}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!cells@{cells}}
+\index{cells@{cells}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{cells}{cells}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}}$>$ org.\+objects.\+obstacle.\+Obstacle.\+cells\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00019}{19}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a6f2cbd33a893503b2dac590aa1d9fe93}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a6f2cbd33a893503b2dac590aa1d9fe93}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!MAX\_SIZE@{MAX\_SIZE}}
+\index{MAX\_SIZE@{MAX\_SIZE}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{MAX\_SIZE}{MAX\_SIZE}}
+{\footnotesize\ttfamily final int org.\+objects.\+obstacle.\+Obstacle.\+MAX\+\_\+\+SIZE = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00015}{15}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_ae5a0a3755faefb25089aec65aa4414e3}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_ae5a0a3755faefb25089aec65aa4414e3}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!PARTICLE\_COUNT@{PARTICLE\_COUNT}}
+\index{PARTICLE\_COUNT@{PARTICLE\_COUNT}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{PARTICLE\_COUNT}{PARTICLE\_COUNT}}
+{\footnotesize\ttfamily final int org.\+objects.\+obstacle.\+Obstacle.\+PARTICLE\+\_\+\+COUNT = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00016}{16}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_af10d7f3364b2462ee2c8c4303be0b727}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_af10d7f3364b2462ee2c8c4303be0b727}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!PARTICLE\_SIZE@{PARTICLE\_SIZE}}
+\index{PARTICLE\_SIZE@{PARTICLE\_SIZE}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{PARTICLE\_SIZE}{PARTICLE\_SIZE}}
+{\footnotesize\ttfamily final int org.\+objects.\+obstacle.\+Obstacle.\+PARTICLE\+\_\+\+SIZE = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}{Game\+Constants.\+CELL\+\_\+\+SIZE}} / 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00017}{17}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1obstacle_1_1_obstacle_a5a7dbf0c37e3be677423aec55f40dfca}\label{classorg_1_1objects_1_1obstacle_1_1_obstacle_a5a7dbf0c37e3be677423aec55f40dfca}} 
+\index{org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}!rand@{rand}}
+\index{rand@{rand}!org.objects.obstacle.Obstacle@{org.objects.obstacle.Obstacle}}
+\doxysubsubsection{\texorpdfstring{rand}{rand}}
+{\footnotesize\ttfamily Random org.\+objects.\+obstacle.\+Obstacle.\+rand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_obstacle_8java_source_l00020}{20}} of file \mbox{\hyperlink{_obstacle_8java_source}{Obstacle.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_obstacle_8java}{Obstacle.\+java}}\end{DoxyCompactItemize}

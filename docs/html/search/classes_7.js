@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['obstacle_0',['Obstacle',['../classobjects_1_1obstacle_1_1_obstacle.html',1,'objects::obstacle']]],
-  ['obstaclelist_1',['ObstacleList',['../classobjects_1_1obstacle_1_1_obstacle_list.html',1,'objects::obstacle']]]
+  ['mainmenu_0',['MainMenu',['../classorg_1_1panels_1_1_main_menu.html',1,'org::panels']]]
 ];

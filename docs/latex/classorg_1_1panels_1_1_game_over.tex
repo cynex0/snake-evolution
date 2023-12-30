@@ -1,0 +1,348 @@
+\hypertarget{classorg_1_1panels_1_1_game_over}{}\doxysection{org.\+panels.\+Game\+Over Class Reference}
+\label{classorg_1_1panels_1_1_game_over}\index{org.panels.GameOver@{org.panels.GameOver}}
+
+
+A panel that represents the game-\/over screen.  
+
+
+Inheritance diagram for org.\+panels.\+Game\+Over\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.931034cm]{classorg_1_1panels_1_1_game_over}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a67cc56ad9ad523c68683ef3d39f8ea52}{Game\+Over}} (\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} listener, int \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a47d4b8a6d14282fc771c675f558f0dcb}{score}}, boolean is\+High\+Score)
+\begin{DoxyCompactList}\small\item\em Constructs a game-\/over panel with the player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a71680958e8c2e9ff70a585e0d602d611}{action\+Performed}} (Action\+Event event)
+\begin{DoxyCompactList}\small\item\em Defines the buttons\textquotesingle{} behaviour. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_ad1b883a3d7a6aace2eec7daba521363d}{key\+Typed}} (Key\+Event e)
+\begin{DoxyCompactList}\small\item\em Limits text field to 3 characters and disallows typing special characters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a6c8e65f42d49965a15c9df00a321a953}{key\+Pressed}} (Key\+Event e)
+\begin{DoxyCompactList}\small\item\em Request the observer to switch to the Leaderboard state when the name is entered and \textquotesingle{}Enter\textquotesingle{} is pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a58767bf5def05afe261507b821cc7b09}{key\+Released}} (Key\+Event e)
+\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_ae4a497cfa41b305a0882a2b9012fe8f9}{focus\+Gained}} (Focus\+Event e)
+\begin{DoxyCompactList}\small\item\em Remove the placeholder text from the text field when it gains focus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_ad43cbfd3eb2d0eefdfc70d2bd2418bfe}{focus\+Lost}} (Focus\+Event e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1panels_1_1_bg_panel}{Bg\+Panel}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a88a5ca1368150fbcd8989a062e6a008e}{bg}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a7732c13727286d83d38a85e8cd872a39}{paint\+Component}} (Graphics graphics)
+\begin{DoxyCompactList}\small\item\em Draws the contents of the panel and the background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+JText\+Field \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a5d05108a051274e2bb3460f0cfbdd7ab}{getj\+Text\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Helper method to generate the text field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a11119d1f39ef702a4f9af506acf6378d}{retry\+Btn}}
+\item 
+final \mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_afba6a111a4b7e5ec6047bd8cf2340eb2}{main\+Menu\+Btn}}
+\item 
+final Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} $>$ \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_aef4d96f42b74579339c24dc20bbd6f77}{buttons}}
+\item 
+\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a5d625017d86c400abbc1d2dc261ef23b}{state\+Changer}}
+\item 
+JLabel \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a94ac35dc831b9f7aa746557a7f0f4286}{score\+Text}}
+\item 
+JText\+Field \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_ab0810c42f285328b64c7f9e51e6a7a19}{enter\+Name\+Field}}
+\item 
+int \mbox{\hyperlink{classorg_1_1panels_1_1_game_over_a47d4b8a6d14282fc771c675f558f0dcb}{score}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A panel that represents the game-\/over screen. 
+
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00016}{16}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a67cc56ad9ad523c68683ef3d39f8ea52}\label{classorg_1_1panels_1_1_game_over_a67cc56ad9ad523c68683ef3d39f8ea52}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!GameOver@{GameOver}}
+\index{GameOver@{GameOver}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{GameOver()}{GameOver()}}
+{\footnotesize\ttfamily org.\+panels.\+Game\+Over.\+Game\+Over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}}}]{listener,  }\item[{int}]{score,  }\item[{boolean}]{is\+High\+Score }\end{DoxyParamCaption})}
+
+
+
+Constructs a game-\/over panel with the player\textquotesingle{}s score. 
+
+Changes depending on if the score is a new record. Displays a \char`\"{}\+Game Over\char`\"{} message, player\textquotesingle{}s achieved score, buttons to retry and go to menu (if not a high score) or prompts the player to enter their name/initials (if is a high score). 
+\begin{DoxyParams}{Parameters}
+{\em listener} & reference to the observer class to allow state switching \\
+\hline
+{\em score} & player\textquotesingle{}s score to be displayed \\
+\hline
+{\em is\+High\+Score} & a flag to determine if the score is a new record \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+
+Victoria Rönnlid (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00038}{38}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a71680958e8c2e9ff70a585e0d602d611}\label{classorg_1_1panels_1_1_game_over_a71680958e8c2e9ff70a585e0d602d611}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!actionPerformed@{actionPerformed}}
+\index{actionPerformed@{actionPerformed}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{actionPerformed()}{actionPerformed()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+action\+Performed (\begin{DoxyParamCaption}\item[{Action\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Defines the buttons\textquotesingle{} behaviour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the event to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00173}{173}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_ae4a497cfa41b305a0882a2b9012fe8f9}\label{classorg_1_1panels_1_1_game_over_ae4a497cfa41b305a0882a2b9012fe8f9}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!focusGained@{focusGained}}
+\index{focusGained@{focusGained}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{focusGained()}{focusGained()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+focus\+Gained (\begin{DoxyParamCaption}\item[{Focus\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Remove the placeholder text from the text field when it gains focus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & the event to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00218}{218}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_ad43cbfd3eb2d0eefdfc70d2bd2418bfe}\label{classorg_1_1panels_1_1_game_over_ad43cbfd3eb2d0eefdfc70d2bd2418bfe}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!focusLost@{focusLost}}
+\index{focusLost@{focusLost}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{focusLost()}{focusLost()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+focus\+Lost (\begin{DoxyParamCaption}\item[{Focus\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00225}{225}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a5d05108a051274e2bb3460f0cfbdd7ab}\label{classorg_1_1panels_1_1_game_over_a5d05108a051274e2bb3460f0cfbdd7ab}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!getjTextField@{getjTextField}}
+\index{getjTextField@{getjTextField}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{getjTextField()}{getjTextField()}}
+{\footnotesize\ttfamily JText\+Field org.\+panels.\+Game\+Over.\+getj\+Text\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper method to generate the text field. 
+
+\begin{DoxyReturn}{Returns}
+JText\+Field object to be put onto the panel for the player\textquotesingle{}s name prompt. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00141}{141}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a6c8e65f42d49965a15c9df00a321a953}\label{classorg_1_1panels_1_1_game_over_a6c8e65f42d49965a15c9df00a321a953}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!keyPressed@{keyPressed}}
+\index{keyPressed@{keyPressed}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{keyPressed()}{keyPressed()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+key\+Pressed (\begin{DoxyParamCaption}\item[{Key\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Request the observer to switch to the Leaderboard state when the name is entered and \textquotesingle{}Enter\textquotesingle{} is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & the key-\/press event to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00202}{202}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a58767bf5def05afe261507b821cc7b09}\label{classorg_1_1panels_1_1_game_over_a58767bf5def05afe261507b821cc7b09}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!keyReleased@{keyReleased}}
+\index{keyReleased@{keyReleased}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{keyReleased()}{keyReleased()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+key\+Released (\begin{DoxyParamCaption}\item[{Key\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00210}{210}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_ad1b883a3d7a6aace2eec7daba521363d}\label{classorg_1_1panels_1_1_game_over_ad1b883a3d7a6aace2eec7daba521363d}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!keyTyped@{keyTyped}}
+\index{keyTyped@{keyTyped}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{keyTyped()}{keyTyped()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+key\+Typed (\begin{DoxyParamCaption}\item[{Key\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Limits text field to 3 characters and disallows typing special characters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & the key-\/press event to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+
+Maksims Orlovs (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00190}{190}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a7732c13727286d83d38a85e8cd872a39}\label{classorg_1_1panels_1_1_game_over_a7732c13727286d83d38a85e8cd872a39}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!paintComponent@{paintComponent}}
+\index{paintComponent@{paintComponent}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{paintComponent()}{paintComponent()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Over.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{graphics }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Draws the contents of the panel and the background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graphics} & graphics component supplied by the Game\+Frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Marwa Abohahcem 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00162}{162}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a88a5ca1368150fbcd8989a062e6a008e}\label{classorg_1_1panels_1_1_game_over_a88a5ca1368150fbcd8989a062e6a008e}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!bg@{bg}}
+\index{bg@{bg}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{bg}{bg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1panels_1_1_bg_panel}{Bg\+Panel}} org.\+panels.\+Game\+Over.\+bg}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00019}{19}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_aef4d96f42b74579339c24dc20bbd6f77}\label{classorg_1_1panels_1_1_game_over_aef4d96f42b74579339c24dc20bbd6f77}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!buttons@{buttons}}
+\index{buttons@{buttons}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{buttons}{buttons}}
+{\footnotesize\ttfamily final Array\+List$<$\mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}}$>$ org.\+panels.\+Game\+Over.\+buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00020}{20}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_ab0810c42f285328b64c7f9e51e6a7a19}\label{classorg_1_1panels_1_1_game_over_ab0810c42f285328b64c7f9e51e6a7a19}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!enterNameField@{enterNameField}}
+\index{enterNameField@{enterNameField}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{enterNameField}{enterNameField}}
+{\footnotesize\ttfamily JText\+Field org.\+panels.\+Game\+Over.\+enter\+Name\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00025}{25}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_afba6a111a4b7e5ec6047bd8cf2340eb2}\label{classorg_1_1panels_1_1_game_over_afba6a111a4b7e5ec6047bd8cf2340eb2}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!mainMenuBtn@{mainMenuBtn}}
+\index{mainMenuBtn@{mainMenuBtn}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{mainMenuBtn}{mainMenuBtn}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} org.\+panels.\+Game\+Over.\+main\+Menu\+Btn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00018}{18}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a11119d1f39ef702a4f9af506acf6378d}\label{classorg_1_1panels_1_1_game_over_a11119d1f39ef702a4f9af506acf6378d}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!retryBtn@{retryBtn}}
+\index{retryBtn@{retryBtn}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{retryBtn}{retryBtn}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} org.\+panels.\+Game\+Over.\+retry\+Btn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00017}{17}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a47d4b8a6d14282fc771c675f558f0dcb}\label{classorg_1_1panels_1_1_game_over_a47d4b8a6d14282fc771c675f558f0dcb}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!score@{score}}
+\index{score@{score}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int org.\+panels.\+Game\+Over.\+score\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00026}{26}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a94ac35dc831b9f7aa746557a7f0f4286}\label{classorg_1_1panels_1_1_game_over_a94ac35dc831b9f7aa746557a7f0f4286}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!scoreText@{scoreText}}
+\index{scoreText@{scoreText}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{scoreText}{scoreText}}
+{\footnotesize\ttfamily JLabel org.\+panels.\+Game\+Over.\+score\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00024}{24}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_over_a5d625017d86c400abbc1d2dc261ef23b}\label{classorg_1_1panels_1_1_game_over_a5d625017d86c400abbc1d2dc261ef23b}} 
+\index{org.panels.GameOver@{org.panels.GameOver}!stateChanger@{stateChanger}}
+\index{stateChanger@{stateChanger}!org.panels.GameOver@{org.panels.GameOver}}
+\doxysubsubsection{\texorpdfstring{stateChanger}{stateChanger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} org.\+panels.\+Game\+Over.\+state\+Changer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_over_8java_source_l00022}{22}} of file \mbox{\hyperlink{_game_over_8java_source}{Game\+Over.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_over_8java}{Game\+Over.\+java}}\end{DoxyCompactItemize}

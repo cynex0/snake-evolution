@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['actionperformed_0',['actionPerformed',['../classpanels_1_1_game_over.html#aaa5f2d55a25dafd24a3c98a0888225ee',1,'panels.GameOver.actionPerformed()'],['../classpanels_1_1_leaderboard.html#aec54f5be782fe792eba065b37d51b010',1,'panels.Leaderboard.actionPerformed()'],['../classpanels_1_1_main_menu.html#a099f20d0c01a66fbcf9d165f38a4e970',1,'panels.MainMenu.actionPerformed()'],['../classpanels_1_1_tutorial.html#a129ce5e1458bbfd8f49b77110ecdcb5b',1,'panels.Tutorial.actionPerformed()']]],
-  ['add_1',['add',['../classobjects_1_1obstacle_1_1_obstacle_list.html#a820204c8c121b6d8edf9cd66b0ed60af',1,'objects::obstacle::ObstacleList']]],
-  ['adjustsnakespeed_2',['adjustSnakeSpeed',['../classpanels_1_1_game_panel.html#a08bdbc9873ce8e5ca4a7b93b40fd3d45',1,'panels::GamePanel']]],
-  ['applyfoodeffect_3',['applyFoodEffect',['../classpanels_1_1_game_panel.html#ad8701691144e53afc855b65ceac97e78',1,'panels::GamePanel']]]
+  ['actionperformed_0',['actionPerformed',['../classorg_1_1panels_1_1_game_over.html#a71680958e8c2e9ff70a585e0d602d611',1,'org.panels.GameOver.actionPerformed()'],['../classorg_1_1panels_1_1_leaderboard.html#a59a046b635d9182b3184d0e92cab686b',1,'org.panels.Leaderboard.actionPerformed()'],['../classorg_1_1panels_1_1_main_menu.html#a5820b61f7bd89d3b618d0abb20d337a2',1,'org.panels.MainMenu.actionPerformed()'],['../classorg_1_1panels_1_1_tutorial.html#a559bb1959cbc3494719005df21b2741d',1,'org.panels.Tutorial.actionPerformed()']]],
+  ['add_1',['add',['../classorg_1_1objects_1_1obstacle_1_1_obstacle_list.html#a7e8536e245ea412b669cf079c8551cd8',1,'org::objects::obstacle::ObstacleList']]],
+  ['adjustsnakespeed_2',['adjustSnakeSpeed',['../classorg_1_1panels_1_1_game_panel.html#a5ef85d4de3df0940e1cc44942fe5ff1a',1,'org::panels::GamePanel']]],
+  ['applyfoodeffect_3',['applyFoodEffect',['../classorg_1_1panels_1_1_game_panel.html#aaceb6615337a6c99cc141d5e09c95c63',1,'org::panels::GamePanel']]]
 ];

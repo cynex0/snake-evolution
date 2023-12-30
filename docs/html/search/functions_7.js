@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['isoppositedir_0',['isOppositeDir',['../classobjects_1_1_snake.html#aee78367c12b8198169f48ddd15ec2a08',1,'objects::Snake']]],
-  ['istopten_1',['isTopTen',['../classpanels_1_1_leaderboard.html#a66e5ef37519d22911becc42752263f43',1,'panels::Leaderboard']]]
+  ['isoppositedir_0',['isOppositeDir',['../classorg_1_1objects_1_1_snake.html#a2da3ed947d5d8f7041ebdc8a8e3d1198',1,'org::objects::Snake']]],
+  ['istopten_1',['isTopTen',['../classorg_1_1panels_1_1_leaderboard.html#a3de6eca8174bb062e0e9411958147497',1,'org::panels::Leaderboard']]]
 ];

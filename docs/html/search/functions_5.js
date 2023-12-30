@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['focusgained_0',['focusGained',['../classpanels_1_1_game_over.html#af2dc4d8efaba398907c2e4f761b32089',1,'panels::GameOver']]],
-  ['focuslost_1',['focusLost',['../classpanels_1_1_game_over.html#a82825b513d05959bd8d26a2f5beeafa6',1,'panels::GameOver']]],
-  ['food_2',['Food',['../classobjects_1_1food_1_1_food.html#afcdf71436ec39cd347dec11759001c5f',1,'objects::food::Food']]]
+  ['focusgained_0',['focusGained',['../classorg_1_1panels_1_1_game_over.html#ae4a497cfa41b305a0882a2b9012fe8f9',1,'org::panels::GameOver']]],
+  ['focuslost_1',['focusLost',['../classorg_1_1panels_1_1_game_over.html#ad43cbfd3eb2d0eefdfc70d2bd2418bfe',1,'org::panels::GameOver']]],
+  ['food_2',['Food',['../classorg_1_1objects_1_1food_1_1_food.html#a4edf52682277b9e007f11d3c2b455919',1,'org::objects::food::Food']]]
 ];
