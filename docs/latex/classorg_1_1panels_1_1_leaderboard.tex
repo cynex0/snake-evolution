@@ -1,0 +1,298 @@
+\hypertarget{classorg_1_1panels_1_1_leaderboard}{}\doxysection{org.\+panels.\+Leaderboard Class Reference}
+\label{classorg_1_1panels_1_1_leaderboard}\index{org.panels.Leaderboard@{org.panels.Leaderboard}}
+
+
+Panel representing the Leaderboard screen.  
+
+
+Inheritance diagram for org.\+panels.\+Leaderboard\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classorg_1_1panels_1_1_leaderboard}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a232930fdd0bae191819e526cf92c35ee}{Leaderboard}} (\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} listener)
+\begin{DoxyCompactList}\small\item\em Creates the Leaderboard panel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a0da05c6e7868f2f7d2fac151ec778d05}{paint\+Component}} (Graphics g)
+\begin{DoxyCompactList}\small\item\em Draws all the contents of the panel and the background. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a59a046b635d9182b3184d0e92cab686b}{action\+Performed}} (Action\+Event event)
+\begin{DoxyCompactList}\small\item\em Defines button behaviour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a1100d0ff0441351a86b81239b18ceb3e}{create\+Player}} (String name, long score)
+\begin{DoxyCompactList}\small\item\em Creates and appends a new player to the leaderboard file. \end{DoxyCompactList}\item 
+static boolean \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a3de6eca8174bb062e0e9411958147497}{is\+Top\+Ten}} (\mbox{\hyperlink{classorg_1_1utilities_1_1_player}{Player}} player\+In\+Top10)
+\begin{DoxyCompactList}\small\item\em Checks if players score is among top 10. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_aeb047c80d1d9ce083d9dfa2bd4e821d4}{read\+To\+List}} ()
+\begin{DoxyCompactList}\small\item\em Adds first 10 top scoring players from the file to the list for display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_player}{Player}} $>$ \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_adbb7de08afbc55630232a4746ac223cf}{read\+From\+File}} ()
+\begin{DoxyCompactList}\small\item\em Returns a sorted list of all players read from the json file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Default\+List\+Model$<$ String $>$ \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a5a3294e3f31e163894c65b689573eaf6}{list\+Items}}
+\item 
+JList$<$ String $>$ \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_af4fad6c56b8bd934b7c3b0cf1a30f4b9}{lb\+List}}
+\item 
+\mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_ab7759000d86ff19877346d0098cb1588}{main\+Menu\+Btn}}
+\item 
+\mbox{\hyperlink{classorg_1_1panels_1_1_bg_panel}{Bg\+Panel}} \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a64712b7a7d2c0daf66aa2fc5cb6c8938}{bg}}
+\item 
+\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a99d30a586a8690e359739aaadacb8040}{state\+Changer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_player}{Player}} $>$ \mbox{\hyperlink{classorg_1_1panels_1_1_leaderboard_a1741bcc1d8e07a2229217ca2c36647e4}{player\+List}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Panel representing the Leaderboard screen. 
+
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00028}{28}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a232930fdd0bae191819e526cf92c35ee}\label{classorg_1_1panels_1_1_leaderboard_a232930fdd0bae191819e526cf92c35ee}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!Leaderboard@{Leaderboard}}
+\index{Leaderboard@{Leaderboard}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{Leaderboard()}{Leaderboard()}}
+{\footnotesize\ttfamily org.\+panels.\+Leaderboard.\+Leaderboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}}}]{listener }\end{DoxyParamCaption})}
+
+
+
+Creates the Leaderboard panel. 
+
+Reads the stored leaderboard data from file. 
+\begin{DoxyParams}{Parameters}
+{\em listener} & reference to the observer object to allow requesting state change \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+
+Victoria Rönnlid (co-\/author) 
+
+Marwa Abohahcem ( co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00045}{45}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a59a046b635d9182b3184d0e92cab686b}\label{classorg_1_1panels_1_1_leaderboard_a59a046b635d9182b3184d0e92cab686b}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!actionPerformed@{actionPerformed}}
+\index{actionPerformed@{actionPerformed}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{actionPerformed()}{actionPerformed()}}
+{\footnotesize\ttfamily void org.\+panels.\+Leaderboard.\+action\+Performed (\begin{DoxyParamCaption}\item[{Action\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Defines button behaviour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the button-\/press event to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00097}{97}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a1100d0ff0441351a86b81239b18ceb3e}\label{classorg_1_1panels_1_1_leaderboard_a1100d0ff0441351a86b81239b18ceb3e}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!createPlayer@{createPlayer}}
+\index{createPlayer@{createPlayer}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{createPlayer()}{createPlayer()}}
+{\footnotesize\ttfamily static void org.\+panels.\+Leaderboard.\+create\+Player (\begin{DoxyParamCaption}\item[{String}]{name,  }\item[{long}]{score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates and appends a new player to the leaderboard file. 
+
+Completely rewrites the json file. 
+\begin{DoxyParams}{Parameters}
+{\em name} & player\textquotesingle{}s name \\
+\hline
+{\em score} & player\textquotesingle{}s score \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00170}{170}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a3de6eca8174bb062e0e9411958147497}\label{classorg_1_1panels_1_1_leaderboard_a3de6eca8174bb062e0e9411958147497}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!isTopTen@{isTopTen}}
+\index{isTopTen@{isTopTen}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{isTopTen()}{isTopTen()}}
+{\footnotesize\ttfamily static boolean org.\+panels.\+Leaderboard.\+is\+Top\+Ten (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classorg_1_1utilities_1_1_player}{Player}}}]{player\+In\+Top10 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if players score is among top 10. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+In\+Top10} & player object to be checked against the leaderboard file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the player qualifies for the leaderboard 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+
+Maksims Orlovs (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00204}{204}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a0da05c6e7868f2f7d2fac151ec778d05}\label{classorg_1_1panels_1_1_leaderboard_a0da05c6e7868f2f7d2fac151ec778d05}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!paintComponent@{paintComponent}}
+\index{paintComponent@{paintComponent}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{paintComponent()}{paintComponent()}}
+{\footnotesize\ttfamily void org.\+panels.\+Leaderboard.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})}
+
+
+
+Draws all the contents of the panel and the background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & graphics component supplied by the Game\+Frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00086}{86}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_adbb7de08afbc55630232a4746ac223cf}\label{classorg_1_1panels_1_1_leaderboard_adbb7de08afbc55630232a4746ac223cf}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!readFromFile@{readFromFile}}
+\index{readFromFile@{readFromFile}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{readFromFile()}{readFromFile()}}
+{\footnotesize\ttfamily static Array\+List$<$ \mbox{\hyperlink{classorg_1_1utilities_1_1_player}{Player}} $>$ org.\+panels.\+Leaderboard.\+read\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Returns a sorted list of all players read from the json file. 
+
+Creates an empty JSON file if it is not present. \begin{DoxyReturn}{Returns}
+sorted Array\+List of all Player\+:s stored on disk 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00110}{110}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_aeb047c80d1d9ce083d9dfa2bd4e821d4}\label{classorg_1_1panels_1_1_leaderboard_aeb047c80d1d9ce083d9dfa2bd4e821d4}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!readToList@{readToList}}
+\index{readToList@{readToList}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{readToList()}{readToList()}}
+{\footnotesize\ttfamily void org.\+panels.\+Leaderboard.\+read\+To\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adds first 10 top scoring players from the file to the list for display. 
+
+Formats the list elements according to the design. \begin{DoxyAuthor}{Author}
+Halah Hasani 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00148}{148}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a64712b7a7d2c0daf66aa2fc5cb6c8938}\label{classorg_1_1panels_1_1_leaderboard_a64712b7a7d2c0daf66aa2fc5cb6c8938}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!bg@{bg}}
+\index{bg@{bg}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{bg}{bg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1panels_1_1_bg_panel}{Bg\+Panel}} org.\+panels.\+Leaderboard.\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00032}{32}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_af4fad6c56b8bd934b7c3b0cf1a30f4b9}\label{classorg_1_1panels_1_1_leaderboard_af4fad6c56b8bd934b7c3b0cf1a30f4b9}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!lbList@{lbList}}
+\index{lbList@{lbList}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{lbList}{lbList}}
+{\footnotesize\ttfamily JList$<$String$>$ org.\+panels.\+Leaderboard.\+lb\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00030}{30}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a5a3294e3f31e163894c65b689573eaf6}\label{classorg_1_1panels_1_1_leaderboard_a5a3294e3f31e163894c65b689573eaf6}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!listItems@{listItems}}
+\index{listItems@{listItems}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{listItems}{listItems}}
+{\footnotesize\ttfamily Default\+List\+Model$<$String$>$ org.\+panels.\+Leaderboard.\+list\+Items\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00029}{29}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_ab7759000d86ff19877346d0098cb1588}\label{classorg_1_1panels_1_1_leaderboard_ab7759000d86ff19877346d0098cb1588}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!mainMenuBtn@{mainMenuBtn}}
+\index{mainMenuBtn@{mainMenuBtn}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{mainMenuBtn}{mainMenuBtn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1utilities_1_1_game_button}{Game\+Button}} org.\+panels.\+Leaderboard.\+main\+Menu\+Btn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00031}{31}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a1741bcc1d8e07a2229217ca2c36647e4}\label{classorg_1_1panels_1_1_leaderboard_a1741bcc1d8e07a2229217ca2c36647e4}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!playerList@{playerList}}
+\index{playerList@{playerList}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{playerList}{playerList}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classorg_1_1utilities_1_1_player}{Player}}$>$ org.\+panels.\+Leaderboard.\+player\+List = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00034}{34}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_leaderboard_a99d30a586a8690e359739aaadacb8040}\label{classorg_1_1panels_1_1_leaderboard_a99d30a586a8690e359739aaadacb8040}} 
+\index{org.panels.Leaderboard@{org.panels.Leaderboard}!stateChanger@{stateChanger}}
+\index{stateChanger@{stateChanger}!org.panels.Leaderboard@{org.panels.Leaderboard}}
+\doxysubsubsection{\texorpdfstring{stateChanger}{stateChanger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} org.\+panels.\+Leaderboard.\+state\+Changer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_leaderboard_8java_source_l00036}{36}} of file \mbox{\hyperlink{_leaderboard_8java_source}{Leaderboard.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_leaderboard_8java}{Leaderboard.\+java}}\end{DoxyCompactItemize}
