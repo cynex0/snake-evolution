@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_0',['Main',['../classmain_1_1_main.html',1,'main']]],
-  ['mainmenu_1',['MainMenu',['../classpanels_1_1_main_menu.html',1,'panels']]]
+  ['leaderboard_0',['Leaderboard',['../classorg_1_1panels_1_1_leaderboard.html',1,'org::panels']]]
 ];

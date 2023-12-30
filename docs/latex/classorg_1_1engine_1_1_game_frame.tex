@@ -1,0 +1,110 @@
+\hypertarget{classorg_1_1engine_1_1_game_frame}{}\doxysection{org.\+engine.\+Game\+Frame Class Reference}
+\label{classorg_1_1engine_1_1_game_frame}\index{org.engine.GameFrame@{org.engine.GameFrame}}
+
+
+The Game\+Frame class is a part of the Game Engine system that handles switching and displaying appropriate game states.  
+
+
+Inheritance diagram for org.\+engine.\+Game\+Frame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classorg_1_1engine_1_1_game_frame}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1engine_1_1_game_frame_aeb2bcd09a3e44b0f17639bc8da413160}{Game\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Creates a Game\+Frame and sets up the game, the window and the font. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1engine_1_1_game_frame_ab56221d84463251f87052528c61c16fc}{change\+State}} (\mbox{\hyperlink{enumorg_1_1engine_1_1_game_state}{Game\+State}} new\+State)
+\begin{DoxyCompactList}\small\item\em Receives the call to switch to the next state, handles logic required for each state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener_a8240ebfb11559d27f7666b5127c9e29f}{change\+State}} (\mbox{\hyperlink{enumorg_1_1engine_1_1_game_state}{Game\+State}} new\+State)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static JPanel \mbox{\hyperlink{classorg_1_1engine_1_1_game_frame_a58359f84e0d62136b4a7831640c4f9c1}{current\+Panel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Game\+Frame class is a part of the Game Engine system that handles switching and displaying appropriate game states. 
+
+It extends JFrame to use Swing for displaying a game window and implements State\+Change\+Listener to receive requests from the states to switch to a different state. \begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_frame_8java_source_l00019}{19}} of file \mbox{\hyperlink{_game_frame_8java_source}{Game\+Frame.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classorg_1_1engine_1_1_game_frame_aeb2bcd09a3e44b0f17639bc8da413160}\label{classorg_1_1engine_1_1_game_frame_aeb2bcd09a3e44b0f17639bc8da413160}} 
+\index{org.engine.GameFrame@{org.engine.GameFrame}!GameFrame@{GameFrame}}
+\index{GameFrame@{GameFrame}!org.engine.GameFrame@{org.engine.GameFrame}}
+\doxysubsubsection{\texorpdfstring{GameFrame()}{GameFrame()}}
+{\footnotesize\ttfamily org.\+engine.\+Game\+Frame.\+Game\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a Game\+Frame and sets up the game, the window and the font. 
+
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+
+Halah Hasani (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_frame_8java_source_l00027}{27}} of file \mbox{\hyperlink{_game_frame_8java_source}{Game\+Frame.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classorg_1_1engine_1_1_game_frame_ab56221d84463251f87052528c61c16fc}\label{classorg_1_1engine_1_1_game_frame_ab56221d84463251f87052528c61c16fc}} 
+\index{org.engine.GameFrame@{org.engine.GameFrame}!changeState@{changeState}}
+\index{changeState@{changeState}!org.engine.GameFrame@{org.engine.GameFrame}}
+\doxysubsubsection{\texorpdfstring{changeState()}{changeState()}}
+{\footnotesize\ttfamily void org.\+engine.\+Game\+Frame.\+change\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumorg_1_1engine_1_1_game_state}{Game\+State}}}]{new\+State }\end{DoxyParamCaption})}
+
+
+
+Receives the call to switch to the next state, handles logic required for each state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & the next state of the game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Implements \mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener_a8240ebfb11559d27f7666b5127c9e29f}{org.\+engine.\+State\+Change\+Listener}}.
+
+
+
+Definition at line \mbox{\hyperlink{_game_frame_8java_source_l00058}{58}} of file \mbox{\hyperlink{_game_frame_8java_source}{Game\+Frame.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classorg_1_1engine_1_1_game_frame_a58359f84e0d62136b4a7831640c4f9c1}\label{classorg_1_1engine_1_1_game_frame_a58359f84e0d62136b4a7831640c4f9c1}} 
+\index{org.engine.GameFrame@{org.engine.GameFrame}!currentPanel@{currentPanel}}
+\index{currentPanel@{currentPanel}!org.engine.GameFrame@{org.engine.GameFrame}}
+\doxysubsubsection{\texorpdfstring{currentPanel}{currentPanel}}
+{\footnotesize\ttfamily JPanel org.\+engine.\+Game\+Frame.\+current\+Panel\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_frame_8java_source_l00020}{20}} of file \mbox{\hyperlink{_game_frame_8java_source}{Game\+Frame.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_frame_8java}{Game\+Frame.\+java}}\end{DoxyCompactItemize}

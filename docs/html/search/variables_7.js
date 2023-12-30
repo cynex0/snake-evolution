@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keyinverter_0',['keyInverter',['../classpanels_1_1_game_panel.html#aa1dcb748f1eb63fca847d238beddd24c',1,'panels::GamePanel']]]
+  ['keyinverter_0',['keyInverter',['../classorg_1_1panels_1_1_game_panel.html#a44ce6d4aad22f1c0b7a1f24cdb22bf12',1,'org::panels::GamePanel']]]
 ];

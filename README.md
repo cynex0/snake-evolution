@@ -6,7 +6,7 @@ but with a few re-vitalizing twists that "evolve" the well known classic.
 
 ## Installation
 ### Prerequisites
-To play Snake Evolution, you need to have Java installed (Java 8 recommended).
+To play Snake Evolution, you need to have Java installed (JDK 17 minimum).
 Additionally, if you want to build the game yourself, you will need Maven (https://maven.apache.org/download.cgi).
 
 ### Download Compiled Game

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tutorial_0',['Tutorial',['../classpanels_1_1_tutorial.html#aab11e7394e20769c242c2d21fc3a1071',1,'panels::Tutorial']]]
+  ['tutorial_0',['Tutorial',['../classorg_1_1panels_1_1_tutorial.html#ab10eaa69b34d184b574d4d5881da1d23',1,'org::panels::Tutorial']]]
 ];
