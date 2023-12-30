@@ -11,15 +11,19 @@ Additionally, if you want to build the game yourself, you will need Maven (https
 
 ### Download Compiled Game
 1. Navigate to Releases and Open the latest release (https://git.chalmers.se/orlovs/gr10-snake-evolution/-/releases)
-2. Download the Release archive (v1.x.zip)
+2. Download the Release archive (v1.0.zip)
 3. Unpack the archive
-4. Launch the game from the terminal: `java -jar snake-evolution.jar`
+4. Launch the game from the terminal: `java -jar snake-evolution-1.0.jar`
 
 ### Build
 Follow these instructions if you want to build the game locally:
-1. Clone the repository or download source code
-2. From the project folder `gr10-snake-evolution`, run `mvn clean package`
-3. The compiled .jar will appear in the `target` directory.
+1. Clone the repository or download source code.
+2. From the project folder `gr10-snake-evolution`, run `mvn clean package`.
+3. The compiled .jar will appear in the `target` directory, run it from there:
+```
+cd target
+java -jar snake-evolution-1.0-jar-with-dependencies.jar
+```
 _Note: the directory that contains the game executable must also contain the assets folder to run!_
 
 ## How to Play
