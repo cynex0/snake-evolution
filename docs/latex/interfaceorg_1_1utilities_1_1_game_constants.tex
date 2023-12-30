@@ -1,0 +1,206 @@
+\hypertarget{interfaceorg_1_1utilities_1_1_game_constants}{}\doxysection{org.\+utilities.\+Game\+Constants Interface Reference}
+\label{interfaceorg_1_1utilities_1_1_game_constants}\index{org.utilities.GameConstants@{org.utilities.GameConstants}}
+
+
+Defines constants used in the game.  
+
+
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final Point \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_aeb85633533bae71d0d3753b31bf1b1ab}{WINDOW\+\_\+\+SIZE}} = new Point(800, 800)
+\begin{DoxyCompactList}\small\item\em Point representing the window dimensions. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a8136f047f4453ea62cb67a191f622854}{FPS}} = 60
+\begin{DoxyCompactList}\small\item\em The base FPS of the game. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}{CELL\+\_\+\+COUNT}} = 40
+\begin{DoxyCompactList}\small\item\em The amount of cells in one row/column. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}{CELL\+\_\+\+SIZE}} = WINDOW\+\_\+\+SIZE.\+x / \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}{CELL\+\_\+\+COUNT}}
+\begin{DoxyCompactList}\small\item\em Size of one cell. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a1a3eb652a135b2801cd8cc8e0bd8555d}{EFFECT\+\_\+\+DURATION}} = 8000
+\begin{DoxyCompactList}\small\item\em Duration of timed bonus food effects (in ms). \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a3da6e82d69a2b610c4249fe4802bddfa}{BORDER\+\_\+\+THC}} = 5
+\begin{DoxyCompactList}\small\item\em Thickness of the borders in pixels. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}} = 3
+\begin{DoxyCompactList}\small\item\em Size of the margin (area between borders and screen edge) in cells. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a5e8f8315048a46d4481d81f4d97a2b0e}{MARGIN\+\_\+\+INNER}} = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}{CELL\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}}
+\begin{DoxyCompactList}\small\item\em Distance from screen edge to inner margin point. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_aa63f55c9a0117c11f914eea85022dfe2}{MARGIN\+\_\+\+OUTER}} = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a5e8f8315048a46d4481d81f4d97a2b0e}{MARGIN\+\_\+\+INNER}} -\/ \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a3da6e82d69a2b610c4249fe4802bddfa}{BORDER\+\_\+\+THC}}
+\begin{DoxyCompactList}\small\item\em Distance from screen edge to outer margin point (excluding the thickness). \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a1bd96018de49bea031f5562cd69e1fa4}{MIN\+\_\+\+CELL}} = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}}
+\begin{DoxyCompactList}\small\item\em Index of the first playable cell. \end{DoxyCompactList}\item 
+static final int \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_ad571b77423c81d1a0ce642108ad3a5a7}{MAX\+\_\+\+CELL}} = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}{CELL\+\_\+\+COUNT}} -\/ \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}} -\/ 1
+\begin{DoxyCompactList}\small\item\em Index of the last playable cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines constants used in the game. 
+
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00010}{10}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a3da6e82d69a2b610c4249fe4802bddfa}\label{interfaceorg_1_1utilities_1_1_game_constants_a3da6e82d69a2b610c4249fe4802bddfa}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!BORDER\_THC@{BORDER\_THC}}
+\index{BORDER\_THC@{BORDER\_THC}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{BORDER\_THC}{BORDER\_THC}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+BORDER\+\_\+\+THC = 5\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Thickness of the borders in pixels. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00041}{41}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}\label{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!CELL\_COUNT@{CELL\_COUNT}}
+\index{CELL\_COUNT@{CELL\_COUNT}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{CELL\_COUNT}{CELL\_COUNT}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+CELL\+\_\+\+COUNT = 40\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The amount of cells in one row/column. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00025}{25}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}\label{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!CELL\_SIZE@{CELL\_SIZE}}
+\index{CELL\_SIZE@{CELL\_SIZE}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{CELL\_SIZE}{CELL\_SIZE}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+CELL\+\_\+\+SIZE = WINDOW\+\_\+\+SIZE.\+x / \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}{CELL\+\_\+\+COUNT}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Size of one cell. 
+
+Determined by the window size and the cell count. 
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00030}{30}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a1a3eb652a135b2801cd8cc8e0bd8555d}\label{interfaceorg_1_1utilities_1_1_game_constants_a1a3eb652a135b2801cd8cc8e0bd8555d}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!EFFECT\_DURATION@{EFFECT\_DURATION}}
+\index{EFFECT\_DURATION@{EFFECT\_DURATION}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{EFFECT\_DURATION}{EFFECT\_DURATION}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+EFFECT\+\_\+\+DURATION = 8000\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Duration of timed bonus food effects (in ms). 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00035}{35}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a8136f047f4453ea62cb67a191f622854}\label{interfaceorg_1_1utilities_1_1_game_constants_a8136f047f4453ea62cb67a191f622854}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!FPS@{FPS}}
+\index{FPS@{FPS}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{FPS}{FPS}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+FPS = 60\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The base FPS of the game. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00020}{20}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}\label{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!MARGIN\_CELLS@{MARGIN\_CELLS}}
+\index{MARGIN\_CELLS@{MARGIN\_CELLS}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{MARGIN\_CELLS}{MARGIN\_CELLS}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+MARGIN\+\_\+\+CELLS = 3\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Size of the margin (area between borders and screen edge) in cells. 
+
+Unplayable area/cells. 
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00046}{46}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a5e8f8315048a46d4481d81f4d97a2b0e}\label{interfaceorg_1_1utilities_1_1_game_constants_a5e8f8315048a46d4481d81f4d97a2b0e}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!MARGIN\_INNER@{MARGIN\_INNER}}
+\index{MARGIN\_INNER@{MARGIN\_INNER}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{MARGIN\_INNER}{MARGIN\_INNER}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+MARGIN\+\_\+\+INNER = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a9b515d8c9f87cdc0c69999324c2c1bfa}{CELL\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Distance from screen edge to inner margin point. 
+
+Determined by the size of the cells and size of the margin in cells. 
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00052}{52}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_aa63f55c9a0117c11f914eea85022dfe2}\label{interfaceorg_1_1utilities_1_1_game_constants_aa63f55c9a0117c11f914eea85022dfe2}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!MARGIN\_OUTER@{MARGIN\_OUTER}}
+\index{MARGIN\_OUTER@{MARGIN\_OUTER}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{MARGIN\_OUTER}{MARGIN\_OUTER}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+MARGIN\+\_\+\+OUTER = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a5e8f8315048a46d4481d81f4d97a2b0e}{MARGIN\+\_\+\+INNER}} -\/ \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a3da6e82d69a2b610c4249fe4802bddfa}{BORDER\+\_\+\+THC}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Distance from screen edge to outer margin point (excluding the thickness). 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00057}{57}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_ad571b77423c81d1a0ce642108ad3a5a7}\label{interfaceorg_1_1utilities_1_1_game_constants_ad571b77423c81d1a0ce642108ad3a5a7}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!MAX\_CELL@{MAX\_CELL}}
+\index{MAX\_CELL@{MAX\_CELL}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{MAX\_CELL}{MAX\_CELL}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+MAX\+\_\+\+CELL = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a74a624e500d1b646049af65394ab945a}{CELL\+\_\+\+COUNT}} -\/ \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}} -\/ 1\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Index of the last playable cell. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00067}{67}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_a1bd96018de49bea031f5562cd69e1fa4}\label{interfaceorg_1_1utilities_1_1_game_constants_a1bd96018de49bea031f5562cd69e1fa4}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!MIN\_CELL@{MIN\_CELL}}
+\index{MIN\_CELL@{MIN\_CELL}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{MIN\_CELL}{MIN\_CELL}}
+{\footnotesize\ttfamily final int org.\+utilities.\+Game\+Constants.\+MIN\+\_\+\+CELL = \mbox{\hyperlink{interfaceorg_1_1utilities_1_1_game_constants_a2832bd38c7514c3fb6f40b37b079192f}{MARGIN\+\_\+\+CELLS}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Index of the first playable cell. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00062}{62}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+\mbox{\Hypertarget{interfaceorg_1_1utilities_1_1_game_constants_aeb85633533bae71d0d3753b31bf1b1ab}\label{interfaceorg_1_1utilities_1_1_game_constants_aeb85633533bae71d0d3753b31bf1b1ab}} 
+\index{org.utilities.GameConstants@{org.utilities.GameConstants}!WINDOW\_SIZE@{WINDOW\_SIZE}}
+\index{WINDOW\_SIZE@{WINDOW\_SIZE}!org.utilities.GameConstants@{org.utilities.GameConstants}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_SIZE}{WINDOW\_SIZE}}
+{\footnotesize\ttfamily final Point org.\+utilities.\+Game\+Constants.\+WINDOW\+\_\+\+SIZE = new Point(800, 800)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Point representing the window dimensions. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_constants_8java_source_l00015}{15}} of file \mbox{\hyperlink{_game_constants_8java_source}{Game\+Constants.\+java}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_constants_8java}{Game\+Constants.\+java}}\end{DoxyCompactItemize}

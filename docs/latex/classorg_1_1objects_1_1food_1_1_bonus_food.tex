@@ -1,0 +1,195 @@
+\hypertarget{classorg_1_1objects_1_1food_1_1_bonus_food}{}\doxysection{org.\+objects.\+food.\+Bonus\+Food Class Reference}
+\label{classorg_1_1objects_1_1food_1_1_bonus_food}\index{org.objects.food.BonusFood@{org.objects.food.BonusFood}}
+
+
+Represents bonus food.  
+
+
+Inheritance diagram for org.\+objects.\+food.\+Bonus\+Food\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classorg_1_1objects_1_1food_1_1_bonus_food}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_bonus_food_ab1f5ab18a69c5f53a54d12e533ba3fd6}{Bonus\+Food}} ()
+\begin{DoxyCompactList}\small\item\em Creates a Bonus\+Food instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_bonus_food_a40f420b52f0c1b6d8f14275d50ee3d01}{respawn}} ()
+\begin{DoxyCompactList}\small\item\em Overrides default food respawning. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_bonus_food_a9195616a7c28078133c5ac3dbd8404e0}{draw}} (Graphics2D frame)
+\begin{DoxyCompactList}\small\item\em Method to draw the food item onto the screen (frame). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{org.\+objects.\+food.\+Food}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a4edf52682277b9e007f11d3c2b455919}{Food}} ()
+\begin{DoxyCompactList}\small\item\em Creates a food item of default type in a random playable cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_ac6b080f5f5247e8bf7556ea4ccb5e64b}{respawn}} ()
+\begin{DoxyCompactList}\small\item\em Sets the position to a random playable cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_ad2047b6fb30d925fdc4a6cab338d7996}{draw}} (Graphics2D frame)
+\begin{DoxyCompactList}\small\item\em Draws the food object onto the supplied frame in its current position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a71f6e6cd8f8a4515daac922e9f0bee2d}{get\+Food\+Location}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the current food position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumorg_1_1objects_1_1food_1_1_food_type}{Food\+Type}} \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a1ecf313f48e16abec8b47e3446c20060}{get\+Food\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the food type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_bonus_food_afd1af2ac8f2fca11d469e121d6c001a1}{rand\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Helper method to generate and assign a random type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_bonus_food_a12d721209f19d63a6b122c68f93d7ecd}{icon}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{org.\+objects.\+food.\+Food}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1utilities_1_1_cell_position}{Cell\+Position}} \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a5a9a6fcc8215428b86f596440d91dba9}{food\+Location}}
+\item 
+Random \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a3220be257b47faa40fe3541d05929348}{rand}}
+\item 
+Color \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a90d49a35b71a74514614fc1171b46473}{color}}
+\item 
+\mbox{\hyperlink{enumorg_1_1objects_1_1food_1_1_food_type}{Food\+Type}} \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a6523cf4a6b74573045c4538bde0229f0}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{org.\+objects.\+food.\+Food}}}
+\begin{DoxyCompactItemize}
+\item 
+static final int \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_a587f7378bc688ad0ebdec023a8dab0a1}{BORDER\+\_\+\+SIZE}} = 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents bonus food. 
+
+Extends food. Includes random type selection and appropriate icon and color selection. \begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+
+Fatemeh Akbarifar (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_bonus_food_8java_source_l00013}{13}} of file \mbox{\hyperlink{_bonus_food_8java_source}{Bonus\+Food.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classorg_1_1objects_1_1food_1_1_bonus_food_ab1f5ab18a69c5f53a54d12e533ba3fd6}\label{classorg_1_1objects_1_1food_1_1_bonus_food_ab1f5ab18a69c5f53a54d12e533ba3fd6}} 
+\index{org.objects.food.BonusFood@{org.objects.food.BonusFood}!BonusFood@{BonusFood}}
+\index{BonusFood@{BonusFood}!org.objects.food.BonusFood@{org.objects.food.BonusFood}}
+\doxysubsubsection{\texorpdfstring{BonusFood()}{BonusFood()}}
+{\footnotesize\ttfamily org.\+objects.\+food.\+Bonus\+Food.\+Bonus\+Food (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a Bonus\+Food instance. 
+
+Same as food, but uses overridden respawn() that includes random type generation. \begin{DoxySeeAlso}{See also}
+Food\+::\+Food() 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_bonus_food_8java_source_l00021}{21}} of file \mbox{\hyperlink{_bonus_food_8java_source}{Bonus\+Food.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classorg_1_1objects_1_1food_1_1_bonus_food_a9195616a7c28078133c5ac3dbd8404e0}\label{classorg_1_1objects_1_1food_1_1_bonus_food_a9195616a7c28078133c5ac3dbd8404e0}} 
+\index{org.objects.food.BonusFood@{org.objects.food.BonusFood}!draw@{draw}}
+\index{draw@{draw}!org.objects.food.BonusFood@{org.objects.food.BonusFood}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void org.\+objects.\+food.\+Bonus\+Food.\+draw (\begin{DoxyParamCaption}\item[{Graphics2D}]{frame }\end{DoxyParamCaption})}
+
+
+
+Method to draw the food item onto the screen (frame). 
+
+Same as Food, but includes an appropriate icon based on the type. 
+\begin{DoxyParams}{Parameters}
+{\em frame} & Swing Graphics2D object that represents the current frame to be updated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+Food\+::draw(\+Graphics2\+D) 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Reimplemented from \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_ad2047b6fb30d925fdc4a6cab338d7996}{org.\+objects.\+food.\+Food}}.
+
+
+
+Definition at line \mbox{\hyperlink{_bonus_food_8java_source_l00044}{44}} of file \mbox{\hyperlink{_bonus_food_8java_source}{Bonus\+Food.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1food_1_1_bonus_food_afd1af2ac8f2fca11d469e121d6c001a1}\label{classorg_1_1objects_1_1food_1_1_bonus_food_afd1af2ac8f2fca11d469e121d6c001a1}} 
+\index{org.objects.food.BonusFood@{org.objects.food.BonusFood}!randType@{randType}}
+\index{randType@{randType}!org.objects.food.BonusFood@{org.objects.food.BonusFood}}
+\doxysubsubsection{\texorpdfstring{randType()}{randType()}}
+{\footnotesize\ttfamily void org.\+objects.\+food.\+Bonus\+Food.\+rand\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper method to generate and assign a random type. 
+
+Assigns the color and icon according to the type. \begin{DoxySeeAlso}{See also}
+Food\+Type 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+
+Maksims Orlovs (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_bonus_food_8java_source_l00065}{65}} of file \mbox{\hyperlink{_bonus_food_8java_source}{Bonus\+Food.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1objects_1_1food_1_1_bonus_food_a40f420b52f0c1b6d8f14275d50ee3d01}\label{classorg_1_1objects_1_1food_1_1_bonus_food_a40f420b52f0c1b6d8f14275d50ee3d01}} 
+\index{org.objects.food.BonusFood@{org.objects.food.BonusFood}!respawn@{respawn}}
+\index{respawn@{respawn}!org.objects.food.BonusFood@{org.objects.food.BonusFood}}
+\doxysubsubsection{\texorpdfstring{respawn()}{respawn()}}
+{\footnotesize\ttfamily void org.\+objects.\+food.\+Bonus\+Food.\+respawn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Overrides default food respawning. 
+
+Same as Food, but includes random type generation. \begin{DoxySeeAlso}{See also}
+Food\+::respawn() 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Reimplemented from \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food_ac6b080f5f5247e8bf7556ea4ccb5e64b}{org.\+objects.\+food.\+Food}}.
+
+
+
+Definition at line \mbox{\hyperlink{_bonus_food_8java_source_l00031}{31}} of file \mbox{\hyperlink{_bonus_food_8java_source}{Bonus\+Food.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classorg_1_1objects_1_1food_1_1_bonus_food_a12d721209f19d63a6b122c68f93d7ecd}\label{classorg_1_1objects_1_1food_1_1_bonus_food_a12d721209f19d63a6b122c68f93d7ecd}} 
+\index{org.objects.food.BonusFood@{org.objects.food.BonusFood}!icon@{icon}}
+\index{icon@{icon}!org.objects.food.BonusFood@{org.objects.food.BonusFood}}
+\doxysubsubsection{\texorpdfstring{icon}{icon}}
+{\footnotesize\ttfamily String org.\+objects.\+food.\+Bonus\+Food.\+icon\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bonus_food_8java_source_l00014}{14}} of file \mbox{\hyperlink{_bonus_food_8java_source}{Bonus\+Food.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_bonus_food_8java}{Bonus\+Food.\+java}}\end{DoxyCompactItemize}

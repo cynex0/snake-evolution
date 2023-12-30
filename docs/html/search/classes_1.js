@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cellposition_0',['CellPosition',['../classutilities_1_1_cell_position.html',1,'utilities']]]
+  ['bgpanel_0',['BgPanel',['../classorg_1_1panels_1_1_bg_panel.html',1,'org::panels']]],
+  ['bonusfood_1',['BonusFood',['../classorg_1_1objects_1_1food_1_1_bonus_food.html',1,'org::objects::food']]]
 ];

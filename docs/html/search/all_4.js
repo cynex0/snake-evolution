@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['editbutton_0',['editButton',['../classutilities_1_1_game_button.html#a84f981b8ba59d71b96eb8713ab59cc8e',1,'utilities::GameButton']]],
-  ['effect_5fduration_1',['EFFECT_DURATION',['../interfaceutilities_1_1_game_constants.html#a27ba68f50e40a3a8e554b179b49f6bda',1,'utilities::GameConstants']]],
-  ['enternamefield_2',['enterNameField',['../classpanels_1_1_game_over.html#a01b094526a178530146e63f0d76eddad',1,'panels::GameOver']]],
-  ['equals_3',['equals',['../classutilities_1_1_cell_position.html#a357f0ec9b6f33f39f7ab57855738bdc6',1,'utilities.CellPosition.equals()'],['../classutilities_1_1_player.html#a391dbad5aa252686964ef1e7f86a7856',1,'utilities.Player.equals()']]],
-  ['exitbtn_4',['exitBtn',['../classpanels_1_1_main_menu.html#abbbe0aef0f868c21826d0116470c99a6',1,'panels::MainMenu']]]
+  ['editbutton_0',['editButton',['../classorg_1_1utilities_1_1_game_button.html#a0d62f7fac971088f66284e85bd038c86',1,'org::utilities::GameButton']]],
+  ['effect_5fduration_1',['EFFECT_DURATION',['../interfaceorg_1_1utilities_1_1_game_constants.html#a1a3eb652a135b2801cd8cc8e0bd8555d',1,'org::utilities::GameConstants']]],
+  ['enternamefield_2',['enterNameField',['../classorg_1_1panels_1_1_game_over.html#ab0810c42f285328b64c7f9e51e6a7a19',1,'org::panels::GameOver']]],
+  ['equals_3',['equals',['../classorg_1_1utilities_1_1_cell_position.html#a8b061b6b45a3cbf15a540d8903b0d57f',1,'org.utilities.CellPosition.equals()'],['../classorg_1_1utilities_1_1_player.html#aee7a413cb47cb7842f694e1c0c579471',1,'org.utilities.Player.equals()']]],
+  ['exitbtn_4',['exitBtn',['../classorg_1_1panels_1_1_main_menu.html#a7f030b433ba28d71fef043620661d40d',1,'org::panels::MainMenu']]]
 ];

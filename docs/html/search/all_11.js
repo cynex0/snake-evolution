@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['up_0',['UP',['../enumutilities_1_1_direction.html#a8340dc223b0bfa1e858b32a92e11cd83',1,'utilities::Direction']]],
-  ['update_1',['update',['../classpanels_1_1_game_panel.html#af2bac3e0d26082b6633fc59ae267d3e6',1,'panels::GamePanel']]],
-  ['updatedirection_2',['updateDirection',['../classobjects_1_1_snake.html#ad7a0e6d00ab85870dd5b259a50d2def2',1,'objects::Snake']]],
-  ['updateeffects_3',['updateEffects',['../classpanels_1_1_game_panel.html#a9d990d39924c116f11783ea9c8a37290',1,'panels::GamePanel']]],
-  ['utilities_4',['utilities',['../namespaceutilities.html',1,'']]]
+  ['up_0',['UP',['../enumorg_1_1utilities_1_1_direction.html#addfbb146f2dc944c2c4227bf51bc83be',1,'org::utilities::Direction']]],
+  ['update_1',['update',['../classorg_1_1panels_1_1_game_panel.html#a9f9424ba24b1c266320cf473dc5fa282',1,'org::panels::GamePanel']]],
+  ['updatedirection_2',['updateDirection',['../classorg_1_1objects_1_1_snake.html#ad060c540a519426a97334b35a0236627',1,'org::objects::Snake']]],
+  ['updateeffects_3',['updateEffects',['../classorg_1_1panels_1_1_game_panel.html#af5e44d4dfc726756cf59a92587470435',1,'org::panels::GamePanel']]]
 ];

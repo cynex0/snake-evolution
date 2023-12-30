@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['tutorial_0',['TUTORIAL',['../enummain_1_1engine_1_1_game_state.html#aed36e1692c22c8ec8a6f6972d0fc2ad4',1,'main::engine::GameState']]],
-  ['tutorialbtn_1',['tutorialBtn',['../classpanels_1_1_main_menu.html#a5020dab8b499ba5e64c86090af10a2a5',1,'panels::MainMenu']]],
-  ['tutorialpic_2',['tutorialPic',['../classpanels_1_1_tutorial.html#a1304ccde2ee781b92494b2bf39c8727b',1,'panels::Tutorial']]],
-  ['type_3',['type',['../classobjects_1_1food_1_1_food.html#ae599b70033ebc771519043943e44d992',1,'objects::food::Food']]]
+  ['tutorial_0',['TUTORIAL',['../enumorg_1_1engine_1_1_game_state.html#a7a90c87ccb61070b8a473e2b29668f82',1,'org::engine::GameState']]],
+  ['tutorialbtn_1',['tutorialBtn',['../classorg_1_1panels_1_1_main_menu.html#a6992615b32ed5bd5abc2d44f01e947bc',1,'org::panels::MainMenu']]],
+  ['tutorialpic_2',['tutorialPic',['../classorg_1_1panels_1_1_tutorial.html#a03504975fd08af963e9486b9a754576a',1,'org::panels::Tutorial']]],
+  ['type_3',['type',['../classorg_1_1objects_1_1food_1_1_food.html#a6523cf4a6b74573045c4538bde0229f0',1,'org::objects::food::Food']]]
 ];

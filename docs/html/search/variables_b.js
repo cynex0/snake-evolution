@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['obstacles_0',['obstacles',['../classobjects_1_1obstacle_1_1_obstacle_list.html#ab6f2e31891465908b139d75316a51826',1,'objects.obstacle.ObstacleList.obstacles()'],['../classpanels_1_1_game_panel.html#a8da13e09451433adc3f09f028b4ab27d',1,'panels.GamePanel.obstacles()']]]
+  ['obstacles_0',['obstacles',['../classorg_1_1objects_1_1obstacle_1_1_obstacle_list.html#a9e97f64088b744c9910ccfe50dc08b38',1,'org.objects.obstacle.ObstacleList.obstacles()'],['../classorg_1_1panels_1_1_game_panel.html#a8479aef906e81b6e590edaf59db7f6b5',1,'org.panels.GamePanel.obstacles()']]]
 ];

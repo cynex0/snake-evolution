@@ -1,0 +1,501 @@
+\hypertarget{classorg_1_1panels_1_1_game_panel}{}\doxysection{org.\+panels.\+Game\+Panel Class Reference}
+\label{classorg_1_1panels_1_1_game_panel}\index{org.panels.GamePanel@{org.panels.GamePanel}}
+
+
+Represents the gameplay state.  
+
+
+Inheritance diagram for org.\+panels.\+Game\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classorg_1_1panels_1_1_game_panel}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a9dbac1dd44db381c8d45f02876462061}{Game\+Panel}} (\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} listener)
+\begin{DoxyCompactList}\small\item\em Constructs the initial Game\+Panel and objects for handling the gameplay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a9f9424ba24b1c266320cf473dc5fa282}{update}} ()
+\begin{DoxyCompactList}\small\item\em Updates positions and interaction of all objects (snake effects, position, collision). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a14b3cc1496098f04e6641222742a255e}{get\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the current player score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_abf0ab498407591019679025c0d40b096}{paint\+Component}} (Graphics g)
+\begin{DoxyCompactList}\small\item\em Draws all contents of the panel (snake, food objects, obstacles, score) and the background. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a331662fe878a6ac89a28dab3e67dedff}{start\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Starts the game loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a7daebeece6c16e5667657d08694932d6}{stop\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Ends the game loop and changes to the appropriate game-\/over screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_aed44ee6ce088f6d7590e7956e55ee025}{key\+Typed}} (Key\+Event e)
+\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a0a1cd6f9afce032a4fb9b414dde2f095}{key\+Pressed}} (Key\+Event e)
+\begin{DoxyCompactList}\small\item\em Handles user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a56274b834ca4fc9320e2f82b091f1147}{key\+Released}} (Key\+Event e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a5ef85d4de3df0940e1cc44942fe5ff1a}{adjust\+Snake\+Speed}} (double speed\+Multiplier)
+\begin{DoxyCompactList}\small\item\em Adjusts the delay between frames in the game loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_af5e44d4dfc726756cf59a92587470435}{update\+Effects}} ()
+\begin{DoxyCompactList}\small\item\em Updates the status of the effects. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a2bfeffbefda34963a86c652013e61b83}{do\+Food\+Collisions}} ()
+\begin{DoxyCompactList}\small\item\em Checks collisions with food items. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_aaceb6615337a6c99cc141d5e09c95c63}{apply\+Food\+Effect}} (\mbox{\hyperlink{enumorg_1_1objects_1_1food_1_1_food_type}{Food\+Type}} food\+Type)
+\begin{DoxyCompactList}\small\item\em Applies the effect of an eaten food object to the game depending on the type of the food. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{Food}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_ad2daf9e1b674413372929a5b9ac3f7ed}{generate\+New\+Food\+Item}} (boolean is\+Bonus)
+\begin{DoxyCompactList}\small\item\em Generates a food object in a random valid position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1panels_1_1_bg_panel}{Bg\+Panel}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a6c52abbd6a3b2c3a51c3345ba46a845d}{bg}}
+\item 
+\mbox{\hyperlink{classorg_1_1objects_1_1_snake}{Snake}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_adcef4241a8a32fbf0da2ea4f1ed6625e}{snake}}
+\item 
+Array\+List$<$ \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{Food}} $>$ \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_ad2257c7dba73b7dce19f7cebde278c7b}{food}}
+\item 
+Random \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_ae28ba2dc4d1cca876a41b1742c93759d}{rand}}
+\item 
+\mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_list}{Obstacle\+List}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a8479aef906e81b6e590edaf59db7f6b5}{obstacles}}
+\item 
+int \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a3f486b1c51a0dd47d0e560fd86ae0cb7}{score}}
+\item 
+final Timer \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a46e221f666c1a49861bd112882f1fee9}{game\+Loop}}
+\item 
+long \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a6b71f3d8167455fb1a3eeb5abd62b065}{start\+Time}}
+\item 
+boolean \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_ad7afd2e5abd675aa7019d47bec75627b}{fast\+Mode}}
+\item 
+boolean \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a0947c91ac7952bb54f3e9a7324db6408}{slow\+Mode}}
+\item 
+boolean \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a44ce6d4aad22f1c0b7a1f24cdb22bf12}{key\+Inverter}}
+\item 
+\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} \mbox{\hyperlink{classorg_1_1panels_1_1_game_panel_a85475088562eb0f9815473decd74464c}{state\+Changer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the gameplay state. 
+
+Handles gameplay logic and drawing of all objects. \begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+
+Fatemeh Akbarifar (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00027}{27}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a9dbac1dd44db381c8d45f02876462061}\label{classorg_1_1panels_1_1_game_panel_a9dbac1dd44db381c8d45f02876462061}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!GamePanel@{GamePanel}}
+\index{GamePanel@{GamePanel}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{GamePanel()}{GamePanel()}}
+{\footnotesize\ttfamily org.\+panels.\+Game\+Panel.\+Game\+Panel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}}}]{listener }\end{DoxyParamCaption})}
+
+
+
+Constructs the initial Game\+Panel and objects for handling the gameplay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & reference to the observer object to allow requesting state change \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+
+Fatemeh Akbarifar (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00047}{47}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a5ef85d4de3df0940e1cc44942fe5ff1a}\label{classorg_1_1panels_1_1_game_panel_a5ef85d4de3df0940e1cc44942fe5ff1a}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!adjustSnakeSpeed@{adjustSnakeSpeed}}
+\index{adjustSnakeSpeed@{adjustSnakeSpeed}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{adjustSnakeSpeed()}{adjustSnakeSpeed()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+adjust\+Snake\+Speed (\begin{DoxyParamCaption}\item[{double}]{speed\+Multiplier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adjusts the delay between frames in the game loop. 
+
+Appears as the game\textquotesingle{}s speed change. 
+\begin{DoxyParams}{Parameters}
+{\em speed\+Multiplier} & factor to multiply the speed by. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00111}{111}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_aaceb6615337a6c99cc141d5e09c95c63}\label{classorg_1_1panels_1_1_game_panel_aaceb6615337a6c99cc141d5e09c95c63}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!applyFoodEffect@{applyFoodEffect}}
+\index{applyFoodEffect@{applyFoodEffect}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{applyFoodEffect()}{applyFoodEffect()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+apply\+Food\+Effect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumorg_1_1objects_1_1food_1_1_food_type}{Food\+Type}}}]{food\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Applies the effect of an eaten food object to the game depending on the type of the food. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em food\+Type} & the type of the eaten food \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+
+Maksims Orlovs (co-\/author) 
+
+Marwa Abohachem (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00176}{176}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a2bfeffbefda34963a86c652013e61b83}\label{classorg_1_1panels_1_1_game_panel_a2bfeffbefda34963a86c652013e61b83}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!doFoodCollisions@{doFoodCollisions}}
+\index{doFoodCollisions@{doFoodCollisions}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{doFoodCollisions()}{doFoodCollisions()}}
+{\footnotesize\ttfamily boolean org.\+panels.\+Game\+Panel.\+do\+Food\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks collisions with food items. 
+
+\begin{DoxyReturn}{Returns}
+true if food is eaten 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+
+Maksims Orlovs (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00139}{139}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_ad2daf9e1b674413372929a5b9ac3f7ed}\label{classorg_1_1panels_1_1_game_panel_ad2daf9e1b674413372929a5b9ac3f7ed}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!generateNewFoodItem@{generateNewFoodItem}}
+\index{generateNewFoodItem@{generateNewFoodItem}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{generateNewFoodItem()}{generateNewFoodItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{Food}} org.\+panels.\+Game\+Panel.\+generate\+New\+Food\+Item (\begin{DoxyParamCaption}\item[{boolean}]{is\+Bonus }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates a food object in a random valid position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Bonus} & determines if a food item to generate is default or bonus \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+generated Food object 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00215}{215}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a14b3cc1496098f04e6641222742a255e}\label{classorg_1_1panels_1_1_game_panel_a14b3cc1496098f04e6641222742a255e}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!getScore@{getScore}}
+\index{getScore@{getScore}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily int org.\+panels.\+Game\+Panel.\+get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the current player score. 
+
+\begin{DoxyReturn}{Returns}
+current score 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00234}{234}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a0a1cd6f9afce032a4fb9b414dde2f095}\label{classorg_1_1panels_1_1_game_panel_a0a1cd6f9afce032a4fb9b414dde2f095}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!keyPressed@{keyPressed}}
+\index{keyPressed@{keyPressed}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{keyPressed()}{keyPressed()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+key\+Pressed (\begin{DoxyParamCaption}\item[{Key\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Handles user input. 
+
+Requests the change of direction from the snake if one of the arrow keys is pressed. 
+\begin{DoxyParams}{Parameters}
+{\em e} & the key-\/press event to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+
+Maksims Orlovs (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00310}{310}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a56274b834ca4fc9320e2f82b091f1147}\label{classorg_1_1panels_1_1_game_panel_a56274b834ca4fc9320e2f82b091f1147}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!keyReleased@{keyReleased}}
+\index{keyReleased@{keyReleased}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{keyReleased()}{keyReleased()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+key\+Released (\begin{DoxyParamCaption}\item[{Key\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00348}{348}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_aed44ee6ce088f6d7590e7956e55ee025}\label{classorg_1_1panels_1_1_game_panel_aed44ee6ce088f6d7590e7956e55ee025}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!keyTyped@{keyTyped}}
+\index{keyTyped@{keyTyped}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{keyTyped()}{keyTyped()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+key\+Typed (\begin{DoxyParamCaption}\item[{Key\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00301}{301}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_abf0ab498407591019679025c0d40b096}\label{classorg_1_1panels_1_1_game_panel_abf0ab498407591019679025c0d40b096}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!paintComponent@{paintComponent}}
+\index{paintComponent@{paintComponent}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{paintComponent()}{paintComponent()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})}
+
+
+
+Draws all contents of the panel (snake, food objects, obstacles, score) and the background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & graphics component supplied by the Game\+Frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+
+Fatemeh Akbarifar (co-\/author) 
+
+Marwa Abohachem (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00246}{246}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a331662fe878a6ac89a28dab3e67dedff}\label{classorg_1_1panels_1_1_game_panel_a331662fe878a6ac89a28dab3e67dedff}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!startGame@{startGame}}
+\index{startGame@{startGame}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the game loop. 
+
+\begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00279}{279}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a7daebeece6c16e5667657d08694932d6}\label{classorg_1_1panels_1_1_game_panel_a7daebeece6c16e5667657d08694932d6}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!stopGame@{stopGame}}
+\index{stopGame@{stopGame}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{stopGame()}{stopGame()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+stop\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ends the game loop and changes to the appropriate game-\/over screen. 
+
+\begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00287}{287}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a9f9424ba24b1c266320cf473dc5fa282}\label{classorg_1_1panels_1_1_game_panel_a9f9424ba24b1c266320cf473dc5fa282}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!update@{update}}
+\index{update@{update}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates positions and interaction of all objects (snake effects, position, collision). 
+
+Part of game loop. \begin{DoxyAuthor}{Author}
+Maksims Orlovs 
+
+Fatemeh Akbarifar (co-\/author) 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00082}{82}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_af5e44d4dfc726756cf59a92587470435}\label{classorg_1_1panels_1_1_game_panel_af5e44d4dfc726756cf59a92587470435}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!updateEffects@{updateEffects}}
+\index{updateEffects@{updateEffects}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{updateEffects()}{updateEffects()}}
+{\footnotesize\ttfamily void org.\+panels.\+Game\+Panel.\+update\+Effects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the status of the effects. 
+
+Check if the effect time is over, removes the effect. \begin{DoxyAuthor}{Author}
+Fatemeh Akbarifar 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00120}{120}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a6c52abbd6a3b2c3a51c3345ba46a845d}\label{classorg_1_1panels_1_1_game_panel_a6c52abbd6a3b2c3a51c3345ba46a845d}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!bg@{bg}}
+\index{bg@{bg}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{bg}{bg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1panels_1_1_bg_panel}{Bg\+Panel}} org.\+panels.\+Game\+Panel.\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00028}{28}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_ad7afd2e5abd675aa7019d47bec75627b}\label{classorg_1_1panels_1_1_game_panel_ad7afd2e5abd675aa7019d47bec75627b}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!fastMode@{fastMode}}
+\index{fastMode@{fastMode}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{fastMode}{fastMode}}
+{\footnotesize\ttfamily boolean org.\+panels.\+Game\+Panel.\+fast\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00038}{38}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_ad2257c7dba73b7dce19f7cebde278c7b}\label{classorg_1_1panels_1_1_game_panel_ad2257c7dba73b7dce19f7cebde278c7b}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!food@{food}}
+\index{food@{food}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{food}{food}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classorg_1_1objects_1_1food_1_1_food}{Food}}$>$ org.\+panels.\+Game\+Panel.\+food\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00030}{30}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a46e221f666c1a49861bd112882f1fee9}\label{classorg_1_1panels_1_1_game_panel_a46e221f666c1a49861bd112882f1fee9}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!gameLoop@{gameLoop}}
+\index{gameLoop@{gameLoop}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{gameLoop}{gameLoop}}
+{\footnotesize\ttfamily final Timer org.\+panels.\+Game\+Panel.\+game\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00035}{35}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a44ce6d4aad22f1c0b7a1f24cdb22bf12}\label{classorg_1_1panels_1_1_game_panel_a44ce6d4aad22f1c0b7a1f24cdb22bf12}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!keyInverter@{keyInverter}}
+\index{keyInverter@{keyInverter}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{keyInverter}{keyInverter}}
+{\footnotesize\ttfamily boolean org.\+panels.\+Game\+Panel.\+key\+Inverter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00038}{38}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a8479aef906e81b6e590edaf59db7f6b5}\label{classorg_1_1panels_1_1_game_panel_a8479aef906e81b6e590edaf59db7f6b5}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!obstacles@{obstacles}}
+\index{obstacles@{obstacles}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{obstacles}{obstacles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1objects_1_1obstacle_1_1_obstacle_list}{Obstacle\+List}} org.\+panels.\+Game\+Panel.\+obstacles\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00032}{32}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_ae28ba2dc4d1cca876a41b1742c93759d}\label{classorg_1_1panels_1_1_game_panel_ae28ba2dc4d1cca876a41b1742c93759d}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!rand@{rand}}
+\index{rand@{rand}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{rand}{rand}}
+{\footnotesize\ttfamily Random org.\+panels.\+Game\+Panel.\+rand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00031}{31}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a3f486b1c51a0dd47d0e560fd86ae0cb7}\label{classorg_1_1panels_1_1_game_panel_a3f486b1c51a0dd47d0e560fd86ae0cb7}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!score@{score}}
+\index{score@{score}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int org.\+panels.\+Game\+Panel.\+score\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00034}{34}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a0947c91ac7952bb54f3e9a7324db6408}\label{classorg_1_1panels_1_1_game_panel_a0947c91ac7952bb54f3e9a7324db6408}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!slowMode@{slowMode}}
+\index{slowMode@{slowMode}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{slowMode}{slowMode}}
+{\footnotesize\ttfamily boolean org.\+panels.\+Game\+Panel.\+slow\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00038}{38}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_adcef4241a8a32fbf0da2ea4f1ed6625e}\label{classorg_1_1panels_1_1_game_panel_adcef4241a8a32fbf0da2ea4f1ed6625e}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!snake@{snake}}
+\index{snake@{snake}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{snake}{snake}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classorg_1_1objects_1_1_snake}{Snake}} org.\+panels.\+Game\+Panel.\+snake\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00029}{29}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a6b71f3d8167455fb1a3eeb5abd62b065}\label{classorg_1_1panels_1_1_game_panel_a6b71f3d8167455fb1a3eeb5abd62b065}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!startTime@{startTime}}
+\index{startTime@{startTime}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{startTime}{startTime}}
+{\footnotesize\ttfamily long org.\+panels.\+Game\+Panel.\+start\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00036}{36}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+\mbox{\Hypertarget{classorg_1_1panels_1_1_game_panel_a85475088562eb0f9815473decd74464c}\label{classorg_1_1panels_1_1_game_panel_a85475088562eb0f9815473decd74464c}} 
+\index{org.panels.GamePanel@{org.panels.GamePanel}!stateChanger@{stateChanger}}
+\index{stateChanger@{stateChanger}!org.panels.GamePanel@{org.panels.GamePanel}}
+\doxysubsubsection{\texorpdfstring{stateChanger}{stateChanger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfaceorg_1_1engine_1_1_state_change_listener}{State\+Change\+Listener}} org.\+panels.\+Game\+Panel.\+state\+Changer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_game_panel_8java_source_l00039}{39}} of file \mbox{\hyperlink{_game_panel_8java_source}{Game\+Panel.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_panel_8java}{Game\+Panel.\+java}}\end{DoxyCompactItemize}
