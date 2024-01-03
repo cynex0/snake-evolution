@@ -30,7 +30,7 @@ _Note: the directory that contains the game executable must also contain the ass
 <table>
   <tr>
     <td>
-      <img src="assets/readme/main.png" alt="Main Menu" width="400">
+      <img src="assets/readme/main.png" alt="Main Menu" width="300">
     </td>
     <td>
       <h3>Main Menu</h3>
@@ -46,7 +46,7 @@ _Note: the directory that contains the game executable must also contain the ass
   </tr>
   <tr>
     <td>
-      <img src="assets/readme/game.png" alt="Gameplay" width="400">
+      <img src="assets/readme/game.png" alt="Gameplay" width="300">
     </td>
     <td>
       <h3>Gameplay</h3>
@@ -56,7 +56,7 @@ _Note: the directory that contains the game executable must also contain the ass
   </tr>
   <tr>
     <td>
-      <img src="assets/readme/over.png" alt="Gameplay" width="400">
+      <img src="assets/readme/over.png" alt="Gameplay" width="300">
     </td>
     <td>
       <h3>Game Over</h3>
@@ -66,7 +66,7 @@ _Note: the directory that contains the game executable must also contain the ass
   </tr>
   <tr>
     <td>
-      <img src="assets/readme/hiscore.png" alt="Gameplay" width="400">
+      <img src="assets/readme/hiscore.png" alt="Gameplay" width="300">
     </td>
     <td>
       <h3>Game Over (high score)</h3>
@@ -77,7 +77,7 @@ _Note: the directory that contains the game executable must also contain the ass
   </tr>
   <tr>
     <td>
-      <img src="assets/readme/leader.png" alt="Leaderboard" width="400">
+      <img src="assets/readme/leader.png" alt="Leaderboard" width="300">
     </td>
     <td>
       <h3>Leaderboard</h3>
