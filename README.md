@@ -38,7 +38,7 @@ _Note: the directory that contains the game executable must also contain the ass
       <p>Click the buttons to trigger corresponding action:</p>
       <ul>
         <li>'Start' - Starts the game</li>
-        <li>'Tutorial' - Displays the tutorial seen above in-game</li>
+        <li>'Tutorial' - Displays the tutorial in-game</li>
         <li>'Leaderboard' - Shows the current leaderboard</li>
         <li>'Exit' - Closes the game</li>
       </ul>
