@@ -18,7 +18,11 @@ Additionally, if you want to build the game yourself, you will need Maven (https
 ### Build
 Follow these instructions if you want to build the game locally:
 1. Clone the repository or download source code.
-2. From the project folder `gr10-snake-evolution`, run `mvn clean package`.
+```
+git clone https://github.com/cynex0/snake-evolution.git
+cd snake-evolution
+```
+2. From the project folder `snake-evolution`, run `mvn clean package`.
 3. The compiled .jar will appear in the `target` directory, run it from there:
 ```
 cd target
