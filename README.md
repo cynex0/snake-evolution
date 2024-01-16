@@ -10,8 +10,8 @@ To play Snake Evolution, you need to have Java installed (JDK 17 minimum).
 Additionally, if you want to build the game yourself, you will need Maven (https://maven.apache.org/download.cgi).
 
 ### Download Compiled Game
-1. Navigate to [Releases](https://git.chalmers.se/orlovs/gr10-snake-evolution/-/releases) and Open the latest release.
-2. Download the latest Release archive ([v1.0.zip](https://git.chalmers.se/orlovs/gr10-snake-evolution/-/blob/main/builds/v1.0.zip))
+1. Navigate to [Releases](https://github.com/cynex0/snake-evolution/releases) and Open the latest release.
+2. Download the latest Release archive ([Latest Build](https://github.com/cynex0/snake-evolution/releases/latest))
 3. Unpack the archive
 4. Launch the game from the terminal: `java -jar snake-evolution-1.0.jar`
 
